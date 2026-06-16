@@ -1,0 +1,80 @@
+@use "@/assets/styles" as *;
+
+.portfolio {
+    .spelling {
+        --spelling-delay: .3s;
+        --spelling-tr-dur: .3s;
+        --spelling-tr: #{rem(50)};
+        --spelling-delay-c: 150;
+        @include mobile-sm {
+            --spacer-w: #{rem(5)};
+        }
+    }
+
+    .social__appear {
+        transform: scale(.5);
+        opacity: 0;
+        transition: .75s transform ease, .75s opacity ease;
+    }
+
+    .portfolio__slider {
+        transform: translateX(100%);
+        transition: 0s transform .75s ease;
+    }
+
+    .pagination__slides, .pagination__number {
+        opacity: 0;
+        transition: .75s transform ease, .75s opacity ease;
+    }
+}
+
+.-active {
+    .portfolio {
+        .spelling {
+            --spelling-tr: none;
+            --spelling-so: 1;
+        }
+
+        .social__appear {
+            transform: scale(1);
+            transition: 1s transform .5s ease, 1s opacity .5s ease;
+            opacity: 1;
+        }
+
+        .portfolio__slider {
+            transform: none;
+            transition: 1s transform .5s ease;
+        }
+
+        .pagination__slides, .pagination__number {
+            opacity: 1;
+        }
+    }
+}
+
+
+.portfolio {
+    .portfolio__following {
+        opacity: 0;
+        @include mobile-sm {
+            visibility: hidden;
+        }
+        .random-spelling {
+            --spelling-delay: 0s;
+            --spelling-delay-c: 0;
+            --spelling-o: 0;
+        }
+
+        &.-active {
+            opacity: 1;
+            @include mobile-sm {
+                visibility: visible;
+            }
+            .random-spelling {
+                --spelling-o: 1;
+                --spelling-delay-c: 1;
+            }
+        }
+    }
+
+}

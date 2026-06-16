@@ -1,0 +1,231 @@
+.cinematic-visual {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 80% 70% at 50% 100%, color-mix(in srgb, var(--color-primary) 22%, transparent), transparent),
+    linear-gradient(145deg, color-mix(in srgb, var(--color-surface-soft) 90%, transparent), var(--color-canvas));
+  border: 1px solid var(--color-hairline);
+}
+
+.cinematic-visual__grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+
+.cinematic-visual__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, color-mix(in srgb, var(--color-canvas) 55%, transparent) 100%);
+  pointer-events: none;
+}
+
+.cinematic-visual__glow {
+  position: absolute;
+  width: 55%;
+  height: 55%;
+  top: 10%;
+  right: -8%;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-primary) 28%, transparent), transparent 70%);
+  filter: blur(24px);
+  pointer-events: none;
+}
+
+.cinematic-visual__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: clamp(0.5rem, 1.5vw, 0.875rem);
+}
+
+.cinematic-visual.what-i-bring__visual {
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 75% 68% at 50% 92%, color-mix(in srgb, var(--color-primary) 18%, transparent), transparent),
+    linear-gradient(150deg, color-mix(in srgb, var(--color-surface-soft) 75%, transparent), var(--color-surface-card));
+  border: none;
+}
+
+.cinematic-visual.what-i-bring__visual .cinematic-visual__grain {
+  opacity: 0.18;
+}
+
+.cinematic-visual.what-i-bring__visual .cinematic-visual__svg {
+  padding: 9%;
+}
+
+.cinematic-visual.what-i-bring__visual .cinematic-visual__vignette {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 55%,
+    color-mix(in srgb, var(--color-canvas) 38%, transparent) 100%
+  );
+}
+
+.cinematic-visual.what-i-bring__visual .cinematic-visual__glow {
+  width: 58%;
+  height: 58%;
+  top: 9%;
+  right: -9%;
+  opacity: 0.55;
+}
+
+.cinematic-visual__node,
+.cinematic-visual__agent-core,
+.cinematic-visual__agent-sat,
+.cinematic-visual__pipe-node,
+.cinematic-visual__pipe-dot,
+.cinematic-visual__ui-dot {
+  fill: color-mix(in srgb, var(--color-primary) 78%, white);
+}
+
+.cinematic-visual__node {
+  stroke: color-mix(in srgb, var(--color-primary) 42%, transparent);
+  stroke-width: 2;
+}
+
+.cinematic-visual__node--dim {
+  fill: color-mix(in srgb, var(--color-primary) 48%, var(--color-surface-card));
+  stroke: color-mix(in srgb, var(--color-primary) 28%, transparent);
+  stroke-width: 1.5;
+}
+
+.cinematic-visual__agent-sat--small {
+  fill: color-mix(in srgb, var(--color-primary) 55%, white);
+  opacity: 0.85;
+}
+
+.cinematic-visual__ui-dot {
+  fill: color-mix(in srgb, var(--color-primary) 65%, white);
+}
+
+.cinematic-visual__edge {
+  stroke: color-mix(in srgb, var(--color-primary) 55%, transparent);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.cinematic-visual__edge--pulse {
+  stroke-dasharray: 6 10;
+  animation: cinematic-dash 4s linear infinite;
+}
+
+.cinematic-visual__layer {
+  stroke: color-mix(in srgb, var(--color-primary) 35%, transparent);
+  stroke-width: 1.5;
+}
+
+.cinematic-visual__layer--back {
+  fill: color-mix(in srgb, var(--color-primary) 8%, var(--color-surface-card));
+  opacity: 0.5;
+}
+
+.cinematic-visual__layer--mid {
+  fill: color-mix(in srgb, var(--color-primary) 12%, var(--color-surface-card));
+  opacity: 0.72;
+}
+
+.cinematic-visual__layer--front {
+  fill: color-mix(in srgb, var(--color-primary) 16%, var(--color-surface-card));
+}
+
+.cinematic-visual__ui-bar,
+.cinematic-visual__ui-block {
+  fill: color-mix(in srgb, var(--color-primary) 30%, transparent);
+}
+
+.cinematic-visual__ui-block--sm {
+  fill: color-mix(in srgb, var(--color-primary) 18%, transparent);
+}
+
+.cinematic-visual__chart-line {
+  stroke: var(--color-primary);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.cinematic-visual__chart-area {
+  fill: color-mix(in srgb, var(--color-primary) 18%, transparent);
+}
+
+.cinematic-visual__bar {
+  fill: color-mix(in srgb, var(--color-primary) 22%, transparent);
+  stroke: color-mix(in srgb, var(--color-primary) 50%, transparent);
+  stroke-width: 1;
+}
+
+.cinematic-visual__agent-core {
+  fill: color-mix(in srgb, var(--color-primary) 35%, var(--color-surface-card));
+  stroke: var(--color-primary);
+  stroke-width: 2;
+}
+
+.cinematic-visual__agent-orbit {
+  fill: none;
+  stroke: color-mix(in srgb, var(--color-primary) 25%, transparent);
+  stroke-width: 1;
+  stroke-dasharray: 4 8;
+}
+
+.cinematic-visual__agent-orbit--2 {
+  animation: cinematic-spin 18s linear infinite;
+  transform-origin: 200px 200px;
+}
+
+.cinematic-visual__pipe {
+  stroke: color-mix(in srgb, var(--color-primary) 30%, transparent);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.cinematic-visual__pipe-node {
+  fill: color-mix(in srgb, var(--color-primary) 12%, var(--color-surface-card));
+  stroke: color-mix(in srgb, var(--color-primary) 45%, transparent);
+  stroke-width: 1.5;
+}
+
+.cinematic-visual__pipe-dot {
+  animation: cinematic-pulse 2.4s ease-in-out infinite;
+}
+
+.cinematic-visual__cell--0 { fill: color-mix(in srgb, var(--color-primary) 10%, transparent); }
+.cinematic-visual__cell--1 { fill: color-mix(in srgb, var(--color-primary) 18%, transparent); }
+.cinematic-visual__cell--2 { fill: color-mix(in srgb, var(--color-primary) 28%, transparent); }
+.cinematic-visual__cell--3 { fill: color-mix(in srgb, var(--color-primary) 40%, transparent); }
+
+@keyframes cinematic-dash {
+  to { stroke-dashoffset: -32; }
+}
+
+@keyframes cinematic-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes cinematic-pulse {
+  0%, 100% { opacity: 0.45; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+@media (max-width: 900px) {
+  .cinematic-visual__edge--pulse,
+  .cinematic-visual__agent-orbit--2,
+  .cinematic-visual__pipe-dot {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cinematic-visual__edge--pulse,
+  .cinematic-visual__agent-orbit--2,
+  .cinematic-visual__pipe-dot {
+    animation: none;
+  }
+}

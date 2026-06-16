@@ -1,0 +1,33 @@
+@use "@/assets/styles" as *;
+
+.custom-cursor {
+    position: absolute;
+    top: 0; left: 0;
+    transform: translate(-100px, -100px);
+    user-select: none;
+    pointer-events: none;
+    z-index: 10000;
+    mix-blend-mode: difference;
+
+    @include tablet {
+        display: none;
+    }
+
+    &__followed {
+        transition: opacity .3s ease;
+    }
+
+    &__point, &__followed {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &__point {
+        width: rem(10);
+        height: rem(10);
+        border-radius: 50%;
+        background-color: color(white-100);
+        transition: background-color .3s ease, transform .3s ease, width .3s ease, height .3s ease;
+    }
+}

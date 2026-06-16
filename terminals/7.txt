@@ -1,0 +1,24 @@
+---
+pid: 6052
+cwd: "C:\Users\adity\Desktop\portfolio"
+command: "Get-ChildItem -Path \"C:\\Users\\adity\\Desktop\\portfolio\" -Recurse -File -Include *.png,*.jpg,*.jpeg,*.svg,*.webp -ErrorAction SilentlyContinue | Where-Object { $_.FullName -notmatch 'node_modules' } | Select-Object FullName, Length, LastWriteTime | Sort-Object LastWriteTime -Descending"
+started_at: 2026-06-12T15:14:17.858Z
+running_for_ms: 8454982  
+---
+
+FullName                                                         Length LastWriteTime         
+--------                                                         ------ -------------         
+C:\Users\adity\Desktop\portfolio\public\resume-page-2.png         48734 12/06/2026 7:26:52 PM 
+C:\Users\adity\Desktop\portfolio\dist\resume-page-2.png           48734 12/06/2026 7:26:52 PM 
+C:\Users\adity\Desktop\portfolio\dist\resume-page-1.png          366863 12/06/2026 7:26:52 PM 
+C:\Users\adity\Desktop\portfolio\public\resume-page-1.png        366863 12/06/2026 7:26:52 PM 
+C:\Users\adity\Desktop\portfolio\dist\img-dark.png               838115 12/06/2026 3:50:43 PM 
+C:\Users\adity\Desktop\portfolio\public\img-dark.png             838115 12/06/2026 3:50:43 PM 
+C:\Users\adity\Desktop\portfolio\public\img.png                  862505 12/06/2026 3:48:15 PM 
+C:\Users\adity\Desktop\portfolio\dist\img.png                    862505 12/06/2026 3:48:15 PM 
+C:\Users\adity\Desktop\portfolio\dist\favicon.svg                   230 12/06/2026 12:20:43 PM
+C:\Users\adity\Desktop\portfolio\public\favicon.svg                 230 12/06/2026 12:20:43 PM
+C:\Users\adity\Desktop\portfolio\dist\images\aditya-deore.png   1612733 31/05/2026 1:50:25 PM 
+C:\Users\adity\Desktop\portfolio\public\images\aditya-deore.png 1612733 31/05/2026 1:50:25 PM 
+
+

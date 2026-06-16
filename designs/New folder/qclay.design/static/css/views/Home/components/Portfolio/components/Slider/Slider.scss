@@ -1,0 +1,128 @@
+@use "@/assets/styles" as *;
+
+.slider-container {
+    width: 100%;
+    margin-top: rem(100);
+    .pagination-number {
+        @include font-ARP-bold;
+        padding: rem(35) rem(120) 0;
+        font-weight: 700;
+        font-size: font(24);
+        line-height: rem(26);
+        color: color(grey-300);
+
+        @include mobile-sm {
+            padding: rem(14) rem(90) 0;
+            font-size: font(14);
+        }
+    }
+}
+
+.slider {
+    user-select: none;
+    padding-bottom: rem(75) !important;
+    @include mobile-sm {
+        padding-bottom: rem(30) !important;
+    }
+
+    .swiper-slide {
+        width: rem(602);
+        height: rem(407);
+        
+        @include laptop-xlg {
+            width: rem(702);
+            height: rem(507);
+        }
+        @include mobile-sm {
+            width: rem(290);
+            height: rem(210);
+        }
+    }
+
+    .swiper-pagination {
+        bottom: 0 !important;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-left: rem(60);
+        @include mobile-sm {
+            padding-left: rem(20);
+        }
+
+        >&-bullet {
+            position: relative;
+            margin: 0 rem(3);
+            height: rem(3);
+            width: rem(20);
+            background: color(grey-100);
+            border-radius: rem(50);
+            transition: width .5s ease, background-color .3s;
+
+            &.swiper-pagination-bullet-active {
+                width: rem(67);
+                background: color(white-100);
+
+                @include mobile-sm {
+                    width: rem(40);
+                }
+            }
+        }
+    }
+
+    .slide {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+
+        @include mobile-sm {
+            margin: 0 rem(20);
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(27, 26, 26, 0) 0%, #1B1A1A 100%);
+            opacity: 1;
+        }
+
+        .text {
+            @include font-ARP-bold;
+            font-size: font(40);
+            line-height: rem(56);
+            text-transform: uppercase;
+            width: rem(564);
+            pointer-events: all;
+            position: absolute;
+            left: rem(-48);
+            bottom: rem(30);
+            opacity: 1;
+            z-index: 1;
+            display: inline-block;
+            line-height: 100%;
+
+            @include laptop-xlg {
+                font-size: font(50);
+            }
+
+            @include mobile-sm {
+                left: rem(-32);
+                font-size: font(20);
+                width: rem(233);
+            }
+        }
+
+        >img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}

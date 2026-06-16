@@ -1,0 +1,65 @@
+@use "@/assets/styles" as *;
+
+.footer-main {
+  padding: 100px 16px 40px;
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.footer {
+    @include font-PlusJakartaDisplay-regular;
+  display: flex;
+  justify-content: space-between;
+  align-items: self-end;
+  font-size: font(16);
+
+  @include tablet {
+    margin-top: rem(89);
+    padding: rem(48) 0 0;
+  }
+
+  .address {
+    width: rem(200);
+    color: color(grey-200);
+    margin-bottom: rem(35);
+  }
+
+  > :last-child {
+    display: flex;
+    flex-direction: column;
+    gap: rem(20);
+    align-items: flex-end;
+    color: color(grey-200);
+
+    a {
+      padding: rem(5) rem(10) rem(5) rem(10);
+      border-radius: rem(50);
+      background-color: #e8e8e8;
+      color: #000000;
+      font-size: rem(17);
+      letter-spacing: -0.03em;
+      transition: 0.3s opacity ease;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    @include mobile-sm {
+      display: none;
+    }
+  }
+
+  @include mobile-sm {
+    display: flex;
+    align-items: flex-start;
+
+    .menu__text {
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+}

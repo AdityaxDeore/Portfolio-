@@ -1,0 +1,37 @@
+.rotating-tagline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.35em;
+  margin: 0.35rem 0 0;
+  font-size: var(--text-small);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.rotating-tagline__prefix {
+  color: var(--color-text-secondary);
+}
+
+.rotating-tagline__window {
+  display: inline-block;
+  overflow: hidden;
+  height: 1.35em;
+  min-width: 10ch;
+  text-align: left;
+  color: var(--color-primary);
+}
+
+.rotating-tagline__word {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rotating-tagline__word {
+    will-change: auto;
+  }
+}

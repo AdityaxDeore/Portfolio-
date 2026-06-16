@@ -1,0 +1,38 @@
+.char-reveal {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.char-reveal__visual {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.char-reveal__char-wrap {
+  display: inline-block;
+  overflow: hidden;
+  padding: 0.05em 0;
+  margin: -0.05em 0;
+}
+
+.char-reveal__char {
+  display: inline-block;
+  opacity: 0;
+  transform: translate3d(0, 110%, 0);
+  will-change: transform, opacity;
+}
+
+.char-reveal--static .char-reveal__char {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .char-reveal__char {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
+}

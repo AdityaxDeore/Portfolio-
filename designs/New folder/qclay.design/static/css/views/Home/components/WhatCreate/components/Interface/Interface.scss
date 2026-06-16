@@ -1,0 +1,268 @@
+@use "sass:math";
+@use "@/assets/styles" as *;
+
+$initialW: 944;
+$initialH: 708;
+
+$width: 802;
+$height: 601;
+
+
+$width-sm: 352;
+$height-sm: 264;
+
+$coefX: math.div($width, $initialW);
+$coefY: math.div($height, $initialH);
+
+$coefX-sm: math.div($width-sm, $initialW);
+$coefY-sm: math.div($height-sm, $initialH);
+
+@function x($px) {
+    @return #{math.div($px, 16 / $coefX) + 'rem'};
+}
+@function y($px) {
+    @return #{math.div($px, 16 / $coefY) + 'rem'};
+}
+
+@function x-sm($px) {
+    @return #{math.div($px, 16 / $coefX-sm) + 'rem'};
+}
+@function y-sm($px) {
+    @return #{math.div($px, 16 / $coefY-sm) + 'rem'};
+}
+
+.interface {
+    position: absolute;
+    top: 0; left: 0;
+    width: rem($width);
+    height: rem($height);
+    pointer-events: none;
+    @include mobile-sm {
+        width: rem($width-sm);
+        height: rem($height-sm);
+    }
+
+    .object {
+        position: absolute;
+    }
+
+    img, video {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__container,
+    &__content, 
+    &__mode,
+    &__trx,
+    &__background,
+    &__stage-1,
+    &__stage-2,
+    &__stage-3 {
+        position: absolute;
+        top: 0; left: 0;
+        width: rem($width);
+        height: rem($height);
+        overflow: hidden;
+        @include mobile-sm {
+            width: rem($width-sm);
+            height: rem($height-sm);
+        }
+    }
+
+    &__mode {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: rem(36);
+        @include mobile-sm {
+            border-radius: rem(16);
+        }
+    }
+
+    &__background, &__stage-1 {        
+        .object {
+            position: absolute;
+            top: 0; left: 0;
+            width: rem($width);
+            height: rem($height);
+            @include mobile-sm {
+                width: rem($width-sm);
+                height: rem($height-sm);
+            }
+        }
+    }
+
+    &__stage-2 {
+        opacity: 0;
+        .tasks {
+            width: x(856);
+            height: y(364);
+            left: x(68);
+            top: y(344);
+            @include mobile-sm {
+                width: x-sm(856);
+                height: y-sm(364);
+                left: x-sm(68);
+                top: y-sm(344);
+            }
+        }
+        .d-header {
+            width: x(847);
+            height: y(32);
+            left: x(77);
+            top: y(20);
+            @include mobile-sm {
+                width: x-sm(847);
+                height: y-sm(32);
+                left: x-sm(77);
+                top: y-sm(20);
+            }
+        }
+        .options {
+            width: x(758);
+            height: y(30);
+            left: x(166);
+            top: y(290);
+            @include mobile-sm {
+                width: x-sm(758);
+                height: y-sm(30);
+                left: x-sm(166);
+                top: y-sm(290);
+            }
+        }
+        .row {
+            width: x(845);
+            height: y(113);
+            left: x(77);
+            top: y(75);
+            @include mobile-sm {
+                width: x-sm(845);
+                height: y-sm(113);
+                left: x-sm(77);
+                top: y-sm(75);
+            }
+        }
+        .title {
+            width: x(233);
+            height: y(107);
+            left: x(77);
+            top: y(214);
+            @include mobile-sm {
+                width: x-sm(233);
+                height: y-sm(107);
+                left: x-sm(77);
+                top: y-sm(214);
+            }
+        }
+        .sidebar {
+            width: x(56);
+            height: y(704);
+            left: x(2);
+            top: y(1);
+            @include mobile-sm {
+                width: x-sm(56);
+                height: y-sm(704);
+                left: x-sm(2);
+                top: y-sm(1);
+            }
+        }
+    }
+
+    &__stage-3 {
+        opacity: 0;
+        .options {
+            width: x(297);
+            height: y(104);
+            left: x(627);
+            top: y(292);
+            @include mobile-sm {
+                width: x-sm(297);
+                height: y-sm(104);
+                left: x-sm(627);
+                top: y-sm(292);
+            }
+        }
+        .m-header {
+            width: x(103);
+            height: y(29);
+            left: x(809);
+            top: y(21);
+            @include mobile-sm {
+                width: x-sm(103);
+                height: y-sm(29);
+                left: x-sm(809);
+                top: y-sm(21);
+            }
+        }
+    }
+
+    .logo {
+        position: absolute;
+        width: x(33);
+        height: y(34);
+        left: x(14);
+        top: y(20);
+        @include mobile-sm {
+            width: x-sm(33);
+            height: y-sm(34);
+            left: x-sm(14);
+            top: y-sm(20);
+        }
+    }
+
+
+
+    &__slot {
+        position: absolute;
+        overflow: hidden;
+        border-radius: rem(16);
+        width: x(207);
+        height: y(143);
+        left: x(394);
+        top: y(500);
+        @include mobile-sm {
+            width: x-sm(207);
+            height: y-sm(143);
+            left: x-sm(394);
+            top: y-sm(500);
+            border-radius: rem(6);
+        }
+    }
+
+    &__tag {
+        position: absolute;
+        left: 50%; top: 100%;
+        transform: translate(-50%, rem(10));
+        background: #FFFFFF;
+        width: rem(378);
+        height: rem(71);
+        border-radius: rem(35);
+        overflow: hidden;
+        opacity: 0;
+        @include mobile-sm {
+            width: rem(250);
+            height: rem(50);
+        }
+
+        > div {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @include font-PlusJakartaDisplay-medium;
+            font-size: font(18);
+            white-space: nowrap;
+            opacity: 0;
+            @include mobile-sm {
+                font-size: font(14);
+            }
+        }
+    }
+}

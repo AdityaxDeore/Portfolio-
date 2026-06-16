@@ -1,0 +1,91 @@
+@use "@/assets/styles" as *;
+
+.header {
+    transition: transform .5s ease, visibility .5s, opacity .5s;
+    transform: translateY(-100%);
+}
+
+.text, .talk {
+    transition: visibility .5s, opacity .5s;
+}
+
+.-loaded {
+    .header {
+        transform: none;
+    }
+}
+
+.-global-from-prev.-global-whatcreate {
+    .header, .burger, .talk-button {
+        animation: color .75s;
+    }
+    .btn .line {
+        animation: bg .75s;
+    }
+}
+
+@keyframes color {
+    from {
+        color: color(black-100);
+        border-color: color(black-100);
+    }
+    1% {
+        color: color(white-100);
+        border-color: color(white-100);
+    }
+    100% {
+        color: color(white-100);
+        border-color: color(white-100);
+    }
+}
+@keyframes bg {
+    from {
+        background-color: color(black-100);
+    }
+    1% {
+        background-color: color(white-100);
+    }
+    100% {
+        background-color: color(white-100);
+    }
+}
+
+.-global-portfolio {
+    .header, .burger, .talk-button {
+        color: color(white-100);
+        border-color: color(white-100);
+    }
+    @include mobile-sm {
+        .talk-button {
+            color: color(black-100);
+        }
+    }
+    .btn .line {
+        background-color: color(white-100);
+    }
+
+    .-force-following-color {
+        &.header, .burger, .talk-button {
+            color: color(black-100);
+            border-color: color(black-100);
+        }
+        .btn .line {
+            background-color: color(black-100);
+        }
+    }
+}
+
+.-global-startups {
+    .header, .burger, .talk-button {
+        color: color(white-100);
+        border-color: color(white-100);
+    }
+    @include mobile-sm {
+        .talk-button {
+            color: color(black-100);
+        }
+    }
+    .btn .line {
+        background-color: color(white-100);
+    }
+}

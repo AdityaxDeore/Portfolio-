@@ -1,0 +1,334 @@
+@use "@/assets/styles" as *;
+
+.main {
+    --padding-x: #{rem(150)};
+    --padding-y: #{rem(241)};
+    padding: var(--padding-y) var(--padding-x);
+    padding-bottom: 0 !important;
+    background-color: color(white-100);
+    min-height: 100vh;
+
+    @include tablet {
+        --padding-y: #{rem(200)};
+        --padding-x: #{rem(100)};
+    }
+
+    @include mobile-sm {
+        --padding-y: #{rem(170)};
+        --padding-x: #{rem(20)};
+        min-height: 100vh;
+    }
+
+    &__row {
+        padding-top: rem(30);
+        display: flex;
+        align-items: center;
+
+        @include tablet {
+            padding-top: rem(60);
+        }
+
+        @include mobile-sm {
+            display: none;
+        }
+    }
+
+    &__clutch {
+        padding-right: 60px;
+    }
+
+    .presentation {
+        margin-top: rem(100);
+        a {
+            @include font-PlusJakartaDisplay-regular;
+            padding: rem(5) rem(10) rem(5) rem(10);
+            border-radius: rem(50);
+            background-color: #e8e8e8;
+            color: #000000;
+            font-size: rem(17);
+            letter-spacing: -0.03em;
+            transition: 0.3s opacity ease;
+            white-space: nowrap;
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+    }
+
+    .presentation-mobile {
+        display: none;
+        @include mobile-sm {
+            opacity: 0.7;
+            display: flex;
+            margin-top: rem(6);
+            width: 100%;
+            > * {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    }
+
+    &__content {
+        position: relative;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+
+        .texts {
+            .title {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                font-size: rem(55);
+                line-height: 120%;
+                @include font-AtypDisplay-medium;
+
+                @include laptop-lg {
+                    font-size: rem(45);
+                }
+
+                @include tablet {
+                    font-size: rem(45);
+                }
+
+                @include mobile-sm {
+                    font-size: rem(23);
+                }
+
+                &-mobile {
+                    display: none;
+                    @include mobile-sm {
+                        display: flex;
+                    }
+                }
+
+                &-desktop {
+                    @include mobile-sm {
+                        display: none;
+                    }
+                }
+            }
+
+            .subtitle {
+                display: block;
+                width: rem(370);
+                font-size: rem(16);
+                color: color(grey-200);
+                @include font-PlusJakartaDisplay-medium;
+
+                @include tablet {
+                    display: block;
+                }
+
+                @include mobile-sm {
+                    display: none;
+                }
+            }
+        }
+
+        div.points {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            margin-top: rem(-37);
+            margin-left: rem(51);
+
+            @include laptop-lg {
+                margin-left: rem(12);
+            }
+
+            @include tablet {
+                display: none;
+            }
+
+            .eye {
+                padding-top: rem(60);
+                padding-left: rem(120);
+                @include laptop-lg {
+                    padding-top: 0;
+                }
+            }
+
+            .circle {
+                display: block;
+
+                @include laptop-lg {
+                    width: rem(40);
+                    height: rem(40);
+                }
+
+                width: rem(50);
+                height: rem(50);
+                border-radius: 100%;
+                background-color: color(pink-300);
+            }
+
+            .place {
+                padding-top: rem(88);
+                padding-left: rem(10);
+
+                .blur {
+                    background: rgba(0, 0, 0, 0.8);
+                    filter: blur(rem(25));
+                    height: rem(30);
+                    width: rem(30);
+                    border-radius: 100%;
+
+                    @include laptop-lg {
+                        filter: blur(rem(20));
+                        height: rem(25);
+                        width: rem(25);
+                    }
+                }
+            }
+        }
+    }
+
+    &__image {
+        position: relative;
+        
+        @include mobile-sm {
+            width: 100vw;
+            margin-left: rem(-20);
+        }
+
+        @include mobile-sm {
+            width: 100vw;
+            margin-left: rem(-20);
+        }
+
+        .image__play {
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            span {
+                @include font-PlusJakartaDisplay-regular;
+            }
+
+            span {
+                display: none;
+            }
+
+            @include mobile-sm {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                span {
+                    display: block;
+                    font-size: rem(50);
+                    pointer-events: none;
+                }
+
+                .circle {
+                    width: rem(70);
+                    height: rem(70);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    border-radius: 50%;
+                    opacity: 0.5;
+                    border: rem(1) solid color(black-100);
+
+                    .triangle {
+                        transform: translate(rem(2));
+                        opacity: 0.5;
+                        border-top: rem(6) solid transparent;
+                        border-left: rem(12) solid #000000;
+                        border-bottom: rem(6) solid transparent;
+                    }
+                }
+            }
+        }
+
+        .image {
+            width: 100vw;
+            margin-left: calc(-1 * var(--padding-x));
+            height: 100vh;
+            margin-top: rem(120);
+            display: flex;
+            align-items: flex-start;
+
+            @include tablet {
+                margin-top: rem(90);
+            }
+
+            @include mobile-sm {
+                width: 100vw;
+                height: 35vh;
+                margin-top: rem(60);
+                margin-left: 0;
+            }
+
+            .image-sub {
+                width: 100vw;
+                height: 100vh;
+                overflow: hidden;
+                position: relative;
+
+                @include mobile-sm {
+                    transform: none !important;
+                    :not(.vimeo-play-btn):not(.triangle) { width: 100vw !important; }
+                }
+
+                &.fullscreen--active {
+                    iframe {
+                        // pointer-events: all;
+                    }
+                }
+
+                .wrapper-iframe-vimeo {
+                    width: 100%;
+                    height: 100%;
+                    background: transparent;
+                    opacity: 0;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+
+                iframe {
+                    // width: 100vw !important;
+                    // height: 100vh !important;
+                    // pointer-events: none;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    // object-fit: cover;
+                    // object-position: center;
+                }
+
+                @include mobile-sm {
+                    width: 100vw;
+                    height: 35vh;
+                }
+            }
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    p {
+        display: none;
+        @include font-PlusJakartaDisplay-regular;
+
+        @include mobile-sm {
+            display: block;
+            padding-top: rem(125);
+            font-size: rem(16);
+            text-align: center;
+        }
+    }
+}

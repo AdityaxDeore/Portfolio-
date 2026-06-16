@@ -1,0 +1,60 @@
+.root {
+    padding: 40px 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+}
+
+.container {
+    max-width: 1400px;
+    width: 100%;
+    padding: 0 25px;
+    margin: 0 auto;
+}
+
+.header {
+    width: 100%;
+}
+
+.terms {
+    margin-top: 40px;
+
+    &_sep {
+        height: 3em;
+    }
+
+    font: 400 16px/1.25 "Plus Jakarta Sans";
+
+    h4 {
+        margin-bottom: 48px;
+    }
+
+    p {
+        margin-top: .75em;
+    }
+
+    a {
+        color: blue;
+        text-decoration: underline;
+    }
+
+    ul {
+        margin-top: 1em;
+        display: flex;
+        flex-direction: column;
+        list-style: unset;
+        padding-left: 3em;
+
+        li + li {
+            margin-top: .5em;
+        }
+    }
+
+    h5 {
+        margin: 30px 0;
+        font-size: 27px;
+    }
+}

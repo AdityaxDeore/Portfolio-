@@ -1,0 +1,84 @@
+@use "@/assets/styles" as *;
+
+$appear-duration: .5s;
+$visible-duratiion: .4s;
+
+.-global-portfolio,
+.--global-startups {
+    .jumper {
+        --background-color: #{color(white-100)};
+        --content-color: #{color(black-100)};
+    }
+}
+
+.-external-changing {
+    .jumper {
+        animation: #{$visible-duratiion + $appear-duration + $appear-duration} fadeInOutVw ease;
+        @media screen and ( max-aspect-ratio: 1 / 1 ) {
+            animation: #{$visible-duratiion + $appear-duration + $appear-duration} fadeInOutVh ease;
+        }
+
+        .logo path {
+            animation: $visible-duratiion pathLine $appear-duration ease forwards;
+
+            @keyframes pathLine {
+                from {
+                    stroke-dashoffset: 150;
+                }
+                to {
+                    stroke-dashoffset: 0;
+                }
+            }
+        }
+    }
+}
+
+.jumper {
+    transform: translateX(-200vw);
+    @media screen and ( max-aspect-ratio: 1 / 1 ) {
+        transform: translateX(-200vh);
+    }
+    &__circle {
+        width: 150vw;
+        height: 150vw;
+
+        @media screen and ( max-aspect-ratio: 1 / 1 ) {
+            width: 150vh;
+            height: 150vh;
+        }
+    }
+}
+
+@keyframes fadeInOutVw {
+    from {
+        transform: translateX(-200vw);
+    }
+    25% {
+        transform: translateX(0);
+    }
+    75% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInOutVh {
+    from {
+        transform: translateX(-200vh);
+    }
+    25% {
+        transform: translateX(0);
+    }
+    75% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 0;
+    }
+}

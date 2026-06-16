@@ -1,0 +1,38 @@
+---
+pid: 10188
+cwd: "C:\Users\adity\Desktop\portfolio"
+command: "Set-Location \"C:\\Users\\adity\\Desktop\\portfolio\"; echo y | npx shadcn@latest init -t vite -b radix -p sera -y -f 2>&1"
+started_at: 2026-06-12T10:56:26.880Z
+running_for_ms: 23835112 
+---
+? Would you like to re-install existing UI components? » (y/N)√ Would you like to re-install existing UI components? ... yes
+
+  The following components will be re-installed and overwritten:
+  - button
+
+- Preflight checks.
+✔ Preflight checks.
+- Verifying framework.
+✔ Verifying framework. Found Vite.
+- Validating Tailwind CSS. Found v4.
+✔ Validating Tailwind CSS. Found v4.
+- Validating import alias.
+✔ Validating import alias.
+- Writing components.json.
+✔ Writing components.json.
+- Checking registry.
+✔ Checking registry.
+- Installing dependencies.
+- Installing dependencies.
+✔ Installing dependencies.
+- Updating files.
+  - @\lib\utils.ts
+  - @\components\ui\button.tsx
+✔ Created 1 file:
+ℹ Skipped 1 file: (files might be identical, use --overwrite to overwrite)
+- Updating src\index.css
+
+✔ Updating src\index.css
+Project initialization completed.
+You may now add components.
+

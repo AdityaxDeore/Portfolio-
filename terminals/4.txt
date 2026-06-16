@@ -1,0 +1,11 @@
+---
+pid: 10724
+cwd: "C:\Users\adity\Desktop\portfolio"
+command: "higgsfield auth login 2>&1"
+started_at: 2026-06-12T11:58:39.281Z
+running_for_ms: 20190063 
+---
+Opening browser for authentication...
+If browser does not open, visit: https://higgsfield.ai/device?code=s7oScpFE4kgBE_eypb0LlQ
+Waiting for approval...
+Successfully authenticated.

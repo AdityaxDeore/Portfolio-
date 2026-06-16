@@ -1,0 +1,43 @@
+@use "@/assets/styles" as *;
+
+.spelling {
+    --spacer-w: #{rem(15)};
+    --spelling-o: 1;
+    --spelling-so: 0;
+    --spelling-tr: #{rem(50)};
+    --spelling-delay: 0s;
+    --spelling-tr-dur: .5s;
+    --spelling-o-dur: .2s;
+    --spelling-delay-c: 70;
+    --spelling-overflow: hidden;
+
+    overflow: var(--spelling-overflow);
+    opacity: var(--spelling-so);
+    transition: .5s opacity var(--spelling-delay);
+
+    span {
+        display: inline-block;
+    }
+
+    > span {
+        transform: translateY(var(--spelling-tr));
+        > span {
+            opacity: var(--spelling-o);
+        }
+    }
+
+    .spacer {
+        width: var(--spacer-w);
+        min-width: var(--spacer-w);
+    }
+
+    @for $i from 1 through 500 {
+            $delay: calc(var(--spelling-delay) + #{$i}s / var(--spelling-delay-c));
+            > :nth-child(#{$i}) {
+                    transition: var(--spelling-tr-dur) transform $delay;
+                    > span {
+                        transition: var(--spelling-o-dur) opacity $delay;
+                    }
+            }
+    }
+}

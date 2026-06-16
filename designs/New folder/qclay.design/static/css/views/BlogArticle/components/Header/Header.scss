@@ -1,0 +1,92 @@
+@use "@/assets/styles" as *;
+
+body {
+  width: 100%;
+}
+
+.header__container {
+  // position: fixed;
+  // top: 0; left: 0;
+  width: 100%;
+  z-index: 1000;
+
+  &_blog {
+    position: absolute !important;
+    transform: none !important;
+
+    .header {
+      width: 100%;
+      top: 0 !important;
+      transform: none !important;
+    }
+  }
+}
+
+.header {
+  // position: absolute;
+  // width: 100%;
+  // top: 0; left: 0;
+  --header-color: #{color(black-100)};
+  padding: rem(48) rem(50) rem(12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--header-color);
+  z-index: 1;
+
+  svg {
+    transition: color 0.3s;
+  }
+
+  @include mobile-sm {
+    padding: rem(36) rem(20) rem(12);
+  }
+
+  &__logo {
+    width: rem(119);
+    height: auto;
+  }
+
+  .text {
+    width: rem(515);
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    display: flex;
+    justify-content: space-between;
+    transition: 0.3s opacity;
+    @include tablet {
+      width: rem(350);
+    }
+    @include mobile-sm {
+      display: none;
+    }
+
+    a {
+      font-size: font(19);
+      @include font-PlusJakartaDisplay-regular;
+    }
+  }
+
+  &.-show-menu {
+    .text {
+      opacity: 0;
+    }
+    .burger,
+    .talk-button,
+    .burger-text,
+    svg {
+      color: color(black-100) !important;
+      border-color: color(black-100) !important;
+    }
+    .btn .line {
+      background-color: color(black-100) !important;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap');
+@font-face {
+    font-family: "Mazzard";
+    src: url("MazzardM-Medium.ttf") format("ttf");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Mazzard M';
+    src: url('MazzardM-Medium.eot');
+    src: local('Mazzard M Medium'), local('MazzardM-Medium'), url('MazzardM-Medium.eot?#iefix') format('embedded-opentype'), url('MazzardM-Medium.woff2') format('woff2'), url('MazzardM-Medium.woff') format('woff'), url('MazzardM-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Mazzard M';
+    src: url('MazzardM-Bold.eot');
+    src: local('Mazzard M Bold'), local('MazzardM-Bold'), url('MazzardM-Bold.eot?#iefix') format('embedded-opentype'), url('MazzardM-Bold.woff2') format('woff2'), url('MazzardM-Bold.woff') format('woff'), url('MazzardM-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Atyp Display';
+    src: url('AtypDisplay-Medium.eot');
+    src: local('Atyp Display Medium'), local('AtypDisplay-Medium'), url('AtypDisplay-Medium.eot?#iefix') format('embedded-opentype'), url('AtypDisplay-Medium.woff2') format('woff2'), url('AtypDisplay-Medium.woff') format('woff'), url('AtypDisplay-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "ARP";
+    src: url("./arp-150.ttf") format("ttf"), url("./arp-150.woff") format('woff');
+    font-weight: 500;
+    font-display: swap;
+}

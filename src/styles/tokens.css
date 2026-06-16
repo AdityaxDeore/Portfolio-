@@ -1,0 +1,72 @@
+:root {
+  /* Canvas & surfaces */
+  --color-canvas: #faf9f5;
+  --color-surface-soft: #f3f2ec;
+  --color-surface-card: #ffffff;
+  --color-surface-dark: #1a1a18;
+  --color-hairline: rgba(26, 26, 24, 0.08);
+
+  /* Text */
+  --color-text-primary: #1a1a18;
+  --color-text-secondary: #5c5c58;
+  --color-text-muted: #8a8a85;
+  --color-text-on-primary: #ffffff;
+
+  /* Brand */
+  --color-primary: #cc785c;
+  --color-primary-hover: #b86a4f;
+  --color-primary-muted: rgba(204, 120, 92, 0.12);
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+
+  --text-display: clamp(2rem, 5vw + 1rem, 3.5rem);
+  --text-heading: clamp(1.75rem, 3vw + 0.5rem, 2.75rem);
+  --text-heading-lg: clamp(2rem, 4vw + 0.75rem, 3.25rem);
+  --text-heading-sm: clamp(1.25rem, 1.5vw + 0.75rem, 1.5rem);
+  --text-display-sm: var(--text-heading);
+  --text-body: clamp(0.9375rem, 0.5vw + 0.875rem, 1.0625rem);
+  --text-small: clamp(0.8125rem, 0.25vw + 0.75rem, 0.875rem);
+
+  /* Spacing — fluid section rhythm */
+  --space-section: clamp(3rem, 8vw + 1rem, 6rem);
+  --page-padding: clamp(1rem, 4vw, 2.5rem);
+  --nav-height: 3.5rem;
+  --touch-target: 2.75rem;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+}
+
+[data-theme='dark'] {
+  --color-canvas: #141413;
+  --color-surface-soft: #1e1e1c;
+  --color-surface-card: #222220;
+  --color-surface-dark: #faf9f5;
+  --color-hairline: rgba(250, 249, 245, 0.08);
+
+  --color-text-primary: #f5f4f0;
+  --color-text-secondary: #a8a8a3;
+  --color-text-muted: #6e6e6a;
+  --color-text-on-primary: #ffffff;
+
+  --color-primary: #d4896e;
+  --color-primary-hover: #e09a7f;
+  --color-primary-muted: rgba(212, 137, 110, 0.15);
+}
+
+/* Narrow phones */
+@media (max-width: 380px) {
+  :root {
+    --page-padding: 1rem;
+    --touch-target: 2.75rem;
+  }
+}

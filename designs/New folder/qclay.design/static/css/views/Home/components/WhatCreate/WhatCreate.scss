@@ -1,0 +1,102 @@
+@use "@/assets/styles" as *;
+// нужно менять их и в interface.scss
+$width: 802;
+$height: 601;
+
+// $width-lg-xlg-1500-900: 561;
+// $height-lg-xlg-1500-900: 420;
+
+$width-sm: 352;
+$height-sm: 264;
+// 
+
+.what-create {
+  width: 100%;
+  overflow: hidden;
+  text-transform: uppercase;
+  background: color(pink-100);
+
+  &__cursors {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+
+    > * {
+      width: rem(68);
+      height: rem(42);
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  &__slider {
+    display: flex;
+    height: 100vh;
+    justify-content: flex-start;
+    width: 400vw;
+    overflow: hidden;
+    @include tablet {
+      width: 400vw;
+    }
+    @include mobile-sm {
+      width: 500vw;
+    }
+  }
+
+  &__view {
+    @include font-PlusJakartaDisplay-bold;
+    font-size: rem(120);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+
+    @include mobile-sm {
+      font-size: rem(60);
+    }
+  }
+
+  .view-mode {
+    position: relative;
+    border-radius: rem(32);
+  }
+
+  .view-position {
+    position: relative;
+    width: rem($width);
+    height: rem($height);
+    // @include laptop-lg-xlg-1500-900 {
+    //   width: rem($width-lg-xlg-1500-900);
+    //   height: rem($height-lg-xlg-1500-900);
+    // }
+    @include mobile-sm {
+      width: rem($width-sm);
+      height: rem($height-sm);
+    }
+  }
+
+  .view-grid {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+
+    img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

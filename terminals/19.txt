@@ -1,0 +1,15 @@
+---
+pid: 704
+cwd: "C:\Users\adity\Desktop\portfolio"
+command: "Invoke-WebRequest -Uri \"http://localhost:5173/node_modules/.vite/deps/react-router-dom.js\" -UseBasicParsing | Select-Object StatusCode, StatusDescription"
+started_at: 2026-06-13T05:28:18.650Z
+running_for_ms: 18230010 
+---
+Invoke-WebRequest : The remote server returned an error: (504) Gateway Timeout.
+At line:1 char:1
++ Invoke-WebRequest -Uri "http://localhost:5173/node_modules/.vite/deps ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:HttpWebRequest) [Invoke-WebRequest], WebExc 
+   eption
+    + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeWebRequestCommand
+ 

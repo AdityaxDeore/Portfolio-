@@ -1,0 +1,1187 @@
+---
+pid: 12192
+cwd: "C:\Users\adity\Desktop\portfolio"
+command: "Get-ChildItem -Path \"C:\\Users\\adity\\Desktop\\portfolio\\designs\" -Recurse | Select-Object FullName, Length, LastWriteTime | Format-Table -AutoSize"
+started_at: 2026-06-12T18:31:59.117Z
+running_for_ms: 1664976  
+---
+
+FullName                                                                                                               
+--------                                                                                                               
+C:\Users\adity\Desktop\portfolio\designs\New folder                                                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)                                                                
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)                                                                
+C:\Users\adity\Desktop\portfolio\designs\New folder\arclight.vimeo.com                                                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\cdn.jsdelivr.net                                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\cdnjs.cloudflare.com                                               
+C:\Users\adity\Desktop\portfolio\designs\New folder\code.jquery.com                                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\css                                                                
+C:\Users\adity\Desktop\portfolio\designs\New folder\f.vimeocdn.com                                                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\fonts.googleapis.com                                               
+C:\Users\adity\Desktop\portfolio\designs\New folder\fonts.gstatic.com                                                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\i.vimeocdn.com                                                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\images                                                             
+C:\Users\adity\Desktop\portfolio\designs\New folder\js                                                                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\lensflare.vimeo.com                                                
+C:\Users\adity\Desktop\portfolio\designs\New folder\player.vimeo.com                                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com                                               
+C:\Users\adity\Desktop\portfolio\designs\New folder\projects                                                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design                                                       
+C:\Users\adity\Desktop\portfolio\designs\New folder\static                                                             
+C:\Users\adity\Desktop\portfolio\designs\New folder\static.cloudflareinsights.com                                      
+C:\Users\adity\Desktop\portfolio\designs\New folder\vod-adaptive-ak.vimeocdn.com                                       
+C:\Users\adity\Desktop\portfolio\designs\New folder\www.google-analytics.com                                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\www.googletagmanager.com                                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\www.gstatic.com                                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI                                                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\index.html                                                         
+C:\Users\adity\Desktop\portfolio\designs\New folder\arclight.vimeo.com\add                                             
+C:\Users\adity\Desktop\portfolio\designs\New folder\arclight.vimeo.com\add\player-stats-0bda49e9d63868.html            
+C:\Users\adity\Desktop\portfolio\designs\New folder\arclight.vimeo.com\add\player-stats.html                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\cdn.jsdelivr.net\gh                                                
+C:\Users\adity\Desktop\portfolio\designs\New folder\cdn.jsdelivr.net\npm                                               
+C:\Users\adity\Desktop\portfolio\designs\New folder\cdn.jsdelivr.net\gh\studio-freight                                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\cdn.jsdelivr.net\gh\studio-freight\lenis@1.0.19                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\cdn.jsdelivr.net\gh\studio-freight\lenis@1.0.19\bundled            
+C:\Users\adity\Desktop\portfolio\designs\New folder\cdn.jsdelivr.net\gh\studio-freight\lenis@1.0.19\bundled\lenis.mi...
+C:\Users\adity\Desktop\portfolio\designs\New folder\cdn.jsdelivr.net\npm\@barba                                        
+C:\Users\adity\Desktop\portfolio\designs\New folder\cdn.jsdelivr.net\npm\vanilla-lazyload@17.8.4                       
+C:\Users\adity\Desktop\portfolio\designs\New folder\cdn.jsdelivr.net\npm\@barba\core@2.9.7                             
+C:\Users\adity\Desktop\portfolio\designs\New folder\cdn.jsdelivr.net\npm\vanilla-lazyload@17.8.4\dist                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\cdn.jsdelivr.net\npm\vanilla-lazyload@17.8.4\dist\lazyload.min.js  
+C:\Users\adity\Desktop\portfolio\designs\New folder\cdnjs.cloudflare.com\ajax                                          
+C:\Users\adity\Desktop\portfolio\designs\New folder\cdnjs.cloudflare.com\ajax\libs                                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\cdnjs.cloudflare.com\ajax\libs\gsap                                
+C:\Users\adity\Desktop\portfolio\designs\New folder\cdnjs.cloudflare.com\ajax\libs\gsap\3.12.2                         
+C:\Users\adity\Desktop\portfolio\designs\New folder\cdnjs.cloudflare.com\ajax\libs\gsap\3.12.2\gsap.min.js             
+C:\Users\adity\Desktop\portfolio\designs\New folder\code.jquery.com\jquery-3.7.0.min.js                                
+C:\Users\adity\Desktop\portfolio\designs\New folder\css\inline_styles.css                                              
+C:\Users\adity\Desktop\portfolio\designs\New folder\f.vimeocdn.com\js_opt                                              
+C:\Users\adity\Desktop\portfolio\designs\New folder\f.vimeocdn.com\p                                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\f.vimeocdn.com\js_opt\modules                                      
+C:\Users\adity\Desktop\portfolio\designs\New folder\f.vimeocdn.com\js_opt\modules\utils                                
+C:\Users\adity\Desktop\portfolio\designs\New folder\f.vimeocdn.com\js_opt\modules\utils\vuid.min.js                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\f.vimeocdn.com\p\4.46.59                                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\f.vimeocdn.com\p\4.46.59\css                                       
+C:\Users\adity\Desktop\portfolio\designs\New folder\f.vimeocdn.com\p\4.46.59\js                                        
+C:\Users\adity\Desktop\portfolio\designs\New folder\f.vimeocdn.com\p\4.46.59\css\player.css                            
+C:\Users\adity\Desktop\portfolio\designs\New folder\f.vimeocdn.com\p\4.46.59\js\player.module.js                       
+C:\Users\adity\Desktop\portfolio\designs\New folder\f.vimeocdn.com\p\4.46.59\js\vendor.module.js                       
+C:\Users\adity\Desktop\portfolio\designs\New folder\fonts.googleapis.com\css2.css                                      
+C:\Users\adity\Desktop\portfolio\designs\New folder\fonts.gstatic.com\s                                                
+C:\Users\adity\Desktop\portfolio\designs\New folder\fonts.gstatic.com\s\plusjakartasans                                
+C:\Users\adity\Desktop\portfolio\designs\New folder\fonts.gstatic.com\s\plusjakartasans\v12                            
+C:\Users\adity\Desktop\portfolio\designs\New folder\fonts.gstatic.com\s\plusjakartasans\v12\LDIoaomQNQcsA88c7O9yZ4KM...
+C:\Users\adity\Desktop\portfolio\designs\New folder\i.vimeocdn.com\video                                               
+C:\Users\adity\Desktop\portfolio\designs\New folder\i.vimeocdn.com\video\1661065959-46b9752947c9bf46c0843e45424c13db...
+C:\Users\adity\Desktop\portfolio\designs\New folder\i.vimeocdn.com\video\1661065959-46b9752947c9bf46c0843e45424c13db...
+C:\Users\adity\Desktop\portfolio\designs\New folder\i.vimeocdn.com\video\1661065959-46b9752947c9bf46c0843e45424c13db...
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\designers                                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\startups                                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\whatcreate                                                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\calendar.svg                                                
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\clutch.svg                                                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\dribbble_badge.png                                          
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\star.svg                                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\telegram.v2.png                                             
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\wa.svg                                                      
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\designers\avatars                                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\designers\large.webp                                        
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\designers\medium.webp                                       
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\designers\small.webp                                        
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\designers\avatars\1.png                                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\designers\avatars\2.webp                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\designers\avatars\3.png                                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\designers\avatars\4.webp                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\designers\avatars\5.webp                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\designers\avatars\6.webp                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\designers\avatars\7.webp                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\designers\avatars\8.webp                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\designers\avatars\9.webp                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\startups\logo.webp                                          
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\whatcreate\interface                                        
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\whatcreate\1.webp                                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\whatcreate\2.webp                                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\whatcreate\3.webp                                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\whatcreate\4.webp                                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\whatcreate\5.webp                                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\whatcreate\6.webp                                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\whatcreate\grid.webp                                        
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\whatcreate\interface\background.webp                        
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\whatcreate\interface\desktop_header.webp                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\whatcreate\interface\logo.webp                              
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\whatcreate\interface\mobile_header.webp                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\whatcreate\interface\mobile_ops.webp                        
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\whatcreate\interface\other_options.webp                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\whatcreate\interface\prototype.webp                         
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\whatcreate\interface\row.webp                               
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\whatcreate\interface\sidebar.webp                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\whatcreate\interface\tasks.webp                             
+C:\Users\adity\Desktop\portfolio\designs\New folder\images\whatcreate\interface\title.webp                             
+C:\Users\adity\Desktop\portfolio\designs\New folder\js\inline_scripts.js                                               
+C:\Users\adity\Desktop\portfolio\designs\New folder\lensflare.vimeo.com\add                                            
+C:\Users\adity\Desktop\portfolio\designs\New folder\lensflare.vimeo.com\add\vimeo.play_video                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\player.vimeo.com\video                                             
+C:\Users\adity\Desktop\portfolio\designs\New folder\player.vimeo.com\video\821037821-700d333d460aa.html                
+C:\Users\adity\Desktop\portfolio\designs\New folder\player.vimeo.com\video\821037821.html                              
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\assets                                        
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\media                                         
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\p                                             
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\assets\css                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\assets\fonts                                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\assets\img                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\assets\js                                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\assets\video                                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\assets\css\components.css                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\assets\css\loconative-scroll.min.css          
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\assets\css\normalize.css                      
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\assets\css\style.css                          
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\assets\css\styleguide.css                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\assets\fonts\Fraunces_144pt-Italic.ttf        
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\assets\fonts\NeueMontreal-Regular.ttf         
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\assets\img\favicon.svg                        
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\assets\js\index.js                            
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\assets\js\loconative-scroll.min.js            
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\assets\js\ScrollTrigger.min.js                
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\assets\js\SplitText.min.js                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\assets\video\pexels-wave-video-720.mp4        
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\media\pages                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\media\pages\p                                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\media\pages\p\nature                          
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\media\pages\p\nature\0141bdea0e-1693580954    
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\media\pages\p\nature\35b0ba333b-1693580969    
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\media\pages\p\nature\5d330385b5-1693580965    
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\media\pages\p\nature\743c200d20-1693580969    
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\media\pages\p\nature\7d31b3e1db-1693580968    
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\media\pages\p\nature\c5c219b2d8-1693580953    
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\media\pages\p\nature\e38e16809e-1693580968    
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\media\pages\p\nature\f76eb546bb-1693580969    
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\media\pages\p\nature\0141bdea0e-1693580954\...
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\media\pages\p\nature\35b0ba333b-1693580969\...
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\media\pages\p\nature\35b0ba333b-1693580969\...
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\media\pages\p\nature\5d330385b5-1693580965\...
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\media\pages\p\nature\743c200d20-1693580969\...
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\media\pages\p\nature\743c200d20-1693580969\...
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\media\pages\p\nature\7d31b3e1db-1693580968\...
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\media\pages\p\nature\c5c219b2d8-1693580953\...
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\media\pages\p\nature\e38e16809e-1693580968\...
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\media\pages\p\nature\f76eb546bb-1693580969\...
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\p\nature.html                                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\project-parallax.com\p\wanderlust.html                             
+C:\Users\adity\Desktop\portfolio\designs\New folder\projects\bottlehaus.jpg                                            
+C:\Users\adity\Desktop\portfolio\designs\New folder\projects\convoa.png                                                
+C:\Users\adity\Desktop\portfolio\designs\New folder\projects\eletix.png                                                
+C:\Users\adity\Desktop\portfolio\designs\New folder\projects\meditx.png                                                
+C:\Users\adity\Desktop\portfolio\designs\New folder\projects\mindnest.png                                              
+C:\Users\adity\Desktop\portfolio\designs\New folder\projects\niftynafty.png                                            
+C:\Users\adity\Desktop\portfolio\designs\New folder\projects\ocamba.png                                                
+C:\Users\adity\Desktop\portfolio\designs\New folder\projects\polars2.png                                               
+C:\Users\adity\Desktop\portfolio\designs\New folder\projects\vvs.png                                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\cdn-cgi                                               
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images                                                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\projects                                              
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\src                                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static                                                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\video                                                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\index.html                                            
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\cdn-cgi\rum.html                                      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\designers                                      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\main                                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups                                       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\whatCreate                                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\calendar.svg                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\clutch.svg                                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\dribbble-badge.png                             
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\star.svg                                       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\telegram.v2.png                                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\wa.svg                                         
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\designers\avatars                              
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\designers\large.webp                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\designers\medium.webp                          
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\designers\small.webp                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\designers\avatars\1.png                        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\designers\avatars\2.webp                       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\designers\avatars\3.png                        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\designers\avatars\4.webp                       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\designers\avatars\5.webp                       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\designers\avatars\6.webp                       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\designers\avatars\7.webp                       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\designers\avatars\8.webp                       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\designers\avatars\9.webp                       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\main\home.webp                                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\main\text.webp                                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames                                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\logo.webp                             
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_001.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_002.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_003.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_004.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_005.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_006.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_007.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_008.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_009.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_010.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_011.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_012.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_013.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_014.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_015.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_016.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_017.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_018.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_019.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_020.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_021.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_022.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_023.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_024.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_025.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_026.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_027.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_028.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_029.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_030.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_031.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_032.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_033.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_034.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_035.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_036.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_037.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_038.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_039.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_040.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_041.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_042.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_043.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_044.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_045.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_046.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\startups\frames\rope_047.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\whatCreate\interface                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\whatCreate\1.webp                              
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\whatCreate\2.webp                              
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\whatCreate\3.webp                              
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\whatCreate\4.webp                              
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\whatCreate\5.webp                              
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\whatCreate\6.webp                              
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\whatCreate\grid.webp                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\whatCreate\interface\background.webp           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\whatCreate\interface\desktop-header.webp       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\whatCreate\interface\logo.webp                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\whatCreate\interface\mobile-header.webp        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\whatCreate\interface\mobile-ops.webp           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\whatCreate\interface\other-options.webp        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\whatCreate\interface\prototype.webp            
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\whatCreate\interface\row.webp                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\whatCreate\interface\sidebar.webp              
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\whatCreate\interface\tasks.webp                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\images\whatCreate\interface\title.webp                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\projects\bottlehaus.jpg                               
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\projects\convoa.png                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\projects\eletix.png                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\projects\meditx.png                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\projects\mindnest.png                                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\projects\niftynafty.png                               
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\projects\ocamba.png                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\projects\polars2.png                                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\projects\projects.json                                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\projects\vvs.png                                      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\src\index.ts                                          
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\src\utils.ts                                          
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css                                            
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js                                             
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\media                                          
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\webpack                                        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\assets                                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components                                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\Controller                                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views                                      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\main.0e299949.css                          
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\assets\fonts                               
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\assets\styles                              
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\assets\index.scss                          
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\assets\fonts\stylesheet.css                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\assets\styles\_customs.scss                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\assets\styles\_grid.scss                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\assets\styles\_mixins.scss                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\assets\styles\_normalize.scss              
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\assets\styles\_typography.scss             
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\Clutch                          
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\Cursor                          
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\FixedControls                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\Header                          
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\Jumper                          
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\Modal                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\PortfolioCircle                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\RandomSpelling                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\Spelling                        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\UI                              
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\Clutch\clutch.scss              
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\Cursor\Anim.scss                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\Cursor\Cursor.scss              
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\FixedControls\fixed-controls....
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\Header\Header.scss              
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\Jumper\Anim.scss                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\Jumper\Jumper.scss              
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\Modal\Modal.scss                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\PortfolioCircle\PortfolioCirc...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\RandomSpelling\RandomSpelling...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\Spelling\Spelling.scss          
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\UI\Burger                       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\UI\Card                         
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\UI\ChoiceInput                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\UI\Eye                          
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\UI\Input                        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\UI\SocialItem                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\UI\SubmitButton                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\UI\TalkButton                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\UI\UnderLink                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\UI\Video                        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\UI\Burger\Burger.scss           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\UI\Card\Card.scss               
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\UI\ChoiceInput\ChoiceInput.scss 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\UI\Eye\Eye.scss                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\UI\Input\Input.scss             
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\UI\SocialItem\SocialItem.scss   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\UI\SubmitButton\SubmitButton....
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\UI\TalkButton\TalkButton.scss   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\UI\UnderLink\UnderLink.scss     
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\components\UI\Video\Video.scss             
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\Controller\index.scss                      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\BlogArticle                          
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home                                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Terms                                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\BlogArticle\components               
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\BlogArticle\components\Article       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\BlogArticle\components\Footer        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\BlogArticle\components\Header        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\BlogArticle\components\Article\Art...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\BlogArticle\components\Footer\Foot...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\BlogArticle\components\Header\Menu   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\BlogArticle\components\Header\Anim...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\BlogArticle\components\Header\Head...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\BlogArticle\components\Header\Menu...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\BlogArticle\components\Header\Menu...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components                      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\About                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\Create               
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\Designers            
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\Main                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\Portfolio            
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\RequestForm          
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\Startups             
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\WhatCreate           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\About\About.scss     
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\About\Anim.scss      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\Create\Anim.scss     
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\Create\Create.scss   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\Designers\Anim.scss  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\Designers\Designer...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\Main\Vimeo           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\Main\VimeoPreview    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\Main\Anim.scss       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\Main\Main.scss       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\Main\Vimeo\vimeo.scss
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\Main\VimeoPreview\...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\Portfolio\components 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\Portfolio\Anim.scss  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\Portfolio\Portfoli...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\Portfolio\componen...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\Portfolio\componen...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\Portfolio\componen...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\Portfolio\componen...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\Portfolio\componen...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\Portfolio\componen...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\RequestForm\compon...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\RequestForm\Anim.scss
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\RequestForm\Reques...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\RequestForm\compon...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\RequestForm\compon...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\RequestForm\compon...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\RequestForm\compon...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\Startups\Anim.scss   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\Startups\Startups....
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\WhatCreate\components
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\WhatCreate\Anim.scss 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\WhatCreate\WhatCre...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\WhatCreate\compone...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Home\components\WhatCreate\compone...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\css\views\Terms\Terms.module.scss              
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Animator                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\api                                         
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components                                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\context                                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Controller                                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\i18n                                        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views                                       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\App.js                                      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\index.js                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\main.ffaff9ec.js                            
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\utils.js                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Animator\js                                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Animator\js\coords                          
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Animator\js\presets                         
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Animator\js\react                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Animator\js\tween                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Animator\js\utils                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Animator\js\renderer.js                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Animator\js\coords\index.js                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Animator\js\presets\canvas2d.js             
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Animator\js\react\hooks                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Animator\js\react\hooks\useMouse            
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Animator\js\react\hooks\useMouse\useStick...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Animator\js\tween\easing.js                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Animator\js\tween\tween.js                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Animator\js\utils\itl.js                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\api\getProjects.js                          
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\api\submit.js                               
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\Clutch                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\Cursor                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\FixedControls                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\Header                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\Jumper                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\Modal                            
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\PortfolioCircle                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\RandomSpelling                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\Spelling                         
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI                               
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\Clutch\index.jsx                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\Cursor\Cursor.js                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\Cursor\CursorWraper.js           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\Cursor\mouse.js                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\FixedControls\fixed-controls.js  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\Header\Menu                      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\Header\Header.js                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\Header\Menu\AnimateLink.js       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\Header\Menu\Menu.js              
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\Jumper\Jumper.js                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\Modal\Modal.js                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\PortfolioCircle\PortfolioCircl...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\RandomSpelling\RandomSpelling.js 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\Spelling\Spelling.js             
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI\Burger                        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI\Card                          
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI\ChoiceInput                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI\Eye                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI\Icon                          
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI\Input                         
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI\SocialItem                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI\SubmitButton                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI\TalkButton                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI\UnderLink                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI\Video                         
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI\Burger\Burger.js              
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI\Card\Card.js                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI\ChoiceInput\ChoiceInput.js    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI\Eye\Eye.js                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI\Icon\Icon.js                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI\Input\Input.js                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI\SocialItem\assets             
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI\SocialItem\SocialItem.js      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI\SocialItem\assets\behance.svg 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI\SocialItem\assets\dribble.svg 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI\SocialItem\assets\instagram...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI\SocialItem\assets\tiktok.svg  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI\SubmitButton\SubmitButton.js  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI\TalkButton\TalkButton.js      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI\UnderLink\UnderLink.js        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\components\UI\Video\Video.js                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\context\breakpointsContext.js               
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Controller\detector                         
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Controller\hooks                            
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Controller\utils                            
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Controller\Controller.js                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Controller\Sections.js                      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Controller\detector\detector.js             
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Controller\detector\detectSwipe.js          
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Controller\detector\detectWheel.js          
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Controller\hooks\useTransform               
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Controller\hooks\useTransform\transforms    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Controller\hooks\useTransform\index.js      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Controller\hooks\useTransform\utils.js      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Controller\hooks\useTransform\transforms\...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Controller\hooks\useTransform\transforms\...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Controller\hooks\useTransform\transforms\...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Controller\hooks\useTransform\transforms\...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Controller\utils\context.js                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Controller\utils\scroll.js                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Controller\utils\state.js                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\Controller\utils\swipe.js                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\i18n\i18n.js                                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\BlogArticle                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home                                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Terms                                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\XRedirect.js                          
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\BlogArticle\components                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\BlogArticle\BlogArticle.js            
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\BlogArticle\components\Article        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\BlogArticle\components\Footer         
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\BlogArticle\components\Header         
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\BlogArticle\components\Article\Arti...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\BlogArticle\components\Footer\Foote...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\BlogArticle\components\Header\Menu    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\BlogArticle\components\Header\Heade...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\BlogArticle\components\Header\Menu\...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\BlogArticle\components\Header\Menu\...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components                       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\constants.js                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\Home.js                          
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\About                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Create                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Designers             
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Main                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Portfolio             
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\RequestForm           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Startups              
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\WhatCreate            
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\About\About.js        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Create\Create.js      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Designers\Designers.js
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Designers\timeline.js 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Main\Vimeo            
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Main\VimeoPreview     
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Main\Main.js          
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Main\Vimeo\vimeo.js   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Main\VimeoPreview\V...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Portfolio\Canvas      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Portfolio\components  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Portfolio\Portfolio.js
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Portfolio\timeline.js 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Portfolio\Canvas\an...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Portfolio\Canvas\Ca...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Portfolio\component...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Portfolio\component...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Portfolio\component...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Portfolio\component...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\RequestForm\components
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\RequestForm\Request...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\RequestForm\compone...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\RequestForm\compone...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\RequestForm\compone...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\RequestForm\compone...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\RequestForm\compone...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\RequestForm\compone...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Startups\FrameByFrame 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Startups\Startups.js  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Startups\FrameByFra...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Startups\FrameByFra...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Startups\FrameByFra...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\Startups\FrameByFra...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\WhatCreate\components 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\WhatCreate\WhatCrea...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\WhatCreate\componen...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\WhatCreate\componen...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\WhatCreate\componen...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Home\components\WhatCreate\componen...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\js\views\Terms\index.js                        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\media\arp-150.9b25897afc22ecbc0213.woff        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\media\AtypDisplay-Medium.6c58aa46196848e8bf3...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\media\behance.4cedff2169f1289c363fe418c60b75...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\media\blur.dac95cc078d0910c46a2.webp           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\media\dribble.3a94b3e5d5e86142230b5f8a9b8953...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\media\infinite.d8f28e696aa840dc6483.webp       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\media\instagram.c5a79371a13d507687a37a5230fd...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\media\MazzardM-Bold.3a620cadf37c78d11e6c.woff2 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\media\MazzardM-Medium.f5ea32168f0ef1e08ef3.w...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\media\text.1c7e32d321384e3c65c9.webp           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\media\tiktok.5fa5d155c5003ed11d6f04e1725e0a7...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel                            
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@remix-run                        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@vimeo                            
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios                             
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\classnames                        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\dom7                              
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\lodash                            
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\nookies                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react                             
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-dom                         
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-router                      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-router-dom                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\scheduler                         
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\set-cookie-parser                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\ssr-window                        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper                            
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers            
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\arra...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\arra...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\arra...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\asse...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\asyn...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\clas...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\clas...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\clas...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\cons...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\crea...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\crea...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\crea...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\defi...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\getP...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\inhe...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\isNa...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\isNa...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\iter...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\iter...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\nonI...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\nonI...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\obje...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\obje...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\obje...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\poss...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\rege...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\setP...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\slic...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\toAr...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\toCo...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\type...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\unsu...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@babel\runtime\helpers\esm\wrap...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@remix-run\router                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@remix-run\router\history.ts      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@remix-run\router\router.ts       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@remix-run\router\utils.ts        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@vimeo\player                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@vimeo\player\dist                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\@vimeo\player\dist\player.es.js   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib                         
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\node_modules                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\adapters                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\cancel                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\core                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\defaults                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\env                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\helpers                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\platform                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\axios.js                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\utils.js                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\adapters\adapters.js    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\adapters\xhr.js         
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\cancel\CanceledError.js 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\cancel\CancelToken.js   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\cancel\isCancel.js      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\core\Axios.js           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\core\AxiosError.js      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\core\AxiosHeaders.js    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\core\buildFullPath.js   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\core\dispatchRequest.js 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\core\InterceptorManag...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\core\mergeConfig.js     
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\core\settle.js          
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\core\transformData.js   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\defaults\index.js       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\defaults\transitional.js
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\env\classes             
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\env\data.js             
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\env\classes\FormData.js 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\helpers\AxiosURLSearc...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\helpers\bind.js         
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\helpers\buildURL.js     
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\helpers\combineURLs.js  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\helpers\cookies.js      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\helpers\formDataToJSO...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\helpers\isAbsoluteURL.js
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\helpers\isAxiosError.js 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\helpers\isURLSameOrig...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\helpers\null.js         
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\helpers\parseHeaders.js 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\helpers\parseProtocol.js
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\helpers\speedometer.js  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\helpers\spread.js       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\helpers\toFormData.js   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\helpers\toURLEncodedF...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\helpers\validator.js    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\platform\browser        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\platform\browser\classes
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\platform\browser\inde...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\platform\browser\clas...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\lib\platform\browser\clas...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\node_modules\form-data      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\node_modules\form-data\lib  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\axios\node_modules\form-data\li...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\classnames\index.js               
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\dom7\dom7.esm.js                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\lodash\lodash.js                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\nookies\node_modules              
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\nookies\node_modules\cookie       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\nookies\node_modules\cookie\ind...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react\cjs                         
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react\index.js                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react\jsx-runtime.js              
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react\cjs\react-jsx-runtime.pro...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react\cjs\react.production.min.js 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-dom\cjs                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-dom\client.js               
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-dom\index.js                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-dom\cjs\react-dom.product...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src               
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\logic         
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils         
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\constants.ts  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\controller.tsx
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\useForm.ts    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\useFormCont...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\useSubscrib...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\logic\appen...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\logic\creat...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\logic\focus...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\logic\gener...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\logic\getCh...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\logic\getDi...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\logic\getEv...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\logic\getFi...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\logic\getFi...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\logic\getNo...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\logic\getPr...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\logic\getRa...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\logic\getRe...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\logic\getRu...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\logic\getVa...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\logic\getVa...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\logic\hasVa...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\logic\isNam...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\logic\isWat...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\logic\schem...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\logic\shoul...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\logic\skipV...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\logic\unset...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\logic\updat...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\logic\valid...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\clone...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\compa...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\conve...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\creat...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\deepE...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\fillE...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\get.ts  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\getVa...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\isBoo...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\isChe...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\isDat...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\isEmp...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\isFil...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\isFun...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\isHTM...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\isKey.ts
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\isMes...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\isMul...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\isNul...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\isObj...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\isPla...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\isPri...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\isRad...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\isRad...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\isReg...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\isStr...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\isUnd...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\isWeb.ts
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\live.ts 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\objec...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\set.ts  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\strin...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-hook-form\src\utils\unset.ts
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-router\lib                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-router\index.ts             
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-router\lib\components.tsx   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-router\lib\context.ts       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-router\lib\hooks.tsx        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-router-dom\dom.ts           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\react-router-dom\index.tsx        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\scheduler\cjs                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\scheduler\index.js                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\scheduler\cjs\scheduler.product...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\set-cookie-parser\lib             
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\set-cookie-parser\lib\set-cooki...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\ssr-window\ssr-window.esm.js      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\components-shared          
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core                       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\modules                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\react                      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\shared                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\swiper.min.css             
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\components-shared\get-ch...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\components-shared\get-pa...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\components-shared\mount-...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\components-shared\params...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\components-shared\update...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\components-shared\update...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\components-shared\utils.js 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\breakpoints           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\check-overflow        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\classes               
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\events                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\grab-cursor           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\images                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\loop                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\modules               
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\slide                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\transition            
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\translate             
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\update                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\core.js               
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\defaults.js           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\events-emitter.js     
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\moduleExtendParams.js 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\breakpoints\getBrea...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\breakpoints\index.js  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\breakpoints\setBrea...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\check-overflow\inde...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\classes\addClasses.js 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\classes\index.js      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\classes\removeClass...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\events\index.js       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\events\onClick.js     
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\events\onResize.js    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\events\onScroll.js    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\events\onTouchEnd.js  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\events\onTouchMove.js 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\events\onTouchStart.js
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\grab-cursor\index.js  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\grab-cursor\setGrab...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\grab-cursor\unsetGr...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\images\index.js       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\images\loadImage.js   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\images\preloadImage...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\loop\index.js         
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\loop\loopCreate.js    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\loop\loopDestroy.js   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\loop\loopFix.js       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\modules\observer      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\modules\resize        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\modules\observer\ob...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\modules\resize\resi...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\slide\index.js        
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\slide\slideNext.js    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\slide\slidePrev.js    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\slide\slideReset.js   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\slide\slideTo.js      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\slide\slideToClicke...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\slide\slideToCloses...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\slide\slideToLoop.js  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\transition\index.js   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\transition\setTrans...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\transition\transiti...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\transition\transiti...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\transition\transiti...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\translate\getTransl...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\translate\index.js    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\translate\maxTransl...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\translate\minTransl...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\translate\setTransl...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\translate\translate...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\update\index.js       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\update\updateActive...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\update\updateAutoHe...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\update\updateClicke...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\update\updateProgre...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\update\updateSize.js  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\update\updateSlides.js
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\update\updateSlides...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\update\updateSlides...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\core\update\updateSlides...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\modules\pagination         
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\modules\pagination\pagin...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\modules\pagination\pagin...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\react\context.js           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\react\get-children.js      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\react\loop.js              
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\react\swiper-slide.js      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\react\swiper.js            
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\react\use-isomorphic-lay...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\react\virtual.js           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\shared\calc-looped-slide...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\shared\classes-to-select...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\shared\create-element-if...
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\shared\dom.js              
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\shared\get-browser.js      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\shared\get-device.js       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\shared\get-support.js      
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\node_modules\swiper\shared\utils.js            
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\webpack\runtime                                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\webpack\bootstrap.html                         
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\webpack\runtime\compat get default export.html 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\webpack\runtime\define property getters.html   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\webpack\runtime\global.html                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\webpack\runtime\hasOwnProperty shorthand.html  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\webpack\runtime\node module decorator.html     
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\static\webpack\runtime\publicPath.html                
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\video\about                                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\video\contact                                         
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\video\create                                          
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\video\portfolio                                       
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\video\about\1-poster.webp                             
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\video\about\1.mp4                                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\video\about\2-poster.webp                             
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\video\about\2.mp4                                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\video\about\3-poster.webp                             
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\video\about\3.mp4                                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\video\contact\ch.mp4                                  
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\video\contact\character-poster.web                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\video\contact\character-poster.webp                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\video\create\land-poster.webp                         
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\video\create\land.mp4                                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\video\portfolio\hand.mp4                              
+C:\Users\adity\Desktop\portfolio\designs\New folder\qclay.design\video\portfolio\hand.webp                             
+C:\Users\adity\Desktop\portfolio\designs\New folder\static\css                                                         
+C:\Users\adity\Desktop\portfolio\designs\New folder\static\js                                                          
+C:\Users\adity\Desktop\portfolio\designs\New folder\static\media                                                       
+C:\Users\adity\Desktop\portfolio\designs\New folder\static\css\main.0e299949.css                                       
+C:\Users\adity\Desktop\portfolio\designs\New folder\static\js\main.ffaff9ec.js                                         
+C:\Users\adity\Desktop\portfolio\designs\New folder\static\media\behance.4cedff2169f1289c363fe418c60b7502.svg          
+C:\Users\adity\Desktop\portfolio\designs\New folder\static\media\dribble.3a94b3e5d5e86142230b5f8a9b89536f.svg          
+C:\Users\adity\Desktop\portfolio\designs\New folder\static\media\instagram.c5a79371a13d507687a37a5230fd1c43.svg        
+C:\Users\adity\Desktop\portfolio\designs\New folder\static\media\tiktok.5fa5d155c5003ed11d6f04e1725e0a74.svg           
+C:\Users\adity\Desktop\portfolio\designs\New folder\static.cloudflareinsights.com\beacon.min.js                        
+C:\Users\adity\Desktop\portfolio\designs\New folder\static.cloudflareinsights.com\beacon.min.js\v833ccba57c9e4d2798f...
+C:\Users\adity\Desktop\portfolio\designs\New folder\static.cloudflareinsights.com\beacon.min.js\v833ccba57c9e4d2798f...
+C:\Users\adity\Desktop\portfolio\designs\New folder\vod-adaptive-ak.vimeocdn.com\exp1781288219acl                      
+C:\Users\adity\Desktop\portfolio\designs\New folder\vod-adaptive-ak.vimeocdn.com\exp1781288219acl\068225a8-a8fb-41e9...
+C:\Users\adity\Desktop\portfolio\designs\New folder\vod-adaptive-ak.vimeocdn.com\exp1781288219acl\068225a8-a8fb-41e9...
+C:\Users\adity\Desktop\portfolio\designs\New folder\vod-adaptive-ak.vimeocdn.com\exp1781288219acl\068225a8-a8fb-41e9...
+Get-ChildItem : Could not find a part of the path 'C:\Users\adity\Desktop\portfolio\designs\New folder\vod-adaptive-ak.
+C:\Users\adity\Desktop\portfolio\designs\New folder\www.google-analytics.com\g                                         
+C:\Users\adity\Desktop\portfolio\designs\New folder\www.google-analytics.com\g\collect-d93cef92cbbf88.html             
+C:\Users\adity\Desktop\portfolio\designs\New folder\www.google-analytics.com\g\collect.html                            
+C:\Users\adity\Desktop\portfolio\designs\New folder\www.googletagmanager.com\gtag                                      
+C:\Users\adity\Desktop\portfolio\designs\New folder\www.googletagmanager.com\gtag\js                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\www.googletagmanager.com\gtag\js(1).html                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\www.googletagmanager.com\gtag\js.html                              
+C:\Users\adity\Desktop\portfolio\designs\New folder\www.gstatic.com\cast                                               
+C:\Users\adity\Desktop\portfolio\designs\New folder\www.gstatic.com\cv                                                 
+C:\Users\adity\Desktop\portfolio\designs\New folder\www.gstatic.com\eureka                                             
+C:\Users\adity\Desktop\portfolio\designs\New folder\www.gstatic.com\cast\sdk                                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\www.gstatic.com\cast\sdk\libs                                      
+C:\Users\adity\Desktop\portfolio\designs\New folder\www.gstatic.com\cast\sdk\libs\sender                               
+C:\Users\adity\Desktop\portfolio\designs\New folder\www.gstatic.com\cast\sdk\libs\sender\1.0                           
+C:\Users\adity\Desktop\portfolio\designs\New folder\www.gstatic.com\cast\sdk\libs\sender\1.0\cast_framework.js         
+C:\Users\adity\Desktop\portfolio\designs\New folder\www.gstatic.com\cv\js                                              
+C:\Users\adity\Desktop\portfolio\designs\New folder\www.gstatic.com\cv\js\sender                                       
+C:\Users\adity\Desktop\portfolio\designs\New folder\www.gstatic.com\cv\js\sender\v1                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\www.gstatic.com\cv\js\sender\v1\cast_sender.js                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\www.gstatic.com\eureka\clank                                       
+C:\Users\adity\Desktop\portfolio\designs\New folder\www.gstatic.com\eureka\clank\149                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\www.gstatic.com\eureka\clank\149\cast_sender.js                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.0a227eeb46f1a8.txt                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.11a7a07b6916a.txt                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.1d8477ebc56c2.txt                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.21c47f2bb10fa.txt                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.24cd586c1cead8.txt                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.290bec969bce18.txt                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.2cf4f57d02e63.txt                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.32177a6b41457.txt                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.331380fda16858.txt                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.46481a10c169d.txt                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.4706bdcafdfa88.txt                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.47606c09cdb52.txt                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.48c19c798e2378.txt                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.555c2c3adad8b.txt                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.5876a9527992e.txt                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.5cc25fa030b92.txt                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.60fc521c5e1408.txt                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.62b3df3c20e158.txt                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.640ea0dd63fac8.txt                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.649b33dc4a7e78.txt                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.69a61bcdfc9cb.txt                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.6ffbca69120868.txt                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.7659f9f26ea38.txt                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.7738b0ad2db498.txt                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.7ae8e578d06838.txt                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.8e5bb4d59ded.txt                                     
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.97201b588420d8.txt                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.9d650ca0dc0de8.txt                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.a0ea41af1b52b8.txt                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.a3050b198f82e.txt                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.a793c4bace8dc8.txt                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.b2b01ae427941.txt                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.b8602416656ae8.txt                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.bcd206d6c2c35.txt                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.c1a3882e71d4c8.txt                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.d117a9f9e91cc.txt                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.d52c010ea5127.txt                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.d6c9d7c38b088.txt                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.dd63176e2198a.txt                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.dd884aa4d7dff8.txt                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.e2dc2f40f98ac8.txt                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.e3ed74d3d3e9e.txt                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.e99eb08359c28.txt                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder\_DataURI\data.f114cbf96ed0b.txt                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\css                                                            
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images                       vimeocdn.com\exp1781288219acl\068225a8-a8fb-41e9-b5a0-4b54b272e583\psid=217feef2555df9a748ed1873b1b5a1c9ca105b151781284
+619\_hmac80244ad67aa600be23ed33080db7bbd87fffe0dd54abda4bd8053376ceedb979'.
+At line:1 char:1
++ Get-ChildItem -Path "C:\Users\adity\Desktop\portfolio\designs" -Recur ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ReadError: (C:\Users\adity\...8053376ceedb979:String) [Get-ChildItem], DirectoryNotFound 
+   Exception
+    + FullyQualifiedErrorId : DirIOError,Microsoft.PowerShell.Commands.GetChildItemCommand
+ 
+                                  
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\js                                                             
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\projects                                                       
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\static                                                         
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\static.cloudflareinsights.com                                  
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\www.googletagmanager.com                                       
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\index.html                                                     
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\css\inline_styles.css                                          
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\designers                                               
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\startups                                                
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\whatcreate                                              
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\calendar.svg                                            
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\clutch.svg                                              
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\dribbble_badge.png                                      
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\star.svg                                                
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\telegram.v2.png                                         
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\wa.svg                                                  
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\designers\avatars                                       
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\designers\large.webp                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\designers\medium.webp                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\designers\small.webp                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\designers\avatars\1.png                                 
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\designers\avatars\2.webp                                
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\designers\avatars\3.png                                 
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\designers\avatars\4.webp                                
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\designers\avatars\5.webp                                
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\designers\avatars\6.webp                                
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\designers\avatars\7.webp                                
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\designers\avatars\8.webp                                
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\designers\avatars\9.webp                                
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\startups\logo.webp                                      
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\whatcreate\interface                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\whatcreate\1.webp                                       
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\whatcreate\2.webp                                       
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\whatcreate\3.webp                                       
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\whatcreate\4.webp                                       
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\whatcreate\5.webp                                       
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\whatcreate\6.webp                                       
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\whatcreate\grid.webp                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\whatcreate\interface\background.webp                    
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\whatcreate\interface\desktop_header.webp                
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\whatcreate\interface\logo.webp                          
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\whatcreate\interface\mobile_header.webp                 
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\whatcreate\interface\mobile_ops.webp                    
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\whatcreate\interface\other_options.webp                 
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\whatcreate\interface\prototype.webp                     
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\whatcreate\interface\row.webp                           
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\whatcreate\interface\sidebar.webp                       
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\whatcreate\interface\tasks.webp                         
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\images\whatcreate\interface\title.webp                         
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\js\inline_scripts.js                                           
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\projects\bottlehaus.jpg                                        
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\projects\convoa.png                                            
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\projects\eletix.png                                            
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\projects\meditx.png                                            
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\projects\mindnest.png                                          
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\projects\niftynafty.png                                        
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\projects\ocamba.png                                            
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\projects\polars2.png                                           
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\projects\vvs.png                                               
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\static\css                                                     
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\static\js                                                      
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\static\media                                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\static\css\main.0e299949.css                                   
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\static\js\main.ffaff9ec.js                                     
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\static\media\behance.4cedff2169f1289c363fe418c60b7502.svg      
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\static\media\dribble.3a94b3e5d5e86142230b5f8a9b89536f.svg      
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\static\media\instagram.c5a79371a13d507687a37a5230fd1c43.svg    
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\static\media\tiktok.5fa5d155c5003ed11d6f04e1725e0a74.svg       
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\static.cloudflareinsights.com\beacon.min.js                    
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\static.cloudflareinsights.com\beacon.min.js\v833ccba57c9e4d2...
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\www.googletagmanager.com\gtag                                  
+C:\Users\adity\Desktop\portfolio\designs\New folder (2)\www.googletagmanager.com\gtag\js                               
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\cdn.jsdelivr.net                                               
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\cdnjs.cloudflare.com                                           
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\code.jquery.com                                                
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com                                           
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\www.googletagmanager.com                                       
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\_DataURI                                                       
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\cdn.jsdelivr.net\gh                                            
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\cdn.jsdelivr.net\npm                                           
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\cdn.jsdelivr.net\gh\studio-freight                             
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\cdn.jsdelivr.net\gh\studio-freight\lenis@1.0.19                
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\cdn.jsdelivr.net\gh\studio-freight\lenis@1.0.19\bundled        
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\cdn.jsdelivr.net\gh\studio-freight\lenis@1.0.19\bundled\leni...
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\cdn.jsdelivr.net\npm\@barba                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\cdn.jsdelivr.net\npm\vanilla-lazyload@17.8.4                   
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\cdn.jsdelivr.net\npm\@barba\core@2.9.7                         
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\cdn.jsdelivr.net\npm\vanilla-lazyload@17.8.4\dist              
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\cdn.jsdelivr.net\npm\vanilla-lazyload@17.8.4\dist\lazyload.m...
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\cdnjs.cloudflare.com\ajax                                      
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\cdnjs.cloudflare.com\ajax\libs                                 
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\cdnjs.cloudflare.com\ajax\libs\gsap                            
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\cdnjs.cloudflare.com\ajax\libs\gsap\3.12.2                     
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\cdnjs.cloudflare.com\ajax\libs\gsap\3.12.2\gsap.min.js         
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\code.jquery.com\jquery-3.7.0.min.js                            
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\assets                                    
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\media                                     
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\p                                         
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\assets\css                                
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\assets\fonts                              
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\assets\img                                
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\assets\js                                 
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\assets\video                              
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\assets\css\components.css                 
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\assets\css\loconative-scroll.min.css      
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\assets\css\normalize.css                  
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\assets\css\style.css                      
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\assets\css\styleguide.css                 
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\assets\fonts\Fraunces_144pt-Italic.ttf    
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\assets\fonts\NeueMontreal-Regular.ttf     
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\assets\img\favicon.svg                    
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\assets\js\index.js                        
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\assets\js\loconative-scroll.min.js        
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\assets\js\ScrollTrigger.min.js            
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\assets\js\SplitText.min.js                
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\assets\video\pexels-wave-video-720.mp4    
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\media\pages                               
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\media\pages\p                             
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\media\pages\p\nature                      
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\media\pages\p\nature\0141bdea0e-1693580954
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\media\pages\p\nature\35b0ba333b-1693580969
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\media\pages\p\nature\5d330385b5-1693580965
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\media\pages\p\nature\743c200d20-1693580969
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\media\pages\p\nature\7d31b3e1db-1693580968
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\media\pages\p\nature\c5c219b2d8-1693580953
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\media\pages\p\nature\e38e16809e-1693580968
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\media\pages\p\nature\f76eb546bb-1693580969
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\media\pages\p\nature\0141bdea0e-1693580...
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\media\pages\p\nature\35b0ba333b-1693580...
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\media\pages\p\nature\35b0ba333b-1693580...
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\media\pages\p\nature\5d330385b5-1693580...
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\media\pages\p\nature\743c200d20-1693580...
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\media\pages\p\nature\743c200d20-1693580...
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\media\pages\p\nature\7d31b3e1db-1693580...
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\media\pages\p\nature\c5c219b2d8-1693580...
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\media\pages\p\nature\e38e16809e-1693580...
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\media\pages\p\nature\f76eb546bb-1693580...
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\p\nature.html                             
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\project-parallax.com\p\wanderlust.html                         
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\www.googletagmanager.com\gtag                                  
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\www.googletagmanager.com\gtag\js.html                          
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\_DataURI\data.0a227eeb46f1a8.txt                               
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\_DataURI\data.290bec969bce18.txt                               
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\_DataURI\data.331380fda16858.txt                               
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\_DataURI\data.47606c09cdb52.txt                                
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\_DataURI\data.48c19c798e2378.txt                               
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\_DataURI\data.5876a9527992e.txt                                
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\_DataURI\data.5cc25fa030b92.txt                                
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\_DataURI\data.60fc521c5e1408.txt                               
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\_DataURI\data.640ea0dd63fac8.txt                               
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\_DataURI\data.69a61bcdfc9cb.txt                                
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\_DataURI\data.7659f9f26ea38.txt                                
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\_DataURI\data.7738b0ad2db498.txt                               
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\_DataURI\data.9d650ca0dc0de8.txt                               
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\_DataURI\data.a0ea41af1b52b8.txt                               
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\_DataURI\data.a3050b198f82e.txt                                
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\_DataURI\data.a793c4bace8dc8.txt                               
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\_DataURI\data.d117a9f9e91cc.txt                                
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\_DataURI\data.d52c010ea5127.txt                                
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\_DataURI\data.dd884aa4d7dff8.txt                               
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\_DataURI\data.e3ed74d3d3e9e.txt                                
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\_DataURI\data.e99eb08359c28.txt                                
+C:\Users\adity\Desktop\portfolio\designs\New folder (3)\_DataURI\data.f114cbf96ed0b.txt                                
+
+

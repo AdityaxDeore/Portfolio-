@@ -1,0 +1,30 @@
+---
+pid: 3664
+cwd: "C:\Users\adity\Desktop\portfolio"
+command: "Set-Location \"C:\\Users\\adity\\Desktop\\portfolio\"; npm install react-router-dom"
+started_at: 2026-06-13T04:17:31.471Z
+running_for_ms: 22450015 
+---
+npm warn cleanup Failed to remove some directories [
+npm warn cleanup   [
+npm warn cleanup     'C:\\Users\\adity\\Desktop\\portfolio\\node_modules\\@esbuild\\win32-ia32',
+npm warn cleanup     [Error: EBUSY: resource busy or locked, rmdir 'C:\Users\adity\Desktop\portfolio\node_modules\@esbuild\win32-ia32'] {
+npm warn cleanup       errno: -4082,
+npm warn cleanup       code: 'EBUSY',
+npm warn cleanup       syscall: 'rmdir',
+npm warn cleanup       path: 'C:\\Users\\adity\\Desktop\\portfolio\\node_modules\\@esbuild\\win32-ia32'
+npm warn cleanup     }
+npm warn cleanup   ]
+npm warn cleanup ]
+
+added 4 packages, and audited 466 packages in 1m
+
+122 packages are looking for funding
+  run `npm fund` for details
+
+3 high severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.

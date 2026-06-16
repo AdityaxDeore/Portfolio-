@@ -1,0 +1,53 @@
+.ambient-video {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ambient-video__media {
+  position: absolute;
+  inset: -8%;
+  width: 116%;
+  height: 116%;
+  object-fit: cover;
+  opacity: var(--ambient-opacity, 0.14);
+  filter: saturate(0.65) contrast(1.05);
+}
+
+.ambient-video__veil {
+  position: absolute;
+  inset: 0;
+  background: color-mix(in srgb, var(--color-canvas) 72%, transparent);
+}
+
+.ambient-video__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 70% at 50% 45%,
+    transparent 0%,
+    var(--color-canvas) 88%
+  );
+}
+
+.ambient-video--static {
+  background:
+    radial-gradient(
+      ellipse 90% 60% at 50% 20%,
+      color-mix(in srgb, var(--color-primary) 8%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 70% 50% at 80% 80%,
+      color-mix(in srgb, var(--color-primary) 5%, transparent),
+      transparent 65%
+    );
+}
+
+@media (max-width: 900px) {
+  .ambient-video__media {
+    opacity: calc(var(--ambient-opacity, 0.14) * 0.65);
+  }
+}

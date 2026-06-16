@@ -1,0 +1,302 @@
+.what-i-bring {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(2rem, 5vw, 3.5rem);
+}
+
+.what-i-bring__canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.what-i-bring__sparkles {
+  width: 100%;
+  height: 100%;
+}
+
+.what-i-bring__header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 34rem;
+  margin: 0;
+}
+
+.what-i-bring__label {
+  margin: 0;
+  font-size: var(--text-small);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.what-i-bring__subtitle {
+  margin: 0.15rem 0 0;
+  font-size: var(--text-body);
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  max-width: 40ch;
+}
+
+.what-i-bring__scroller {
+  position: relative;
+  z-index: 1;
+  min-height: 92vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  align-items: center;
+  gap: clamp(0.75rem, 1.5vw, 1rem);
+  padding-block: clamp(0.875rem, 2vh, 1.25rem);
+}
+
+.what-i-bring__stage {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  overflow: hidden;
+  align-self: center;
+}
+
+.what-i-bring__track {
+  --card-width: min(72vw, 40rem);
+  --card-gap: clamp(2rem, 4vw, 3rem);
+  display: flex;
+  align-items: stretch;
+  width: max-content;
+  gap: var(--card-gap);
+  padding-inline: calc(50vw - var(--card-width) / 2);
+  will-change: transform;
+}
+
+.what-i-bring__card {
+  flex: 0 0 var(--card-width);
+  contain: layout style;
+}
+
+.what-i-bring__card-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+  align-items: center;
+  gap: clamp(1.25rem, 2.6vw, 2rem);
+  height: 100%;
+  padding: clamp(1.15rem, 2.2vw, 1.6rem);
+  border-radius: var(--radius-lg);
+  border: 1px solid color-mix(in srgb, var(--color-hairline) 55%, var(--color-text-primary) 8%);
+  background: var(--color-surface-card);
+  box-shadow: none;
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: border-color 220ms var(--ease-out);
+}
+
+.what-i-bring__card.is-active .what-i-bring__card-inner {
+  border-color: color-mix(in srgb, var(--color-primary) 55%, var(--color-hairline));
+}
+
+.what-i-bring__visual-shell {
+  position: relative;
+  width: 100%;
+  border-radius: calc(var(--radius-lg) - 2px);
+  overflow: hidden;
+  background: var(--color-surface-soft);
+  border: 1px solid var(--color-hairline);
+}
+
+.what-i-bring__index {
+  position: absolute;
+  top: 0.55rem;
+  left: 0.55rem;
+  z-index: 2;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--color-primary);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--color-canvas) 92%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-hairline) 60%, transparent);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.what-i-bring__visual-shell .what-i-bring__visual {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+}
+
+.what-i-bring__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 28rem;
+  padding-block: 0.15rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.what-i-bring__tag {
+  margin: 0;
+  font-size: var(--text-small);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.what-i-bring__card-desc {
+  margin: 0.15rem 0 0;
+  font-size: var(--text-body);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  max-width: 40ch;
+}
+
+.what-i-bring__rail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.what-i-bring__bar {
+  flex: 1;
+  max-width: 26rem;
+  height: 2.5px;
+  background: color-mix(in srgb, var(--color-primary) 9%, var(--color-hairline));
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.what-i-bring__bar-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    color-mix(in srgb, var(--color-primary) 92%, #fff)
+  );
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-primary) 18%, transparent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
+}
+
+.what-i-bring__counter {
+  margin: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.1rem;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: var(--text-small);
+  letter-spacing: 0.065em;
+  color: var(--color-text-muted);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.what-i-bring__counter-current {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.what-i-bring__curve-wrap {
+  position: relative;
+  z-index: 1;
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  padding-block: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.what-i-bring__curve {
+  color: var(--color-primary);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 900px) {
+  .what-i-bring__scroller {
+    min-height: auto;
+    padding-block: 0.25rem 0.5rem;
+  }
+
+  .what-i-bring__stage {
+    width: 100%;
+    margin-inline: 0;
+    overflow: visible;
+  }
+
+  .what-i-bring__track {
+    --card-width: 100%;
+    flex-direction: column;
+    width: 100%;
+    gap: clamp(1.35rem, 4.5vw, 2rem);
+    padding-inline: var(--page-padding);
+    transform: none;
+  }
+
+  .what-i-bring__card {
+    flex: none;
+    width: 100%;
+  }
+
+  .what-i-bring__card-inner {
+    grid-template-columns: 1fr;
+    gap: clamp(0.95rem, 2.8vw, 1.2rem);
+    padding: clamp(0.85rem, 2.2vw, 1.1rem);
+  }
+
+  .what-i-bring__visual-shell {
+    max-width: 100%;
+  }
+
+  .what-i-bring__visual-shell .what-i-bring__visual {
+    max-width: 100%;
+    aspect-ratio: 16 / 10;
+  }
+
+  .what-i-bring__copy {
+    max-width: none;
+  }
+
+  .what-i-bring__card-desc {
+    max-width: none;
+  }
+
+  .what-i-bring__rail {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .what-i-bring__track {
+    transform: none;
+  }
+
+  .what-i-bring__card-inner {
+    box-shadow: none !important;
+    border-color: color-mix(in srgb, var(--color-hairline) 55%, var(--color-text-primary) 8%) !important;
+  }
+
+  .what-i-bring__bar-fill {
+    transform: scaleX(1);
+  }
+}

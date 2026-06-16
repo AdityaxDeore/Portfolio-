@@ -1,0 +1,8 @@
+---
+pid: 11704
+cwd: "C:\Users\adity\Desktop\portfolio"
+command: "Invoke-WebRequest -Uri \"https://framerusercontent.com/sites/6BRzUuLViBQhrCWEaZWc5t/GwTU3E4608iw7-bz8xmCOyW4cMsEMcAhMSeVtKY3UII.CttTnkLV.mjs\" -OutFile \"C:\\Users\\adity\\Desktop\\portfolio\\page_module.mjs\"; (Get-Item \"C:\\Users\\adity\\Desktop\\portfolio\\page_module.mjs\").Length"
+started_at: 2026-06-12T17:56:45.726Z
+running_for_ms: 279974   
+---
+109

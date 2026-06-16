@@ -1,0 +1,29 @@
+.reveal-word {
+  position: relative;
+  display: inline-block;
+  vertical-align: baseline;
+  margin-inline: 0.12em 0.22em;
+  white-space: pre;
+}
+
+.reveal-word__ghost {
+  display: inline-block;
+  color: var(--color-text-muted);
+  opacity: 0.28;
+  user-select: none;
+}
+
+.reveal-word__active {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-block;
+  color: inherit;
+  white-space: nowrap;
+}
+
+.reveal-word--static {
+  display: inline;
+  margin-inline: 0.12em 0.22em;
+  color: inherit;
+}

@@ -1,0 +1,21 @@
+---
+pid: 3560
+cwd: "C:\Users\adity\Desktop\portfolio"
+command: "Set-Location \"C:\\Users\\adity\\Desktop\\portfolio\"; npm run dev"
+started_at: 2026-06-13T03:47:13.055Z
+running_for_ms: 24325002 
+---
+
+> portfolio@0.0.0 dev
+> vite
+
+Port 5173 is in use, trying another one...
+
+  VITE v6.4.3  ready in 4113 ms
+
+  ➜  Local:   http://localhost:5174/
+  ➜  Network: use --host to expose
+10:57:41 am [vite] vite.config.ts changed, restarting server...
+10:57:41 am [vite] vite.config.ts changed, restarting server...
+10:57:43 am [vite] (client) Re-optimizing dependencies because lockfile has changed
+10:57:43 am [vite] server restarted.

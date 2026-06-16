@@ -1,0 +1,107 @@
+.skip-link {
+  position: absolute;
+  top: env(safe-area-inset-top, 0px);
+  left: var(--page-padding);
+  z-index: 200;
+  padding: 0.625rem 1rem;
+  font-size: var(--text-small);
+  font-weight: 600;
+  color: var(--color-text-on-primary);
+  background: var(--color-primary);
+  border-radius: var(--radius-sm);
+  transform: translateY(-120%);
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.skip-link:focus {
+  transform: translateY(0.5rem);
+  outline: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: var(--page-padding);
+}
+
+/* Main headings — Cormorant Garamond display style (What I Bring to the Table) */
+.what-i-bring__title,
+.projects__title,
+.experience__title,
+.skills__title,
+.contact__title,
+.resume__title,
+.code-terminal__title,
+.what-i-bring__card-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-heading);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+}
+
+.project-page__title,
+.project-modal__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-heading-lg);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+}
+
+.experience__company,
+.projects__card-title,
+.skills__card-title,
+.resume__external-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.experience__company,
+.projects__card-title,
+.skills__card-title,
+.resume__external-title {
+  font-size: var(--text-heading-sm);
+}
+
+.canvas {
+  position: relative;
+  z-index: 2;
+  min-height: calc(100dvh - var(--nav-height));
+  overflow-x: clip;
+}
+
+/* Anchor scroll offset for sticky nav + safe area */
+html {
+  scroll-padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px) + 0.5rem);
+}
+
+/* Defer layout/paint for below-fold sections */
+.code-terminal,
+.experience,
+.projects,
+.skills,
+.resume,
+.contact {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 720px;
+}

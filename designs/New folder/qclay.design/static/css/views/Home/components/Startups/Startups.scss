@@ -1,0 +1,198 @@
+@use "@/assets/styles" as *;
+
+.startups {
+  position: relative;
+  height: 400vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: color(black-100);
+  overflow: hidden;
+
+  @include mobile-sm {
+    height: 200vh;
+  }
+
+  &__sticky {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    .startups__bg {
+      position: absolute;
+      width: 100%;
+      bottom: rem(50);
+
+      @include mobile-sm {
+        width: 300%;
+        transform: translateX(-100%);
+      }
+
+      svg {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .startups__fill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #C7BFCF;
+      opacity: 0;
+    }
+
+    .blur {
+      position: absolute;
+      width: 0;
+      height: 0;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: url('./assets/blur.webp');
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+      z-index: 2;
+    }
+
+    .startups__content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      padding: rem(130) rem(20) rem(20) rem(20);
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      z-index: 1;
+
+      .parent {
+        position: relative;
+        border-radius: rem(160);
+        overflow: hidden;
+        width: rem(460);
+        height: rem(520);
+        transform: translateY(-25%);
+        opacity: 0;
+        transition: opacity .3s ease;
+        @include mobile-sm {
+          border-radius: rem(80);
+        }
+
+        .logo {
+          position: absolute;
+          bottom: 0;
+          width: rem(104);
+          height: rem(104);
+          left: calc(50% - #{rem(52)});
+          opacity: 0;
+
+          @include mobile-sm {
+            width: rem(50);
+            height: rem(50);
+            left: calc(50% - #{rem(25)});
+          }
+  
+          img {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        canvas {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 100%;
+          height: 100%;
+          transform: translate(-50%, -50%);
+
+          @include mobile-sm {
+            transform: translate(-50%, -50%) scaleX(1.5);
+          }
+        }
+
+        .infinite {
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 100vw;
+          height: rem(106);
+          background: url(./assets/infinite.webp);
+          background-position: center center;
+          background-size: auto 100%;
+          background-repeat: repeat-x;
+          animation: infinite 1000s linear infinite;
+          opacity: 0;
+          @include mobile-sm {
+            bottom: rem(-25);
+          }
+        }
+
+        .parent-title {
+          position: absolute;
+          top: 40%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          white-space: nowrap;
+          
+          > * {
+            color: color(white-100);
+            font-size: rem(120);
+            text-transform: uppercase;
+            @include mobile-sm {
+              font-size: rem(40);
+            }
+          }
+
+          > :first-child {
+            @include font-PlusJakartaDisplay-regular;
+          }
+
+          > :last-child {
+            @include font-PlusJakartaDisplay-medium;
+          }
+        }
+
+        @keyframes infinite {
+          to {
+            background-position-x: -100000px;
+          }
+        }
+      }
+    }
+  }
+
+  h2 {
+    @include font-PlusJakartaDisplay-regular;
+    font-size: font(40);
+    width: rem(700);
+    text-align: center;
+    color: color(white-100);
+    margin-top: rem(180);
+
+    @include mobile-sm {
+      font-size: rem(22);
+      width: rem(330);
+    }
+  }
+}

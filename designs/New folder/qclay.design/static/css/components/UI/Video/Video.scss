@@ -1,0 +1,15 @@
+.video-component {
+    &::-webkit-media-controls-panel {
+        display: none !important;
+    }
+    &::-webkit-media-controls-start-playback-button {
+        display: none !important;
+        -webkit-appearance: none !important;
+    }
+    &::-webkit-media-controls {
+        display: none;
+    }
+    >* {
+        display: none;
+    }
+}

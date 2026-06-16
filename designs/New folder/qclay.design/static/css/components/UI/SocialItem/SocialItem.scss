@@ -1,0 +1,47 @@
+@use "@/assets/styles" as *;
+
+.social {
+  position: relative;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: rem(14);
+  border: rem(1) solid color(grey-100);
+  border-radius: 50%;
+  transition: border-color .4s ease, background-color .4s ease;
+
+  .hover {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200%;
+    height: 200%;
+  }
+
+  @include tablet {
+    padding: rem(9);
+  }
+
+  &_dark {
+    border: rem(1) solid color(grey-100);
+    &:hover {
+      border: rem(1) solid color(grey-300);
+    }
+  }
+
+  &:hover {
+    border: rem(1) solid color(grey-200);
+    background-color: color(grey-200);
+  }
+
+  img {
+    width: rem(20);
+    height: rem(20);
+
+    @include tablet {
+      width: rem(20);
+      height: rem(20);
+    }
+  }
+}

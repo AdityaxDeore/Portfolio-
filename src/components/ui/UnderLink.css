@@ -1,0 +1,38 @@
+.underlink {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.underlink::before,
+.underlink::after {
+  content: '';
+  position: absolute;
+  top: calc(100% + 3px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+}
+
+.underlink::before {
+  opacity: 0.25;
+}
+
+.underlink::after {
+  width: 0;
+  transition: width 0.45s ease;
+}
+
+.underlink:hover::after,
+.underlink:focus-visible::after {
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .underlink::after {
+    width: 100%;
+    transition: none;
+  }
+}

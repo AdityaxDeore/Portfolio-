@@ -1,0 +1,41 @@
+@use "@/assets/styles" as *;
+
+.designers {
+    .spelling {
+        --spelling-delay: .5s;
+        --spelling-tr-dur: .1s;
+        --spelling-tr: #{rem(150)};
+        --spelling-delay-c: 150;
+    }
+    .text {
+        transition: transform .5s ease;
+        transform: translateY(rem(150));
+    }
+}
+
+.-from-prev {
+    .designers {
+
+    }
+}
+
+.-next {
+    .designers {
+
+    }
+}
+
+
+.-active {
+    .designers {
+        .spelling {
+            --spelling-tr: none;
+            --spelling-tr-dur: .5s;
+            --spelling-so: 1;
+        }
+        .text {
+            transition: transform 1s ease;
+            transform: none;
+        }
+    }
+}

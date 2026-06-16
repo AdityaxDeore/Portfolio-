@@ -1,0 +1,7 @@
+---
+pid: 16820
+cwd: "C:\Users\adity\Desktop\portfolio"
+command: "Get-NetTCPConnection -LocalPort 5173,5174,5175 -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force -ErrorAction SilentlyContinue }"
+started_at: 2026-06-13T05:28:54.608Z
+running_for_ms: 18195011 
+---

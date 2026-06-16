@@ -1,0 +1,8 @@
+---
+pid: 16552
+cwd: "C:\Users\adity\Desktop\portfolio"
+command: "Set-Location \"C:\\Users\\adity\\Desktop\\portfolio\"; npx --yes tsx -e \"import { JSDOM } from 'jsdom'; console.log('skip')\""
+started_at: 2026-06-13T03:47:42.278Z
+running_for_ms: 24285004 
+---
+skip
