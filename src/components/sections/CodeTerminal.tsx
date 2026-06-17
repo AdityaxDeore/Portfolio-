@@ -15,7 +15,6 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './CodeTerminal.css'
 
-const QUICK_ACTION_BLANK_MS = 160
 const EASE_OUT = [0.22, 1, 0.36, 1] as const
 
 function createWelcomeLines(): TerminalLineEntry[] {
@@ -42,12 +41,35 @@ export function CodeTerminal() {
   const [sessionId, setSessionId] = useState(0)
   const [activeChipId, setActiveChipId] = useState<string | null>(null)
   const [isBlanking, setIsBlanking] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const { animateLinesOut, markSessionReplaced } = useTerminalLineAnimation({
     sessionId,
     lineCount: terminalLines.length,
     scopeRef: terminalWrapRef,
   })
+
+  useEffect(() => {
+    if (!terminalWrapRef.current) return
+    let timeoutId: ReturnType<typeof setTimeout>
+
+    const observer = new ResizeObserver(() => {
+      // Debounce the refresh slightly to batch rapid height changes (e.g., from typing)
+      clearTimeout(timeoutId)
+      timeoutId = setTimeout(() => {
+        import('@/lib/gsap').then(({ ScrollTrigger }) => {
+          ScrollTrigger.refresh()
+        })
+      }, 50)
+    })
+
+    observer.observe(terminalWrapRef.current)
+
+    return () => {
+      clearTimeout(timeoutId)
+      observer.disconnect()
+    }
+  }, [])
 
   useEffect(() => {
     return () => {
@@ -121,6 +143,7 @@ export function CodeTerminal() {
       }
 
       setIsBlanking(false)
+      setIsLoading(false)
 
       if (result.navigateTo) {
         navigate(result.navigateTo)
@@ -139,12 +162,14 @@ export function CodeTerminal() {
 
       void (async () => {
         await animateLinesOut()
-        setIsBlanking(true)
+        setIsBlanking(false)
+        setIsLoading(true)
         setTerminalLines([])
 
-        const delay = reducedMotion ? 0 : QUICK_ACTION_BLANK_MS
+        const delay = reducedMotion ? 0 : 800
         quickActionTimerRef.current = setTimeout(() => {
           quickActionTimerRef.current = null
+          setIsLoading(false)
           handleInput(command, { replace: true })
         }, delay)
       })()
@@ -213,8 +238,10 @@ export function CodeTerminal() {
               setSessionId((id) => id + 1)
               setTerminalLines(createWelcomeLines())
               setIsBlanking(false)
+              setIsLoading(false)
             }}
             quickActions={quickActions}
+            isLoading={isLoading}
           />
         </motion.div>
       </div>

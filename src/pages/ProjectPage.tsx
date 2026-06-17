@@ -4,6 +4,9 @@ import { gsap, useGSAP } from '@/lib/gsap'
 import { useReducedMotion } from 'motion/react'
 import { useRef } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
+import SectionWithMockup from '@/components/blocks/section-with-mockup'
+import { HighlightShowcase } from '@/components/sections/HighlightShowcase'
+import { AboutSection2 } from '@/components/sections/AboutSection2'
 import './ProjectPage.css'
 
 export function ProjectPage() {
@@ -73,8 +76,13 @@ export function ProjectPage() {
           <p className="project-page__role">{project.caseStudy.role}</p>
         </div>
 
-        <div className="project-page__media project-page__reveal">
-          <img src={project.image} alt="" width={1200} height={675} />
+        <div className="project-page__media project-page__reveal !p-0 !border-0 bg-transparent">
+          <SectionWithMockup
+            title={project.title}
+            description={project.caseStudy.summary}
+            primaryImageSrc={project.image}
+            secondaryImageSrc="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=600&q=80"
+          />
         </div>
 
         <div className="project-page__body">
@@ -113,6 +121,11 @@ export function ProjectPage() {
               </UnderLink>
             ))}
           </div>
+        </div>
+
+        <div className="project-page__reveal mt-16 w-full">
+          <HighlightShowcase />
+          <AboutSection2 />
         </div>
 
         <nav className="project-page__nav project-page__reveal" aria-label="Adjacent projects">

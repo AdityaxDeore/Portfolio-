@@ -86,8 +86,47 @@
 .canvas {
   position: relative;
   z-index: 2;
+  isolation: isolate;
   min-height: calc(100dvh - var(--nav-height));
   overflow-x: clip;
+}
+
+.canvas::before,
+.canvas::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.canvas::before {
+  z-index: 0;
+  background:
+    radial-gradient(circle at 12% 8%, color-mix(in srgb, var(--color-primary) 18%, transparent), transparent 30rem),
+    radial-gradient(circle at 88% 18%, color-mix(in srgb, var(--color-primary) 10%, transparent), transparent 34rem),
+    radial-gradient(circle at 50% 100%, color-mix(in srgb, var(--color-text-primary) 5%, transparent), transparent 36rem),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+  background-size: auto, auto, auto, 200px 200px;
+}
+
+.canvas::after {
+  z-index: 0;
+  opacity: 0.22;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--color-text-primary) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--color-text-primary) 8%, transparent) 1px, transparent 1px);
+  background-size: 5.5rem 5.5rem;
+  mask-image: linear-gradient(to bottom, transparent, black 14%, black 72%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 14%, black 72%, transparent);
+}
+
+.canvas > section {
+  position: relative;
+  z-index: 1;
+}
+
+.canvas > section {
+  scroll-margin-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px) + 0.5rem);
 }
 
 /* Anchor scroll offset for sticky nav + safe area */
@@ -96,6 +135,7 @@ html {
 }
 
 /* Defer layout/paint for below-fold sections */
+.showcase,
 .code-terminal,
 .experience,
 .projects,

@@ -1,0 +1,187 @@
+/* ======================================================================
+   FeatureShowcase — Static layout with elegant reveals
+   ====================================================================== */
+
+.showcase {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Individual section ---------- */
+.showcase__section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: var(--color-canvas);
+}
+
+.showcase__layout {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.showcase__layout--reverse {
+  flex-direction: row-reverse;
+}
+
+/* ---------- Text side ---------- */
+.showcase__text {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(2rem, 5vw, 5rem);
+  position: relative;
+  z-index: 2;
+}
+
+.showcase__text-inner {
+  max-width: 28rem;
+}
+
+.showcase__label {
+  display: inline-block;
+  margin: 0 0 1rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background: var(--color-primary-muted);
+  border-radius: 999px;
+}
+
+.showcase__title {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw + 0.5rem, 3.5rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+}
+
+.showcase__subtitle {
+  margin: 0 0 1.25rem;
+  font-size: var(--text-body);
+  font-weight: 600;
+  color: var(--color-primary);
+  letter-spacing: 0.02em;
+}
+
+.showcase__desc {
+  margin: 0;
+  font-size: var(--text-body);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+.showcase__divider {
+  width: 3rem;
+  height: 2px;
+  margin-top: 2rem;
+  background: var(--color-primary);
+  border: none;
+  border-radius: 2px;
+  opacity: 0.5;
+}
+
+/* ---------- Image side ---------- */
+.showcase__image-wrap {
+  flex: 1;
+  position: relative;
+  min-height: 50vh;
+}
+
+.showcase__image-mask {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.showcase__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.showcase__image-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--color-canvas) 30%, transparent) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+}
+
+/* ---------- Section number watermark ---------- */
+.showcase__number {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 3;
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--color-text-primary);
+  opacity: 0.04;
+  pointer-events: none;
+  user-select: none;
+}
+
+.showcase__layout--reverse .showcase__number {
+  right: auto;
+  left: 2rem;
+}
+
+/* ---------- Mobile: stack vertically ---------- */
+@media (max-width: 900px) {
+  .showcase__section {
+    min-height: auto;
+  }
+
+  .showcase__layout,
+  .showcase__layout--reverse {
+    flex-direction: column;
+    min-height: auto;
+  }
+
+  .showcase__text {
+    flex: none;
+    padding: clamp(3rem, 6vw, 4rem) clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .showcase__image-wrap {
+    flex: none;
+    height: 60vh;
+    min-height: 400px;
+  }
+
+  .showcase__number {
+    font-size: 4rem;
+    bottom: 1rem;
+    right: 1rem;
+    left: auto !important; /* Force right side on mobile */
+  }
+}
+
+@media (max-width: 520px) {
+  .showcase__text-inner {
+    max-width: none;
+  }
+
+  .showcase__title {
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+  }
+}

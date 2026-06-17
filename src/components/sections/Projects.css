@@ -127,6 +127,15 @@
   transform: scale(1.04);
 }
 
+.projects__image-mask {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  transition: clip-path 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: clip-path;
+}
+
+
 .projects__index {
   position: absolute;
   top: 0.75rem;

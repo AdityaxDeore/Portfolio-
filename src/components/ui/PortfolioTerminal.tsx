@@ -5,6 +5,7 @@ import {
   type TerminalPresentation,
 } from '@/lib/inferTerminalPresentation'
 import { TerminalTitlebar } from '@/components/ui/TerminalTitlebar'
+import { MessageLoading } from '@/components/ui/message-loading'
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import {
   useCallback,
@@ -44,6 +45,7 @@ type PortfolioTerminalProps = {
   onClose?: () => void
   quickActions?: ReactNode
   className?: string
+  isLoading?: boolean
 }
 
 const MAX_HISTORY = 40
@@ -109,6 +111,7 @@ export function PortfolioTerminal({
   onClose,
   quickActions,
   className = '',
+  isLoading = false,
 }: PortfolioTerminalProps) {
   const reducedMotion = useReducedMotion()
   const shellRef = useRef<HTMLDivElement>(null)
@@ -358,6 +361,12 @@ export function PortfolioTerminal({
               {!block.isWelcome ? <div className="portfolio-terminal__block-divider" aria-hidden="true" /> : null}
             </motion.section>
           ))}
+          {isLoading && (
+            <div className="portfolio-terminal__loading-line" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.5rem 1rem' }}>
+              <span className="portfolio-terminal__prompt">{prompt}</span>
+              <MessageLoading />
+            </div>
+          )}
         </div>
 
         <div className="portfolio-terminal__chrome">

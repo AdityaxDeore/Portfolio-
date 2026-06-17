@@ -5,6 +5,8 @@ import { ProjectPage } from '@/pages/ProjectPage'
 import { isPageReload, scrollToTop } from '@/lib/scrollToTop'
 import { useLayoutEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
+import { DevAgentation } from '@/agentation'
+
 
 function ScrollManager() {
   const { pathname, hash } = useLocation()
@@ -40,6 +42,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/projects/:id" element={<ProjectPage />} />
       </Routes>
+      <DevAgentation />
     </>
   )
 }

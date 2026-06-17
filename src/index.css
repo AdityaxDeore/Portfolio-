@@ -107,6 +107,10 @@ button {
   --sidebar-accent-foreground: oklch(0.214 0.009 43.1);
   --sidebar-border: oklch(0.922 0.005 34.3);
   --sidebar-ring: oklch(0.714 0.014 41.2);
+
+  --highlight-red-bg: #e89c9c;
+  --highlight-purple-bg: #b8a0db;
+  --highlight-green-bg: #9fd68d;
 }
 
 .dark {
@@ -141,6 +145,10 @@ button {
   --sidebar-accent-foreground: oklch(0.986 0.002 67.8);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.547 0.021 43.1);
+
+  --highlight-red-bg: #d48989;
+  --highlight-purple-bg: #a78fcd;
+  --highlight-green-bg: #8dc77b;
 }
 
 @theme inline {
@@ -185,6 +193,27 @@ button {
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
+
+@keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+  }
 }
 
 @layer base {
@@ -197,4 +226,13 @@ button {
   html {
     @apply font-sans;
   }
+}
+
+.section-ambient-bg {
+  z-index: 0;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

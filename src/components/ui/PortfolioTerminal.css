@@ -14,21 +14,23 @@
     0 1px 0 color-mix(in srgb, var(--color-text-primary) 8%, transparent) inset,
     0 24px 60px color-mix(in srgb, var(--color-text-primary) 14%, transparent),
     0 4px 14px color-mix(in srgb, var(--color-text-primary) 6%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   transition:
     box-shadow 320ms var(--ease-out),
     transform 320ms var(--ease-out);
 }
 
 .portfolio-terminal--expanded {
-  height: clamp(40rem, 78vh, 56rem);
-  min-height: clamp(40rem, 78vh, 56rem);
-  max-height: clamp(40rem, 78vh, 56rem);
+  height: auto;
+  min-height: 28rem;
+  max-height: calc(100dvh - 8rem);
 }
 
 .portfolio-terminal:not(.portfolio-terminal--expanded):not(.portfolio-terminal--minimized) {
-  height: clamp(32rem, 62vh, 46rem);
-  min-height: clamp(32rem, 62vh, 46rem);
-  max-height: clamp(32rem, 62vh, 46rem);
+  height: auto;
+  min-height: 22rem;
+  max-height: clamp(32rem, 70vh, 50rem);
 }
 
 .portfolio-terminal--minimized {
@@ -38,29 +40,29 @@
 }
 
 [data-theme='dark'] .portfolio-terminal {
-  --terminal-bg: #eceae4;
+  --terminal-bg: color-mix(in srgb, #eceae4 94%, transparent);
   --terminal-fg: #1a1a18;
   --terminal-muted: #6b6b68;
   --terminal-prompt: #15803d;
   --terminal-tool: #9a3412;
-  --terminal-hint-bg: color-mix(in srgb, #1a1a18 4%, #eceae4);
+  --terminal-hint-bg: color-mix(in srgb, #1a1a18 4%, transparent);
   --terminal-chrome-border: color-mix(in srgb, #1a1a18 10%, transparent);
-  --terminal-block-bg: color-mix(in srgb, #1a1a18 3.5%, #eceae4);
+  --terminal-block-bg: color-mix(in srgb, #1a1a18 4%, transparent);
   --terminal-block-border: color-mix(in srgb, #1a1a18 9%, transparent);
-  --terminal-card-bg: color-mix(in srgb, #1a1a18 5%, #ffffff);
+  --terminal-card-bg: color-mix(in srgb, #ffffff 60%, transparent);
 }
 
 [data-theme='light'] .portfolio-terminal {
-  --terminal-bg: #1a1917;
+  --terminal-bg: color-mix(in srgb, #1a1917 88%, transparent);
   --terminal-fg: #c9d1d9;
   --terminal-muted: #8b949e;
   --terminal-prompt: #7ee787;
   --terminal-tool: #d2a8ff;
-  --terminal-hint-bg: color-mix(in srgb, #ffffff 4%, #1a1917);
+  --terminal-hint-bg: color-mix(in srgb, #ffffff 4%, transparent);
   --terminal-chrome-border: color-mix(in srgb, #ffffff 10%, transparent);
-  --terminal-block-bg: color-mix(in srgb, #ffffff 3.5%, #1a1917);
+  --terminal-block-bg: color-mix(in srgb, #ffffff 4%, transparent);
   --terminal-block-border: color-mix(in srgb, #ffffff 9%, transparent);
-  --terminal-card-bg: color-mix(in srgb, #ffffff 5%, #252422);
+  --terminal-card-bg: color-mix(in srgb, #252422 60%, transparent);
 }
 
 .portfolio-terminal__body {
@@ -82,7 +84,7 @@
 }
 
 .portfolio-terminal__transcript {
-  flex: 1 1 0;
+  flex: 1 1 auto;
   min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
@@ -158,9 +160,12 @@
   margin-top: 0.35rem;
   padding: 0.75rem 0.8rem;
   border-radius: 0.65rem;
-  border: 1px solid var(--terminal-block-border);
+  border: 1px solid color-mix(in srgb, var(--terminal-block-border) 80%, var(--terminal-prompt));
   background: var(--terminal-card-bg);
-  box-shadow: 0 8px 24px color-mix(in srgb, var(--terminal-fg) 6%, transparent);
+  box-shadow: 
+    0 8px 24px color-mix(in srgb, var(--terminal-fg) 6%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--terminal-prompt) 20%, transparent);
+  backdrop-filter: blur(8px);
 }
 
 .portfolio-terminal__identity-badge {
@@ -461,15 +466,15 @@
 
 @media (max-width: 640px) {
   .portfolio-terminal:not(.portfolio-terminal--expanded):not(.portfolio-terminal--minimized) {
-    height: clamp(26rem, 58vh, 38rem);
-    min-height: clamp(26rem, 58vh, 38rem);
-    max-height: clamp(26rem, 58vh, 38rem);
+    height: auto;
+    min-height: 20rem;
+    max-height: clamp(26rem, 65vh, 40rem);
   }
 
   .portfolio-terminal--expanded {
-    height: clamp(32rem, 72vh, 46rem);
-    min-height: clamp(32rem, 72vh, 46rem);
-    max-height: clamp(32rem, 72vh, 46rem);
+    height: auto;
+    min-height: 26rem;
+    max-height: calc(100dvh - 6rem);
   }
 }
 
