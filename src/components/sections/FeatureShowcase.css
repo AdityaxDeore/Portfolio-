@@ -56,20 +56,21 @@
 
 .showcase__meta {
   position: relative;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  align-items: center;
+  gap: 1.25rem;
 }
 
 .showcase__number-label {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 4rem;
+  height: 4rem;
+  flex-shrink: 0;
   font-family: 'JetBrains Mono', monospace;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--color-primary);
   background: var(--color-primary-muted);
@@ -88,9 +89,9 @@
   z-index: 1;
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(2.25rem, 5vw, 4rem);
+  font-size: clamp(2.25rem, 4vw, 3.5rem);
   font-weight: 500;
-  line-height: 1.05;
+  line-height: 1.1;
   letter-spacing: -0.03em;
   color: var(--color-text-primary);
 }

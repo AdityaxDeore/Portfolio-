@@ -1,0 +1,117 @@
+.mega-content__grid {
+  display: grid;
+  gap: 1.5rem;
+  padding-block: 2rem;
+}
+
+.mega-content__grid--projects {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.mega-content__grid--experience {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.mega-content__grid--skills {
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+}
+
+.mega-content__grid--expertise {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Cards */
+.mega-content__project {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  transition: background var(--duration-fast) var(--ease-out);
+}
+
+.mega-content__project:hover {
+  background: var(--color-surface-soft);
+}
+
+.mega-content__project-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-hairline);
+}
+
+.mega-content__project-title {
+  font-weight: 600;
+  margin: 0 0 0.25rem;
+  color: var(--color-text-primary);
+}
+
+.mega-content__project-desc {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.mega-content__exp {
+  padding: 1rem;
+  background: var(--color-surface-soft);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-hairline);
+}
+
+.mega-content__exp-role {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 0.25rem;
+}
+
+.mega-content__exp-company {
+  font-size: 0.875rem;
+  color: var(--color-primary);
+  margin: 0 0 0.25rem;
+}
+
+.mega-content__exp-period {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+.mega-content__skill {
+  padding: 0.5rem 0.75rem;
+  background: var(--color-surface-soft);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+.mega-content__expertise {
+  padding: 1.25rem;
+  background: var(--color-surface-soft);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-hairline);
+}
+
+.mega-content__expertise-tag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  letter-spacing: 0.05em;
+  margin: 0 0 0.5rem;
+}
+
+.mega-content__expertise-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin: 0;
+}

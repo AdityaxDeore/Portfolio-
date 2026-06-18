@@ -43,7 +43,6 @@ type PortfolioTerminalProps = {
   status?: string
   onSubmit: (value: string) => void
   onClose?: () => void
-  quickActions?: ReactNode
   className?: string
   isLoading?: boolean
 }
@@ -109,7 +108,6 @@ export function PortfolioTerminal({
   status = 'portfolio session',
   onSubmit,
   onClose,
-  quickActions,
   className = '',
   isLoading = false,
 }: PortfolioTerminalProps) {
@@ -370,12 +368,6 @@ export function PortfolioTerminal({
         </div>
 
         <div className="portfolio-terminal__chrome">
-          {quickActions ? (
-            <div className="portfolio-terminal__quick-actions" role="toolbar" aria-label="Quick actions">
-              {quickActions}
-            </div>
-          ) : null}
-
           <AnimatePresence>
             {showSuggestions ? (
               <motion.ul

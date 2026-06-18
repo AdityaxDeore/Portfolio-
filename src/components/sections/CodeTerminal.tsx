@@ -1,10 +1,8 @@
 import {
-  terminalQuickActions,
   terminalSection,
   terminalWelcome,
   TERMINAL_APP_NAME,
   TERMINAL_CWD,
-  TERMINAL_PROMPT,
 } from '@/data/terminal'
 import { colorizeTerminalLine } from '@/lib/colorizeTerminalLine'
 import { useTerminalLineAnimation } from '@/hooks/useTerminalLineAnimation'
@@ -39,11 +37,10 @@ export function CodeTerminal() {
 
   const [terminalLines, setTerminalLines] = useState<TerminalLineEntry[]>(createWelcomeLines)
   const [sessionId, setSessionId] = useState(0)
-  const [activeChipId, setActiveChipId] = useState<string | null>(null)
   const [isBlanking, setIsBlanking] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
-  const { animateLinesOut, markSessionReplaced } = useTerminalLineAnimation({
+  const { markSessionReplaced } = useTerminalLineAnimation({
     sessionId,
     lineCount: terminalLines.length,
     scopeRef: terminalWrapRef,
@@ -119,10 +116,6 @@ export function CodeTerminal() {
       const trimmed = raw.trim()
       if (!trimmed) return
 
-      if (!options?.replace) {
-        setActiveChipId(null)
-      }
-
       const { result, inputLine, toolLine, outputLines } = buildCommandLines(trimmed)
       const responseLines = toolLine ? [inputLine, toolLine, ...outputLines] : [inputLine, ...outputLines]
 
@@ -152,55 +145,6 @@ export function CodeTerminal() {
     [buildCommandLines, markSessionReplaced, navigate],
   )
 
-  const handleQuickAction = useCallback(
-    (command: string, chipId: string) => {
-      if (quickActionTimerRef.current) {
-        clearTimeout(quickActionTimerRef.current)
-      }
-
-      setActiveChipId(chipId)
-
-      void (async () => {
-        await animateLinesOut()
-        setIsBlanking(false)
-        setIsLoading(true)
-        setTerminalLines([])
-
-        const delay = reducedMotion ? 0 : 800
-        quickActionTimerRef.current = setTimeout(() => {
-          quickActionTimerRef.current = null
-          setIsLoading(false)
-          handleInput(command, { replace: true })
-        }, delay)
-      })()
-    },
-    [animateLinesOut, handleInput, reducedMotion],
-  )
-
-  const quickActions = terminalQuickActions.map((action) => (
-    <button
-      key={action.id}
-      type="button"
-      className={`portfolio-terminal__shortcut${activeChipId === action.id ? ' portfolio-terminal__shortcut--active' : ''}`}
-      title={action.hint ? `Run ${action.command} — ${action.hint}` : `Run ${action.command}`}
-      onMouseDown={(event) => event.preventDefault()}
-      onClick={() => handleQuickAction(action.command, action.id)}
-    >
-      <span className="portfolio-terminal__shortcut-line">
-        <span className="portfolio-terminal__shortcut-prompt" aria-hidden="true">
-          {TERMINAL_PROMPT}
-        </span>
-        <span className="portfolio-terminal__shortcut-cmd">{action.command}</span>
-      </span>
-      {action.hint ? (
-        <span className="portfolio-terminal__shortcut-comment" aria-hidden="true">
-          {'// '}
-          {action.hint}
-        </span>
-      ) : null}
-    </button>
-  ))
-
   return (
     <section id="terminal" className="code-terminal" aria-labelledby="terminal-title">
       <div className="container">
@@ -226,21 +170,19 @@ export function CodeTerminal() {
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.75, delay: 0.14, ease: EASE_OUT }}
         >
-          <PortfolioTerminal
+            <PortfolioTerminal
             title={`${TERMINAL_APP_NAME} — ${TERMINAL_CWD}`}
             lines={terminalLines}
             status={TERMINAL_CWD}
             hints="Type `help` · Tab to complete · ↑↓ history · Esc to clear"
             onSubmit={handleInput}
             onClose={() => {
-              setActiveChipId(null)
               markSessionReplaced()
               setSessionId((id) => id + 1)
               setTerminalLines(createWelcomeLines())
               setIsBlanking(false)
               setIsLoading(false)
             }}
-            quickActions={quickActions}
             isLoading={isLoading}
           />
         </motion.div>
