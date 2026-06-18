@@ -11,6 +11,7 @@ export const valuePillars = [
     tag: 'Train · Deploy · Scale',
     description: 'Production ML pipelines, model deployment, and intelligent features that ship.',
     visual: 'neural',
+    image: '/images/projects/meditx.png',
   },
   {
     id: 'fullstack',
@@ -18,6 +19,7 @@ export const valuePillars = [
     tag: 'UI · API · Infra',
     description: 'End-to-end web apps — polished interfaces backed by reliable APIs.',
     visual: 'stack',
+    image: '/images/projects/eletix.png',
   },
   {
     id: 'data',
@@ -25,6 +27,7 @@ export const valuePillars = [
     tag: 'Insight · Signal · Impact',
     description: 'Turning messy data into clear insights and measurable outcomes.',
     visual: 'dataflow',
+    image: '/images/projects/polars2.png',
   },
   {
     id: 'ai-agents',
@@ -32,6 +35,7 @@ export const valuePillars = [
     tag: 'Reason · Act · Integrate',
     description: 'Autonomous agents that reason, act, and integrate into real workflows.',
     visual: 'agents',
+    image: '/images/projects/convoa.png',
   },
   {
     id: 'automation',
@@ -39,6 +43,7 @@ export const valuePillars = [
     tag: 'Flow · Logic · Speed',
     description: 'Smart pipelines that eliminate repetitive work without sacrificing control.',
     visual: 'pipeline',
+    image: '/images/projects/ocamba.png',
   },
   {
     id: 'ml-systems',
@@ -46,6 +51,7 @@ export const valuePillars = [
     tag: 'Inference · Monitor · Iterate',
     description: 'Scalable training, inference, and monitoring built for production.',
     visual: 'tensor',
+    image: '/images/projects/mindnest.png',
   },
 ] as const
 

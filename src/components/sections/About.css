@@ -4,22 +4,19 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  min-height: calc(100dvh - var(--nav-height));
+  min-height: auto;
+  padding-top: var(--nav-height);
 }
 
 @media (min-width: 901px) {
   .about {
     flex-direction: row;
+    min-height: 85vh;
   }
 }
 
 .about__ambient {
-  z-index: 0;
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  display: none;
 }
 
 .about__sticky {
@@ -29,23 +26,24 @@
   flex: 1;
   align-items: center;
   justify-content: center;
-  padding-top: clamp(2rem, 6vh, 4rem);
-  padding-bottom: clamp(2rem, 6vh, 4rem);
-  padding-inline: clamp(1rem, 3vw, 2.5rem);
+  padding-top: clamp(1.5rem, 4vh, 2.5rem);
+  padding-bottom: clamp(1.5rem, 4vh, 2.5rem);
+  padding-inline: clamp(1rem, 2vw, 2rem);
 }
 
 @media (min-width: 901px) {
   .about__sticky {
     position: static;
-    width: 55%;
+    width: 50%;
     flex: none;
+    padding-left: var(--page-padding);
   }
 }
 
 .about__layout {
   width: 100%;
-  max-width: 38rem;
-  margin-inline: auto;
+  max-width: 42rem;
+  margin-inline: 0;
 }
 
 .about__content {
@@ -53,9 +51,9 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: clamp(0.4rem, 1.2vw, 0.75rem);
-  text-align: center;
+  align-items: flex-start;
+  gap: 0.5rem;
+  text-align: left;
 }
 
 .about__photo {

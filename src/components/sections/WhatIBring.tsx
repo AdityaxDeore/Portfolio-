@@ -1,11 +1,8 @@
-import { CinematicVisual } from '@/components/ui/CinematicVisual'
 import { CurvedLoop } from '@/components/ui/CurvedLoop'
-import { Sparkles } from '@/components/ui/Sparkles'
 import { valueMarqueeText, valuePillars, valueSection } from '@/data/value'
 import { useBreakpoint } from '@/hooks/useBreakpoint'
 import { useInView } from '@/hooks/useInView'
 import { useWhatIBringScrollAnimation } from '@/hooks/useWhatIBringScrollAnimation'
-import { useTheme } from '@/providers/ThemeProvider'
 import { useReducedMotion } from 'motion/react'
 import './WhatIBring.css'
 
@@ -26,16 +23,11 @@ function getCurveSettings(breakpoint: ReturnType<typeof useBreakpoint>) {
 
 export function WhatIBring() {
   const sectionRef = useWhatIBringScrollAnimation()
-  const [sparklesRef, sparklesInView] = useInView<HTMLDivElement>({ rootMargin: '120px 0px' })
   const [curveRef, curveInView] = useInView<HTMLDivElement>({ rootMargin: '80px 0px' })
-  const { theme } = useTheme()
   const breakpoint = useBreakpoint()
   const reducedMotion = useReducedMotion()
-  const sparkleColor = theme === 'dark' ? '#d4896e' : '#cc785c'
   const curve = getCurveSettings(breakpoint)
   const total = String(valuePillars.length).padStart(2, '0')
-  const isMobile = breakpoint === 'mobile-sm' || breakpoint === 'mobile'
-  const showSparkles = sparklesInView && !isMobile && !reducedMotion
 
   return (
     <section
@@ -44,21 +36,6 @@ export function WhatIBring() {
       ref={sectionRef}
       aria-labelledby="what-i-bring-title"
     >
-      <div ref={sparklesRef} className="what-i-bring__canvas" aria-hidden="true">
-        {showSparkles ? (
-          <Sparkles
-            className="what-i-bring__sparkles"
-            color={sparkleColor}
-            density={100}
-            speed={0.72}
-            size={1.1}
-            opacity={0.42}
-            opacitySpeed={0}
-            minOpacity={0.06}
-          />
-        ) : null}
-      </div>
-
       <div className="what-i-bring__scroller">
         <header className="container what-i-bring__header">
           <p className="what-i-bring__label">{valueSection.label}</p>
@@ -77,15 +54,17 @@ export function WhatIBring() {
                 aria-label={`${pillar.label}, ${index + 1} of ${valuePillars.length}`}
               >
                 <div className="what-i-bring__card-inner">
-                  <div className="what-i-bring__visual-shell">
-                    <span className="what-i-bring__index" aria-hidden="true">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    <CinematicVisual
-                      visual={pillar.visual}
-                      className="what-i-bring__visual"
-                    />
-                  </div>
+                    <div className="what-i-bring__visual-shell">
+                      <span className="what-i-bring__index" aria-hidden="true">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <img
+                        src={pillar.image}
+                        alt=""
+                        className="what-i-bring__image"
+                        loading="lazy"
+                      />
+                    </div>
 
                   <div className="what-i-bring__copy">
                     <p className="what-i-bring__tag">{pillar.tag}</p>

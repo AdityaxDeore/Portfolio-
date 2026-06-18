@@ -1,5 +1,4 @@
 import { TopNav } from '@/components/layout/TopNav'
-import { GrainOverlay } from '@/components/ui/GrainOverlay'
 import { HomePage } from '@/pages/HomePage'
 import { ProjectPage } from '@/pages/ProjectPage'
 import { isPageReload, scrollToTop } from '@/lib/scrollToTop'
@@ -32,7 +31,6 @@ function ScrollManager() {
 export default function App() {
   return (
     <>
-      <GrainOverlay />
       <a href="/#main-content" className="skip-link">
         Skip to content
       </a>

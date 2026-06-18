@@ -2,19 +2,8 @@
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding-block: clamp(2rem, 5vw, 3.5rem);
-}
-
-.what-i-bring__canvas {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.what-i-bring__sparkles {
-  width: 100%;
-  height: 100%;
+  padding-block: clamp(1.5rem, 4vw, 2.5rem);
+  border-top: 1px solid var(--color-hairline);
 }
 
 .what-i-bring__header {
@@ -47,12 +36,12 @@
 .what-i-bring__scroller {
   position: relative;
   z-index: 1;
-  min-height: 92vh;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  align-items: center;
-  gap: clamp(0.75rem, 1.5vw, 1rem);
-  padding-block: clamp(0.875rem, 2vh, 1.25rem);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(2rem, 4vw, 3.5rem);
+  padding-block: clamp(2rem, 4vh, 3rem);
 }
 
 .what-i-bring__stage {
@@ -101,17 +90,18 @@
 .what-i-bring__visual-shell {
   position: relative;
   width: 100%;
-  border-radius: calc(var(--radius-lg) - 2px);
-  overflow: hidden;
-  background: var(--color-surface-soft);
-  border: 1px solid var(--color-hairline);
+  height: 100%;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .what-i-bring__index {
   position: absolute;
-  top: 0.55rem;
-  left: 0.55rem;
-  z-index: 2;
+  top: -0.5rem;
+  left: -0.5rem;
+  z-index: 5;
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 0.65rem;
   font-weight: 600;
@@ -119,26 +109,53 @@
   color: var(--color-primary);
   padding: 0.1em 0.35em;
   border-radius: 3px;
-  background: color-mix(in srgb, var(--color-canvas) 92%, transparent);
-  border: 1px solid color-mix(in srgb, var(--color-hairline) 60%, transparent);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background: var(--color-surface-card);
+  border: 1px solid var(--color-hairline);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-.what-i-bring__visual-shell .what-i-bring__visual {
-  width: 100%;
-  aspect-ratio: 4 / 3;
+.what-i-bring__image {
+  position: absolute;
+  left: calc(var(--card-padding) * -1);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 110%;
+  max-width: none;
+  height: auto;
+  object-fit: contain;
+  object-position: left center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.what-i-bring__card-inner {
+  --card-padding: clamp(1.15rem, 2.2vw, 1.6rem);
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: clamp(1.25rem, 2.6vw, 2.2rem);
+  height: 100%;
+  padding: var(--card-padding);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-hairline);
+  background: var(--color-surface-card);
+  overflow: hidden;
+  transition: border-color 220ms var(--ease-out), transform 300ms var(--ease-out);
+}
+
+.what-i-bring__card.is-active .what-i-bring__card-inner {
+  border-color: var(--color-primary);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px color-mix(in srgb, var(--color-text-primary) 8%, transparent);
 }
 
 .what-i-bring__copy {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  max-width: 28rem;
   padding-block: 0.15rem;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
 }
 
 .what-i-bring__tag {
@@ -179,12 +196,7 @@
   display: block;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    var(--color-primary),
-    color-mix(in srgb, var(--color-primary) 92%, #fff)
-  );
-  box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-primary) 18%, transparent);
+  background: var(--color-primary);
   transform: scaleX(0);
   transform-origin: left center;
   will-change: transform;

@@ -1,11 +1,9 @@
-import { AmbientVideo } from '@/components/ui/AmbientVideo'
 import { RotatingTagline } from '@/components/ui/RotatingTagline'
 import { aboutRotatingKeywords } from '@/data/about'
 import { motion } from 'motion/react'
 import { useRef } from 'react'
 import './About.css'
 
-const HERO_VIDEO_SRC = '/videos/hero-ambient.mp4'
 const ABOUT_PHOTO_SRC =
   'https://ferf1mheo22r9ira.public.blob.vercel-storage.com/portrait2-x5MjJSaQ9ed0HZrewEhH7TkZwjZ66K.jpeg'
 
@@ -43,8 +41,6 @@ export function About() {
       ref={sectionRef}
       aria-labelledby="about-title"
     >
-      <AmbientVideo src={HERO_VIDEO_SRC} className="about__ambient" opacity={0.16} />
-
       <div className="about__sticky">
         <div className="container about__layout">
           <div className="about__content">

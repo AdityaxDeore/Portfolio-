@@ -1,5 +1,6 @@
 .resume {
   padding-block: var(--space-section);
+  border-top: 1px solid var(--color-hairline);
 }
 
 .resume__layout {

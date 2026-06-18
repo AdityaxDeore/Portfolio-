@@ -1,9 +1,6 @@
 import { showcaseSections } from '@/data/showcase'
 import { motion, useReducedMotion } from 'motion/react'
-import { AmbientVideo } from '@/components/ui/AmbientVideo'
 import './FeatureShowcase.css'
-
-const HERO_VIDEO_SRC = '/videos/hero-ambient.mp4'
 
 function ShowcaseSection({
   item,
@@ -21,21 +18,33 @@ function ShowcaseSection({
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
     >
-      <AmbientVideo src={HERO_VIDEO_SRC} className="section-ambient-bg" opacity={0.16} />
       <div className={`showcase__layout${item.reverse ? ' showcase__layout--reverse' : ''}`}>
         {/* Text side */}
         <div className="showcase__text">
           <motion.div
             className="showcase__text-inner"
             variants={{
-              hidden: reducedMotion ? {} : { opacity: 0, y: 32 },
-              visible: reducedMotion ? {} : { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+              hidden: reducedMotion ? {} : { opacity: 0, y: 32, filter: 'blur(8px)' },
+              visible: reducedMotion ? {} : { 
+                opacity: 1, 
+                y: 0, 
+                filter: 'blur(0px)',
+                transition: { duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.2 } 
+              }
             }}
           >
-            <span className="showcase__label">
-              {String(index + 1).padStart(2, '0')}
-            </span>
-            <h2 className="showcase__title">{item.title}</h2>
+            <div className="showcase__meta">
+              <motion.span 
+                className="showcase__number-label"
+                variants={{
+                  hidden: { opacity: 0, scale: 0.8 },
+                  visible: { opacity: 0.1, scale: 1, transition: { duration: 1.2, ease: 'easeOut' } }
+                }}
+              >
+                {String(index + 1).padStart(2, '0')}
+              </motion.span>
+              <h2 className="showcase__title">{item.title}</h2>
+            </div>
             <p className="showcase__subtitle">{item.subtitle}</p>
             <p className="showcase__desc">{item.description}</p>
             <hr className="showcase__divider" />
@@ -47,16 +56,16 @@ function ShowcaseSection({
           <motion.div
             className="showcase__image-mask"
             variants={{
-              hidden: reducedMotion ? {} : {
-                clipPath: item.reverse
-                  ? 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)'
-                  : 'polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)',
+              hidden: reducedMotion ? {} : { 
+                opacity: 0,
+                y: 60,
+                scale: 0.95
               },
               visible: reducedMotion ? {} : {
-                clipPath: item.reverse
-                  ? 'polygon(0% 0%, 85% 0%, 100% 100%, 0% 100%)'
-                  : 'polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%)',
-                transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] }
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }
               }
             }}
           >
@@ -64,27 +73,18 @@ function ShowcaseSection({
               className="showcase__image"
               src={item.imageUrl}
               alt=""
-              whileHover={{ scale: 1.04 }}
-              transition={{ duration: 0.6, ease: 'easeOut' }}
+              variants={{
+                hidden: { scale: 1.2, opacity: 0.8 },
+                visible: { scale: 1, opacity: 1, transition: { duration: 1.8, ease: [0.16, 1, 0.3, 1] } }
+              }}
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               loading={index === 0 ? 'eager' : 'lazy'}
               decoding="async"
             />
-            <div className="showcase__image-overlay" />
           </motion.div>
         </div>
-
-        {/* Section number watermark */}
-        <motion.span
-          className="showcase__number"
-          aria-hidden="true"
-          variants={{
-            hidden: reducedMotion ? {} : { opacity: 0, x: item.reverse ? -40 : 40 },
-            visible: reducedMotion ? {} : { opacity: 0.04, x: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } }
-          }}
-        >
-          {String(index + 1).padStart(2, '0')}
-        </motion.span>
-      </div>
+        </div>
     </motion.article>
   )
 }

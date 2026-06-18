@@ -1,14 +1,15 @@
 :root {
   /* Canvas & surfaces */
-  --color-canvas: #faf9f5;
-  --color-surface-soft: #f3f2ec;
-  --color-surface-card: #ffffff;
+  --color-canvas: #f5f4ed;
+  --color-surface: #f5f4ed;
+  --color-surface-soft: #f7f6f1;
+  --color-surface-card: #faf9f5;
   --color-surface-dark: #1a1a18;
-  --color-hairline: rgba(26, 26, 24, 0.08);
+  --color-hairline: #e6e2d8;
 
   /* Text */
-  --color-text-primary: #1a1a18;
-  --color-text-secondary: #5c5c58;
+  --color-text-primary: #141413;
+  --color-text-secondary: #5e5d59;
   --color-text-muted: #8a8a85;
   --color-text-on-primary: #ffffff;
 
@@ -30,8 +31,8 @@
   --text-small: clamp(0.8125rem, 0.25vw + 0.75rem, 0.875rem);
 
   /* Spacing — fluid section rhythm */
-  --space-section: clamp(3rem, 8vw + 1rem, 6rem);
-  --page-padding: clamp(1rem, 4vw, 2.5rem);
+  --space-section: clamp(1.5rem, 4vw, 2.5rem);
+  --page-padding: clamp(1rem, 3vw, 2rem);
   --nav-height: 3.5rem;
   --touch-target: 2.75rem;
 
@@ -47,20 +48,21 @@
 }
 
 [data-theme='dark'] {
-  --color-canvas: #141413;
-  --color-surface-soft: #1e1e1c;
-  --color-surface-card: #222220;
-  --color-surface-dark: #faf9f5;
-  --color-hairline: rgba(250, 249, 245, 0.08);
+  --color-canvas: #f5f4ed;
+  --color-surface: #f5f4ed;
+  --color-surface-soft: #f7f6f1;
+  --color-surface-card: #faf9f5;
+  --color-surface-dark: #1a1a18;
+  --color-hairline: #e6e2d8;
 
-  --color-text-primary: #f5f4f0;
-  --color-text-secondary: #a8a8a3;
-  --color-text-muted: #6e6e6a;
+  --color-text-primary: #141413;
+  --color-text-secondary: #5e5d59;
+  --color-text-muted: #8a8a85;
   --color-text-on-primary: #ffffff;
 
-  --color-primary: #d4896e;
-  --color-primary-hover: #e09a7f;
-  --color-primary-muted: rgba(212, 137, 110, 0.15);
+  --color-primary: #cc785c;
+  --color-primary-hover: #b86a4f;
+  --color-primary-muted: rgba(204, 120, 92, 0.12);
 }
 
 /* Narrow phones */

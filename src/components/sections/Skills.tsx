@@ -3,6 +3,7 @@ import { SkillMarquee } from '@/components/ui/SkillMarquee'
 import { getSkillIconUrl, skillCategories } from '@/data/skills'
 import { useSkillsScrollAnimation } from '@/hooks/useSkillsScrollAnimation'
 import { useTheme } from '@/providers/ThemeProvider'
+import { CheckCircle2 } from 'lucide-react'
 import './Skills.css'
 
 export function Skills() {
@@ -54,7 +55,7 @@ export function Skills() {
                           decoding="async"
                         />
                       ) : (
-                        <span className="skills__chip-dot" aria-hidden="true" />
+                        <CheckCircle2 className="skills__chip-icon" size={24} color="var(--color-primary)" strokeWidth={2} />
                       )}
                       <span className="skills__chip-label">{skill.name}</span>
                     </li>
