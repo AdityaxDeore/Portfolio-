@@ -1,12 +1,18 @@
 import { colorizeTerminalLine } from '@/lib/colorizeTerminalLine'
-import { getCommandSuggestions } from '@/data/terminal'
+import { skillCategories } from '@/data/skills'
+import { projects } from '@/data/projects'
+import { experienceItems } from '@/data/experience'
+import { aboutProfile } from '@/data/about'
+import { contactLinks } from '@/data/contact'
+import { resumePdfUrl } from '@/data/resume'
 import {
-  inferLineRole,
   type TerminalPresentation,
 } from '@/lib/inferTerminalPresentation'
 import { TerminalTitlebar } from '@/components/ui/TerminalTitlebar'
 import { MessageLoading } from '@/components/ui/message-loading'
-import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
+import { motion, useReducedMotion } from 'motion/react'
+import { gsap } from 'gsap'
+import { useGSAP } from '@gsap/react'
 import {
   useCallback,
   useEffect,
@@ -15,8 +21,11 @@ import {
   useState,
   type KeyboardEvent,
   type ReactNode,
+  type MouseEvent,
 } from 'react'
 import './PortfolioTerminal.css'
+
+gsap.registerPlugin(useGSAP)
 
 export type TerminalLineEntry = {
   key: string
@@ -48,7 +57,153 @@ type PortfolioTerminalProps = {
 }
 
 const MAX_HISTORY = 40
-const BLOCK_EASE = [0.22, 1, 0.36, 1] as const
+
+const ASCII_ADITYA = [
+  ' █████  ██████  ██ ████████ ██    ██  █████ ',
+  '██   ██ ██   ██ ██    ██     ██  ██  ██   ██',
+  '███████ ██   ██ ██    ██      ████   ███████',
+  '██   ██ ██   ██ ██    ██       ██    ██   ██',
+  '██   ██ ██████  ██    ██       ██    ██   ██',
+]
+
+const SYSTEM_REPORT = [
+  'OS: AdityaOS v2.0.26',
+  'Kernel: 5.15.0-neural',
+  'Uptime: 1024ms',
+  'Shell: gsap-cli 3.12.5',
+  'Terminal: Portfolio-UX',
+  'CPU: AGI-Core (16) @ 5.0GHz',
+  'MEM: 64GB / 128GB',
+]
+
+function AnimatedBanner({ onComplete }: { onComplete?: () => void }) {
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useGSAP(() => {
+    const tl = gsap.timeline({ onComplete })
+    
+    tl.from('.banner-line', {
+      opacity: 0,
+      x: -20,
+      stagger: 0.1,
+      duration: 0.8,
+      ease: 'power3.out',
+    })
+
+    tl.from('.system-report-line', {
+      opacity: 0,
+      y: 10,
+      stagger: 0.05,
+      duration: 0.5,
+      ease: 'power2.out',
+    }, '-=0.4')
+  }, { scope: containerRef })
+
+  return (
+    <div ref={containerRef} style={{ display: 'flex', gap: '3rem', alignItems: 'flex-start', marginBottom: '2.5rem' }}>
+      <div className="portfolio-terminal__banner">
+        {ASCII_ADITYA.map((line, i) => (
+          <div key={i} className="banner-line" style={{ textShadow: '0 0 10px rgba(74, 222, 128, 0.4)' }}>{line}</div>
+        ))}
+      </div>
+      <div style={{ marginTop: '0.8rem' }}>
+        {SYSTEM_REPORT.map((line, i) => (
+          <div key={i} className="system-report-line" style={{ fontSize: '0.65rem', color: 'var(--terminal-muted)', marginBottom: '2px' }}>
+            <span style={{ color: 'var(--terminal-accent)', opacity: 0.7 }}>❯</span> {line}
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function SystemMonitor() {
+  const [cpu, setCpu] = useState(32)
+  const [mem, setMem] = useState(58)
+  const [net, setNet] = useState(8)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCpu(prev => Math.max(10, Math.min(95, prev + (Math.random() * 10 - 5))))
+      setMem(prev => Math.max(40, Math.min(80, prev + (Math.random() * 4 - 2))))
+      setNet(prev => Math.max(2, Math.min(40, prev + (Math.random() * 10 - 5))))
+    }, 2000)
+    return () => clearInterval(interval)
+  }, [])
+
+  return (
+    <div className="sidebar-monitor">
+      {[
+        { label: 'CPU NODE', val: cpu },
+        { label: 'MEM BUFFER', val: mem },
+        { label: 'NET STREAM', val: net }
+      ].map(m => (
+        <div key={m.label} className="monitor-item">
+          <div className="monitor-label">
+            <span>{m.label}</span>
+            <span style={{ color: 'var(--terminal-accent)' }}>{Math.round(m.val)}%</span>
+          </div>
+          <div className="monitor-bar">
+            <motion.div 
+              className="monitor-fill" 
+              animate={{ width: `${m.val}%` }}
+              transition={{ type: 'spring', stiffness: 40, damping: 12 }}
+            />
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function MatrixBackground() {
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+
+    const resize = () => {
+      canvas.width = canvas.offsetWidth
+      canvas.height = canvas.offsetHeight
+    }
+    resize()
+    window.addEventListener('resize', resize)
+
+    const characters = '01ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜｦﾝ'
+    const fontSize = 12
+    const columns = Math.floor(canvas.width / fontSize)
+    const drops: number[] = new Array(columns).fill(1)
+
+    const draw = () => {
+      ctx.fillStyle = 'rgba(10, 10, 10, 0.1)'
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
+
+      ctx.fillStyle = '#4ADE8018'
+      ctx.font = `${fontSize}px monospace`
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = characters.charAt(Math.floor(Math.random() * characters.length))
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize)
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.98) {
+          drops[i] = 0
+        }
+        drops[i]++
+      }
+    }
+
+    const interval = setInterval(draw, 45)
+    return () => {
+      clearInterval(interval)
+      window.removeEventListener('resize', resize)
+    }
+  }, [])
+
+  return <canvas ref={canvasRef} className="portfolio-terminal__matrix" />
+}
 
 function groupLinesIntoBlocks(lines: TerminalLineEntry[]): TerminalBlock[] {
   const blocks: TerminalBlock[] = []
@@ -91,57 +246,82 @@ function groupLinesIntoBlocks(lines: TerminalLineEntry[]): TerminalBlock[] {
   return blocks
 }
 
-function getIdentityInitial(text: string): string {
-  return text
-    .split(/\s+/)
-    .slice(0, 2)
-    .map((part) => part[0])
-    .join('')
-    .toUpperCase()
-}
-
 export function PortfolioTerminal({
   lines,
-  title = 'portfolio-shell',
-  prompt = '>',
-  hints = 'Type `help` · Tab to complete · ↑↓ history',
-  status = 'portfolio session',
+  title = 'aditya @src\\components\\ui\\PortfolioTerminal.tsx ~',
   onSubmit,
   onClose,
   className = '',
   isLoading = false,
 }: PortfolioTerminalProps) {
   const reducedMotion = useReducedMotion()
-  const shellRef = useRef<HTMLDivElement>(null)
   const transcriptRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
   const [input, setInput] = useState('')
   const [history, setHistory] = useState<string[]>([])
   const [historyIndex, setHistoryIndex] = useState(-1)
-  const [suggestionIndex, setSuggestionIndex] = useState(0)
   const [windowState, setWindowState] = useState<WindowState>('normal')
+  const [isBooting, setIsBooting] = useState(true)
+  const [bootStep, setBootStep] = useState(0)
 
-  const suggestions = useMemo(() => getCommandSuggestions(input), [input])
-  const showSuggestions = input.length > 0 && suggestions.length > 0
   const blocks = useMemo(() => groupLinesIntoBlocks(lines), [lines])
 
-  const focusInput = useCallback(() => {
-    if (windowState === 'minimized') {
-      setWindowState('normal')
+  const bootSequence = [
+    { text: '>> INITIALIZING ADITYA-OS KERNEL...', type: 'info' },
+    { text: '[ LOADING NEURAL NETWORKS ]', type: 'info' },
+    { text: '[✓] VRAM OPTIMIZED', type: 'success' },
+    { text: '[✓] CORE SYNCED', type: 'success' },
+    { text: '>> DEPLOYING INTERFACE...', type: 'info' },
+  ]
+
+  useGSAP(() => {
+    if (isBooting) {
+      if (bootStep < bootSequence.length) {
+        const timer = setTimeout(() => {
+          setBootStep(prev => prev + 1)
+        }, 300 + Math.random() * 400)
+        return () => clearTimeout(timer)
+      } else {
+        const timer = setTimeout(() => {
+          setIsBooting(false)
+        }, 600)
+        return () => clearTimeout(timer)
+      }
     }
+  }, { dependencies: [isBooting, bootStep] })
+
+  // Stagger blocks entrance with GSAP
+  useGSAP(() => {
+    if (!isBooting && transcriptRef.current) {
+      const newBlocks = transcriptRef.current.querySelectorAll('.terminal-block:not(.animated)')
+      if (newBlocks.length > 0) {
+        gsap.from(newBlocks, {
+          opacity: 0,
+          y: 20,
+          stagger: 0.1,
+          duration: 0.5,
+          ease: 'power3.out',
+          onComplete: () => {
+            newBlocks.forEach(b => b.classList.add('animated'))
+          }
+        })
+      }
+    }
+  }, { dependencies: [isBooting, blocks.length] })
+
+  const focusInput = useCallback(() => {
     inputRef.current?.focus()
-  }, [windowState])
+  }, [])
 
   useEffect(() => {
     const transcript = transcriptRef.current
-    if (!transcript || windowState === 'minimized') return
-    transcript.scrollTo({ top: transcript.scrollHeight, behavior: reducedMotion ? 'auto' : 'smooth' })
-  }, [lines, reducedMotion, windowState])
-
-  useEffect(() => {
-    setSuggestionIndex(0)
-  }, [input, suggestions.length])
+    if (!transcript) return
+    // Adding a slight delay to allow GSAP animations to compute layout before scrolling
+    setTimeout(() => {
+      transcript.scrollTo({ top: transcript.scrollHeight, behavior: reducedMotion ? 'auto' : 'smooth' })
+    }, 50)
+  }, [lines, reducedMotion, isBooting])
 
   const submit = useCallback(
     (raw: string) => {
@@ -154,50 +334,26 @@ export function PortfolioTerminal({
       })
       setHistoryIndex(-1)
       setInput('')
-      if (windowState === 'minimized') {
-        setWindowState('normal')
-      }
       onSubmit(trimmed)
     },
-    [onSubmit, windowState],
+    [onSubmit],
   )
 
-  const applySuggestion = useCallback((value: string) => {
-    setInput(value)
-    setSuggestionIndex(0)
-    requestAnimationFrame(() => {
-      const el = inputRef.current
-      if (!el) return
-      el.focus()
-      el.setSelectionRange(value.length, value.length)
-    })
-  }, [])
+  const handleSidebarClick = useCallback((event: MouseEvent, cmd: string) => {
+    event.preventDefault()
+    event.stopPropagation()
+    submit(cmd)
+  }, [submit])
 
   const handleKeyDown = useCallback(
     (event: KeyboardEvent<HTMLInputElement>) => {
       if (event.key === 'Enter') {
         event.preventDefault()
-        if (showSuggestions && suggestions[suggestionIndex]) {
-          applySuggestion(suggestions[suggestionIndex])
-          return
-        }
         submit(input)
         return
       }
 
-      if (event.key === 'Tab') {
-        event.preventDefault()
-        if (!suggestions.length) return
-        applySuggestion(suggestions[suggestionIndex])
-        return
-      }
-
       if (event.key === 'ArrowDown') {
-        if (showSuggestions) {
-          event.preventDefault()
-          setSuggestionIndex((index) => (index + 1) % suggestions.length)
-          return
-        }
         if (!history.length) return
         event.preventDefault()
         const nextIndex = historyIndex < 0 ? 0 : Math.min(historyIndex + 1, history.length - 1)
@@ -207,11 +363,6 @@ export function PortfolioTerminal({
       }
 
       if (event.key === 'ArrowUp') {
-        if (showSuggestions) {
-          event.preventDefault()
-          setSuggestionIndex((index) => (index - 1 + suggestions.length) % suggestions.length)
-          return
-        }
         if (!history.length) return
         event.preventDefault()
         const nextIndex = historyIndex < 0 ? 0 : Math.max(historyIndex - 1, 0)
@@ -227,209 +378,269 @@ export function PortfolioTerminal({
         return
       }
     },
-    [
-      applySuggestion,
-      history,
-      historyIndex,
-      input,
-      showSuggestions,
-      submit,
-      suggestionIndex,
-      suggestions,
-    ],
+    [history, historyIndex, input, submit],
   )
 
-  const renderLine = (line: TerminalLineEntry, presentation: TerminalPresentation = 'default') => {
-    if (line.kind === 'input') {
-      return (
-        <div className="portfolio-terminal__input-line">
-          <span className="portfolio-terminal__prompt">{prompt}</span>
-          <span className="portfolio-terminal__typed">{line.text}</span>
-        </div>
-      )
-    }
-
-    if (line.kind === 'tool') {
-      return (
-        <div className="portfolio-terminal__tool-line">
-          {colorizeTerminalLine(line.text, 'tool')}
-        </div>
-      )
-    }
-
-    const role = inferLineRole(line.text, presentation)
-
-    return (
-      <div
-        className={`portfolio-terminal__output-line portfolio-terminal__output-line--${role}`}
-        data-role={role}
-      >
-        {line.node ?? colorizeTerminalLine(line.text)}
+  const renderIdentity = () => (
+    <div className="terminal-identity-card">
+      <div className="terminal-identity-avatar">
+        {aboutProfile.shortName.charAt(0)}
       </div>
-    )
-  }
+      <div className="terminal-identity-info">
+        <h3>{aboutProfile.name}</h3>
+        <p>{aboutProfile.role}</p>
+        <div className="meta">
+          <span className="t-accent">»</span> {aboutProfile.location} | {aboutProfile.education}
+        </div>
+      </div>
+    </div>
+  )
 
-  const renderBlockBody = (block: TerminalBlock) => {
-    const presentation = block.presentation ?? 'default'
-    const outputLines = block.lines.filter((line) => line.kind === 'output')
+  const renderContact = () => (
+    <div className="terminal-contact-grid">
+      {contactLinks.map(link => (
+        <a key={link.id} href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noopener noreferrer" : undefined} className="terminal-contact-btn">
+          <span className="label">{link.label}</span>
+          <span className="desc">{link.description}</span>
+        </a>
+      ))}
+    </div>
+  )
 
-    if (presentation === 'identity' && outputLines.length > 0) {
-      const [nameLine, ...rest] = outputLines
-      return (
-        <div className="portfolio-terminal__identity-card">
-          <div className="portfolio-terminal__identity-badge" aria-hidden="true">
-            {getIdentityInitial(nameLine.text)}
-          </div>
-          <div className="portfolio-terminal__identity-body">
-            <p className="portfolio-terminal__identity-name">{colorizeTerminalLine(nameLine.text)}</p>
-            {rest.map((line) => (
-              <div
-                key={line.key}
-                className={`portfolio-terminal__output-line portfolio-terminal__output-line--${inferLineRole(line.text, presentation)}`}
-              >
-                {line.node ?? colorizeTerminalLine(line.text)}
+  const renderResume = () => (
+    <div className="terminal-resume-card">
+      <div>
+        <div className="portfolio-terminal__output-header" style={{ marginTop: 0 }}>Resume & Documents</div>
+        <div style={{ fontSize: '0.8rem', color: 'var(--terminal-muted)', marginBottom: '0.5rem' }}>
+          Verified AI/ML Engineer profile ready for deployment.
+        </div>
+      </div>
+      <a href={resumePdfUrl} download="Aditya_Deore_Resume.pdf" className="terminal-resume-btn">
+        <span>↓</span> DOWNLOAD
+      </a>
+    </div>
+  )
+
+  const renderSkills = () => (
+    <div className="portfolio-terminal__skills">
+      {skillCategories.map(category => (
+        <div key={category.id} className="portfolio-terminal__skill-category">
+          <div className="portfolio-terminal__output-header">{category.title}</div>
+          {category.skills.map((skill, idx) => (
+            <div key={skill.name} className="terminal-progress">
+              <span className="terminal-progress__label">{skill.name}</span>
+              <div className="terminal-progress__bar-container">
+                <motion.div 
+                  className="terminal-progress__bar-fill"
+                  initial={{ width: 0 }}
+                  animate={{ width: `${85 - idx * 5}%` }}
+                  transition={{ duration: 1.2, delay: idx * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                />
               </div>
-            ))}
+              <span style={{ color: 'var(--terminal-muted)', fontSize: '0.7rem', width: '30px' }}>{85 - idx * 5}%</span>
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  )
+
+  const renderProjects = () => (
+    <div className="portfolio-terminal__projects">
+      {projects.map(project => (
+        <div key={project.id} className="project-ascii-card">
+          <div className="project-ascii-card__title">[{project.id.toUpperCase()}] :: {project.title}</div>
+          <div className="portfolio-terminal__line" style={{ display: 'flex', gap: '2rem' }}>
+            <div style={{ flex: 1 }}>
+              <div className="portfolio-terminal__line">Role: <span className="t-hl">{project.caseStudy.role}</span></div>
+              <div className="portfolio-terminal__line">Tags: <span className="t-accent">{project.tags.join(' | ')}</span></div>
+              <div className="portfolio-terminal__line" style={{ marginTop: '0.5rem', opacity: 0.9 }}>{project.caseStudy.summary}</div>
+            </div>
+            <div className="portfolio-terminal__line" style={{ fontSize: '0.65rem', color: 'var(--terminal-accent)', opacity: 0.6 }}>
+              {`
+    INTERFACE ---> [PROCESS] ---+---> [MEMORY]
+                 |           |
+                 v           v
+              [NEURAL]    [DATA]
+              `}
+            </div>
           </div>
         </div>
-      )
-    }
+      ))}
+    </div>
+  )
 
-    return block.lines
-      .filter((line) => line.kind === 'output')
-      .map((line) => (
-        <div key={line.key} className="portfolio-terminal__line portfolio-terminal__line--output">
-          {renderLine(line, presentation)}
+  const renderExperience = () => (
+    <div className="terminal-timeline">
+      {experienceItems.map(item => (
+        <div key={item.id} className="terminal-timeline__item">
+          <div className="portfolio-terminal__output-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+            <span>{item.role} @ {item.company}</span>
+            <span style={{ fontSize: '0.65rem', color: 'var(--terminal-muted)', fontWeight: 'normal' }}>{item.period}</span>
+          </div>
+          <div className="portfolio-terminal__line" style={{ color: 'var(--terminal-muted)', marginBottom: '0.5rem' }}>{item.location}</div>
+          <div className="portfolio-terminal__line" style={{ opacity: 0.9 }}>{item.summary}</div>
+          {item.highlights.map(h => (
+            <div key={h} className="portfolio-terminal__line" style={{ fontSize: '0.8rem', opacity: 0.8 }}>
+              <span className="t-accent">↳</span> {h}
+            </div>
+          ))}
         </div>
-      ))
+      ))}
+    </div>
+  )
+
+  const DynamicPrompt = () => (
+    <div className="portfolio-terminal__prompt-container">
+      <span className="prompt-path">~/aditya-deore</span>
+      <span className="prompt-branch" style={{ textShadow: '0 0 5px rgba(248, 113, 113, 0.4)' }}>(master)</span>
+      <span className="prompt-symbol">➜</span>
+    </div>
+  )
+
+  // Map presentations to rich renderers
+  const CUSTOM_RENDERERS: Record<string, () => ReactNode> = {
+    identity: renderIdentity,
+    contact: renderContact,
+    resume: renderResume,
+    skills: renderSkills,
+    projects: renderProjects,
+    timeline: renderExperience,
   }
 
   return (
-    <div
-      ref={shellRef}
-      className={`portfolio-terminal portfolio-terminal--${windowState} ${className}`.trim()}
-      onClick={focusInput}
-      role="region"
-      aria-label="Interactive terminal"
-    >
+    <div className={`portfolio-terminal ${className}`} onClick={focusInput}>
+      <MatrixBackground />
+      <div className="portfolio-terminal__grid" />
+      <div className="portfolio-terminal__neural" />
+      <div className="portfolio-terminal__scanline" />
+      
       <TerminalTitlebar
         title={title}
         windowState={windowState}
-        onClose={() => onClose?.()}
-        onMinimize={() => setWindowState((state) => (state === 'minimized' ? 'normal' : 'minimized'))}
-        onMaximize={() =>
-          setWindowState((state) => (state === 'expanded' ? 'normal' : 'expanded'))
-        }
+        onClose={onClose}
+        onMinimize={() => setWindowState(s => s === 'minimized' ? 'normal' : 'minimized')}
+        onMaximize={() => setWindowState(s => s === 'expanded' ? 'normal' : 'expanded')}
       />
 
       <div className="portfolio-terminal__body">
-        <div ref={transcriptRef} className="portfolio-terminal__transcript">
-          {blocks.map((block, blockIndex) => (
-            <motion.section
-              key={block.key}
-              className={`portfolio-terminal__block${block.isWelcome ? ' portfolio-terminal__block--welcome' : ''}${block.presentation ? ` portfolio-terminal__block--${block.presentation}` : ''}`}
-              data-presentation={block.presentation ?? 'default'}
-              initial={reducedMotion ? false : { opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.42,
-                delay: block.isWelcome ? blockIndex * 0.04 : 0,
-                ease: BLOCK_EASE,
-              }}
-            >
-              {block.lines
-                .filter((line) => line.kind !== 'output')
-                .map((line) => (
-                  <div
-                    key={line.key}
-                    className={`portfolio-terminal__line portfolio-terminal__line--${line.kind}`}
+        {/* Sidebar */}
+        <aside className="portfolio-terminal__sidebar">
+          <div className="portfolio-terminal__sidebar-header">
+            <h1 className="portfolio-terminal__sidebar-name glitch-text" data-text="ADITYA DEORE">ADITYA DEORE</h1>
+            <p className="portfolio-terminal__sidebar-tagline">AI/ML Engineer | PCCOE Pune</p>
+          </div>
+
+          <nav className="portfolio-terminal__sidebar-nav" style={{ flex: 1 }}>
+            <section>
+              <h2 className="portfolio-terminal__sidebar-section-title">COMMANDS</h2>
+              <div className="portfolio-terminal__sidebar-links">
+                {['whoami', 'skills', 'projects', 'experience', 'contact', 'resume'].map(cmd => (
+                  <button 
+                    key={cmd} 
+                    type="button"
+                    className="portfolio-terminal__sidebar-link" 
+                    onClick={(e) => handleSidebarClick(e, cmd)}
                   >
-                    {renderLine(line, block.presentation)}
+                    {cmd}
+                  </button>
+                ))}
+              </div>
+            </section>
+
+            <section>
+              <h2 className="portfolio-terminal__sidebar-section-title">SYSTEM</h2>
+              <div className="portfolio-terminal__sidebar-links">
+                <a href="https://github.com/adityadeore" target="_blank" rel="noopener noreferrer" className="portfolio-terminal__sidebar-link" onClick={(e) => e.stopPropagation()}>github</a>
+                <a href="https://linkedin.com/in/adityadeore" target="_blank" rel="noopener noreferrer" className="portfolio-terminal__sidebar-link" onClick={(e) => e.stopPropagation()}>linkedin</a>
+                <a href="mailto:contact@adityadeore.com" className="portfolio-terminal__sidebar-link" onClick={(e) => e.stopPropagation()}>email</a>
+              </div>
+            </section>
+          </nav>
+
+          <SystemMonitor />
+        </aside>
+
+        {/* Main Workspace */}
+        <main className="portfolio-terminal__main">
+          <div ref={transcriptRef} className="portfolio-terminal__transcript">
+            {isBooting ? (
+              <div className="boot-sequence" style={{ padding: '1rem' }}>
+                {bootSequence.slice(0, bootStep).map((line, i) => (
+                  <motion.div 
+                    key={i} 
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className={`portfolio-terminal__line ${line.type === 'success' ? 'boot-line--success' : ''}`}
+                  >
+                    <span style={{ color: 'var(--terminal-muted)', marginRight: '0.5rem' }}>[{new Date().toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' })}]</span>
+                    {line.text}
+                  </motion.div>
+                ))}
+                {bootStep < bootSequence.length && <MessageLoading />}
+              </div>
+            ) : (
+              <>
+                <AnimatedBanner />
+
+                {blocks.map((block) => (
+                  <section key={block.key} className="terminal-block" style={{ marginBottom: '1.5rem' }}>
+                    {block.lines.map((line) => (
+                      <div key={line.key} className="portfolio-terminal__line">
+                        {line.kind === 'input' ? (
+                          <div className="portfolio-terminal__input-line" style={{ marginBottom: '0.75rem' }}>
+                            <DynamicPrompt />
+                            <span className="portfolio-terminal__typed t-cmd">{line.text}</span>
+                          </div>
+                        ) : null}
+                      </div>
+                    ))}
+                    
+                    {block.presentation && CUSTOM_RENDERERS[block.presentation] ? (
+                      CUSTOM_RENDERERS[block.presentation]()
+                    ) : (
+                      <div className="portfolio-terminal__block-content">
+                        {block.lines
+                          .filter(l => l.kind === 'output')
+                          .map(line => (
+                            <div key={line.key} className="portfolio-terminal__line">
+                              {line.node ?? colorizeTerminalLine(line.text)}
+                            </div>
+                          ))}
+                      </div>
+                    )}
+                  </section>
+                ))}
+
+                {isLoading && (
+                  <div className="portfolio-terminal__loading-line" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <DynamicPrompt />
+                    <MessageLoading />
                   </div>
-                ))}
+                )}
+              </>
+            )}
+          </div>
 
-              {block.presentation === 'identity' ? (
-                renderBlockBody(block)
-              ) : (
-                <div className="portfolio-terminal__block-content">
-                  {renderBlockBody(block)}
-                </div>
-              )}
-
-              {!block.isWelcome ? <div className="portfolio-terminal__block-divider" aria-hidden="true" /> : null}
-            </motion.section>
-          ))}
-          {isLoading && (
-            <div className="portfolio-terminal__loading-line" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '0.5rem 1rem' }}>
-              <span className="portfolio-terminal__prompt">{prompt}</span>
-              <MessageLoading />
+          {/* Footer Input */}
+          <footer className="portfolio-terminal__footer">
+            <div className="portfolio-terminal__input-row">
+              <DynamicPrompt />
+              <input
+                ref={inputRef}
+                className="portfolio-terminal__input-field"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={handleKeyDown}
+                autoFocus
+                autoComplete="off"
+                spellCheck={false}
+              />
+              {input === '' && <span className="portfolio-terminal__cursor" />}
             </div>
-          )}
-        </div>
-
-        <div className="portfolio-terminal__chrome">
-          <AnimatePresence>
-            {showSuggestions ? (
-              <motion.ul
-                className="portfolio-terminal__suggestions"
-                aria-label="Command suggestions"
-                initial={reducedMotion ? false : { opacity: 0, y: 6 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={reducedMotion ? undefined : { opacity: 0, y: 4 }}
-                transition={{ duration: 0.18, ease: BLOCK_EASE }}
-              >
-                {suggestions.slice(0, 6).map((suggestion, index) => (
-                  <li key={suggestion}>
-                    <button
-                      type="button"
-                      className={`portfolio-terminal__suggestion${index === suggestionIndex ? ' portfolio-terminal__suggestion--active' : ''}`}
-                      onMouseDown={(event) => event.preventDefault()}
-                      onClick={() => applySuggestion(suggestion)}
-                    >
-                      {suggestion}
-                    </button>
-                  </li>
-                ))}
-              </motion.ul>
-            ) : null}
-          </AnimatePresence>
-
-          <p className="portfolio-terminal__hints">{hints}</p>
-
-          <div className="portfolio-terminal__input-row portfolio-terminal__input-row--live">
-            <span className="portfolio-terminal__prompt" aria-hidden="true">
-              {prompt}
-            </span>
-            <span className="portfolio-terminal__typed portfolio-terminal__typed--live">
-              {input}
-              <span className="portfolio-terminal__cursor" aria-hidden="true" />
-            </span>
-          </div>
-
-          <div className="portfolio-terminal__status" aria-live="polite">
-            <span className="portfolio-terminal__status-model">portfolio</span>
-            <span className="portfolio-terminal__status-sep">·</span>
-            <span>{status}</span>
-            <span className="portfolio-terminal__status-sep">·</span>
-            <span className="portfolio-terminal__status-dim">{lines.length} lines</span>
-          </div>
-        </div>
+          </footer>
+        </main>
       </div>
-
-      <input
-        ref={inputRef}
-        className="portfolio-terminal__hidden-input"
-        value={input}
-        onChange={(event) => {
-          setHistoryIndex(-1)
-          setInput(event.target.value)
-        }}
-        onKeyDown={handleKeyDown}
-        aria-label="Terminal command input"
-        autoComplete="off"
-        autoCorrect="off"
-        spellCheck={false}
-      />
     </div>
   )
 }

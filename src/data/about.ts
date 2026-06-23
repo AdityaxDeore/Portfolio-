@@ -4,7 +4,7 @@ export const aboutProfile = {
   role: 'Machine Learning Engineer & Full-Stack Developer',
   education: 'B.Tech IT @ PCCOE',
   location: 'Pune, India',
-  valueProp: 'I build ML systems and full-stack products that ship to production.',
+  valueProp: 'Motivated AI & Machine Learning developer with full-stack foundations focused on building data-driven, scalable applications.',
 } as const
 
 export const aboutRotatingKeywords = [
