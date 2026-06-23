@@ -153,9 +153,11 @@
   .top-nav__links {
     display: none;
   }
+
   .top-nav__cta-wrap {
     display: none;
   }
+
   .top-nav__menu-btn {
     display: flex;
   }

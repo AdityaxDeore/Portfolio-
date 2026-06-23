@@ -30,8 +30,9 @@ export const terminalQuickActions: TerminalQuickAction[] = [
   { id: 'skills', label: 'skills', command: 'skills', hint: 'tools & frameworks' },
   { id: 'contact', label: 'contact', command: 'contact', hint: 'email & socials' },
   { id: 'resume', label: 'resume', command: 'resume', hint: 'download pdf' },
-  { id: 'open-convoa', label: 'open convoa', command: 'open convoa', hint: 'ml analytics' },
-  { id: 'open-eletix', label: 'open eletix', command: 'open eletix', hint: 'model dashboard' },
+  { id: 'open-codecampus', label: 'open codecampus', command: 'open codecampus', hint: 'coding platform' },
+  { id: 'open-tumorai', label: 'open tumorai', command: 'open tumorai', hint: 'tumor detection' },
+  { id: 'open-clarity', label: 'open clarity', command: 'open clarity', hint: 'wellness app' },
   { id: 'help', label: 'help', command: 'help', hint: 'command reference' },
 ]
 

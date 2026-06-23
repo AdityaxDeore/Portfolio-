@@ -4,7 +4,7 @@ export type ExperienceItem = {
   role: string
   period: string
   location: string
-  type: 'full-time' | 'internship' | 'freelance' | 'contract'
+  type: 'full-time' | 'internship' | 'freelance' | 'contract' | 'part-time'
   summary: string
   highlights: string[]
   tech: string[]
@@ -19,51 +19,37 @@ export const experienceSection = {
 
 export const experienceItems: ExperienceItem[] = [
   {
-    id: 'ml-engineer-freelance',
-    company: 'Independent / Startups',
-    role: 'ML Engineer & Full-Stack Architect',
-    period: '2024 — Present',
-    location: 'Pune · Remote',
-    type: 'freelance',
+    id: 'itsa-web-dev',
+    company: 'ITSA (Information Technology Students Council)',
+    role: 'Software Development Associate',
+    period: 'May 2025 - Jan 2026',
+    location: 'PCCOE, Pune',
+    type: 'part-time',
     summary:
-      'Designing and deploying production-grade AI features and data infrastructure for early-stage ventures.',
+      'Engineered an event management platform that onboarded 3,500+ students across hackathons, workshops, and technical initiatives.',
     highlights: [
-      'Engineered a RAG-based conversational engine reducing support ticket volume by 35% through automated schema-aware responses.',
-      'Developed real-time ML observability dashboards for monitoring drift and latency across 10+ production models.',
-      'Orchestrated containerized inference microservices with automated scaling and blue-green deployment strategies.',
+      'Engineered an event management platform that onboarded 3,500+ students across hackathons, workshops, and technical initiatives.',
+      'Implemented a Unique Student ID-based registration and attendance system, automating participant verification and tracking.',
+      'Developed responsive full-stack web applications, streamlining event discovery, registration, and engagement for the student community.',
     ],
-    tech: ['Python', 'FastAPI', 'React', 'PyTorch', 'Docker', 'PostgreSQL', 'AWS'],
+    tech: ['HTML5', 'CSS3', 'React.js', 'Node.js'],
   },
   {
-    id: 'fullstack-intern',
-    company: 'Agile Product Studio',
-    role: 'Full-Stack Developer Intern',
-    period: 'Summer 2024',
-    location: 'Pune',
+    id: 'personify-ai-ml',
+    company: 'Personify',
+    role: 'AI/ML Intern',
+    period: 'Mar 2025 - May 2025',
+    location: 'Bengaluru, India (Hybrid)',
     type: 'internship',
     summary:
-      'Core contributor to high-traffic e-commerce and automation platforms, owning feature cycles from API design to UI polish.',
+      'Engineered TensorFlow-based computer vision models for image classification and object detection, achieving over 94% accuracy.',
     highlights: [
-      'Revamped inventory management logic to support high-concurrency variant tracking, improving data consistency by 99%.',
-      'Implemented a modular webhook engine with exponential backoff and dead-letter queues for robust external integrations.',
-      'Standardized a reusable React component library reducing frontend development time for new features by 20%.',
+      'Engineered TensorFlow-based computer vision models for image classification and object detection, achieving over 94% accuracy across multiple datasets.',
+      'Optimized CNN architectures using transfer learning, data augmentation, and hyperparameter tuning, resulting in a 15% improvement in F1-Score and enhanced model generalization.',
+      'Designed automated preprocessing and training pipelines, reducing data preparation time by 40%.',
+      'Evaluated model performance through Precision metrics, reducing false detections by 25% and improving prediction reliability.',
+      'Enhanced inference efficiency through feature extraction and model optimization techniques, decreasing prediction latency by 30% while maintaining high accuracy.',
     ],
-    tech: ['React', 'Node.js', 'TypeScript', 'Redis', 'PostgreSQL', 'Tailwind'],
-  },
-  {
-    id: 'ml-research',
-    company: 'PCCOE Research Lab',
-    role: 'ML Research Lead',
-    period: '2022 — 2024',
-    location: 'Pune',
-    type: 'internship',
-    summary:
-      'Led research initiatives focused on explainable AI and high-performance data engineering for clinical decision support.',
-    highlights: [
-      'Architected a clinical risk-prediction system with SHAP-based interpretability, achieving a 0.88 AUC on retrospective patient cohorts.',
-      'Optimized data processing pipelines using Polars, achieving a 12x speedup compared to legacy Pandas implementations.',
-      'Published comprehensive evaluation reports documenting model calibration and fairness across diverse demographic slices.',
-    ],
-    tech: ['Python', 'Polars', 'Scikit-learn', 'TensorFlow', 'FastAPI', 'Matplotlib'],
+    tech: ['Python', 'TensorFlow', 'Machine Learning', 'NumPy', 'Pandas'],
   },
 ]

@@ -79,8 +79,8 @@ export function TopNav() {
           {navItems.map((link) => {
             const sectionId = link.href.split('#')[1] || ''
             return (
-              <div 
-                key={link.href} 
+              <div
+                key={link.href}
                 className="top-nav__link-wrapper"
                 onMouseEnter={() => handleMouseEnter(sectionId)}
               >
@@ -133,7 +133,7 @@ export function TopNav() {
 
       <AnimatePresence>
         {activeDropdown && (
-          <motion.div 
+          <motion.div
             className="top-nav__dropdown"
             initial={{ opacity: 0, y: -10, height: 0 }}
             animate={{ opacity: 1, y: 0, height: 'auto' }}
