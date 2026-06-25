@@ -2,9 +2,23 @@ import { CurvedLoop } from '@/components/ui/CurvedLoop'
 import { valueMarqueeText, valuePillars, valueSection } from '@/data/value'
 import { useBreakpoint } from '@/hooks/useBreakpoint'
 import { useInView } from '@/hooks/useInView'
-import { useWhatIBringScrollAnimation } from '@/hooks/useWhatIBringScrollAnimation'
 import { useReducedMotion } from 'motion/react'
 import './WhatIBring.css'
+
+declare global {
+  namespace React {
+    namespace JSX {
+      interface IntrinsicElements {
+        'dotlottie-player': any;
+      }
+    }
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      'dotlottie-player': any;
+    }
+  }
+}
 
 function getCurveSettings(breakpoint: ReturnType<typeof useBreakpoint>) {
   switch (breakpoint) {
@@ -22,18 +36,15 @@ function getCurveSettings(breakpoint: ReturnType<typeof useBreakpoint>) {
 }
 
 export function WhatIBring() {
-  const sectionRef = useWhatIBringScrollAnimation()
   const [curveRef, curveInView] = useInView<HTMLDivElement>({ rootMargin: '80px 0px' })
   const breakpoint = useBreakpoint()
   const reducedMotion = useReducedMotion()
   const curve = getCurveSettings(breakpoint)
-  const total = String(valuePillars.length).padStart(2, '0')
 
   return (
     <section
       id="expertise"
       className="what-i-bring"
-      ref={sectionRef}
       aria-labelledby="what-i-bring-title"
     >
       <div className="what-i-bring__scroller">
@@ -47,24 +58,37 @@ export function WhatIBring() {
 
         <div className="what-i-bring__stage">
           <div className="what-i-bring__track" aria-live="polite">
-            {valuePillars.map((pillar, index) => (
+            {[...valuePillars, ...valuePillars].map((pillar, index) => (
               <article
-                key={pillar.id}
+                key={`${pillar.id}-${index}`}
                 className="what-i-bring__card"
-                aria-label={`${pillar.label}, ${index + 1} of ${valuePillars.length}`}
+                aria-label={`${pillar.label}, ${index + 1} of ${valuePillars.length * 2}`}
               >
                 <div className="what-i-bring__card-inner">
-                    <div className="what-i-bring__visual-shell">
-                      <span className="what-i-bring__index" aria-hidden="true">
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
+                  <div className="what-i-bring__visual-shell">
+                    <span className="what-i-bring__index" aria-hidden="true">
+                      {String((index % valuePillars.length) + 1).padStart(2, '0')}
+                    </span>
+                    {'lottieUrl' in pillar && pillar.lottieUrl ? (
+                      <div className="what-i-bring__lottie-container">
+                        <dotlottie-player
+                          src={pillar.lottieUrl}
+                          background="transparent"
+                          speed="1"
+                          loop
+                          autoplay
+                          style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                        />
+                      </div>
+                    ) : (
                       <img
                         src={pillar.image}
                         alt=""
                         className="what-i-bring__image"
                         loading="lazy"
                       />
-                    </div>
+                    )}
+                  </div>
 
                   <div className="what-i-bring__copy">
                     <p className="what-i-bring__tag">{pillar.tag}</p>
@@ -75,17 +99,6 @@ export function WhatIBring() {
               </article>
             ))}
           </div>
-        </div>
-
-        <div className="container what-i-bring__rail" aria-hidden="true">
-          <div className="what-i-bring__bar">
-            <div className="what-i-bring__bar-fill" />
-          </div>
-          <p className="what-i-bring__counter">
-            <span className="what-i-bring__counter-current">01</span>
-            <span className="what-i-bring__counter-sep">/</span>
-            <span className="what-i-bring__counter-total">{total}</span>
-          </p>
         </div>
       </div>
 

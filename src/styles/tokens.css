@@ -31,7 +31,7 @@
   --text-small: clamp(0.8125rem, 0.25vw + 0.75rem, 0.875rem);
 
   /* Spacing — fluid section rhythm */
-  --space-section: clamp(1.5rem, 4vw, 2.5rem);
+  --space-section: clamp(4.5rem, 10vw, 8.5rem);
   --page-padding: clamp(1rem, 3vw, 2rem);
   --nav-height: 3.5rem;
   --touch-target: 2.75rem;
@@ -48,21 +48,21 @@
 }
 
 [data-theme='dark'] {
-  --color-canvas: #f5f4ed;
-  --color-surface: #f5f4ed;
-  --color-surface-soft: #f7f6f1;
-  --color-surface-card: #faf9f5;
-  --color-surface-dark: #1a1a18;
-  --color-hairline: #e6e2d8;
+  --color-canvas: #141413;       /* Deep Dark background */
+  --color-surface: #141413;      /* Deep Dark */
+  --color-surface-soft: #1d1d1c; /* Slightly lighter warm gray background */
+  --color-surface-card: #222220; /* Dark elevated surface */
+  --color-surface-dark: #30302e; /* Dark Surface */
+  --color-hairline: #30302e;     /* Border Dark */
 
-  --color-text-primary: #141413;
-  --color-text-secondary: #5e5d59;
-  --color-text-muted: #8a8a85;
-  --color-text-on-primary: #ffffff;
+  --color-text-primary: #faf9f5;   /* Ivory text */
+  --color-text-secondary: #b0aea5; /* Warm Silver text */
+  --color-text-muted: #87867f;     /* Stone Gray text */
+  --color-text-on-primary: #141413;
 
-  --color-primary: #cc785c;
-  --color-primary-hover: #b86a4f;
-  --color-primary-muted: rgba(204, 120, 92, 0.12);
+  --color-primary: #cc785c;        /* Terracotta brand accent */
+  --color-primary-hover: #e08365;
+  --color-primary-muted: rgba(204, 120, 92, 0.18);
 }
 
 /* Narrow phones */

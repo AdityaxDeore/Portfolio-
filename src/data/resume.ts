@@ -6,7 +6,6 @@ export const resumeDocxUrl = '/assets/files/Aditya_Deore_Resume.docx'
 
 export const resumePageImages = [
   '/resume-page-1.png',
-  '/resume-page-2.png',
 ] as const
 
 export const resumeGoogleDocId = '11W-WCQrjPfvzGVs8ovxyofMCHZ0IHZKP'
@@ -74,7 +73,7 @@ export const resumeFormats: ResumeFormat[] = [
 ]
 
 export const resumeSection = {
-  label: '07 — Resume',
+  label: '06 — Resume',
   title: 'Resume',
   subtitle: 'Preview my experience and skills — or download a copy.',
   previewLabel: 'Document Preview',

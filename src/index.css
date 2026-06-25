@@ -114,36 +114,36 @@ button {
 }
 
 .dark {
-  --background: #f5f4ed;
-  --foreground: #141413;
-  --card: #faf9f5;
-  --card-foreground: #141413;
-  --popover: #faf9f5;
-  --popover-foreground: #141413;
+  --background: #141413;
+  --foreground: #faf9f5;
+  --card: #222220;
+  --card-foreground: #faf9f5;
+  --popover: #222220;
+  --popover-foreground: #faf9f5;
   --primary: #cc785c;
   --primary-foreground: #ffffff;
-  --secondary: #f7f6f1;
-  --secondary-foreground: #141413;
-  --muted: #f7f6f1;
-  --muted-foreground: #5e5d59;
-  --accent: #f7f6f1;
-  --accent-foreground: #141413;
+  --secondary: #1d1d1c;
+  --secondary-foreground: #faf9f5;
+  --muted: #1d1d1c;
+  --muted-foreground: #87867f;
+  --accent: #1d1d1c;
+  --accent-foreground: #faf9f5;
   --destructive: oklch(0.704 0.191 22.216);
-  --border: #e6e2d8;
-  --input: #e6e2d8;
+  --border: #30302e;
+  --input: #30302e;
   --ring: #cc785c;
   --chart-1: oklch(0.868 0.007 39.5);
   --chart-2: oklch(0.547 0.021 43.1);
   --chart-3: oklch(0.438 0.017 39.3);
   --chart-4: oklch(0.367 0.016 35.7);
   --chart-5: oklch(0.268 0.011 36.5);
-  --sidebar: #f5f4ed;
-  --sidebar-foreground: #141413;
+  --sidebar: #141413;
+  --sidebar-foreground: #faf9f5;
   --sidebar-primary: #cc785c;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #f7f6f1;
-  --sidebar-accent-foreground: #141413;
-  --sidebar-border: #e6e2d8;
+  --sidebar-accent: #1d1d1c;
+  --sidebar-accent-foreground: #faf9f5;
+  --sidebar-border: #30302e;
   --sidebar-ring: #cc785c;
 
   --highlight-red-bg: #d48989;
@@ -226,4 +226,17 @@ button {
   html {
     @apply font-sans;
   }
+}
+
+/* Remove section divider borders to create a continuous, unified layout */
+.about,
+.feature-showcase,
+.code-terminal,
+.what-i-bring,
+.experience,
+.projects,
+.skills,
+.resume,
+.contact {
+  border-top: none !important;
 }

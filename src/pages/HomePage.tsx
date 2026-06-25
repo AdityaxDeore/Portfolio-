@@ -12,13 +12,13 @@ export function HomePage() {
   return (
     <main id="main-content" className="canvas animate-fade-in" tabIndex={-1}>
       <About />
-      <FeatureShowcase />
-      <CodeTerminal />
       <WhatIBring />
       <Experience />
       <Projects />
       <Skills />
       <Resume />
+      <CodeTerminal />
+      <FeatureShowcase />
       <Contact />
     </main>
   )

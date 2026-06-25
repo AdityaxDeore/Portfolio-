@@ -3,7 +3,7 @@ import { useTheme } from '@/providers/ThemeProvider'
 import './SkillMarquee.css'
 
 function SkillMarqueeItem({ skill, theme }: { skill: SkillItem; theme: 'light' | 'dark' }) {
-  const iconSrc = skill.slug ? getSkillIconUrl(skill.slug, theme) : null
+  const iconSrc = skill.iconSrc ?? (skill.slug ? getSkillIconUrl(skill.slug, theme) : null)
 
   return (
     <span className="skill-marquee__item">

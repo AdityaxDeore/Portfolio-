@@ -47,15 +47,37 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 1.25rem;
+  padding-top: 0.25rem;
 }
 
-.experience__dot {
-  width: 0.65rem;
-  height: 0.65rem;
+.experience__logo-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
   border-radius: 50%;
-  background: var(--color-primary);
-  box-shadow: 0 0 0 4px var(--color-primary-muted);
+  border: 1px solid var(--color-hairline);
+  background: var(--color-surface-soft);
+  color: var(--color-text-secondary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.experience__logo-box--itsa-web-dev {
+  background: color-mix(in srgb, #a855f7 8%, var(--color-surface-card));
+  border-color: color-mix(in srgb, #a855f7 24%, var(--color-hairline));
+  color: #a855f7;
+}
+
+.experience__logo-box--personify-ai-ml {
+  background: color-mix(in srgb, #e08365 8%, var(--color-surface-card));
+  border-color: color-mix(in srgb, #e08365 24%, var(--color-hairline));
+  color: #e08365;
+}
+
+.experience__item:hover .experience__logo-box {
+  transform: scale(1.06);
 }
 
 .experience__item:not(:last-child) .experience__marker::after {
@@ -64,7 +86,7 @@
   width: 1px;
   margin-top: 0.75rem;
   background: linear-gradient(to bottom, var(--color-hairline), transparent);
-  min-height: 4rem;
+  min-height: 8rem;
 }
 
 .experience__card {
@@ -174,6 +196,11 @@
   left: 0;
   color: var(--color-primary);
   font-weight: 700;
+}
+
+.experience__highlights li strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
 }
 
 .experience__tech {

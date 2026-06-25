@@ -1,0 +1,16 @@
+<svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Bottom-Left Cube -->
+  <polygon points="40,52 64,66 40,80 16,66" fill="#41a1cf" stroke="#171717" stroke-width="2.5" stroke-linejoin="round"/>
+  <polygon points="16,66 40,80 40,108 16,94" fill="#0081c0" stroke="#171717" stroke-width="2.5" stroke-linejoin="round"/>
+  <polygon points="40,80 64,66 64,94 40,108" fill="#282834" stroke="#171717" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <!-- Bottom-Right Cube -->
+  <polygon points="88,52 112,66 88,80 64,66" fill="#cb5521" stroke="#171717" stroke-width="2.5" stroke-linejoin="round"/>
+  <polygon points="64,66 88,80 88,108 64,94" fill="#41a1cf" stroke="#171717" stroke-width="2.5" stroke-linejoin="round"/>
+  <polygon points="88,80 112,66 112,94 88,108" fill="#0081c0" stroke="#171717" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <!-- Top Cube -->
+  <polygon points="64,16 88,30 64,44 40,30" fill="#ffe95c" stroke="#171717" stroke-width="2.5" stroke-linejoin="round"/>
+  <polygon points="40,30 64,44 64,72 40,58" fill="#41a1cf" stroke="#171717" stroke-width="2.5" stroke-linejoin="round"/>
+  <polygon points="64,44 88,30 88,58 64,72" fill="#0081c0" stroke="#171717" stroke-width="2.5" stroke-linejoin="round"/>
+</svg>

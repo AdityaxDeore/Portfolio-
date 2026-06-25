@@ -2,23 +2,21 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 32px;
+  height: 38px;
   padding: 0 16px;
-  background: transparent;
-  border-bottom: none;
+  background: #1c1c1e;
+  border-bottom: 1px solid var(--terminal-border, #1f1f1f);
   user-select: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
   z-index: 20;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .terminal-titlebar__controls {
   display: flex;
   align-items: center;
   gap: 8px;
-  width: 50px; /* Balanced with spacer */
+  width: 52px; /* Balanced with spacer */
 }
 
 .terminal-titlebar__btn {
@@ -26,34 +24,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   padding: 0;
-  border: none;
+  border: 0.5px solid rgba(0, 0, 0, 0.12);
   border-radius: 50%;
   cursor: pointer;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  transition: background-color 0.2s ease, filter 0.2s ease;
 }
 
 .terminal-titlebar__btn:hover {
-  filter: brightness(1.2);
-  transform: scale(1.1);
+  filter: brightness(0.9);
 }
 
-.terminal-titlebar__btn--close { background: #ff5f57; }
-.terminal-titlebar__btn--minimize { background: #febc2e; }
-.terminal-titlebar__btn--maximize { background: #28c840; }
+.terminal-titlebar__btn--close { background: #ff5f56; }
+.terminal-titlebar__btn--minimize { background: #ffbd2e; }
+.terminal-titlebar__btn--maximize { background: #27c93f; }
 
-.terminal-titlebar__glyph {
-  font-size: 7px;
-  font-weight: bold;
-  color: rgba(0, 0, 0, 0.5);
+.terminal-titlebar__svg {
   opacity: 0;
-  transition: opacity 0.15s ease;
+  transition: opacity 0.12s ease-in-out;
 }
 
-.terminal-titlebar:hover .terminal-titlebar__glyph {
+/* Show icons when hover state is active over the controls zone */
+.terminal-titlebar__controls:hover .terminal-titlebar__svg {
   opacity: 1;
 }
 
@@ -62,15 +56,15 @@
   margin: 0;
   font-family: inherit;
   font-size: 0.65rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--terminal-muted);
   text-align: center;
-  letter-spacing: 0.05em;
-  opacity: 0.7;
+  letter-spacing: 0.06em;
+  opacity: 0.5;
   text-transform: uppercase;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  -webkit-font-smoothing: antialiased;
 }
 
 .terminal-titlebar__spacer {
-  width: 50px;
+  width: 52px;
 }

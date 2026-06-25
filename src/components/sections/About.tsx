@@ -4,9 +4,6 @@ import { motion } from 'motion/react'
 import { useRef } from 'react'
 import './About.css'
 
-const ABOUT_PHOTO_SRC =
-  'https://ferf1mheo22r9ira.public.blob.vercel-storage.com/portrait2-x5MjJSaQ9ed0HZrewEhH7TkZwjZ66K.jpeg'
-
 const InfoIcon = ({ type }: { type: 'website' | 'phone' | 'address' }) => {
   const icons = {
     website: (
@@ -31,6 +28,9 @@ const InfoIcon = ({ type }: { type: 'website' | 'phone' | 'address' }) => {
   return <span className="mr-2 inline-flex items-center justify-center shrink-0">{icons[type]}</span>;
 };
 
+const ABOUT_PHOTO_SRC =
+  '/giffs/Animation Create GIF by Carlotta Notaro - Find & Share on GIPHY.gif'
+
 export function About() {
   const sectionRef = useRef<HTMLElement>(null)
 
@@ -44,30 +44,32 @@ export function About() {
       <div className="about__sticky">
         <div className="container about__layout">
           <div className="about__content">
-            <p className="about__label">01 — About</p>
-            <h1 id="about-title" className="about__line about__line--name">Aditya Deore</h1>
-            <p className="about__line about__line--role">Machine Learning Engineer &amp; Full-Stack Developer</p>
-            <p className="about__line about__line--meta">Pune, India · B.Tech IT @ PCCOE</p>
+            <div className="about__group about__group--identity">
+              <p className="about__label">01 — About</p>
+              <h1 id="about-title" className="about__line about__line--name">Aditya Deore</h1>
+              <p className="about__line about__line--role">Machine Learning Engineer &amp; Full-Stack Developer</p>
+              <p className="about__line about__line--meta">Pune, India · B.Tech IT @ PCCOE</p>
+            </div>
 
-            <RotatingTagline words={aboutRotatingKeywords} className="about__rotating" />
-            <p className="about__tagline">I build ML systems and full-stack products that ship to production.</p>
+            <div className="about__group about__group--bio">
+              <RotatingTagline words={aboutRotatingKeywords} className="about__rotating" />
+              <p className="about__tagline">I build ML systems and full-stack products that ship to production.</p>
+            </div>
 
-            <a href="#projects" className="about__cta animate-fade-in">
-              JOIN US TO EXPLORE
-            </a>
-
-            <div className="about__contact-grid">
-              <div className="about__contact-item">
-                <InfoIcon type="website" />
-                <span>github.com/AdityaxDeore</span>
-              </div>
-              <div className="about__contact-item">
-                <InfoIcon type="phone" />
-                <span>8010767685</span>
-              </div>
-              <div className="about__contact-item">
-                <InfoIcon type="address" />
-                <span>Pune, India</span>
+            <div className="about__group about__group--actions">
+              <div className="about__contact-grid">
+                <div className="about__contact-item">
+                  <InfoIcon type="website" />
+                  <span>github.com/AdityaxDeore</span>
+                </div>
+                <div className="about__contact-item">
+                  <InfoIcon type="phone" />
+                  <span>8010767685</span>
+                </div>
+                <div className="about__contact-item">
+                  <InfoIcon type="address" />
+                  <span>Pune, India</span>
+                </div>
               </div>
             </div>
           </div>

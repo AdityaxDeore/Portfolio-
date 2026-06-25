@@ -1,4 +1,3 @@
-import { useReducedMotion } from 'motion/react'
 import './TerminalTitlebar.css'
 
 type WindowState = 'normal' | 'minimized' | 'expanded'
@@ -18,8 +17,6 @@ export function TerminalTitlebar({
   onMinimize,
   onMaximize,
 }: TerminalTitlebarProps) {
-  const reducedMotion = useReducedMotion()
-
   return (
     <div
       className={`terminal-titlebar${windowState === 'minimized' ? ' terminal-titlebar--minimized' : ''}${windowState === 'expanded' ? ' terminal-titlebar--expanded' : ''}`}
@@ -35,9 +32,9 @@ export function TerminalTitlebar({
             onClose?.()
           }}
         >
-          <span className="terminal-titlebar__glyph" aria-hidden="true">
-            ×
-          </span>
+          <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg" className="terminal-titlebar__svg">
+            <path d="M1.5 1.5L4.5 4.5M4.5 1.5L1.5 4.5" stroke="#4c0002" strokeWidth="1.1" strokeLinecap="round"/>
+          </svg>
         </button>
         <button
           type="button"
@@ -48,9 +45,9 @@ export function TerminalTitlebar({
             onMinimize?.()
           }}
         >
-          <span className="terminal-titlebar__glyph" aria-hidden="true">
-            −
-          </span>
+          <svg width="6" height="1" viewBox="0 0 6 1" fill="none" xmlns="http://www.w3.org/2000/svg" className="terminal-titlebar__svg">
+            <path d="M0.5 0.5H5.5" stroke="#5c3e00" strokeWidth="1.1" strokeLinecap="round"/>
+          </svg>
         </button>
         <button
           type="button"
@@ -61,9 +58,10 @@ export function TerminalTitlebar({
             onMaximize?.()
           }}
         >
-          <span className="terminal-titlebar__glyph" aria-hidden="true">
-            {windowState === 'expanded' && !reducedMotion ? '⤢' : '+'}
-          </span>
+          <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg" className="terminal-titlebar__svg">
+            <path d="M1.5 4.5H4.5V1.5" stroke="#004c00" strokeWidth="1.1" strokeLinecap="round" strokeLinejoin="round"/>
+            <path d="M4.5 4.5L1.5 1.5" stroke="#004c00" strokeWidth="1.1" strokeLinecap="round"/>
+          </svg>
         </button>
       </div>
 

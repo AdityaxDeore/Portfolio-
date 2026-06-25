@@ -4,14 +4,18 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  min-height: auto;
+  min-height: 100vh;
   padding-top: var(--nav-height);
+  background-image: url('/giffs/that morning coffee ♨.gif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 @media (min-width: 901px) {
   .about {
     flex-direction: row;
-    min-height: 85vh;
+    min-height: 100vh;
   }
 }
 
@@ -26,15 +30,15 @@
   flex: 1;
   align-items: center;
   justify-content: center;
-  padding-top: clamp(1.5rem, 4vh, 2.5rem);
-  padding-bottom: clamp(1.5rem, 4vh, 2.5rem);
+  padding-top: clamp(1rem, 3vh, 2rem);
+  padding-bottom: clamp(1rem, 3vh, 2rem);
   padding-inline: clamp(1rem, 2vw, 2rem);
 }
 
 @media (min-width: 901px) {
   .about__sticky {
     position: static;
-    width: 50%;
+    width: 55%;
     flex: none;
     padding-left: var(--page-padding);
   }
@@ -42,7 +46,7 @@
 
 .about__layout {
   width: 100%;
-  max-width: 42rem;
+  max-width: 44rem;
   margin-inline: 0;
 }
 
@@ -52,40 +56,32 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.5rem;
+  gap: clamp(1.5rem, 4vh, 2.5rem);
   text-align: left;
-}
-
-.about__photo {
-  position: relative;
-  z-index: 1;
   width: 100%;
-  min-height: 450px;
-  overflow: hidden;
 }
 
-@media (min-width: 901px) {
-  .about__photo {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 45%;
-    min-height: 100%;
-  }
-}
-
-.about__photo-image {
-  position: relative;
-  z-index: 1;
-  display: block;
+.about__group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+}
+
+.about__group--identity {
+  gap: 0.35rem;
+}
+
+.about__group--bio {
+  gap: 0.65rem;
+}
+
+.about__group--actions {
+  gap: 1.5rem;
 }
 
 .about__label {
-  margin: 0 0 0.25rem;
+  margin: 0 0 0.15rem;
   font-size: var(--text-small);
   font-weight: 600;
   letter-spacing: 0.06em;
@@ -96,34 +92,34 @@
 .about__line {
   margin: 0;
   font-family: var(--font-display);
-  line-height: 1.08;
+  line-height: 1.1;
   letter-spacing: -0.02em;
 }
 
 .about__line--name {
-  font-size: clamp(2.75rem, 7vw + 1rem, 5rem);
+  font-size: clamp(3rem, 7vw + 1rem, 5.5rem);
   font-weight: 500;
   color: var(--color-primary);
   white-space: nowrap;
   max-width: 100%;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
 }
 
 .about__line--role {
-  font-size: clamp(1.75rem, 3.5vw + 0.75rem, 3rem);
-  font-weight: 500;
+  font-size: clamp(1.5rem, 2.5vw + 0.5rem, 2.25rem);
+  font-weight: 400;
   color: var(--color-text-primary);
-  max-width: 22ch;
-  margin-inline: auto;
+  max-width: 32ch;
+  line-height: 1.2;
 }
 
 .about__line--meta {
   font-family: var(--font-sans);
-  font-size: var(--text-body);
+  font-size: 0.9375rem;
   font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: 0;
-  color: var(--color-text-secondary);
-  margin-top: 0.5rem;
+  color: var(--color-text-muted);
+  margin-top: 0.25rem;
 }
 
 .about__rotating {
@@ -131,16 +127,15 @@
 }
 
 .about__tagline {
-  margin: clamp(0.75rem, 2vw, 1.25rem) 0 0;
-  max-width: 34ch;
-  font-size: var(--text-body);
+  margin: 0.25rem 0 0;
+  max-width: 36ch;
+  font-size: 1.0625rem;
   line-height: 1.6;
   color: var(--color-text-secondary);
 }
 
 .about__cta {
   display: inline-block;
-  margin-top: 1.5rem;
   font-family: var(--font-sans);
   font-size: var(--text-body);
   font-weight: 700;
@@ -160,16 +155,16 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  margin-top: 2.5rem;
   width: 100%;
   border-top: 1px solid var(--color-hairline);
-  padding-top: 1.5rem;
+  padding-top: 1.25rem;
 }
 
 .about__contact-item {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0.65rem;
   font-size: var(--text-small);
   color: var(--color-text-secondary);
 }
@@ -180,6 +175,7 @@
     gap: 1.25rem;
     align-items: flex-start;
   }
+
   .about__contact-item {
     justify-content: flex-start;
   }
@@ -195,4 +191,32 @@
   .about__line--name {
     white-space: normal;
   }
+}
+
+.about__photo {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 450px;
+  overflow: hidden;
+}
+
+@media (min-width: 901px) {
+  .about__photo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 42%;
+    min-height: 100%;
+  }
+}
+
+.about__photo-image {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

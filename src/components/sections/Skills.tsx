@@ -16,7 +16,7 @@ export function Skills() {
         <header className="skills__header">
           <div className="skills__label-row skills__reveal">
             <PlugConnectedIcon size={22} color="var(--color-primary)" strokeWidth={2} />
-            <p className="skills__label">06 — Skills</p>
+            <p className="skills__label">05 — Skills</p>
           </div>
           <h2 id="skills-title" className="skills__title skills__reveal">
             My toolkit

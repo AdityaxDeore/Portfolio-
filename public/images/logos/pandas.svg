@@ -1,0 +1,26 @@
+<svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Ears -->
+  <circle cx="28" cy="28" r="20" fill="#171717"/>
+  <circle cx="100" cy="28" r="20" fill="#171717"/>
+  <circle cx="28" cy="28" r="10" fill="#fefffc"/>
+  <circle cx="100" cy="28" r="10" fill="#fefffc"/>
+  
+  <!-- Face/Head background -->
+  <circle cx="64" cy="72" r="48" fill="#fefffc" stroke="#171717" stroke-width="4"/>
+  
+  <!-- Eyepatches -->
+  <ellipse cx="44" cy="68" rx="14" ry="18" transform="rotate(-15 44 68)" fill="#171717"/>
+  <ellipse cx="84" cy="68" rx="14" ry="18" transform="rotate(15 84 68)" fill="#171717"/>
+  
+  <!-- Eyes (Pupils) -->
+  <circle cx="46" cy="66" r="5" fill="#fefffc"/>
+  <circle cx="82" cy="66" r="5" fill="#fefffc"/>
+  
+  <!-- Cheeks (Terracotta Accent) -->
+  <circle cx="36" cy="84" r="7" fill="#cb5521" opacity="0.9"/>
+  <circle cx="92" cy="84" r="7" fill="#cb5521" opacity="0.9"/>
+
+  <!-- Nose/Mouth area -->
+  <polygon points="64,82 56,76 72,76" fill="#171717"/>
+  <path d="M58 86 C 62 89, 66 89, 70 86" stroke="#171717" stroke-width="3" stroke-linecap="round"/>
+</svg>

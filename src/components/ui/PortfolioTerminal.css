@@ -261,7 +261,7 @@
   flex-direction: column;
   overflow: hidden;
   position: relative;
-  padding-top: 32px; /* Offset for absolute titlebar */
+  padding-top: 0; /* Titlebar is relative now */
 }
 
 .portfolio-terminal__transcript {

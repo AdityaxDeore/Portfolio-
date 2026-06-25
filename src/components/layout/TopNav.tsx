@@ -1,19 +1,16 @@
 import { useState, useEffect, useRef } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
-import { navItems, contactEmail, socialLinks } from '@/data/navigation'
+import { navItems, contactEmail } from '@/data/navigation'
 import { PulseButton } from '@/components/ui/PulseButton'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
-import { GithubIcon, LinkedinIcon } from '@/components/icons/social-icons'
 import { MegaMenuContent } from '@/components/layout/MegaMenuContent'
-import type { ComponentType } from 'react'
 import './TopNav.css'
 
-const navSocialIcons: Record<string, ComponentType<{ size?: number }>> = {
-  github: GithubIcon,
-  linkedin: LinkedinIcon,
-}
-
 const MEGA_MENU_SECTIONS = new Set(['projects', 'experience', 'skills', 'expertise'])
+
+const filteredNavItems = navItems.filter(
+  (link) => link.label !== 'Showcase' && link.label !== 'Terminal'
+)
 
 function MenuIcon() {
   return (
@@ -34,6 +31,7 @@ function CloseIcon() {
 export function TopNav() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+  const [scrolled, setScrolled] = useState(false)
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
@@ -42,6 +40,15 @@ export function TopNav() {
       document.body.style.overflow = ''
     }
   }, [menuOpen])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
+    }
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   useEffect(() => {
     const closeOnResize = () => {
@@ -69,14 +76,14 @@ export function TopNav() {
   }
 
   return (
-    <header className="top-nav" onMouseLeave={handleMouseLeave}>
+    <header className={`top-nav ${scrolled ? 'top-nav--scrolled' : ''}`} onMouseLeave={handleMouseLeave}>
       <div className="container top-nav__inner">
         <div className="top-nav__logo">
           {/* Logo placeholder */}
         </div>
 
         <nav className="top-nav__links" aria-label="Primary">
-          {navItems.map((link) => {
+          {filteredNavItems.map((link) => {
             const sectionId = link.href.split('#')[1] || ''
             return (
               <div
@@ -96,22 +103,6 @@ export function TopNav() {
         </nav>
 
         <div className="top-nav__actions">
-          {socialLinks.map((link) => {
-            const Icon = navSocialIcons[link.id]
-            return (
-              <a
-                key={link.id}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="top-nav__icon-link"
-                aria-label={`${link.label} profile`}
-              >
-                {Icon ? <Icon size={20} /> : null}
-              </a>
-            )
-          })}
-          <ThemeToggle />
           <PulseButton
             href={`mailto:${contactEmail}`}
             className="top-nav__cta"
@@ -119,6 +110,7 @@ export function TopNav() {
           >
             Get in touch
           </PulseButton>
+          <ThemeToggle />
           <button
             type="button"
             className="top-nav__menu-btn"
@@ -161,31 +153,12 @@ export function TopNav() {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
           >
-            {navItems.map((link) => (
+            {filteredNavItems.map((link) => (
               <a key={link.href} href={link.href} className="top-nav__mobile-link" onClick={closeMenu}>
                 {link.label}
               </a>
             ))}
 
-            <div className="top-nav__mobile-social">
-              {socialLinks.map((link) => {
-                const Icon = navSocialIcons[link.id]
-                return (
-                  <a
-                    key={link.id}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="top-nav__mobile-social-link"
-                    aria-label={`${link.label} profile`}
-                    onClick={closeMenu}
-                  >
-                    {Icon ? <Icon size={18} /> : null}
-                    <span>{link.label}</span>
-                  </a>
-                )
-              })}
-            </div>
             <PulseButton
               href={`mailto:${contactEmail}`}
               className="top-nav__mobile-cta"

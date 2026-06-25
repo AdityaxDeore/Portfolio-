@@ -22,7 +22,7 @@ export type Project = {
 }
 
 export const projectsSection = {
-  label: '05 — Selected Work',
+  label: '04 — Selected Work',
   title: 'Projects',
   subtitle:
     'Nine case studies across ML, full-stack, and data — click any card for the full write-up.',
@@ -89,6 +89,120 @@ export const projects: Project[] = [
         'Built an AI wellness platform with conversational support and predictive mood tracking.',
         'Enabled real-time peer interaction using WebSockets.',
         'Built scalable backend services supporting real-time user interactions.',
+      ],
+    },
+  },
+  {
+    id: 'agentflow',
+    title: 'AgentFlow',
+    tags: ['Python', 'LangChain', 'FastAPI', 'Redis'],
+    outcome: 'Orchestrated multi-agent automation completing complex multi-step data integration tasks.',
+    image: '/images/projects/codecampus.png',
+    links: [{ label: 'GitHub', href: 'https://github.com/AdityaxDeore', external: true }],
+    caseStudy: {
+      role: 'Backend & AI Engineer',
+      year: '2025',
+      summary:
+        'A resilient multi-agent execution framework coordinating specialized LLM agents for data parsing, validation, and automated reporting.',
+      highlights: [
+        'Designed workflow graph using LangGraph to enable structured reasoning and tool execution.',
+        'Integrated asynchronous Redis task queues handling concurrent task execution.',
+        'Developed memory adapters persisting agent state across multi-turn user workflows.',
+      ],
+    },
+  },
+  {
+    id: 'hybridrag',
+    title: 'Hybrid RAG Search',
+    tags: ['Python', 'Qdrant', 'FastAPI', 'Sentence-Transformers'],
+    outcome: 'Built a search engine combining semantic vector retrieval and BM25 text queries.',
+    image: '/images/projects/tumorai.png',
+    links: [{ label: 'GitHub', href: 'https://github.com/AdityaxDeore', external: true }],
+    caseStudy: {
+      role: 'ML Engineer',
+      year: '2025',
+      summary:
+        'A high-performance retrieval system incorporating dense vectors and sparse keyword representations for domain-specific documentation queries.',
+      highlights: [
+        'Engineered dense semantic indexing pipelines with Qdrant vector database.',
+        'Created reciprocal rank fusion (RRF) algorithms merging keyword search and dense queries.',
+        'Reduced inference latency by 35% through custom embedding cache strategies.',
+      ],
+    },
+  },
+  {
+    id: 'edgevision',
+    title: 'EdgeVision Traffic',
+    tags: ['Python', 'OpenCV', 'PyTorch', 'ONNX'],
+    outcome: 'Real-time vehicle detection and lane traffic density estimation running on low-cost edge platforms.',
+    image: '/images/projects/clarity.png',
+    links: [{ label: 'GitHub', href: 'https://github.com/AdityaxDeore', external: true }],
+    caseStudy: {
+      role: 'Computer Vision Engineer',
+      year: '2025',
+      summary:
+        'Edge intelligence camera software analyzing live video streams to identify traffic congestion zones and count vehicles dynamically.',
+      highlights: [
+        'Exported YOLO detection models to optimized ONNX runtimes for edge hardware acceleration.',
+        'Engineered multi-object tracking logic using DeepSORT to track vehicles across frame boundaries.',
+        'Achieved 22 FPS vehicle estimation on resource-constrained micro-controllers.',
+      ],
+    },
+  },
+  {
+    id: 'logsync',
+    title: 'LogSync Stream',
+    tags: ['Go', 'Kafka', 'Elasticsearch', 'Docker'],
+    outcome: 'Distributed logging pipeline ingesting 15,000+ log events per second with real-time indexing.',
+    image: '/images/projects/codecampus.png',
+    links: [{ label: 'GitHub', href: 'https://github.com/AdityaxDeore', external: true }],
+    caseStudy: {
+      role: 'Infrastructure Developer',
+      year: '2026',
+      summary:
+        'A high-throughput log aggregator collecting event telemetry streams across containerized microservices into a central visualization engine.',
+      highlights: [
+        'Written high-concurrency log collectors in Go utilizing channel multiplexing.',
+        'Integrated Apache Kafka buffering spikes in data stream volume safely.',
+        'Created custom Elasticsearch index patterns facilitating lightning-fast searches.',
+      ],
+    },
+  },
+  {
+    id: 'keygate',
+    title: 'KeyGate OAuth',
+    tags: ['TypeScript', 'Node.js', 'Redis', 'PostgreSQL'],
+    outcome: 'Secure, zero-trust authentication server supporting JWT sessions and multi-factor verification.',
+    image: '/images/projects/tumorai.png',
+    links: [{ label: 'GitHub', href: 'https://github.com/AdityaxDeore', external: true }],
+    caseStudy: {
+      role: 'Security Engineer',
+      year: '2026',
+      summary:
+        'An enterprise identity provider issuing signed JSON Web Tokens (JWT) with automated key rotation and device-level verification flows.',
+      highlights: [
+        'Implemented public-key cryptography algorithms (RS256) signing JWT access keys.',
+        'Created Redis cache layers managing real-time session blacklist checks.',
+        'Developed rate-limiting middlewares shielding API gates from brute force attacks.',
+      ],
+    },
+  },
+  {
+    id: 'insightmail',
+    title: 'InsightMail NLP',
+    tags: ['Python', 'Scikit-learn', 'Transformers', 'FastAPI'],
+    outcome: 'Automated email routing and ticket severity classifier with 91.5% classification accuracy.',
+    image: '/images/projects/clarity.png',
+    links: [{ label: 'GitHub', href: 'https://github.com/AdityaxDeore', external: true }],
+    caseStudy: {
+      role: 'Data Scientist',
+      year: '2025',
+      summary:
+        'An intelligent NLP service processing incoming customer support messages to route issues to correct departments automatically.',
+      highlights: [
+        'Fine-tuned lightweight BERT classification models on structured email datasets.',
+        'Developed sentiment grading criteria tagging high-urgency escalations immediately.',
+        'Deployed REST endpoints returning predictions in under 120ms.',
       ],
     },
   },

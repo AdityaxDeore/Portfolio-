@@ -1,15 +1,14 @@
-import { useCallback, useEffect, useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { ArrowUpRightIcon } from '@/components/icons/social-icons'
+import { useState } from 'react'
 import {
-  resumeFormats,
+  resumePdfUrl,
+  resumeDocxUrl,
   resumePageImages,
   resumeSection,
-  type ResumeFormatId,
+  resumeExternalLinks,
 } from '@/data/resume'
 import './Resume.css'
 
-function DownloadIcon({ size = 18 }: { size?: number }) {
+function DownloadIcon({ size = 16 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path
@@ -23,7 +22,7 @@ function DownloadIcon({ size = 18 }: { size?: number }) {
   )
 }
 
-function ExternalLinkIcon({ size = 18 }: { size?: number }) {
+function ExternalLinkIcon({ size = 16 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path
@@ -38,29 +37,7 @@ function ExternalLinkIcon({ size = 18 }: { size?: number }) {
 }
 
 export function Resume() {
-  const [format, setFormat] = useState<ResumeFormatId>('pdf')
-  const [loadedPages, setLoadedPages] = useState(0)
-  const [isMobile, setIsMobile] = useState(false)
-
-  const activeFormat = resumeFormats.find((item) => item.id === format) ?? resumeFormats[0]
-  const isPdf = activeFormat.behavior === 'preview'
-  const isRendering = isPdf && loadedPages < resumePageImages.length
-
-  useEffect(() => {
-    const media = window.matchMedia('(max-width: 580px)')
-    const update = () => setIsMobile(media.matches)
-    update()
-    media.addEventListener('change', update)
-    return () => media.removeEventListener('change', update)
-  }, [])
-
-  useEffect(() => {
-    setLoadedPages(0)
-  }, [format])
-
-  const handlePageLoad = useCallback(() => {
-    setLoadedPages((count) => Math.min(count + 1, resumePageImages.length))
-  }, [])
+  const [showPreview, setShowPreview] = useState(false)
 
   return (
     <section id="resume" className="resume" aria-labelledby="resume-title">
@@ -74,131 +51,164 @@ export function Resume() {
         </header>
 
         <div className="resume__panel">
-          <div className="resume__toolbar" role="tablist" aria-label="Resume format">
-            {resumeFormats.map((item) => (
-              <button
-                key={item.id}
-                type="button"
-                role="tab"
-                id={`resume-tab-${item.id}`}
-                aria-selected={format === item.id}
-                aria-controls="resume-preview-panel"
-                className={`resume__tab${format === item.id ? ' resume__tab--active' : ''}`}
-                onClick={() => setFormat(item.id)}
+          <div className="resume__toolbar">
+            <a
+              href={resumePdfUrl}
+              download="Aditya_Deore_Resume.pdf"
+              className="resume__action-link-btn resume__action-link-btn--primary"
+            >
+              <DownloadIcon size={16} />
+              Download PDF
+            </a>
+            <a
+              href={resumeDocxUrl}
+              download="Aditya_Deore_Resume.docx"
+              className="resume__action-link-btn"
+            >
+              <DownloadIcon size={16} />
+              Download Word
+            </a>
+            <a
+              href={resumeExternalLinks.driveFolder}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="resume__action-link-btn"
+            >
+              <ExternalLinkIcon size={16} />
+              Google Drive
+            </a>
+            <a
+              href={resumeExternalLinks.googleDocsEdit}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="resume__action-link-btn"
+            >
+              <ExternalLinkIcon size={16} />
+              Google Docs
+            </a>
+            <button
+              type="button"
+              className={`resume__action-link-btn resume__action-link-btn--toggle ${
+                showPreview ? 'resume__action-link-btn--active' : ''
+              }`}
+              onClick={() => setShowPreview(!showPreview)}
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                className={`resume__chevron${showPreview ? ' resume__chevron--open' : ''}`}
+                style={{
+                  transition: 'transform 0.3s ease',
+                  transform: showPreview ? 'rotate(180deg)' : 'rotate(0deg)',
+                  marginRight: '0.375rem',
+                }}
+                aria-hidden="true"
               >
-                {item.label}
-              </button>
-            ))}
+                <path
+                  d="M6 9l6 6 6-6"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              {showPreview ? 'Hide Preview' : 'Preview Resume'}
+            </button>
           </div>
 
-          {isPdf ? (
-            <div className="resume__actions resume__actions--pdf">
-              <Button asChild size="lg" className="resume__action-btn resume__action-btn--primary">
-                <a href={activeFormat.downloadHref} download={activeFormat.downloadName}>
-                  <DownloadIcon size={18} />
-                  Download PDF
-                </a>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="resume__action-btn resume__action-btn--secondary"
-              >
-                <a href={activeFormat.openHref} target="_blank" rel="noopener noreferrer">
-                  <ExternalLinkIcon size={18} />
-                  Open PDF
-                  <ArrowUpRightIcon size={16} />
-                </a>
-              </Button>
-            </div>
-          ) : null}
+          {showPreview && (
+            <div className="resume__preview-split">
+              {/* Left side: Resume Preview */}
+              <div className="resume__preview-left">
+                <figure className="resume__page">
+                  <a
+                    href={resumePdfUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="resume__page-link"
+                    aria-label="Open resume PDF in a new tab"
+                  >
+                    <img
+                      src={resumePageImages[0]}
+                      alt="Aditya Deore Resume"
+                      className="resume__page-image"
+                      loading="eager"
+                      decoding="async"
+                    />
+                  </a>
+                </figure>
+              </div>
 
-          <article
-            id="resume-preview-panel"
-            className="resume__preview"
-            role="tabpanel"
-            aria-labelledby={`resume-tab-${format}`}
-          >
-            {isPdf ? (
-              <>
-                <div className="resume__preview-header">
-                  <p className="resume__preview-label">{resumeSection.previewLabel}</p>
-                  {isRendering ? (
-                    <p className="resume__preview-status" aria-live="polite">
-                      {resumeSection.loadingText}
+              {/* Right side: AI Insights */}
+              <div className="resume__preview-right">
+                <div className="resume__insights claude-chat-bubble">
+                  <div className="claude-chat-header">
+                    <div className="claude-avatar">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="claude-avatar-svg">
+                        <circle cx="12" cy="12" r="10" fill="var(--color-primary)" fillOpacity="0.12" />
+                        <path d="M12 8v8M8 12h8" stroke="var(--color-primary)" strokeWidth="1.75" strokeLinecap="round" />
+                      </svg>
+                      <span className="claude-avatar-text">Claude</span>
+                      <span className="claude-avatar-tag">Recruiter Bot</span>
+                    </div>
+                    <div className="claude-score-badge">
+                      <span className="score-num">94%</span>
+                      <span className="score-label">ATS Score</span>
+                    </div>
+                  </div>
+
+                  <div className="claude-chat-body">
+                    <p className="claude-para">
+                      I have analyzed your resume structure against industry screening filters and senior recruiter benchmarks for Machine Learning (CV/ML) and Full-Stack Engineering roles.
                     </p>
-                  ) : (
-                    <p className="resume__preview-status resume__preview-status--ready">
-                      {resumePageImages.length} pages
-                    </p>
-                  )}
-                </div>
 
-                {isMobile ? (
-                  <p className="resume__mobile-hint">{resumeSection.mobileHint}</p>
-                ) : null}
+                    <div className="claude-section">
+                      <h4 className="claude-subheading">Key Strengths & Role Fit</h4>
+                      <ul className="claude-list">
+                        <li>
+                          <strong>Computer Vision Core:</strong> Strong indexing on convolutional architectures, transfer learning, precision-recall optimization, and automated training pipelines.
+                        </li>
+                        <li>
+                          <strong>Production Ownership:</strong> ITSA Event platform demonstrates robust database architecture, transaction flows, and full-stack security integrations.
+                        </li>
+                        <li>
+                          <strong>Quantifiable Achievements:</strong> High business clarity via impact metrics (96.3% accuracy, 40% workflow speedups, 3.5k+ active platform users).
+                        </li>
+                      </ul>
+                    </div>
 
-                <div
-                  className={`resume__pages${isRendering ? ' resume__pages--loading' : ''}`}
-                  aria-busy={isRendering}
-                >
-                  {resumePageImages.map((src, index) => (
-                    <figure key={src} className="resume__page">
-                      <a
-                        href={activeFormat.openHref}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="resume__page-link"
-                        aria-label={`Open resume page ${index + 1} in a new tab`}
-                      >
-                        <img
-                          src={src}
-                          alt={`Resume page ${index + 1}`}
-                          className="resume__page-image"
-                          loading={index === 0 ? 'eager' : 'lazy'}
-                          decoding="async"
-                          onLoad={handlePageLoad}
-                        />
-                      </a>
-                      <figcaption className="resume__page-caption">
-                        Page {index + 1} of {resumePageImages.length}
-                      </figcaption>
-                    </figure>
-                  ))}
-                </div>
-              </>
-            ) : (
-              <div className="resume__external">
-                <div className="resume__external-icon" aria-hidden="true">
-                  <ExternalLinkIcon size={28} />
-                </div>
-                <h3 className="resume__external-title">
-                  {activeFormat.externalTitle ?? `Open ${activeFormat.label}`}
-                </h3>
-                <p className="resume__external-copy">
-                  {activeFormat.externalDescription ??
-                    `This resume opens on ${activeFormat.label} in a new browser tab.`}
-                </p>
-                <div className="resume__external-actions">
-                  <Button asChild size="lg" className="resume__action-btn">
-                    <a href={activeFormat.openHref} target="_blank" rel="noopener noreferrer">
-                      Open in {activeFormat.label}
-                      <ArrowUpRightIcon size={16} />
-                    </a>
-                  </Button>
-                  {activeFormat.downloadHref ? (
-                    <Button asChild size="lg" variant="outline" className="resume__action-btn">
-                      <a href={activeFormat.downloadHref} download={activeFormat.downloadName}>
-                        <DownloadIcon size={18} />
-                        Download {activeFormat.label}
-                      </a>
-                    </Button>
-                  ) : null}
+                    <div className="claude-section">
+                      <h4 className="claude-subheading">Primary Keyword Matches</h4>
+                      <div className="resume__tags">
+                        <span className="resume__tag-pill resume__tag-pill--match">TensorFlow</span>
+                        <span className="resume__tag-pill resume__tag-pill--match">Computer Vision</span>
+                        <span className="resume__tag-pill resume__tag-pill--match">CNN Optimization</span>
+                        <span className="resume__tag-pill resume__tag-pill--match">Transfer Learning</span>
+                        <span className="resume__tag-pill resume__tag-pill--match">React.js</span>
+                        <span className="resume__tag-pill resume__tag-pill--match">Node.js</span>
+                        <span className="resume__tag-pill resume__tag-pill--match">Data Preprocessing</span>
+                        <span className="resume__tag-pill resume__tag-pill--match">Inference Efficiency</span>
+                      </div>
+                    </div>
+
+                    <div className="claude-section">
+                      <h4 className="claude-subheading">Suggested Enhancements</h4>
+                      <ul className="claude-list claude-list--suggestions">
+                        <li>
+                          Highlight cloud hosting services and containerization tools (AWS, GCP, Docker) in active project bullets to optimize for DevOps criteria.
+                        </li>
+                        <li>
+                          Incorporate metrics for API unit testing coverage (Jest, PyTest) and robustness in backend descriptions.
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
-            )}
-          </article>
+            </div>
+          )}
         </div>
       </div>
     </section>

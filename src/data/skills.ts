@@ -67,8 +67,8 @@ export const skillCategories: SkillCategory[] = [
       { name: 'Node.js', slug: 'nodejs' },
       { name: 'TensorFlow', slug: 'tensorflow' },
       { name: 'Scikit-learn', slug: 'sklearn' },
-      { name: 'Pandas', slug: 'pandas' },
-      { name: 'NumPy', slug: 'numpy' },
+      { name: 'Pandas', slug: 'pandas', iconSrc: '/images/logos/pandas.svg' },
+      { name: 'NumPy', slug: 'numpy', iconSrc: '/images/logos/numpy.svg' },
     ],
   },
   {
