@@ -1,0 +1,29 @@
+@use "@/assets/styles" as *;
+
+.underlink {
+    position: relative;
+
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      height: 1px;
+      background: color(black-100);
+    }
+
+    &::before {
+        opacity: .3;
+    }
+
+    &::after {
+        width: 0;
+        transition: width .5s ease;
+    }
+
+    &:hover::after {
+        width: 100%;
+    }
+}

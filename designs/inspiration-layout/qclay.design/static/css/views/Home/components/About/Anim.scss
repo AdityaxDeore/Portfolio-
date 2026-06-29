@@ -1,0 +1,41 @@
+@use "@/assets/styles" as *;
+
+.about {
+    .cards__container {
+        transition: .7s transform ease;
+    }
+    .spelling {
+        --spelling-delay: .5s;
+        --spelling-tr-dur: .3s;
+        --spelling-tr: #{rem(60)};
+    }
+}
+
+.-from-prev {
+    .about {
+        .cards__container {
+            transition: .5s transform .6s ease;
+        }
+    }
+}
+
+.-next {
+    .about {
+        .cards__container {
+            transform: translateX(50vw);
+            @include mobile-sm {
+                transform: translateY(40vw);
+              }
+        }
+    }
+}
+
+
+.-active {
+    .about {
+        .spelling {
+            --spelling-tr: none;
+            --spelling-so: 1;
+        }
+    }
+}

@@ -42,26 +42,146 @@
   color: var(--color-text-muted);
 }
 
-/* Two-column layout grid */
-.project-page__layout {
-  display: grid;
-  grid-template-columns: 240px minmax(0, 1fr);
-  gap: clamp(2rem, 5vw, 4rem);
-  align-items: start;
-}
-
-/* Left Sidebar Outlines */
-.project-page__sidebar {
+/* Project Page Banner */
+.project-page__banner {
   position: relative;
+  width: 100%;
+  aspect-ratio: 21 / 9;
+  min-height: 240px;
+  max-height: 400px;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  margin-bottom: 2.5rem;
+  border: 1px solid var(--color-hairline);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
 }
 
-.project-page__sidebar-sticky {
-  position: sticky;
-  top: calc(var(--nav-height) + 2rem);
+.project-page__banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-page__banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.15));
+  pointer-events: none;
+}
+
+/* Horizontal Navigation and Metadata Panel */
+.project-page__header-panel {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding-right: 1rem;
+  margin-bottom: 3.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--color-hairline);
+}
+
+.project-page__title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.project-page__eyebrow {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.project-page__heading {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem) !important;
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--color-text-primary);
+}
+
+.project-page__role-tag {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+}
+
+/* Metadata columns */
+.project-page__meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 1fr;
+  gap: 2.5rem;
+}
+
+.project-page__meta-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.project-page__meta-title {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.project-page__top-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.project-page__top-nav a {
+  display: inline-block;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+
+.project-page__top-nav a:hover,
+.project-page__top-nav a.outline-link--active {
+  color: var(--color-primary) !important;
+  font-weight: 600;
+}
+
+.project-page__tech-pills {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.project-page__top-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .project-page__meta-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* Layout Grid simplified to single column reading layout */
+.project-page__layout {
+  width: 100%;
+  max-width: 48rem;
+  margin-inline: auto;
+  display: block;
 }
 
 .project-page__sidebar-eyebrow {

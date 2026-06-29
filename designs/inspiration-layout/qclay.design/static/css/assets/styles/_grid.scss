@@ -1,0 +1,69 @@
+@use "sass:map";
+
+$breakpoints: (
+  xlg: 1728px,
+  lg: 1440px,
+  md: 992px,
+  sm: 576px,
+);
+
+$breakpoints-fonts: (
+  xlg: 16px,
+  lg: 1.11111111111111vw,
+  md: 1.612903225806452vw,
+  sm: 4.1025641025641025641025641025641vw,
+);
+
+@function point($name) {
+  @return map.get($breakpoints, $name);
+}
+
+@mixin generate-grid {
+
+  @each $name,
+  $size in $breakpoints-fonts {
+    @media screen and (max-width: point($name)) {
+      font-size: var(--breakpoint-font-#{$name});
+    }
+  }
+}
+
+@mixin laptop-xlg-2000-1000 {
+  @media screen and (min-width: 1729px) {
+    @media screen and (min-aspect-ratio: 2000 / 1000) {
+      @content;
+    }
+  }
+}
+
+@mixin laptop-lg-xlg-1500-900 {
+  @media screen and (min-width: 1441px) and (max-width: point(xlg)) {
+    @media screen and (min-aspect-ratio: 1500 / 900) {
+      @content;
+    }
+  }
+}
+
+@mixin laptop-xlg {
+  @media screen and (max-width: point(xlg)) {
+    @content;
+  }
+}
+
+@mixin laptop-lg {
+  @media screen and (max-width: point(lg)) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (max-width: point(md)) {
+    @content;
+  }
+}
+
+@mixin mobile-sm {
+  @media screen and (max-width: point(sm)) {
+    @content;
+  }
+}

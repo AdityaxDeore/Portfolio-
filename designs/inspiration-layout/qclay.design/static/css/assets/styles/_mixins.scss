@@ -1,0 +1,40 @@
+@use "./colors";
+
+@mixin noneScrollbar() {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin hideScrollbar() {
+  scrollbar-color: colors.color(black-100) colors.color(black-100);
+  &::-webkit-scrollbar-track {
+    background-color: colors.color(black-100);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: colors.color(black-100);
+  }
+}
+
+@mixin setScrollbar() {
+  scrollbar-color: darken(colors.color-hex(white-100), 30) darken(colors.color-hex(black-100), 10);
+  scrollbar-width: thin;
+
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: darken(colors.color-hex(black-100), 10);
+    transition: background-color 1s;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: darken(colors.color-hex(white-100), 30);
+    transition: background-color 1s;
+  }
+}

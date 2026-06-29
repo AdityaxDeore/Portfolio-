@@ -1,0 +1,37 @@
+@use "@/assets/styles" as *;
+
+.req-form {
+    @for $i from 1 through 10 {
+        .tr-#{$i} {
+            transition: 0s transform .7s ease, 0s opacity .7s !important;
+            transform: translateY(rem(100));
+            opacity: 0;
+        }
+    }
+}
+
+.-active {
+    .req-form {
+        @for $i from 1 through 10 {
+            $delay: #{$i / 20 + .6}s;
+            .tr-#{$i} {
+                transition: .5s transform $delay ease, .3s opacity $delay !important;
+                transform: none;
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.-active {
+    &.req-form {
+        @for $i from 1 through 10 {
+            $delay: #{$i / 20 + .3}s;
+            .tr-#{$i} {
+                transition: .5s transform $delay ease, .3s opacity $delay !important;
+                transform: none;
+                opacity: 1;
+            }
+        }
+    }
+}

@@ -1,6 +1,5 @@
 import { RotatingTagline } from '@/components/ui/RotatingTagline'
 import { aboutRotatingKeywords } from '@/data/about'
-import { motion } from 'motion/react'
 import { useRef } from 'react'
 import './About.css'
 
@@ -27,9 +26,6 @@ const InfoIcon = ({ type }: { type: 'website' | 'phone' | 'address' }) => {
   };
   return <span className="mr-2 inline-flex items-center justify-center shrink-0">{icons[type]}</span>;
 };
-
-const ABOUT_PHOTO_SRC =
-  '/giffs/Animation Create GIF by Carlotta Notaro - Find & Share on GIPHY.gif'
 
 export function About() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -74,20 +70,6 @@ export function About() {
             </div>
           </div>
 
-          <motion.aside
-            className="about__photo"
-            initial={{ clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }}
-            animate={{ clipPath: 'polygon(15% 0, 100% 0, 100% 100%, 0% 100%)' }}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <motion.img
-              src={ABOUT_PHOTO_SRC}
-              alt="Aditya Deore"
-              className="about__photo-image"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.4, ease: 'easeOut' }}
-            />
-          </motion.aside>
         </div>
       </div>
     </section>

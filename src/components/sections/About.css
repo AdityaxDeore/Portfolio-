@@ -6,15 +6,11 @@
   flex-direction: column;
   min-height: 100vh;
   padding-top: var(--nav-height);
-  background-image: url('/giffs/that morning coffee ♨.gif');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: var(--color-canvas);
 }
 
 @media (min-width: 901px) {
   .about {
-    flex-direction: row;
     min-height: 100vh;
   }
 }
@@ -37,17 +33,15 @@
 
 @media (min-width: 901px) {
   .about__sticky {
-    position: static;
-    width: 55%;
-    flex: none;
-    padding-left: var(--page-padding);
+    width: 100%;
+    padding-inline: var(--page-padding);
   }
 }
 
 .about__layout {
   width: 100%;
   max-width: 44rem;
-  margin-inline: 0;
+  margin-inline: auto;
 }
 
 .about__content {
@@ -55,16 +49,16 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: clamp(1.5rem, 4vh, 2.5rem);
-  text-align: left;
+  align-items: center;
+  gap: clamp(0.75rem, 2vh, 1.25rem);
+  text-align: center;
   width: 100%;
 }
 
 .about__group {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   width: 100%;
 }
 
@@ -77,7 +71,7 @@
 }
 
 .about__group--actions {
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .about__label {
@@ -127,11 +121,12 @@
 }
 
 .about__tagline {
-  margin: 0.25rem 0 0;
+  margin: 0.25rem auto 0;
   max-width: 36ch;
   font-size: 1.0625rem;
   line-height: 1.6;
   color: var(--color-text-secondary);
+  text-align: center;
 }
 
 .about__cta {
@@ -154,10 +149,10 @@
 .about__contact-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: 1rem;
   width: 100%;
   border-top: 1px solid var(--color-hairline);
-  padding-top: 1.25rem;
+  padding-top: 1rem;
 }
 
 .about__contact-item {
@@ -173,11 +168,11 @@
   .about__contact-grid {
     grid-template-columns: 1fr;
     gap: 1.25rem;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .about__contact-item {
-    justify-content: flex-start;
+    justify-content: center;
   }
 }
 

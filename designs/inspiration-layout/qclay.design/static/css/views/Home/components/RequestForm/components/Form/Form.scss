@@ -1,0 +1,66 @@
+@use "@/assets/styles" as *;
+
+.form {
+  position: relative;
+
+  h5 {
+    @include font-PlusJakartaDisplay-medium;
+    font-size: font(16);
+    margin-bottom: rem(20);
+
+    &.invalid {
+      color: rgb(212, 64, 64);
+    }
+  }
+
+  .form__inputs, .form__interested, .form__budget, .form__project {
+    margin-bottom: rem(41);
+
+    @include mobile-sm {
+      margin-bottom: rem(28);
+    }
+  }
+
+  .form__inputs {
+    display: flex;
+
+    > :first-child {
+      margin-right: rem(30);
+    }
+
+    @include mobile-sm {
+      display: block;
+      margin: 0;
+
+      > :nth-child(n) {
+        margin-bottom: rem(28);
+      }
+    }
+  }
+
+  .form__interested, .form__budget {
+    > div {
+      max-width: rem(800);
+      margin: rem(-10) rem(-7.5);
+      display: flex;
+      flex-wrap: wrap;
+
+      > :nth-child(n) {
+        margin: rem(10) rem(7.5);
+
+        @include mobile-sm {
+          margin: rem(6) rem(4);
+        }
+      }
+
+    }
+  }
+
+  .form__project {
+    margin-bottom: rem(26);
+
+    > :first-child input {
+      width: 100%;
+    }
+  }
+}

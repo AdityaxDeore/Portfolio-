@@ -51,40 +51,57 @@
 }
 
 .what-i-bring__track {
-  --card-width: min(72vw, 40rem);
-  --card-gap: clamp(2rem, 4vw, 3rem);
-  display: flex;
-  align-items: stretch;
-  width: max-content;
+  --card-gap: clamp(1.5rem, 3vw, 2.5rem);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 1fr));
   gap: var(--card-gap);
+  width: 100%;
   padding-inline: 0;
-  will-change: transform;
-  animation: expertise-marquee 45s linear infinite;
 }
 
-.what-i-bring__track:hover {
+.what-i-bring__track--marquee {
+  display: flex !important;
+  flex-direction: row !important;
+  width: max-content !important;
+  grid-template-columns: none !important;
+  gap: var(--card-gap) !important;
+  animation: what-i-bring-marquee-scroll 35s linear infinite;
+}
+
+.what-i-bring__track--marquee:hover {
   animation-play-state: paused;
 }
 
-@keyframes expertise-marquee {
+.what-i-bring__track--marquee .what-i-bring__card {
+  width: clamp(28rem, 42vw, 34rem);
+  flex: 0 0 auto;
+}
+
+@media (max-width: 900px) {
+  .what-i-bring__track--marquee .what-i-bring__card {
+    width: clamp(18rem, 80vw, 24rem);
+  }
+}
+
+@keyframes what-i-bring-marquee-scroll {
   0% {
-    transform: translate3d(0, 0, 0);
+    transform: translateX(0);
   }
   100% {
-    transform: translate3d(calc(-50% - var(--card-gap) / 2), 0, 0);
+    transform: translateX(-50%);
   }
 }
 
 .what-i-bring__card {
-  flex: 0 0 var(--card-width);
+  width: 100%;
   contain: layout style;
 }
 
 .what-i-bring__card-inner {
   --card-padding: clamp(1.15rem, 2.2vw, 1.6rem);
   display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-  align-items: center;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: stretch;
   gap: clamp(1.25rem, 2.6vw, 2.2rem);
   height: 100%;
   padding: var(--card-padding);
@@ -105,25 +122,28 @@
   position: relative;
   width: 100%;
   height: 100%;
-  min-height: 140px;
-  overflow: visible;
+  min-height: 160px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-hairline);
+  background: var(--color-surface-sunken);
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .what-i-bring__index {
   position: absolute;
-  top: -0.5rem;
-  left: -0.5rem;
+  top: 0.5rem;
+  left: 0.5rem;
   z-index: 5;
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.14em;
   color: var(--color-primary);
-  padding: 0.1em 0.35em;
-  border-radius: 3px;
+  padding: 0.15em 0.45em;
+  border-radius: var(--radius-sm);
   background: var(--color-surface-card);
   border: 1px solid var(--color-hairline);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -131,14 +151,11 @@
 
 .what-i-bring__image {
   position: absolute;
-  left: calc(var(--card-padding) * -1);
-  top: 50%;
-  transform: translateY(-50%);
-  width: 110%;
-  max-width: none;
-  height: auto;
-  object-fit: contain;
-  object-position: left center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   pointer-events: none;
   z-index: 1;
 }
@@ -228,24 +245,20 @@
   }
 
   .what-i-bring__stage {
-    width: 100vw;
-    margin-inline: calc(50% - 50vw);
+    width: 100%;
+    margin-inline: 0;
     overflow: hidden;
   }
 
   .what-i-bring__track {
-    --card-width: min(85vw, 26rem);
-    --card-gap: 1.25rem;
-    display: flex;
-    flex-direction: row;
-    width: max-content;
-    gap: var(--card-gap);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
     padding-inline: 0;
-    animation: expertise-marquee 25s linear infinite;
   }
 
   .what-i-bring__card {
-    flex: 0 0 var(--card-width);
+    flex: none;
   }
 
   .what-i-bring__card-inner {

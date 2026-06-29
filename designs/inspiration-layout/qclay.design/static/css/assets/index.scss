@@ -1,0 +1,47 @@
+@use "./styles/colors" as *;
+@use "./styles/grid" as *;
+@use "./styles/mixins" as *;
+@use "./styles/typography" as *;
+@use "./styles/functions" as *;
+
+@import "./styles/normalize";
+@import "./fonts/stylesheet.css";
+@import "./styles/customs";
+
+
+:root {
+  @each $name, $color in $colors {
+    --color-#{$name}: #{$color};
+  }
+  @each $name, $font in $fonts {
+    --font-size-#{$name}: #{$font};
+  }
+  @each $name, $point in $breakpoints {
+    --breakpoint-#{$name}: #{$point};
+  }
+  @each $name, $size in $breakpoints-fonts {
+    --breakpoint-font-#{$name}: #{$size};
+  }
+}
+
+html {
+  font-size: var(--breakpoint-font-xlg);
+  @include setScrollbar;
+  @include generate-grid;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+html, body {
+  position: fixed;
+  overflow: hidden;
+  overscroll-behavior-y: none;
+  background-color: color(white-100);
+  @media screen and (max-width: 576px) {
+    position: relative;
+  }
+}

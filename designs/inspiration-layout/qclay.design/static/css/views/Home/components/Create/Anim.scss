@@ -1,0 +1,61 @@
+@use "@/assets/styles" as *;
+
+.create {
+    opacity: 0;
+}
+
+.-global-from-prev.-global-whatcreate {
+    .create {
+        animation: show .75s;
+
+        @keyframes show {
+            from {
+                opacity: 1;
+            }
+
+            99.9999% {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+
+        .row {
+            animation: translateBg 1s infinite linear;
+            transition: .1s opacity 0s;
+            opacity: 1;
+        }
+
+        @keyframes translateBg {
+            to {
+                background-position-x: 100%;
+            }
+        }
+
+        .row_one {
+            animation-duration: 1.5s;
+            transition-delay: .1s;
+        }
+
+        .row_two {
+            animation-duration: .75s;
+            transition-delay: .2s;
+        }
+
+        .row_three {
+            animation-duration: 1.25s;
+            transition-delay: .15s;
+        }
+
+        .row_four {
+            animation-duration: .9s;
+        }
+
+        .row_five {
+            animation-duration: .75s;
+        }
+    }
+}

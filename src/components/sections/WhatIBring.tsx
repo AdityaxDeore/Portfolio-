@@ -1,8 +1,10 @@
+import { useRef } from 'react'
 import { CurvedLoop } from '@/components/ui/CurvedLoop'
 import { valueMarqueeText, valuePillars, valueSection } from '@/data/value'
 import { useBreakpoint } from '@/hooks/useBreakpoint'
 import { useInView } from '@/hooks/useInView'
 import { useReducedMotion } from 'motion/react'
+import { CinematicVisual } from '@/components/ui/CinematicVisual'
 import './WhatIBring.css'
 
 declare global {
@@ -36,6 +38,7 @@ function getCurveSettings(breakpoint: ReturnType<typeof useBreakpoint>) {
 }
 
 export function WhatIBring() {
+  const sectionRef = useRef<HTMLElement>(null)
   const [curveRef, curveInView] = useInView<HTMLDivElement>({ rootMargin: '80px 0px' })
   const breakpoint = useBreakpoint()
   const reducedMotion = useReducedMotion()
@@ -45,6 +48,7 @@ export function WhatIBring() {
     <section
       id="expertise"
       className="what-i-bring"
+      ref={sectionRef}
       aria-labelledby="what-i-bring-title"
     >
       <div className="what-i-bring__scroller">
@@ -57,22 +61,29 @@ export function WhatIBring() {
         </header>
 
         <div className="what-i-bring__stage">
-          <div className="what-i-bring__track" aria-live="polite">
+          <div className="what-i-bring__track what-i-bring__track--marquee" aria-live="polite">
             {[...valuePillars, ...valuePillars].map((pillar, index) => (
               <article
                 key={`${pillar.id}-${index}`}
                 className="what-i-bring__card"
-                aria-label={`${pillar.label}, ${index + 1} of ${valuePillars.length * 2}`}
+                aria-label={`${pillar.label}, ${(index % valuePillars.length) + 1} of ${valuePillars.length}`}
               >
                 <div className="what-i-bring__card-inner">
                   <div className="what-i-bring__visual-shell">
                     <span className="what-i-bring__index" aria-hidden="true">
                       {String((index % valuePillars.length) + 1).padStart(2, '0')}
                     </span>
-                    {'lottieUrl' in pillar && pillar.lottieUrl ? (
+                    {pillar.image ? (
+                      <img
+                        className="what-i-bring__image"
+                        src={pillar.image}
+                        alt=""
+                        loading="lazy"
+                      />
+                    ) : 'lottieUrl' in pillar && (pillar as any).lottieUrl ? (
                       <div className="what-i-bring__lottie-container">
                         <dotlottie-player
-                          src={pillar.lottieUrl}
+                          src={(pillar as any).lottieUrl}
                           background="transparent"
                           speed="1"
                           loop
@@ -81,11 +92,9 @@ export function WhatIBring() {
                         />
                       </div>
                     ) : (
-                      <img
-                        src={pillar.image}
-                        alt=""
-                        className="what-i-bring__image"
-                        loading="lazy"
+                      <CinematicVisual
+                        visual={(pillar as any).visual}
+                        className="what-i-bring__visual"
                       />
                     )}
                   </div>

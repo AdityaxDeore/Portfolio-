@@ -1,0 +1,47 @@
+@use "@/assets/styles" as *;
+
+.text-input {
+  width: 100%;
+
+  &.invalid {
+    label {
+      color: rgb(212, 64, 64);
+    }
+  }
+
+  label, input {
+    display: block;
+  }
+
+  label {
+    @include font-PlusJakartaDisplay-medium;
+    font-size: font(16);
+    margin-bottom: rem(12);
+  }
+
+  input {
+    @include font-PlusJakartaDisplay-regular;
+    width: 100%;
+    font-size: rem(14);
+    padding: rem(21) 0;
+    border-bottom: rem(1) solid color(grey-100);
+    transition: .4s;
+
+    @include tablet {
+      padding: rem(12) 0;
+      font-size: rem(16);
+    }
+
+    &:focus {
+      border-bottom: rem(1) solid color(black-100);
+    }
+
+    &::placeholder {
+      color: color(grey-50);
+    }
+
+    &[aria-invalid="true"] {
+      border-color: rgb(212, 64, 64);
+    }
+  }
+}

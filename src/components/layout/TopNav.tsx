@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
-import { navItems, contactEmail } from '@/data/navigation'
-import { PulseButton } from '@/components/ui/PulseButton'
+import { navItems } from '@/data/navigation'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
 import { MegaMenuContent } from '@/components/layout/MegaMenuContent'
 import './TopNav.css'
@@ -103,13 +102,6 @@ export function TopNav() {
         </nav>
 
         <div className="top-nav__actions">
-          <PulseButton
-            href={`mailto:${contactEmail}`}
-            className="top-nav__cta"
-            pulseClassName="top-nav__cta-wrap"
-          >
-            Get in touch
-          </PulseButton>
           <ThemeToggle />
           <button
             type="button"
@@ -158,15 +150,6 @@ export function TopNav() {
                 {link.label}
               </a>
             ))}
-
-            <PulseButton
-              href={`mailto:${contactEmail}`}
-              className="top-nav__mobile-cta"
-              pulseClassName="top-nav__mobile-cta-wrap"
-              onClick={closeMenu}
-            >
-              Get in touch
-            </PulseButton>
           </motion.nav>
         )}
       </AnimatePresence>

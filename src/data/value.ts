@@ -11,7 +11,7 @@ export const valuePillars = [
     tag: 'Train · Deploy · Scale',
     description: 'Production ML pipelines, model deployment, and intelligent features that ship.',
     visual: 'neural',
-    image: '/motion/Claude Code Finally Fixes the Huge Issue With MCPs.jfif',
+    image: '/motion/1.jfif',
   },
   {
     id: 'fullstack',
@@ -19,7 +19,7 @@ export const valuePillars = [
     tag: 'UI · API · Infra',
     description: 'End-to-end web apps — polished interfaces backed by reliable APIs.',
     visual: 'stack',
-    image: '/motion/Unlock the Secrets of Claude Skills_ Your Ultimate Guide to Customization.jfif',
+    image: '/motion/2.jfif',
   },
   {
     id: 'data',
@@ -27,7 +27,7 @@ export const valuePillars = [
     tag: 'Insight · Signal · Impact',
     description: 'Turning messy data into clear insights and measurable outcomes.',
     visual: 'dataflow',
-    image: '/motion/Anthropic launches new secure tools for Claude Managed Agents (1).jfif',
+    image: '/motion/3.jfif',
   },
   {
     id: 'ai-agents',
@@ -35,7 +35,7 @@ export const valuePillars = [
     tag: 'Reason · Act · Integrate',
     description: 'Autonomous agents that reason, act, and integrate into real workflows.',
     visual: 'agents',
-    image: '/motion/Anthropic makes 1M token context standard for Claude 4_6.jfif',
+    image: '/motion/4.jfif',
   },
   {
     id: 'automation',
@@ -43,7 +43,7 @@ export const valuePillars = [
     tag: 'Flow · Logic · Speed',
     description: 'Smart pipelines that eliminate repetitive work without sacrificing control.',
     visual: 'pipeline',
-    image: '/motion/Anthropic’s Claude Code now shows how much AI really writes your code.jfif',
+    image: '/motion/5.jfif',
   },
   {
     id: 'ml-systems',
@@ -51,15 +51,7 @@ export const valuePillars = [
     tag: 'Inference · Monitor · Iterate',
     description: 'Scalable training, inference, and monitoring built for production.',
     visual: 'tensor',
-    image: '/motion/Claude Cowork is Anthropic’s big AI agent bet.jfif',
-  },
-  {
-    id: 'cybersecurity',
-    label: 'Cybersecurity & Auditing',
-    tag: 'Analyze · Secure · Mitigate',
-    description: 'Threat analysis, phishing mitigation strategies, and security awareness guidance.',
-    visual: 'security',
-    image: '/motion/c6567f5021bf3bb7dd66ea3a1b32b85a.jpg',
+    image: '/motion/6.jpg',
   },
 ] as const
 

@@ -1,0 +1,28 @@
+.clutch {
+    display: flex;
+    align-items: center;
+}
+.clutch__icon {
+    width: 34.5px;
+}
+.clutch__block {
+    padding-left: 10px;
+}
+.clutch__stars {
+    display: flex;
+    
+    svg {
+        width: 15px;
+
+        + svg {
+            margin-left: 2px;
+        }
+    }
+}
+.clutch__text {
+    display: block !important;
+    margin-top: 4px;
+    font: 500 13.5px/1.2 "Plus Jakarta Sans";
+    letter-spacing: -.02em;
+    color: #000;
+}

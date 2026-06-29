@@ -1,0 +1,68 @@
+@use "@/assets/styles" as *;
+
+.about {
+  width: 100%;
+  height: 100vh;
+  background-color: color(white-100);
+
+  @include mobile-sm {
+    height: rem(1599) !important;
+    padding: rem(20);
+  }
+
+  .scroll {
+    @include hideScrollbar;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    height: 100vh;
+
+    @include mobile-sm {
+      height: auto;
+      align-items: flex-start;
+      flex-direction: column;
+      padding-top: rem(150);
+      padding-bottom: rem(150);
+      transform: none !important;
+    }
+  }
+
+  h2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    @include font-PlusJakartaDisplay-medium;
+    min-width: rem(464);
+    width: rem(500);
+    margin: 0 rem(152) 0 rem(248);
+    font-size: font(82);
+
+    @include tablet {
+      font-size: font(40);
+    }
+
+    @include mobile-sm {
+      margin: 0 0 rem(58) 0;
+      min-width: rem(255);
+      width: rem(255);
+    }
+  }
+
+  .cards__container {
+    display: flex;
+    margin-right: rem(60);
+    > :not(:first-child) {
+      margin-left: rem(24);
+    }
+    @include mobile-sm {
+      flex-direction: column;
+      height: rem(1100);
+
+      > :not(:first-child) {
+        margin-left: 0;
+        margin-top: rem(9);
+      }
+    }
+  }
+}

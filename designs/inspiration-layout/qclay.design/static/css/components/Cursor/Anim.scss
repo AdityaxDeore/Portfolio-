@@ -1,0 +1,21 @@
+@use "@/assets/styles" as *;
+
+.custom-cursor {
+    &__point {
+        &.-hover-nav {
+            // transform: translate(-50%, -50%) scale(6);
+            width: rem(60);
+            height: rem(60);
+        }
+        &.-hover-menu-btn {
+            // transform: translate(-50%, -50%) scale(30);
+            width: rem(50);
+            height: rem(50);
+        }
+        &.-hover-button {
+            // transform: translate(-50%, -50%) scale(12);
+            width: rem(120);
+            height: rem(120);
+        }
+    }
+}

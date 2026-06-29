@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<!--  This site was created by Dennis Snellenberg (Code by Dennis)  -->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wanderlust ⋆ Project Parallax</title>
+    <meta name="description" content="This is Parallax, a personal project by Dennis Snellenberg. Build and designed to show legacy examples of splitting images into layers." />
+    <meta property="og:title" content="Wanderlust ⋆ Project Parallax" />
+    <meta property="og:description" content="This is Parallax, a personal project by Dennis Snellenberg. Build and designed to show legacy examples of splitting images into layers." />
+    <meta property="og:image" content="https://project-parallax.com/media/site/3f9e130b0a-1693898098/meta-image-860x540-crop-q72.jpg" />
+    <meta property="og:site_name" content="Project Parallax" />
+    <meta property="og:locale" content="en" />
+    <meta property="og:type" content="website" />
+    <meta property="twitter:title" content="Wanderlust ⋆ Project Parallax" />
+    <meta property="twitter:description" content="This is Parallax, a personal project by Dennis Snellenberg. Build and designed to show legacy examples of splitting images into layers." />
+    <meta property="twitter:image" content="https://project-parallax.com/media/site/3f9e130b0a-1693898098/meta-image-860x540-crop-q72.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="google" content="notranslate" />
+    <meta property="og:locale" content="en" />
+    <link rel="canonical" href="https://project-parallax.com/p/wanderlust" />
+
+    <link rel="icon" href="https://project-parallax.com/assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="preload" href="https://project-parallax.com/assets/fonts/NeueMontreal-Regular.ttf" as="font" type="font/ttf" crossorigin="anonymous">
+
+    <link href="https://project-parallax.com/assets/css/normalize.css" rel="stylesheet">
+    <link href="https://project-parallax.com/assets/css/loconative-scroll.min.css" rel="stylesheet">
+    <link href="https://project-parallax.com/assets/css/styleguide.css" rel="stylesheet">
+    <link href="https://project-parallax.com/assets/css/components.css" rel="stylesheet">
+    <link href="https://project-parallax.com/assets/css/style.css" rel="stylesheet">
+</head>
+
+<body data-barba="wrapper" data-navigation-status="not-active" data-scrolling-started="false" data-scrolling-direction="down" data-theme-page="dark" data-theme-nav="dark" data-bg-nav="dark" data-audio-ambient-status="not-started" data-theme-page-light="163, 200, 255"
+    data-theme-page-dark="19, 9, 12" style="--color-dark-rgb: 19, 9, 12; --color-dark: rgba(var(--color-dark-rgb), 1); --color-light-rgb: 163, 200, 255; --color-light: rgba(var(--color-light-rgb), 1);">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MSLDL2BLRZ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('set', 'page', window.location.pathname);
+        gtag('send', 'pageview');
+
+        gtag('config', 'G-MSLDL2BLRZ')
+    </script>
+    <div class="loading-container">
+        <div class="loading-screen"></div>
+    </div>
+    <div class="custom-cursor" data-cursor-init="false">
+        <div class="cursor-bubble" data-cursor-bubble="not-active">
+            <div class="cursor-styling">
+                <div class="styling-element left-top"></div>
+                <div class="styling-element right-top"></div>
+                <div class="styling-element left-bottom"></div>
+                <div class="styling-element right-bottom"></div>
+            </div>
+            <h5 class="cursor-text">Click anywhere to enter</h5>
+        </div>
+    </div>
+    <div class="floating-elements">
+        <audio id="audio-flick" src="https://project-parallax.com/assets/audio/flick-2.mp3" autostart="0" autostart="false" preload="none" name="media"></audio>
+        <audio id="audio-ambient" src="https://project-parallax.com/assets/audio/ambient-wave.mp3" autostart="0" autostart="false" preload="none" name="media"></audio>
+        <audio id="audio-whoosh" src="https://project-parallax.com/assets/audio/whoosh-short.mp3" autostart="0" autostart="false" preload="none" name="media"></audio>
+        <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="25" cy="25" r="19.5" stroke="black"/>
+</svg>
+    </div>
+    <main class="main parallax-single-wanderlust" id="main" data-barba="container" data-barba-namespace="parallax-single" data-theme-page-light="163, 200, 255" data-theme-page-dark="19, 9, 12" data-scroll-container>
+        <header>
+            <div class="main-nav-bar">
+                <div class="row">
+                    <div class="col col-logo">
+                        <div class="link primary">
+                            <a href="https://project-parallax.com" class="link-click" data-magnetic-target data-magnetic-strength="10" data-magnetic-strength-inner="5" data-theme-switch-light="255, 190, 131" data-theme-switch-dark="26, 19, 13">
+                                <div class="link-content" data-magnetic-target-inner>
+                                    <span>Code by Dennis</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sound-icon" data-sound-toggle>
+                        <div class="icon-click overlay" data-magnetic-target data-magnetic-strength="10">
+                            <div class="sound-on">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 8.99998V15H7L12 20V3.99998L7 8.99998H3ZM16.5 12C16.5 10.23 15.48 8.70998 14 7.96998V16.02C15.48 15.29 16.5 13.77 16.5 12ZM14 3.22998V5.28998C16.89 6.14998 19 8.82998 19 12C19 15.17 16.89 17.85 14 18.71V20.77C18.01 19.86 21 16.28 21 12C21 7.71998 18.01 4.13998 14 3.22998V3.22998Z" fill="black"/>
+</svg>
+                            </div>
+                            <div class="sound-off">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M16.5 12C16.5 10.23 15.48 8.71 14 7.97V10.18L16.45 12.63C16.48 12.43 16.5 12.22 16.5 12V12ZM19 12C19 12.94 18.8 13.82 18.46 14.64L19.97 16.15C20.63 14.91 21 13.5 21 12C21 7.72 18.01 4.14 14 3.23V5.29C16.89 6.15 19 8.83 19 12ZM4.27 3L3 4.27L7.73 9H3V15H7L12 20V13.27L16.25 17.52C15.58 18.04 14.83 18.45 14 18.7V20.76C15.38 20.45 16.63 19.81 17.69 18.95L19.73 21L21 19.73L12 10.73L4.27 3ZM12 4L9.91 6.09L12 8.18V4Z" fill="black"/>
+</svg>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="col col-socials ul-socials">
+                        <li>
+                            <div class="link primary">
+                                <a href="https://www.instagram.com/codebydennis/" target="_blank" class="link-click" data-magnetic-target data-magnetic-strength="10" data-magnetic-strength-inner="5">
+                                    <div class="link-content" data-magnetic-target-inner>
+                                        <span>IG</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="link primary">
+                                <a href="https://twitter.com/codebydennis" target="_blank" class="link-click" data-magnetic-target data-magnetic-strength="10" data-magnetic-strength-inner="5">
+                                    <div class="link-content" data-magnetic-target-inner>
+                                        <span>TW</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="link primary">
+                                <a href="https://www.linkedin.com/in/dennissnellenberg/" target="_blank" class="link-click" data-magnetic-target data-magnetic-strength="10" data-magnetic-strength-inner="5">
+                                    <div class="link-content" data-magnetic-target-inner>
+                                        <span>LI</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="link primary">
+                                <a href="https://www.awwwards.com/dennissnellenberg/" target="_blank" class="link-click" data-magnetic-target data-magnetic-strength="10" data-magnetic-strength-inner="5">
+                                    <div class="link-content" data-magnetic-target-inner>
+                                        <span>AW</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div class="main-wrap" id="main-wrap" data-scroll-container>
+
+            <section class="section default-header full-height section-parallax-header" data-theme-section="dark" data-bg-section="dark" data-scroll-section>
+                <div class="overlay header-visuals">
+                    <div class="header-visuals-inner overlay">
+                        <figure class="overlay image-overlay overlay">
+                            <picture class="overlay">
+                                <img alt="Aleksandr Popov" class="lazy overlay" src="https://project-parallax.com/media/pages/p/wanderlust/792e309016-1693580971/wander-placeholder-160x120-crop-q72.jpg" data-src="https://project-parallax.com/media/pages/p/wanderlust/792e309016-1693580971/wander-placeholder.jpg"
+                                />
+                            </picture>
+                        </figure>
+                        <div class="overlay parallax-layers">
+                            <img alt="Parallax Layer" class="overlay" src="https://project-parallax.com/media/pages/p/wanderlust/b55830bdd1-1693580971/wander-6.png" data-scroll data-scroll-speed="-8" data-scroll-position="top" data-scroll-target="#main" />
+                            <img alt="Parallax Layer" class="overlay" src="https://project-parallax.com/media/pages/p/wanderlust/3786422ea1-1693580970/wander-5.png" data-scroll data-scroll-speed="-6" data-scroll-position="top" data-scroll-target="#main" />
+                            <img alt="Parallax Layer" class="overlay" src="https://project-parallax.com/media/pages/p/wanderlust/21b3344b03-1693580970/wander-4.png" data-scroll data-scroll-speed="-5" data-scroll-position="top" data-scroll-target="#main" />
+                            <img alt="Parallax Layer" class="overlay" src="https://project-parallax.com/media/pages/p/wanderlust/bef0ce3837-1693580970/wander-3.png" data-scroll data-scroll-speed="-4" data-scroll-position="top" data-scroll-target="#main" />
+                            <img alt="Parallax Layer" class="overlay" src="https://project-parallax.com/media/pages/p/wanderlust/7b63e14594-1693580971/wander-2.png" data-scroll data-scroll-speed="-2" data-scroll-position="top" data-scroll-target="#main" />
+                            <img alt="Parallax Layer" class="overlay" src="https://project-parallax.com/media/pages/p/wanderlust/5f1eb8db67-1693580970/wander-1.png" data-scroll data-scroll-speed="-0.75" data-scroll-position="top" data-scroll-target="#main" />
+                        </div>
+                        <div class="overlay-fade"></div>
+                    </div>
+                </div>
+                <div class="styling-group">
+                    <div class="styling-element left-top"></div>
+                    <div class="styling-element center-top"></div>
+                    <div class="styling-element right-top"></div>
+                    <div class="styling-element left-bottom"></div>
+                    <div class="styling-element center-bottom"></div>
+                    <div class="styling-element right-bottom"></div>
+                </div>
+                <div class="container wide">
+                    <div class="row">
+                        <div class="col">
+                            <div class="col-row col-row-first">
+                                <div class="marquee-group">
+                                    <div class="marquee" data-marquee-direction="left" data-marquee-status="normal" data-marquee-speed="25">
+                                        <div class="marquee-scroll" data-scroll data-scroll-direction="horizontal" data-scroll-speed="2">
+                                            <div class="marquee-content">
+                                                <div class="marquee-item">
+                                                    <h1 class="medium split-words"><span class="italic">(02)</span> Wanderlust</h1>
+                                                    <div class="star">
+                                                        <div class="overlay single-char"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.57703e-05 19.9869C-0.000162064 19.9869 0.000293603 19.9869 6.57703e-05 19.9869C11.0176 19.9869 19.955 11.0463 20.0005 0C20.0461 11.0462 28.9827 19.9867 40 19.9869C40 19.9869 40 19.9869 40 19.9869C28.974 19.9871 20.032 28.9418 20.0005 40C19.9689 28.9417 11.0262 19.9869 6.57703e-05 19.9869Z" fill="black"/>
+</svg>
+                                                        </div>
+                                                    </div>
+                                                    <h1 class="medium split-words"><span class="italic">(02)</span> Wanderlust</h1>
+                                                    <div class="star">
+                                                        <div class="overlay single-char"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.57703e-05 19.9869C-0.000162064 19.9869 0.000293603 19.9869 6.57703e-05 19.9869C11.0176 19.9869 19.955 11.0463 20.0005 0C20.0461 11.0462 28.9827 19.9867 40 19.9869C40 19.9869 40 19.9869 40 19.9869C28.974 19.9871 20.032 28.9418 20.0005 40C19.9689 28.9417 11.0262 19.9869 6.57703e-05 19.9869Z" fill="black"/>
+</svg>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="marquee-styling">
+                                        <div class="styling-element left-top"></div>
+                                        <div class="styling-element right-top"></div>
+                                        <div class="styling-element left-bottom"></div>
+                                        <div class="styling-element right-bottom"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="prev-touchable" data-cursor-bubble-text="Prev" href="https://project-parallax.com/p/nature" data-theme-switch-light="235, 255, 109" data-theme-switch-dark="16, 18, 8">
+                            <div class="glass-effect"></div>
+                            <div class="styling-element right-top"></div>
+                            <div class="styling-element right-bottom"></div>
+                        </a>
+                        <a class="next-touchable" data-cursor-bubble-text="Next" href="https://project-parallax.com/p/experience" data-theme-switch-light="255, 135, 24" data-theme-switch-dark="26, 12, 0">
+                            <div class="glass-effect"></div>
+                            <div class="styling-element left-top"></div>
+                            <div class="styling-element left-bottom"></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="bottom-bar">
+                    <div class="col col-prev">
+                        <div class="link primary">
+                            <a href="https://project-parallax.com/p/nature" class="link-click" data-magnetic-target data-magnetic-strength="10" data-magnetic-strength-inner="5" data-theme-switch-light="235, 255, 109" data-theme-switch-dark="16, 18, 8">
+                                <div class="link-content" data-magnetic-target-inner>
+                                    <span><span class="italic">(01)</span> Nature</span>
+                                </div>
+                            </a>
+                        </div>
+                        <i><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polyline points="14 19 21 12 14 5" fill="none" stroke="#000" stroke-miterlimit="10"/><line x1="21" y1="12" x2="2" y2="12" fill="none" stroke="#000" stroke-miterlimit="10"/></svg></i>
+                    </div>
+                    <div class="col col-credits col-photo">
+                        <h5>Photo: Aleksandr Popov</h5>
+                    </div>
+                    <div class="col col-next">
+                        <i><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polyline points="14 19 21 12 14 5" fill="none" stroke="#000" stroke-miterlimit="10"/><line x1="21" y1="12" x2="2" y2="12" fill="none" stroke="#000" stroke-miterlimit="10"/></svg></i>
+                        <div class="link primary">
+                            <a href="https://project-parallax.com/p/experience" class="link-click" data-magnetic-target data-magnetic-strength="10" data-magnetic-strength-inner="5" data-theme-switch-light="255, 135, 24" data-theme-switch-dark="26, 12, 0">
+                                <div class="link-content" data-magnetic-target-inner>
+                                    <span><span class="italic">(03)</span> Experience</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section section-parallax-intro" data-scroll-section>
+                <div class="container">
+                    <div class="row grid">
+                        <div class="col col-left">
+                            <figure>
+                                <picture class="overlay" data-scroll data-scroll-speed="-1" data-scroll-target="#main">
+                                    <img alt="Zac Bromell" class="lazy overlay" src="https://project-parallax.com/media/pages/p/wanderlust/25d494a1fc-1693580971/wander-intro-72x103-crop-q72.jpg" data-src="https://project-parallax.com/media/pages/p/wanderlust/25d494a1fc-1693580971/wander-intro.jpg"
+                                    />
+                                </picture>
+                                <div class="pol-card">
+                                    <svg width="154" height="184" viewBox="0 0 154 184" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M154 0H0V184H154V0ZM144 10H10V144H144V10Z" fill="black"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M82.0049 130.973C79.2403 130.973 76.9992 128.734 76.9992 125.972C76.9992 125.972 76.9992 125.972 76.9992 125.972C76.9992 125.972 76.9992 125.972 76.9992 125.972C76.9992 128.731 74.7629 130.968 72.0024 130.973C74.7625 130.978 76.9986 133.214 76.9992 135.972C76.9998 133.211 79.2407 130.973 82.0049 130.973Z" fill="black"/>
+</svg>
+                                    <h5 class="pol-h5"><span class="italic">(02)</span> Wanderlust</h5>
+                                </div>
+                                <h5 class="credits">© Zac Bromell</h5>
+                            </figure>
+                        </div>
+                        <div class="col col-right">
+                            <div class="col-row">
+                                <div class="col-row col-row-title-1">
+                                    <h2>Parallax</h2>
+                                </div>
+                                <div class="col-row col-row-title-2">
+                                    <div class="star">
+                                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.57703e-05 19.9869C-0.000162064 19.9869 0.000293603 19.9869 6.57703e-05 19.9869C11.0176 19.9869 19.955 11.0463 20.0005 0C20.0461 11.0462 28.9827 19.9867 40 19.9869C40 19.9869 40 19.9869 40 19.9869C28.974 19.9871 20.032 28.9418 20.0005 40C19.9689 28.9417 11.0262 19.9869 6.57703e-05 19.9869Z" fill="black"/>
+</svg>
+                                    </div>
+                                    <div class="globe" data-scroll data-scroll-direction="horizontal" data-scroll-speed="-0.5">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#000"/><ellipse cx="12" cy="12" rx="4" ry="10" fill="none" stroke="#000"/><line x1="2" y1="12" x2="22" y2="12" fill="none" stroke="#000"/><path d="M20,18a19.3,19.3,0,0,0-8-1.5A19.3,19.3,0,0,0,4,18" fill="none" stroke="#000"/><path d="M4,6a19.3,19.3,0,0,0,8,1.5A19.3,19.3,0,0,0,20,6" fill="none" stroke="#000"/></svg>                                        </div>
+                                    <h2>
+                                        <span class="italic">(02)</span>
+                                    </h2>
+                                </div>
+                                <div class="col-row col-row-text">
+                                    <p class="big">Parallax is a displacement or difference in the apparent position of an object viewed along two different lines of sightand is measured by the angle or half-angle of inclination between those two lines. Due to foreshortening,
+                                        nearby objects show a larger parallax than farther objects, so parallax can be used to determine distances.</p>
+                                </div>
+                                <div class="col-row col-row-wikipedia">
+                                    <h5>Source: Wikipedia</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section section-parallax-next" data-scroll-section>
+                <div class="playpauze video-overlay">
+                    <video class="overlay" src="https://project-parallax.com/assets/video/pexels-wave-video-720.mp4" loop muted webkit-playsinline playsinline></video>
+                    <div class="color-overlay overlay"></div>
+                    <div class="gradient-overlay overlay"></div>
+                </div>
+                <div class="styling-group">
+                    <a class="next-touchable" data-cursor-bubble-text="Next" href="https://project-parallax.com/p/experience" data-theme-switch-light="255, 135, 24" data-theme-switch-dark="26, 12, 0">
+                        <div class="glass-effect"></div>
+                    </a>
+                    <div class="styling-element left-top"></div>
+                    <div class="styling-element center-top"></div>
+                    <div class="styling-element right-top"></div>
+                    <div class="styling-element left-bottom"></div>
+                    <div class="styling-element center-bottom"></div>
+                    <div class="styling-element right-bottom"></div>
+                </div>
+                <div class="marquee-group">
+                    <div class="marquee" data-marquee-direction="left" data-marquee-status="normal" data-marquee-speed="25">
+                        <div class="marquee-scroll" data-scroll data-scroll-direction="horizontal" data-scroll-speed="2">
+                            <div class="marquee-content">
+                                <div class="marquee-item">
+                                    <h1 class="medium"><span class="italic">(03)</span> Experience</h1>
+                                    <div class="star">
+                                        <div class="overlay"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.57703e-05 19.9869C-0.000162064 19.9869 0.000293603 19.9869 6.57703e-05 19.9869C11.0176 19.9869 19.955 11.0463 20.0005 0C20.0461 11.0462 28.9827 19.9867 40 19.9869C40 19.9869 40 19.9869 40 19.9869C28.974 19.9871 20.032 28.9418 20.0005 40C19.9689 28.9417 11.0262 19.9869 6.57703e-05 19.9869Z" fill="black"/>
+</svg>
+                                        </div>
+                                    </div>
+                                    <h1 class="medium"><span class="italic">(03)</span> Experience</h1>
+                                    <div class="star">
+                                        <div class="overlay"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.57703e-05 19.9869C-0.000162064 19.9869 0.000293603 19.9869 6.57703e-05 19.9869C11.0176 19.9869 19.955 11.0463 20.0005 0C20.0461 11.0462 28.9827 19.9867 40 19.9869C40 19.9869 40 19.9869 40 19.9869C28.974 19.9871 20.032 28.9418 20.0005 40C19.9689 28.9417 11.0262 19.9869 6.57703e-05 19.9869Z" fill="black"/>
+</svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+
+            <footer class="section footer" data-theme-section="light" data-bg-section="light" data-scroll-section>
+                <div class="container full">
+                    <div class="row bottom-bar">
+                        <div class="col col-year">
+                            <h5>2026</h5>
+                        </div>
+                        <div class="col col-credits">
+                            <h5>by ©</h5>
+                            <div class="link primary">
+                                <a href="https://dennissnellenberg.com/" target="_blank" class="link-click" data-magnetic-target data-magnetic-strength="10" data-magnetic-strength-inner="5">
+                                    <div class="link-content" data-magnetic-target-inner>
+                                        <span>Dennis Snellenberg</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <ul class="col col-socials ul-socials">
+                            <li>
+                                <div class="link primary">
+                                    <a href="https://www.instagram.com/codebydennis/" target="_blank" class="link-click" data-magnetic-target data-magnetic-strength="10" data-magnetic-strength-inner="5">
+                                        <div class="link-content" data-magnetic-target-inner>
+                                            <span>IG</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="link primary">
+                                    <a href="https://twitter.com/codebydennis" target="_blank" class="link-click" data-magnetic-target data-magnetic-strength="10" data-magnetic-strength-inner="5">
+                                        <div class="link-content" data-magnetic-target-inner>
+                                            <span>TW</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="link primary">
+                                    <a href="https://www.linkedin.com/in/dennissnellenberg/" target="_blank" class="link-click" data-magnetic-target data-magnetic-strength="10" data-magnetic-strength-inner="5">
+                                        <div class="link-content" data-magnetic-target-inner>
+                                            <span>LI</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="link primary">
+                                    <a href="https://www.awwwards.com/dennissnellenberg/" target="_blank" class="link-click" data-magnetic-target data-magnetic-strength="10" data-magnetic-strength-inner="5">
+                                        <div class="link-content" data-magnetic-target-inner>
+                                            <span>AW</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+            </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- <script src="https://unpkg.com/@barba/core"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@barba/core"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/@barba/core@2.9.7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.4/dist/lazyload.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+
+    <script src="https://project-parallax.com/assets/js/ScrollTrigger.min.js"></script>
+    <script src="https://project-parallax.com/assets/js/SplitText.min.js"></script>
+    <script src="https://project-parallax.com/assets/js/loconative-scroll.min.js"></script>
+    <script defer src="https://project-parallax.com/assets/js/index.js"></script>
+</body>
+
+</html>

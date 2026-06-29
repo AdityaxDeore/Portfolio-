@@ -1,0 +1,21 @@
+@use "@/assets/styles" as *;
+
+.portfolio {
+    .swiper-slide {
+        .spelling {
+            --spelling-delay: .2s;
+            --spelling-tr-dur: .5s;
+            --spelling-tr: #{rem(150)};
+            --spelling-delay-c: 100;
+            --spelling-so: 0;
+        }
+    }
+
+
+    .swiper-slide.swiper-slide-active {
+        .spelling {
+            --spelling-tr: 0;
+            --spelling-so: 1;
+        }
+    }
+}

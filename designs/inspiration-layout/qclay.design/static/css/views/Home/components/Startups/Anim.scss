@@ -1,0 +1,68 @@
+@use "@/assets/styles" as *;
+
+.startups {
+    .spelling {
+        --spelling-delay: .3s;
+        --spelling-tr-dur: .5s;
+        --spelling-tr: #{rem(50)};
+        @include mobile-sm {
+            --spacer-w: #{rem(5)};
+        }
+    }
+
+    .startups__content, .startups__bg {
+        transform: translateY(rem(100));
+        opacity: 0;
+        transition: 0s transform .75s,  0s opacity .75s;
+    }
+    .startups__bg path {
+        stroke-dashoffset: 2700;
+        stroke-dasharray: 2700;
+        transition: 0s stroke-dashoffset .75s;
+    }
+}
+
+
+.-active {
+    .startups {
+        .spelling {
+            --spelling-tr: none;
+            --spelling-so: 1;
+        }
+
+        .startups__content, .startups__bg {
+            transform: none;
+            opacity: 1;
+        }
+        .startups__bg {
+            transition: 1s transform .3s, 1s opacity .3s;
+        }
+        .startups__content {
+            transition: 1s transform .5s, 1s opacity .5s;
+        }
+        .startups__bg path {
+            stroke-dashoffset: 0;
+            transition: 1s stroke-dashoffset .7s;
+        }
+    }
+}
+
+// 
+.startups {
+    .parent {
+        .spelling {
+            --spelling-delay: .1s;
+            --spelling-tr: #{rem(100)};
+            --spacer-w: #{rem(20)};
+            --spelling-tr-dur: .3s;
+            --spelling-so: 0;
+        }
+    }
+    
+    .parent.-p-active {
+        .spelling {
+            --spelling-tr: none;
+            --spelling-so: 1;
+        }
+    }
+}

@@ -1,0 +1,242 @@
+@use "@/assets/styles" as *;
+
+.menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // height: 100vh;
+  padding: 0 rem(50) rem(32);
+  background: linear-gradient(203.7deg, #FFFFFF 48.1%, #EEEBEB 86.02%);
+  visibility: hidden;
+  opacity: 0;
+  transform: translate(10%, -150%) rotateZ(12deg) scale(1.5);
+  transition: transform 0.75s ease, visibility 0.75s ease, .3s opacity .5s;
+
+  .menu__social,
+  .menu__img,
+  .menu__folder {
+    transform: translateY(-100px);
+    opacity: 0;
+    transition: .75s transform .3s ease, .75s opacity .3s;
+  }
+
+  .menu__text {
+    opacity: 0;
+    transition: .3s opacity .5s;
+  }
+
+  &.-show {
+    visibility: visible;
+    transform: none;
+    opacity: 1;
+    transition: transform 0.75s ease, visibility 0.75s ease, opacity .3s;
+
+    .menu__social,
+    .menu__img,
+    .menu__folder {
+      transform: none;
+      opacity: 1;
+    }
+
+    .menu__text {
+      opacity: 1;
+    }
+  }
+
+  @include mobile-sm {
+    padding: 0 rem(30) rem(32);
+
+  }
+}
+
+.menu__content {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+
+  @include mobile-sm {
+    align-items: start;
+    justify-content: space-between;
+  }
+}
+
+.menu__social {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: rem(16);
+  padding-right: rem(296);
+  @include font-PlusJakartaDisplay-regular;
+  @include laptop-lg {
+    padding-right: rem(260);
+  }
+  @include tablet {
+    padding-right: rem(150);
+  }
+  @include mobile-sm {
+    padding-right: rem(48);
+  }
+
+  & .link {
+    margin: rem(10) 0;
+  }
+
+  .m {
+    padding-bottom: rem(13);
+  }
+}
+
+.menu__img {
+  --menu-img-width: #{rem(476)};
+  --menu-img-height: #{rem(338)};
+  position: relative;
+  height: var(--menu-img-width);
+  width: var(--menu-img-height);
+  overflow: hidden;
+  @include laptop-lg {
+    --menu-img-width: #{rem(400)};
+    --menu-img-height: #{rem(300)};
+  }
+  @include tablet {
+    --menu-img-width: #{rem(300)};
+    --menu-img-height: #{rem(225)};
+  }
+  @include mobile-sm {
+    display: none;
+  }
+
+  @for $i from 1 through 6 {
+    &.-hovered-#{$i} {
+      > :nth-child(#{$i}) {
+        max-width: 100% !important;
+        right: 0 !important;
+        left: auto !important;
+        transition: max-width .5s ease;
+      }
+    }
+  }
+
+
+  .img-crop {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    max-width: 0;
+    height: 100%;
+    overflow: hidden;
+    transition: max-width .3s ease;
+
+    img, video {
+      position: absolute;
+      top: -5%; left: -5%;
+      height: 110%;
+      width: 110%;
+      object-fit: cover;
+    }
+  }
+}
+
+.menu__folder {
+  padding-left: rem(207);
+  font-size: rem(16);
+  @include font-PlusJakartaDisplay-regular;
+  @include laptop-lg {
+    padding-left: rem(175);
+  }
+  @include mobile-sm {
+    padding-left: 0;
+  }
+
+  .m {
+    padding-bottom: rem(11);
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    font-size: rem(56);
+
+    @include laptop-lg {
+      font-size: rem(46);
+    }
+    @include tablet {
+      font-size: rem(36);
+    }
+    @include mobile-sm {
+      font-size: rem(33);
+    }
+
+    a {
+      width: fit-content;
+      position: relative;
+      margin: rem(11) 0;
+
+      @include mobile-sm {
+        margin: rem(6) 0;
+      }
+    }
+  }
+
+}
+
+.menu__text {
+  display: flex;
+  justify-content: space-between;
+  align-items: self-end;
+  margin-top: auto;
+  @include font-PlusJakartaDisplay-regular;
+  @include mobile-sm {
+    font-size: font(12);
+  }
+
+  .mail {
+    color: color(grey-200);
+    @include mobile-sm {
+      font-size: font(16);
+    }
+
+    &__text {
+      display: block;
+      margin-bottom: rem(9);
+    }
+
+    .underline {
+      color: color(black-100);
+    }
+  }
+
+  .question {
+    padding: rem(30) 0 0 rem(50);
+    text-decoration: underline;
+    color: color(grey-200);
+    @include mobile-sm {
+      font-size: font(12);
+      padding: 0;
+    }
+  }
+}
+
+.menu__cp {
+  @include font-PlusJakartaDisplay-regular;
+
+  &_privacy {
+    color: #000;
+    margin-bottom: rem(9);
+  }
+  &_copyright {
+    color: rgba(#000, .5);
+  }
+}
+
+.header .visible {
+  visibility: hidden;
+}
+
+.m {
+  color: color(grey-200);
+}

@@ -1,0 +1,86 @@
+@use "@/assets/styles" as *;
+
+.what-create {
+    .what-create__view {
+        position: relative;
+        // line-height: 100%;
+    }
+
+    // .view-text {
+    //     opacity: 0;
+    // }
+
+    .sub {
+        position: absolute;
+        opacity: 0;
+        >span {
+            overflow: hidden;
+        }
+        >span::before {
+            content: attr(data-text);
+            display: block;
+        }
+
+
+        &:nth-child(1)>span {
+            transform: translateY(-75%);
+        }
+        &:nth-child(2)>span {
+            transform: translateY(-115%);
+        }
+        &:nth-child(1)>span, &:nth-child(2) span {
+            &::before {
+                transform: translateY(45%);
+            }
+        }
+
+
+        &:nth-child(4)>span {
+            transform: translateY(100%);
+        }
+        &:nth-child(5)>span {
+            transform: translateY(140%);
+        }
+        &:nth-child(4)>span, &:nth-child(5)>span {
+            &::before {
+                transform: translateY(-55%);
+            }
+        }
+    }
+}
+
+.-active.-from-prev {
+    $duration: .5s;
+    $delay: .75s;
+    .what-create {
+        .sub:nth-child(2) { animation: $duration a_2 $delay; }
+        .sub:nth-child(1) { animation: $duration a_1 $delay; }
+        .sub:nth-child(3) { animation: $duration a_0 $delay; }
+        .sub:nth-child(4) { animation: $duration a_1 $delay; }
+        .sub:nth-child(5) { animation: $duration a_2 $delay; }
+    }
+}
+@keyframes a_0 {
+    0% { opacity: 0; }
+    9% { opacity: 0; }
+    10% { opacity: 1; }
+    100% { opacity: 1; }
+}
+@keyframes a_1 {
+    0% { opacity: 0; }
+    24% { opacity: 0; }
+    25% { opacity: 1; }
+    79% { transform: none; }
+    80% { transform: scale(1.05); }
+    99% { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 0; }
+}
+@keyframes a_2 {
+    0% { opacity: 0; }
+    54% { opacity: 0; }
+    55% { opacity: 1; }
+    89% { transform: none; }
+    90% { transform: scale(1.1); }
+    99% { opacity: 1; transform: scale(1.1); }
+    100% { opacity: 0; }
+}

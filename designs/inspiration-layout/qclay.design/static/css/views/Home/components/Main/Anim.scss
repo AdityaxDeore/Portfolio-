@@ -1,0 +1,86 @@
+@use "@/assets/styles" as *;
+
+.main {
+    .spelling {
+        --spelling-tr: #{rem(30)};
+        --spelling-so: 1;
+        --spelling-o: 0;
+        --spelling-tr-dur: .2s;
+        --spelling-o-dur: .5s;
+        --spacer-w: #{rem(10)};
+    }
+
+    .eye {
+        transition: transform 2s ease, 1s opacity;
+        transform: scale(.3);
+        opacity: 0;
+    }
+
+    .subtitle {
+        $delay: .5;
+        @for $i from 1 through 5 {
+            > :nth-child(#{$i}) {
+                transition: .5s transform #{$delay + $i / 10}s ease, .5s opacity #{$delay + $i / 10}s ease;
+            }
+        }
+        > * {
+            opacity: 0;
+            transform: translateY(rem(40));
+        }
+    }
+
+    .image-clip {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        max-height: 0;
+        transition: 3s max-height ease;
+
+        @include mobile-sm {
+            width: 100vw;
+            height: 30vh;
+            transition: 2s max-height ease, opacity 1.5s ease;
+            opacity: 0;
+        }
+
+        // .image-tr {
+        //     transform: translateY(-100%);
+        //     transition: 1.5s transform ease;
+        //     @include mobile-sm {
+        //         transform: none;
+        //     }
+        // }
+    }
+
+    .paragraph, .circle {
+        opacity: 0 !important;
+        transition: 1.5s opacity;
+    }
+}
+
+.-loaded {
+    .main {
+        .eye {
+            transform: none;
+            opacity: 1;
+        }
+        .subtitle > * {
+            opacity: 1;
+            transform: none;
+        }
+        .image-clip {
+            max-height: 100vh;
+            @include mobile-sm {
+                opacity: 1;
+                max-height: 35vh;
+                height: 35vh;
+            }
+            // .image-tr {
+            //     transform: none;
+            // }
+        }
+        .paragraph, .circle {
+            opacity: .5 !important;
+        }
+    }
+}

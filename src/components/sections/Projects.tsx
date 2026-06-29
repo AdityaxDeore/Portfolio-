@@ -4,14 +4,6 @@ import { motion, useReducedMotion } from 'motion/react'
 import { Link } from 'react-router-dom'
 import './Projects.css'
 
-/* Alternating mask shapes for visual variety */
-const MASK_SHAPES = [
-  'polygon(8% 0%, 100% 0%, 100% 92%, 0% 100%)',
-  'polygon(0% 0%, 92% 0%, 100% 100%, 0% 100%)',
-  'polygon(0% 8%, 100% 0%, 100% 100%, 0% 92%)',
-]
-const FULL_RECT = 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)'
-
 export function Projects() {
   const reducedMotion = useReducedMotion()
 
@@ -46,21 +38,7 @@ export function Projects() {
                   className="projects__media-btn"
                   aria-label={`Open case study for ${project.title}`}
                 >
-                  <motion.div
-                    className="projects__image-mask"
-                    initial={false}
-                    whileHover={
-                      reducedMotion
-                        ? undefined
-                        : { clipPath: FULL_RECT }
-                    }
-                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                    style={{
-                      clipPath: reducedMotion
-                        ? FULL_RECT
-                        : MASK_SHAPES[index % MASK_SHAPES.length],
-                    }}
-                  >
+                  <div className="projects__image-mask">
                     <img
                       className="projects__image"
                       src={project.image}
@@ -70,7 +48,7 @@ export function Projects() {
                       loading="lazy"
                       decoding="async"
                     />
-                  </motion.div>
+                  </div>
                   <span className="projects__media-overlay">
                     <span className="projects__media-cta">View case study</span>
                   </span>

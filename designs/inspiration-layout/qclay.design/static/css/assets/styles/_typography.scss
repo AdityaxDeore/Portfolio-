@@ -1,0 +1,70 @@
+@use "sass:map";
+
+@mixin font-MazzardM-medium {
+  font-family: "Mazzard M", serif;
+  font-weight: 500;
+}
+
+@mixin font-MazzardM-bold {
+  font-family: "Mazzard M", serif;
+  font-weight: bold;
+}
+
+@mixin font-PlusJakartaDisplay-regular {
+  font-family: "Plus Jakarta Sans", serif;
+  font-weight: 400;
+}
+
+@mixin font-PlusJakartaDisplay-medium {
+  font-family: "Plus Jakarta Sans", serif;
+  font-weight: 500;
+}
+
+@mixin font-PlusJakartaDisplay-bold {
+  font-family: "Plus Jakarta Sans", serif;
+  font-weight: 700;
+}
+
+@mixin font-AtypDisplay-medium {
+  font-family: "Atyp Display", serif;
+  font-weight: 400;
+}
+
+@mixin font-ARP-bold {
+  font-family: "ARP", serif;
+  font-weight: 500;
+}
+
+$fonts: (
+        6: .375rem,
+        12: .75rem,
+        14: .875rem,
+        16: 1rem,
+        18: 1.125rem,
+        19: 1.1875rem,
+        20: 1.25rem,
+        23: 1.4375rem,
+        24: 1.5rem,
+        25: 1.5625rem,
+        26: 1.625rem,
+        30: 1.875rem,
+        35: 2.21875rem,
+        40: 2.5rem,
+        44: 2.75rem,
+        47: 2.9375rem,
+        50: 3.125rem,
+        55: 3.4375rem,
+        80: 5rem,
+        82: 5.125rem,
+        96: 6rem,
+        213: 13.3125rem,
+);
+
+@function font($name) {
+  @if not map.get($fonts, $name) {
+    @error '"#{$name}" is not a valid font value';
+  }
+  @return var(--font-size-#{$name});
+}
+
+;

@@ -1,0 +1,430 @@
+================================================================================
+ADITYA DEORE — PORTFOLIO CONTENT (TEXT ONLY)
+================================================================================
+This file contains all personal and page text content from the portfolio.
+No UI, styling, colors, or layout details — only information and copy.
+
+================================================================================
+PROFILE / SIDEBAR
+================================================================================
+    10|
+Full name: Aditya Chandrajit Deore
+Display name: Aditya Deore
+Role: AI/ML Engineer • Full-Stack Developer
+Education line: B.Tech IT @ PCCOE
+
+Contact:
+- Email: adityadeorework@gmail.com
+- Phone: 8010767685
+- Location: Pune, India
+    20|- LinkedIn: https://linkedin.com/in/aditya-deore-3a725a263 (username: aditya-deore)
+- GitHub: https://github.com/AdityaxDeore (username: AdityaxDeore)
+
+Navigation pages: About, Resume, Projects, Certifications, Contact
+
+================================================================================
+ABOUT PAGE
+================================================================================
+
+--- Hero ---
+    30|
+Role tagline: AI/ML Engineer • Full-Stack Developer
+Greeting: Hi, I'm Aditya Deore
+
+Typewriter phrases (rotating):
+- building AI-powered products
+- developing full-stack applications
+- creating machine learning solutions
+- working with data-driven systems
+- exploring AI agents and LLMs
+    40|- turning ideas into real products
+
+Bio:
+I'm a B.Tech Information Technology student at PCCOE with interests in Artificial Intelligence, Machine Learning, Data Science, and Full-Stack Development. I enjoy building products that combine intelligent systems, scalable software, and practical user experiences.
+
+--- What I'm doing (Services) ---
+
+1. AI & Machine Learning
+Building machine learning models, computer vision systems, AI-powered applications, and intelligent workflows using Python, TensorFlow, Scikit-learn, OpenCV, and modern AI tools.
+
+    50|2. Full-Stack Development
+Developing scalable web applications using React, Node.js, MongoDB, PostgreSQL, TypeScript, REST APIs, and modern software engineering practices.
+
+3. Data Science & Analytics
+Working with Python, SQL, Pandas, NumPy, dashboards, data visualization, and business analytics to derive actionable insights from data.
+
+4. AI Agents & Prompt Engineering
+Exploring LLMs, RAG systems, prompt engineering, AI agents, workflow automation, and production AI applications.
+
+--- Stats ---
+    60|
+Projects Built: 10+
+Detail: Delivered full-stack and AI systems with strong product focus.
+
+Certifications: 8
+Detail: Professional certificates and experiential simulations in data, security, and engineering.
+
+Technologies: 14+
+Detail: Modern stacks across ML, web, databases, and developer tools.
+
+    70|Hackathons: National
+Detail: Qualified for MLSC Round 2 and competed in performance-focused events.
+
+--- Core Skills ---
+
+Languages: Python, Java, JavaScript, TypeScript
+
+AI/ML: TensorFlow, Scikit-learn, OpenCV, Pandas, NumPy
+
+Frontend: React, Next.js, HTML, CSS, Tailwind
+    80|
+Backend: Node.js, Express
+
+Database: MongoDB, PostgreSQL, MySQL
+
+Tools: Git, Linux, VS Code
+
+--- Experience ---
+
+1. Web Development Associate
+    90|   Organization: ITSA – PCCOE
+   Date: 2025 – Present
+   Description: Developed and maintained websites for technical events and student initiatives. Collaborated with organizing teams and technical communities to deliver responsive and user-friendly web platforms supporting student engagement and event operations.
+   Technologies: React, JavaScript, Node.js
+
+2. Intern Team Leader (Python & TensorFlow)
+   Organization: Wipro DICE
+   Date: Mar 2025 – Apr 2025
+   Description: Led a team of 4 interns in developing TensorFlow-based machine learning solutions for real-time object detection. Coordinated project planning, model development, testing, and weekly progress reporting while delivering the final project demonstration.
+   Technologies: Python, TensorFlow, Machine Learning
+   100|
+================================================================================
+RESUME PAGE — COPY & LINKS
+================================================================================
+
+Page title: Resume
+Subtitle: Preview my experience, skills, and projects — or download a copy.
+
+Download:
+- PDF: /assets/files/Aditya_Deore_Resume.pdf
+   110|- DOCX: /assets/files/Aditya_Deore_Resume.docx
+
+View online:
+- Google Drive: https://drive.google.com/drive/folders/1RB-_rTcFMZ1rljaqO_W91Gng4fIYWAq8?usp=sharing
+- Google Docs: https://docs.google.com/document/d/11W-WCQrjPfvzGVs8ovxyofMCHZ0IHZKP/edit?usp=sharing&ouid=110537191993897286893&rtpof=true&sd=true
+
+Preview section label: Document Preview
+Loading status text: Rendering…
+Mobile hint: Pinch to zoom · Scroll for pages
+Error message: Could not load preview.
+   120|Error fallback action: Download PDF
+
+================================================================================
+RESUME PAGE — HOW THE PREVIEW SHOULD BE MADE (FUNCTIONAL SPEC)
+================================================================================
+
+Purpose:
+Show an inline, scrollable preview of the resume PDF inside the Resume page so visitors can read it without leaving the site. The preview renders the actual PDF file — it is not a recreated HTML resume.
+
+Source file:
+   130|/assets/files/Aditya_Deore_Resume.pdf
+
+Library:
+Use PDF.js (pdfjs-dist) to load and render the PDF in the browser.
+
+When to load:
+- Only load and render when the Resume page/tab is active (do not render while hidden).
+- Re-render on window resize (debounced) so pages stay fitted to the container width.
+
+Rendering approach:
+   140|1. Fetch the PDF document once and cache the loaded document in memory.
+2. For each page in the PDF (1 through numPages):
+   - Get the page object from PDF.js.
+   - Calculate a scale so the page fits the preview container width (max ~860px on desktop, full width on mobile).
+   - Create a canvas element for that page.
+   - Render the page into the canvas using PDF.js page.render() with a high-DPI output scale (devicePixelRatio, capped at 2–2.5 on mobile for sharp text).
+   - Set canvas CSS width to the viewport width and height to auto so it scales responsively.
+   - Wrap each canvas in a page container with a label: "Page X of Y".
+3. Stack all page containers vertically in a scrollable viewer area so multi-page resumes scroll naturally.
+
+   150|Responsive behavior:
+- Phone (container width under ~580px): use full width with no horizontal padding; allow native pinch-to-zoom on the canvas; show hint "Pinch to zoom · Scroll for pages".
+- Tablet (under ~768px): slight horizontal padding.
+- Desktop: more padding, capped max content width around 860px.
+
+States:
+- Loading: show a skeleton/placeholder while the first render is in progress; show "Rendering…" in the preview header.
+- Success: show page count in header (e.g. "2 pages"); display all rendered canvases.
+- Error: show error message and a direct link/button to download the PDF file.
+
+   160|Performance:
+- Debounce initial render slightly (~80ms) after tab becomes active.
+- Debounce resize re-renders (~350ms).
+- Reuse the cached PDF document on re-render; only redraw canvases when size changes.
+
+Accessibility:
+- Viewer container should have aria-label "Resume preview".
+- Page labels should indicate current page and total pages.
+
+What the preview is NOT:
+   170|- Not an iframe to Google Docs (that is a separate "View online" link).
+- Not a static image screenshot — it must render from the live PDF so downloads and preview stay in sync.
+- Not HTML/CSS recreation of resume layout — the PDF is the source of truth.
+
+================================================================================
+RESUME — FULL TEXT CONTENT (FROM PDF)
+================================================================================
+
+Aditya Chandrajit Deore
+8010767685 | adityadeorework@gmail.com | linkedin.com/in/aditya-deore-3a725a263 | github.com/AdityaxDeore
+   180|
+Objective:
+Motivated AI & Machine Learning developer with full-stack foundations focused on building data-driven, scalable applications. Enthusiastic about learning, contributing to real-world solutions, and growing through hands-on engineering experience.
+
+Education:
+Pimpri Chinchwad College of Engineering (PCCOE), Pune — 2024 – 2028
+Bachelor of Technology in Information Technology
+Savitribai Phule Pune University
+
+Technical Skills:
+   190|Languages: Python, C++, JavaScript, TypeScript
+AI & Machine Learning: TensorFlow, PyTorch, Scikit-learn, Pandas, NumPy, ML Pipelines
+Frameworks & Libraries: React.js, Node.js, HTML5, CSS3, REST APIs
+Tools & Technologies: Git, GitHub, Linux, Docker (basic), Cursor AI, GitHub Copilot
+Soft Skills: Leadership, Team Collaboration, Problem Solving, Communication, Time Management
+
+Experience:
+
+ITSA – (Information Technology Students Council) — 2025 – Present
+Web Development Associate — PCCOE
+   200|• Develop and maintain websites for student initiatives and technical events.
+• Design responsive user interfaces to improve accessibility and usability.
+• Contribute frontend and backend code for AI/ML student projects.
+• Collaborate with GDG and MLSC teams for event deployments and technical support.
+
+VIRTUAL EXPERIENCE
+
+Deloitte — Feb 2026
+Data Analytics Job Simulation (Forage)
+• Built Tableau dashboards analyzing 1,000+ records, improving reporting efficiency.
+   210|• Performed data classification and decision support analysis using Excel.
+
+Mastercard — Jan 2026
+Cybersecurity Virtual Experience (Forage)
+• Analyzed 25+ simulated phishing emails and recommended mitigation measures.
+• Designed security awareness training for high-risk user groups.
+
+Projects:
+
+Code Campus — Proctored Coding & Learning Platform — Sept 2025 – Feb 2026
+   220|React, Node.js, MongoDB, TypeScript | github.com/AdityaxDeore/codecampus
+• Built a VS Code–style IDE for real-time code execution.
+• Implemented secure proctoring to prevent cheating during assessments.
+• Architected scalable full-stack system for coding workflows.
+
+Clarity — AI-Powered Mental Wellness Platform — Jan – Apr 2025
+React, TypeScript, PostgreSQL, TensorFlow | github.com/AdityaxDeore/Clarity
+• Built an AI wellness platform with conversational support and mood tracking.
+• Enabled real-time peer interaction using WebSockets.
+• Built scalable backend services supporting real-time user interactions.
+   230|
+Brain Tumor Detection System — Aug – Oct 2025
+Python, OpenCV, Scikit-learn, NumPy | github.com/AdityaxDeore/brain-tumor-detection
+• Built an MRI-based tumor classification model.
+• Applied machine learning algorithms to improve detection accuracy.
+• Implemented image preprocessing and feature extraction pipelines.
+
+Certifications:
+
+IBM Data Analyst Professional Certificate — Jan 2025 – Aug 2025
+   240|• Completed hands-on training in data analysis, visualization, and dashboards.
+• Applied Python, SQL, and Excel for data cleaning and analysis.
+• Built capstone project delivering actionable business insights.
+
+================================================================================
+PROJECTS PAGE
+================================================================================
+
+Page title: Projects
+Subtitle: Full-stack and AI systems I've designed, built, and shipped.
+   250|
+Filter categories: All, AI & ML, Full-Stack, Data Science
+
+--- Project 1: CodeCampus ---
+Category: AI & ML
+Short description: Full-Stack proctored coding platform for live student practice, assessments, and learning analytics.
+Tags: React, Node.js, MongoDB, TypeScript
+
+Preview highlights:
+- Real-time Proctoring
+   260|- Live Code Analysis
+- Performance Analytics
+
+Problem: Students need a live, proctored platform for coding practice and assessments that connects learning with real usage metrics.
+
+Why built: Built to support technical events and guided learning with scalable, full-stack infrastructure for modern assessment workflows.
+
+Features:
+- Proctored coding assessments
+- Student usage analytics
+   270|- Real-time feedback
+- Scalable UI for learners
+
+Tech stack: React, Node.js, MongoDB, TypeScript
+
+Challenges: Coordinating assessment integrity with responsive UI and handling concurrent student sessions was a key challenge.
+
+Roadmap: Add role-based dashboards, automated scoring, peer review workflows, and expanded scaling for 800+ students.
+
+GitHub: https://github.com/AdityaxDeore
+   280|Project repo: https://github.com/AdityaxDeore/codecampus
+
+--- Project 2: Clarity ---
+Category: AI & ML
+Short description: AI-powered mental wellness platform combining predictive insights, self-care workflows, and support resources.
+Tags: React, Node.js, PostgreSQL, TensorFlow
+
+Preview highlights:
+- Sentiment Analysis
+- Personalized Workflows
+   290|- Predictive Mood Trends
+
+Problem: Mental wellness support platforms need proactive, intelligent assistance that blends data insights with user-friendly guidance.
+
+Why built: Created to deliver personalized support, track wellbeing signals, and surface actionable next steps for mental health journeys.
+
+Features:
+- AI-powered recommendations
+- Mood tracking dashboards
+- Secure user profiles
+   300|- Support resource library
+
+Tech stack: React, Node.js, PostgreSQL, TensorFlow
+
+Challenges: Balancing data privacy with actionable analytics and designing an intuitive wellness interface required careful iteration.
+
+Roadmap: Build mobile support, improved personalization, and integration with wellness APIs for longitudinal analytics.
+
+GitHub: https://github.com/AdityaxDeore
+Project repo: https://github.com/AdityaxDeore/Clarity
+   310|
+--- Project 3: Brain Tumor Detection System ---
+Category: Data Science
+Short description: Medical imaging solution that identifies brain tumors using Python, OpenCV, and Scikit-learn.
+Tags: Python, OpenCV, Scikit-learn
+
+Preview highlights:
+- 3D Bounding Boxes
+- CNN Classification
+- High-speed Diagnostics
+   320|
+Problem: Medical imaging diagnostics require automation to detect anomalies quickly and reliably from scan data.
+
+Why built: Built to accelerate early detection using computer vision and machine learning models for brain tumor evaluation.
+
+Features:
+- MRI image preprocessing
+- Tumor classification
+- Model confidence scoring
+- Result visualization
+   330|
+Tech stack: Python, OpenCV, Scikit-learn
+
+Challenges: Handling image noise, dataset imbalance, and producing accurate classification with explainable outputs was essential.
+
+Roadmap: Add model explainability, larger dataset training, cloud deployment, and a clinician review dashboard.
+
+GitHub: https://github.com/AdityaxDeore
+Project repo: https://github.com/AdityaxDeore/brain-tumor-detection
+
+   340|================================================================================
+CERTIFICATIONS PAGE
+================================================================================
+
+Page title: Achievements & Certifications
+Subtitle: Professional certifications, competitions, and extracurricular milestones.
+Total count: 8
+
+Summary counts:
+- Certifications: 6
+   350|- Competitions: 1
+- Sports: 1
+
+Filter categories: All, Certification, Competition, Sports
+
+--- 1. HackerRank Software Engineer Intern Certification ---
+Category: Certification
+Year: 2026
+Short description: Validated performance in coding challenges and software engineering fundamentals.
+Summary: Demonstrated proficiency in software engineering fundamentals, problem-solving, and SQL.
+   360|
+--- 2. IBM Data Analyst Professional Certificate ---
+Category: Certification
+Year: 2025
+Short description: Completed data analysis projects using Python, SQL, and visualization best practices.
+Summary: Completed hands-on projects in Python, SQL, data analysis, dashboards, business intelligence, Cognos Analytics, and data visualization.
+
+--- 3. Deloitte Data Analytics Job Simulation ---
+Category: Certification
+Year: 2026
+   370|Short description: Built decision-support workflows and dashboard analytics for business insights.
+Summary: Worked on data classification, business analytics, dashboard creation, and decision-support workflows using Excel and Tableau.
+
+--- 4. Mastercard Cybersecurity Virtual Experience ---
+Category: Certification
+Year: 2026
+Short description: Analyzed phishing and security awareness scenarios to recommend better protections.
+Summary: Analyzed phishing scenarios, identified security risks, and developed security awareness recommendations for end users.
+
+--- 5. TCS Cybersecurity Analyst Simulation ---
+   380|Category: Certification
+Year: 2026
+Short description: Explored IAM concepts and cybersecurity operations through practical simulation.
+Summary: Explored IAM concepts, cybersecurity best practices, risk management, and technical documentation workflows.
+
+--- 6. MLSC National Hackathon Round 2 Qualifier ---
+Category: Competition
+Year: 2025
+Short description: Qualified for a national hackathon using AI and machine learning project solutions.
+Summary: Qualified for the second round of a national machine learning hackathon.
+   390|
+--- 7. Zonal Football Participation ---
+Category: Sports
+Year: 2024
+Short description: Demonstrated teamwork and leadership by representing the school zone in football.
+Summary: Represented the school zone in competitive football, showcasing teamwork and leadership.
+
+--- 8. Tabla Certification ---
+Category: Certification
+Year: 2024
+   400|Short description: Completed classical tabla certification to support creative discipline and focus.
+Summary: Completed tabla certification demonstrating discipline and creative performance.
+
+================================================================================
+CONTACT PAGE
+================================================================================
+
+Page title: Contact
+Subtitle: Open to internships, collaborations, and interesting project opportunities.
+
+   410|Quick contact:
+- Email: adityadeorework@gmail.com
+- Phone: 8010767685
+- Location: Pune, India
+
+Connect section:
+- LinkedIn: https://linkedin.com/in/aditya-deore-3a725a263
+- GitHub: https://github.com/AdityaxDeore
+
+Location map: Pune area (embedded Google Maps — Jai Ganesh Samrajya vicinity)
+   420|
+Send a message form:
+Note: Fill out the form and your email client will open with the message ready to send.
+Fields: Full name, Email address, Your message
+Submit button: Send Message
+Submit behavior: Opens mailto:adityadeorework@gmail.com with subject "Portfolio contact from [name]" and body containing name, email, and message.
+Success feedback: Opening email…
+
+================================================================================
+END OF FILE
+   430|================================================================================

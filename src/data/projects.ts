@@ -38,7 +38,7 @@ export const projects: Project[] = [
     title: 'Code Campus',
     tags: ['React', 'Node.js', 'MongoDB', 'TypeScript'],
     outcome: 'Full-Stack proctored coding platform for live student practice, assessments, and learning analytics.',
-    image: '/images/projects/codecampus.png',
+    image: '/motion/1.jfif',
     links: [{ label: 'GitHub', href: 'https://github.com/AdityaxDeore/codecampus', external: true }],
     caseStudy: {
       role: 'Full-Stack Developer',
@@ -58,7 +58,7 @@ export const projects: Project[] = [
     title: 'Brain Tumor Detection',
     tags: ['Python', 'OpenCV', 'Scikit-learn', 'Machine Learning'],
     outcome: 'Delivered 96.3% classification accuracy on unseen MRI scans using an optimized SVM-based diagnostic pipeline.',
-    image: '/images/projects/tumorai.png',
+    image: '/motion/2.jfif',
     links: [{ label: 'GitHub', href: 'https://github.com/AdityaxDeore/brain-tumor-detection', external: true }],
     caseStudy: {
       role: 'AI/ML Engineer',
@@ -78,7 +78,7 @@ export const projects: Project[] = [
     title: 'Clarity',
     tags: ['React', 'TypeScript', 'PostgreSQL', 'TensorFlow'],
     outcome: 'AI wellness platform with real-time peer interactions and conversational support.',
-    image: '/images/projects/clarity.png',
+    image: '/motion/3.jfif',
     links: [{ label: 'GitHub', href: 'https://github.com/AdityaxDeore/Clarity', external: true }],
     caseStudy: {
       role: 'Full-Stack & AI Engineer',
@@ -97,7 +97,7 @@ export const projects: Project[] = [
     title: 'AgentFlow',
     tags: ['Python', 'LangChain', 'FastAPI', 'Redis'],
     outcome: 'Orchestrated multi-agent automation completing complex multi-step data integration tasks.',
-    image: '/images/projects/codecampus.png',
+    image: '/motion/4.jfif',
     links: [{ label: 'GitHub', href: 'https://github.com/AdityaxDeore', external: true }],
     caseStudy: {
       role: 'Backend & AI Engineer',
@@ -116,7 +116,7 @@ export const projects: Project[] = [
     title: 'Hybrid RAG Search',
     tags: ['Python', 'Qdrant', 'FastAPI', 'Sentence-Transformers'],
     outcome: 'Built a search engine combining semantic vector retrieval and BM25 text queries.',
-    image: '/images/projects/tumorai.png',
+    image: '/motion/5.jfif',
     links: [{ label: 'GitHub', href: 'https://github.com/AdityaxDeore', external: true }],
     caseStudy: {
       role: 'ML Engineer',
@@ -135,7 +135,7 @@ export const projects: Project[] = [
     title: 'EdgeVision Traffic',
     tags: ['Python', 'OpenCV', 'PyTorch', 'ONNX'],
     outcome: 'Real-time vehicle detection and lane traffic density estimation running on low-cost edge platforms.',
-    image: '/images/projects/clarity.png',
+    image: '/motion/6.jpg',
     links: [{ label: 'GitHub', href: 'https://github.com/AdityaxDeore', external: true }],
     caseStudy: {
       role: 'Computer Vision Engineer',
@@ -154,7 +154,7 @@ export const projects: Project[] = [
     title: 'LogSync Stream',
     tags: ['Go', 'Kafka', 'Elasticsearch', 'Docker'],
     outcome: 'Distributed logging pipeline ingesting 15,000+ log events per second with real-time indexing.',
-    image: '/images/projects/codecampus.png',
+    image: '/motion/7.jfif',
     links: [{ label: 'GitHub', href: 'https://github.com/AdityaxDeore', external: true }],
     caseStudy: {
       role: 'Infrastructure Developer',
@@ -173,7 +173,7 @@ export const projects: Project[] = [
     title: 'KeyGate OAuth',
     tags: ['TypeScript', 'Node.js', 'Redis', 'PostgreSQL'],
     outcome: 'Secure, zero-trust authentication server supporting JWT sessions and multi-factor verification.',
-    image: '/images/projects/tumorai.png',
+    image: '/motion/8.jpg',
     links: [{ label: 'GitHub', href: 'https://github.com/AdityaxDeore', external: true }],
     caseStudy: {
       role: 'Security Engineer',
@@ -192,7 +192,7 @@ export const projects: Project[] = [
     title: 'InsightMail NLP',
     tags: ['Python', 'Scikit-learn', 'Transformers', 'FastAPI'],
     outcome: 'Automated email routing and ticket severity classifier with 91.5% classification accuracy.',
-    image: '/images/projects/clarity.png',
+    image: '/motion/11.jfif',
     links: [{ label: 'GitHub', href: 'https://github.com/AdityaxDeore', external: true }],
     caseStudy: {
       role: 'Data Scientist',

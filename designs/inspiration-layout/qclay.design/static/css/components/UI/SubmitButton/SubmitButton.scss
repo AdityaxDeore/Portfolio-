@@ -1,0 +1,205 @@
+@use "@/assets/styles" as *;
+
+.button {
+  @include font-PlusJakartaDisplay-medium;
+  background: color(black-100);
+  color: color(white-100);
+  padding: rem(16) rem(28);
+  border-radius: rem(100);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  --ring-size: #{rem(40)};
+  @include mobile-sm {
+    padding: rem(16);
+
+  }
+
+  .lds-ring {
+    max-width: 0;
+    opacity: 0;
+    transform: translate(-2px, -2px);
+    transition: max-width .3s ease, opacity .3s ease, margin .3s ease;
+  }
+
+  .text {
+    @include mobile-sm {
+      display: none !important;
+    }
+  }
+
+  .text, .button__word_mobile {
+    margin: 0 rem(4);
+    font-size: font(16);
+    display: flex;
+    max-width: rem(150);
+    opacity: 1;
+    transition: max-width .3s ease, opacity .3s ease, margin .3s ease;
+    @include mobile-sm {
+      max-width: rem(300);
+    }
+  }
+
+  .text {
+    > span {
+      margin: 0 rem(4);
+    }
+  }
+
+  .hover {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  @include mobile-sm {
+    width: 100%;
+  }
+
+    .button__word_mobile {
+      margin: auto;
+      text-transform: capitalize;
+      font-size: font(16);
+      display: none;
+      height: rem(20);
+      @include mobile-sm {
+        display: block;
+      }
+    }
+  
+
+  &__word_two, .button__word_three {
+    transition: .3s;
+  }
+
+  &__word_two {
+    transform: rotate(8.59deg);
+  }
+
+  &__word_three {
+    transform: rotate(-8.38deg);
+  }
+}
+
+.button-pulse {
+  position: relative;
+  width: fit-content;
+  @include mobile-sm {
+    width: 100%;
+
+    &.sbmt-btn {
+      .puls {
+        opacity: 1;
+
+        @for $i from 1 through 4 {
+          > :nth-child(#{$i}) {
+            animation: 3s wave #{1.5 / 4 * $i}s infinite ease;
+          }
+        }
+      }
+    }
+  }
+
+  &.-loading {
+    .lds-ring {
+      max-width: var(--ring-size) !important;
+      opacity: 1 !important;
+      margin: 0 !important;
+    }
+    .text, .button__word_mobile {
+      max-width: 0 !important;
+      opacity: 0 !important;
+      margin: 0 !important;
+    }
+  }
+
+  &:hover {
+    .puls {
+      opacity: 1;
+    }
+    .button__word_two, .button__word_three {
+      transform: rotate(0);
+    }
+  }
+
+  .puls {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity .3s ease;
+    pointer-events: none;
+
+    > * {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      border: 1px solid color(grey-200);
+      border-radius: rem(100);
+    }
+
+    @for $i from 1 through 4 {
+      > :nth-child(#{$i}) {
+        animation: 1.5s wave #{1.5 / 4 * $i}s infinite ease;
+      }
+    }
+
+    @keyframes wave {
+      from {
+        opacity: 0;
+        transform: scaleX(1) scaleY(1);
+      }
+      10% {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+        transform: scaleX(1.15) scaleY(1.4);
+      }
+    }
+  }
+
+
+  .lds-ring {
+    display: inline-block;
+    position: relative;
+    width: var(--ring-size);
+    height: var(--ring-size);
+  }
+  .lds-ring span {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 2px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+  }
+  .lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+  }
+  .lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+  }
+  .lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+  }
+  @keyframes lds-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+}

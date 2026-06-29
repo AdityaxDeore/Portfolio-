@@ -1,0 +1,104 @@
+@use "@/assets/styles" as *;
+
+.burger {
+  position: relative;
+  width: rem(100);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  transition: color .3s;
+  color: var(--header-color);
+
+  @include mobile-sm {
+    width: fit-content;
+  }
+
+  .hover {
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.button-burger {
+  margin-left: rem(25);
+
+  &.-show .line {
+    @include font-PlusJakartaDisplay-regular;
+    font-size: font(16);
+  }
+
+  p {
+    @include font-MazzardM-medium;
+    font-size: font(20);
+  }
+
+  .btn {
+    position: relative;
+    width: rem(31);
+    height: rem(31);
+    margin-left: rem(10);
+
+    .line {
+      position: absolute;
+      width: rem(31);
+      height: rem(2);
+      background: var(--header-color);
+      border-radius: rem(2);
+      left: 0;
+      transition: background-color .3s, transform .3s ease;
+
+      &:nth-child(1), &:nth-child(2) {
+        top: 50%;
+      }
+
+      &:nth-child(1) {
+        transform: translate(0, rem(-5));
+      }
+
+      &:nth-child(2) {
+        transform: translate(0, rem(2));
+      }
+
+      &.-show {
+        width: rem(24);
+        height: rem(1.5);
+
+        &:nth-child(1) {
+          transform: rotate(45deg);
+        }
+
+        &:nth-child(2) {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+}
+
+.button-burger {
+  height: rem(40);
+  overflow: hidden;
+
+  .burger-text {
+    display: flex;
+    flex-direction: column;
+    transform: translate(0, rem(-24));
+    transition: color .3s, transform .3s ease;
+
+    @include mobile-sm {
+      display: none;
+    }
+
+    &.active {
+      transform: translate(0, rem(24));
+    }
+
+    p {
+      margin: rem(11) 0;
+    }
+  }
+}
