@@ -5,6 +5,7 @@ import { isPageReload, scrollToTop } from '@/lib/scrollToTop'
 import { useLayoutEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import { DevAgentation } from '@/agentation'
+import { FloatingChatbot } from '@/components/ui/FloatingChatbot'
 
 
 function ScrollManager() {
@@ -40,6 +41,7 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/projects/:id" element={<ProjectPage />} />
       </Routes>
+      <FloatingChatbot />
       <DevAgentation />
     </>
   )

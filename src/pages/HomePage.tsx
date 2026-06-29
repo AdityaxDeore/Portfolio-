@@ -1,5 +1,4 @@
 import { About } from '@/components/sections/About'
-import { CodeTerminal } from '@/components/sections/CodeTerminal'
 import { Contact } from '@/components/sections/Contact'
 import { Experience } from '@/components/sections/Experience'
 import { FeatureShowcase } from '@/components/sections/FeatureShowcase'
@@ -17,7 +16,6 @@ export function HomePage() {
       <Projects />
       <Skills />
       <Resume />
-      <CodeTerminal />
       <FeatureShowcase />
       <Contact />
     </main>

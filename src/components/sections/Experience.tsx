@@ -21,8 +21,8 @@ export function Experience() {
             <motion.li
               key={item.id}
               className="experience__item"
-              initial={reducedMotion ? false : { opacity: 0, x: -16 }}
-              whileInView={reducedMotion ? undefined : { opacity: 1, x: 0 }}
+              initial={reducedMotion ? false : { opacity: 0, y: 16 }}
+              whileInView={reducedMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{
                 duration: 0.55,
@@ -30,27 +30,6 @@ export function Experience() {
                 delay: reducedMotion ? 0 : index * 0.08,
               }}
             >
-              <div className="experience__marker" aria-hidden="true">
-                <div className={`experience__logo-box experience__logo-box--${item.id}`}>
-                  {item.id === 'itsa-web-dev' ? (
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="16 18 22 12 16 6" />
-                      <polyline points="8 6 2 12 8 18" />
-                    </svg>
-                  ) : (
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="5" r="2.5" />
-                      <circle cx="5" cy="12" r="2.5" />
-                      <circle cx="19" cy="12" r="2.5" />
-                      <circle cx="12" cy="19" r="2.5" />
-                      <line x1="12" y1="7.5" x2="12" y2="16.5" />
-                      <line x1="6.77" y1="10.23" x2="17.23" y2="13.77" />
-                      <line x1="6.77" y1="13.77" x2="17.23" y2="10.23" />
-                    </svg>
-                  )}
-                </div>
-              </div>
-
               <article className="experience__card">
                 <header className="experience__card-header">
                   <div>
@@ -65,6 +44,29 @@ export function Experience() {
                 </header>
 
                 <p className="experience__summary">{item.summary}</p>
+
+                {item.milestones && (
+                  <div className="experience__milestones-container">
+                    <h4 className="experience__milestones-title">Timeline of Milestones & Key Events</h4>
+                    <div className="experience__milestones-list">
+                      {item.milestones.map((milestone, idx) => (
+                        <div key={idx} className="experience__milestone-step">
+                          <div className="experience__milestone-indicator">
+                            <span className="experience__milestone-dot"></span>
+                            {idx < item.milestones!.length - 1 && <span className="experience__milestone-line"></span>}
+                          </div>
+                          <div className="experience__milestone-content">
+                            <div className="experience__milestone-header">
+                              <span className="experience__milestone-date">{milestone.date}</span>
+                              <h5 className="experience__milestone-name">{milestone.title}</h5>
+                            </div>
+                            <p className="experience__milestone-desc">{milestone.description}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 <ul className="experience__highlights">
                   {item.highlights.map((highlight) => (

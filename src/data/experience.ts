@@ -8,6 +8,11 @@ export type ExperienceItem = {
   summary: string
   highlights: string[]
   tech: string[]
+  milestones?: {
+    date: string
+    title: string
+    description: string
+  }[]
 }
 
 export const experienceSection = {
@@ -33,6 +38,28 @@ export const experienceItems: ExperienceItem[] = [
       'Developed responsive full-stack web applications, streamlining event discovery, registration, and engagement for the student community.',
     ],
     tech: ['HTML5', 'CSS3', 'React.js', 'Node.js'],
+    milestones: [
+      {
+        date: 'May 2025',
+        title: 'Project Initiation & Database Design',
+        description: 'Designed relational schemas for high-concurrency event registrations and student profiles.',
+      },
+      {
+        date: 'Aug 2025',
+        title: 'Unique Student ID Verification',
+        description: 'Released automated ID verification module, reducing manual check-in overhead by 90%.',
+      },
+      {
+        date: 'Oct 2025',
+        title: 'Hackathon Scale-up',
+        description: 'Successfully scaled platform to handle 1,500+ concurrent requests during active hackathon check-ins.',
+      },
+      {
+        date: 'Jan 2026',
+        title: 'System Handover & Documentation',
+        description: 'Compiled comprehensive REST API docs and transitioned code ownership to next-gen associates.',
+      },
+    ],
   },
   {
     id: 'personify-ai-ml',
@@ -51,5 +78,22 @@ export const experienceItems: ExperienceItem[] = [
       'Enhanced inference efficiency through feature extraction and model optimization techniques, decreasing prediction latency by <strong>30%</strong> while maintaining high accuracy.',
     ],
     tech: ['Python', 'TensorFlow', 'Machine Learning', 'NumPy', 'Pandas'],
+    milestones: [
+      {
+        date: 'Mar 2025',
+        title: 'EDA & Preprocessing Setup',
+        description: 'Automated ingestion pipelines for a raw 10k+ image set, reducing initial clean-up time by 40%.',
+      },
+      {
+        date: 'Apr 2025',
+        title: 'Architecture tuning & Training',
+        description: 'Optimized CNN model hyperparameters and leveraged MobileNetV2 weight transfers to gain +15% F1-score.',
+      },
+      {
+        date: 'May 2025',
+        title: 'Inference Quantization & Deploy',
+        description: 'Applied post-training quantization, achieving a 30% reduction in prediction latency on edge devices.',
+      },
+    ],
   },
 ]

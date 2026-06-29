@@ -30,80 +30,37 @@
 
 .experience__timeline {
   list-style: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.5rem;
+  max-width: 54rem;
 }
 
 .experience__item {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: clamp(1rem, 3vw, 2.5rem);
-}
-
-.experience__marker {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 0.25rem;
-}
-
-.experience__logo-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: 50%;
-  border: 1px solid var(--color-hairline);
-  background: var(--color-surface-soft);
-  color: var(--color-text-secondary);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-  transition: all var(--duration-fast) var(--ease-out);
-}
-
-.experience__logo-box--itsa-web-dev {
-  background: color-mix(in srgb, #a855f7 8%, var(--color-surface-card));
-  border-color: color-mix(in srgb, #a855f7 24%, var(--color-hairline));
-  color: #a855f7;
-}
-
-.experience__logo-box--personify-ai-ml {
-  background: color-mix(in srgb, #e08365 8%, var(--color-surface-card));
-  border-color: color-mix(in srgb, #e08365 24%, var(--color-hairline));
-  color: #e08365;
-}
-
-.experience__item:hover .experience__logo-box {
-  transform: scale(1.06);
-}
-
-.experience__item:not(:last-child) .experience__marker::after {
-  content: '';
-  flex: 1;
-  width: 2px;
-  margin-top: 0.75rem;
-  background: linear-gradient(to bottom, var(--color-primary), transparent);
-  min-height: 8rem;
+  display: block;
 }
 
 .experience__card {
   padding: clamp(1.5rem, 4vw, 2.25rem);
-  border: 1px solid color-mix(in srgb, var(--color-primary) 15%, var(--color-hairline));
+  border: 1px solid #D47655;
   border-radius: 2rem;
-  background: color-mix(in srgb, var(--color-primary) 3%, var(--color-surface-card));
+  background-color: #D47655;
+  box-shadow: 0 4px 20px rgba(212, 118, 85, 0.12);
   transition:
     border-color var(--duration-normal) var(--ease-out),
+    background-color var(--duration-normal) var(--ease-out),
     transform var(--duration-normal) var(--ease-out),
     box-shadow var(--duration-normal) var(--ease-out);
 }
 
 .experience__item:hover .experience__card {
-  border-color: color-mix(in srgb, var(--color-primary) 40%, var(--color-hairline));
+  border-color: #D47655;
+  background-color: color-mix(in srgb, var(--color-primary) 4%, var(--color-surface-card));
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px color-mix(in srgb, var(--color-text-primary) 5%, transparent);
+  box-shadow: 
+    0 12px 32px color-mix(in srgb, var(--color-primary) 8%, transparent);
 }
 
 .experience__card-header {
@@ -121,6 +78,11 @@
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.9);
+  transition: color var(--duration-normal) var(--ease-out);
+}
+
+.experience__item:hover .experience__role {
   color: var(--color-primary);
 }
 
@@ -130,6 +92,11 @@
   font-size: clamp(1.5rem, 3vw, 2.25rem);
   font-weight: 500;
   line-height: 1.1;
+  color: #ffffff;
+  transition: color var(--duration-normal) var(--ease-out);
+}
+
+.experience__item:hover .experience__company {
   color: var(--color-text-primary);
 }
 
@@ -145,11 +112,21 @@
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.8rem;
   font-weight: 600;
+  color: #ffffff;
+  transition: color var(--duration-normal) var(--ease-out);
+}
+
+.experience__item:hover .experience__period {
   color: var(--color-text-primary);
 }
 
 .experience__location {
   font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
+  transition: color var(--duration-normal) var(--ease-out);
+}
+
+.experience__item:hover .experience__location {
   color: var(--color-text-secondary);
 }
 
@@ -159,18 +136,160 @@
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  color: #D47655;
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 999px;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.experience__item:hover .experience__type {
   color: var(--color-primary);
   background: var(--color-primary-muted);
-  border: 1px solid color-mix(in srgb, var(--color-primary) 20%, transparent);
-  border-radius: 999px;
+  border-color: color-mix(in srgb, var(--color-primary) 20%, transparent);
 }
 
 .experience__summary {
   margin: 0 0 1.25rem;
   font-size: 1.05rem;
   line-height: 1.6;
-  color: var(--color-text-secondary);
+  color: rgba(255, 255, 255, 0.95);
   max-width: 55ch;
+  transition: color var(--duration-normal) var(--ease-out);
+}
+
+.experience__item:hover .experience__summary {
+  color: var(--color-text-secondary);
+}
+
+/* Milestones container */
+.experience__milestones-container {
+  margin-block: 1.5rem;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px dashed rgba(255, 255, 255, 0.25);
+  border-radius: 1.25rem;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.experience__item:hover .experience__milestones-container {
+  background: color-mix(in srgb, var(--color-primary) 3%, var(--color-surface-soft));
+  border-color: color-mix(in srgb, var(--color-primary) 20%, var(--color-hairline));
+}
+
+.experience__milestones-title {
+  margin: 0 0 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ffffff;
+  transition: color var(--duration-normal) var(--ease-out);
+}
+
+.experience__item:hover .experience__milestones-title {
+  color: var(--color-primary);
+}
+
+.experience__milestones-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.experience__milestone-step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+}
+
+.experience__milestone-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding-top: 0.35rem;
+}
+
+.experience__milestone-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.35);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.experience__item:hover .experience__milestone-dot {
+  background: var(--color-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 25%, transparent);
+}
+
+.experience__milestone-line {
+  position: absolute;
+  top: 0.85rem;
+  bottom: -1.5rem;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  transition: background var(--duration-normal) var(--ease-out);
+}
+
+.experience__item:hover .experience__milestone-line {
+  background: color-mix(in srgb, var(--color-primary) 20%, transparent);
+}
+
+.experience__milestone-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.experience__milestone-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+}
+
+.experience__milestone-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #D47655;
+  background: #ffffff;
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.experience__item:hover .experience__milestone-date {
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+}
+
+.experience__milestone-name {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  transition: color var(--duration-normal) var(--ease-out);
+}
+
+.experience__item:hover .experience__milestone-name {
+  color: var(--color-text-primary);
+}
+
+.experience__milestone-desc {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+  transition: color var(--duration-normal) var(--ease-out);
+}
+
+.experience__item:hover .experience__milestone-desc {
+  color: var(--color-text-secondary);
 }
 
 .experience__highlights {
@@ -187,6 +306,11 @@
   padding-left: 1.5rem;
   font-size: 0.95rem;
   line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+  transition: color var(--duration-normal) var(--ease-out);
+}
+
+.experience__item:hover .experience__highlights li {
   color: var(--color-text-secondary);
 }
 
@@ -194,14 +318,24 @@
   content: '✓';
   position: absolute;
   left: 0;
-  color: var(--color-primary);
+  color: #ffffff;
   font-weight: 900;
   font-size: 1rem;
+  transition: color var(--duration-normal) var(--ease-out);
+}
+
+.experience__item:hover .experience__highlights li::before {
+  color: var(--color-primary);
 }
 
 .experience__highlights li strong {
-  color: var(--color-text-primary);
+  color: #ffffff;
   font-weight: 600;
+  transition: color var(--duration-normal) var(--ease-out);
+}
+
+.experience__item:hover .experience__highlights li strong {
+  color: var(--color-text-primary);
 }
 
 .experience__tech {
@@ -218,14 +352,16 @@
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.7rem;
   font-weight: 600;
-  color: var(--color-primary);
-  background: color-mix(in srgb, var(--color-primary) 6%, var(--color-surface-soft));
-  border: 1px solid color-mix(in srgb, var(--color-primary) 15%, var(--color-hairline));
+  color: #D47655;
+  background: #ffffff;
+  border: 1px solid #ffffff;
   border-radius: 0.75rem;
-  transition: all var(--duration-fast) var(--ease-out);
+  transition: all var(--duration-normal) var(--ease-out);
 }
 
 .experience__item:hover .experience__tech li {
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 6%, var(--color-surface-soft));
   border-color: color-mix(in srgb, var(--color-primary) 15%, var(--color-hairline));
 }
 
