@@ -8,6 +8,11 @@ export const resumePageImages = [
   '/resume-page-1.png',
 ] as const
 
+/** US Letter page proportions for preview framing */
+export const resumePageAspectRatio = 8.5 / 11
+export const resumePageWidthIn = 8.5
+export const resumePageHeightIn = 11
+
 export const resumeGoogleDocId = '11W-WCQrjPfvzGVs8ovxyofMCHZ0IHZKP'
 
 export const resumeExternalLinks = {

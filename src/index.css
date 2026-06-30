@@ -63,6 +63,7 @@ button {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -114,37 +115,37 @@ button {
 }
 
 .dark {
-  --background: #141413;
+  --background: #222220;
   --foreground: #faf9f5;
-  --card: #222220;
+  --card: #2b2b29;
   --card-foreground: #faf9f5;
-  --popover: #222220;
+  --popover: #2b2b29;
   --popover-foreground: #faf9f5;
-  --primary: #cc785c;
+  --primary: #c96442;
   --primary-foreground: #ffffff;
-  --secondary: #1d1d1c;
+  --secondary: #2b2b29;
   --secondary-foreground: #faf9f5;
-  --muted: #1d1d1c;
+  --muted: #2b2b29;
   --muted-foreground: #87867f;
-  --accent: #1d1d1c;
+  --accent: #2b2b29;
   --accent-foreground: #faf9f5;
   --destructive: oklch(0.704 0.191 22.216);
-  --border: #30302e;
-  --input: #30302e;
-  --ring: #cc785c;
+  --border: #3e3e3b;
+  --input: #3e3e3b;
+  --ring: #c96442;
   --chart-1: oklch(0.868 0.007 39.5);
   --chart-2: oklch(0.547 0.021 43.1);
   --chart-3: oklch(0.438 0.017 39.3);
   --chart-4: oklch(0.367 0.016 35.7);
   --chart-5: oklch(0.268 0.011 36.5);
-  --sidebar: #141413;
+  --sidebar: #222220;
   --sidebar-foreground: #faf9f5;
-  --sidebar-primary: #cc785c;
+  --sidebar-primary: #c96442;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #1d1d1c;
+  --sidebar-accent: #2b2b29;
   --sidebar-accent-foreground: #faf9f5;
-  --sidebar-border: #30302e;
-  --sidebar-ring: #cc785c;
+  --sidebar-border: #3e3e3b;
+  --sidebar-ring: #c96442;
 
   --highlight-red-bg: #d48989;
   --highlight-purple-bg: #a78fcd;
@@ -202,6 +203,7 @@ button {
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(calc(-100% - var(--gap)));
   }
@@ -211,6 +213,7 @@ button {
   from {
     transform: translateY(0);
   }
+
   to {
     transform: translateY(calc(-100% - var(--gap)));
   }
@@ -220,9 +223,11 @@ button {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
   html {
     @apply font-sans;
   }
@@ -239,4 +244,422 @@ button {
 .resume,
 .contact {
   border-top: none !important;
+}
+
+/* Chatbot Rich Card Styles */
+.chat-rich-container {
+  margin-top: 0.75rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.chat-project-card {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--card, #faf9f5);
+  border: 1px solid var(--border, #e6e2d8);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chat-project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.chat-project-card__image-container {
+  position: relative;
+  width: 110px;
+  height: 100%;
+  min-height: 120px;
+  overflow: hidden;
+}
+
+.chat-project-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.chat-project-card:hover .chat-project-card__image {
+  transform: scale(1.04);
+}
+
+.chat-project-card__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 30%, rgba(0, 0, 0, 0.4));
+}
+
+@media (max-width: 480px) {
+  .chat-project-card {
+    grid-template-columns: 1fr;
+  }
+
+  .chat-project-card__image-container {
+    width: 100%;
+    height: 100px;
+    min-height: 0;
+  }
+}
+
+.chat-project-card__body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.chat-project-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.chat-project-card__title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--foreground, #141413);
+}
+
+.chat-project-card__year {
+  font-size: 0.75rem;
+  color: var(--muted-foreground, #5e5d59);
+  background: var(--secondary, #f7f6f1);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+}
+
+.chat-project-card__outcome {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--muted-foreground, #5e5d59);
+}
+
+.chat-project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-block: 0.25rem;
+}
+
+.chat-project-card__tag {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.45rem;
+  background: var(--muted, #f7f6f1);
+  color: var(--muted-foreground, #5e5d59);
+  border-radius: 999px;
+  border: 1px solid var(--border, #e6e2d8);
+}
+
+.chat-project-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.chat-project-card__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.chat-project-card__btn--primary {
+  background: var(--primary, #cc785c);
+  color: #ffffff !important;
+}
+
+.chat-project-card__btn--primary:hover {
+  background: #b36349;
+}
+
+.chat-project-card__btn--secondary {
+  background: var(--secondary, #f7f6f1);
+  color: var(--foreground, #141413) !important;
+  border: 1px solid var(--border, #e6e2d8);
+}
+
+.chat-project-card__btn--secondary:hover {
+  background: var(--border, #e6e2d8);
+}
+
+.chat-project-card--minimized {
+  display: block !important;
+  width: 100%;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid color-mix(in srgb, var(--primary, #D47655) 30%, #e6e2d8) !important;
+  border-left: 4px solid var(--primary, #D47655) !important;
+  /* Elegant orange left accent border! */
+  margin-bottom: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease;
+}
+
+.chat-project-card--minimized:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(212, 118, 85, 0.08);
+  border-color: var(--primary, #D47655) !important;
+}
+
+/* Contact Card */
+.chat-contact-card {
+  padding: 1rem;
+  border-radius: 12px;
+  background: var(--card, #faf9f5);
+  border: 1px solid var(--border, #e6e2d8);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.chat-contact-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.chat-contact-card__icon {
+  color: var(--primary, #cc785c);
+}
+
+.chat-contact-card__title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--foreground, #141413);
+}
+
+.chat-contact-card__subtitle {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--muted-foreground, #5e5d59);
+}
+
+.chat-contact-card__actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
+.chat-contact-card__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+
+.chat-contact-card__btn--email {
+  background: var(--primary, #cc785c);
+  color: #ffffff !important;
+}
+
+.chat-contact-card__btn--email:hover {
+  background: #b36349;
+}
+
+.chat-contact-card__btn--whatsapp {
+  background: #25d366;
+  color: #ffffff !important;
+}
+
+.chat-contact-card__btn--whatsapp:hover {
+  background: #20ba5a;
+}
+
+.chat-contact-card__btn--linkedin {
+  background: #0077b5;
+  color: #ffffff !important;
+}
+
+.chat-contact-card__btn--linkedin:hover {
+  background: #005a87;
+}
+
+.chat-contact-card__btn--github {
+  background: #24292e;
+  color: #ffffff !important;
+}
+
+.chat-contact-card__btn--github:hover {
+  background: #111;
+}
+
+/* Resume Card */
+.chat-resume-card {
+  padding: 1rem;
+  border-radius: 12px;
+  background: var(--card, #faf9f5);
+  border: 1px solid var(--border, #e6e2d8);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.chat-resume-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.chat-resume-card__icon {
+  color: var(--primary, #cc785c);
+}
+
+.chat-resume-card__title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--foreground, #141413);
+}
+
+.chat-resume-card__subtitle {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--muted-foreground, #5e5d59);
+}
+
+.chat-resume-card__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.chat-resume-card__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+
+.chat-resume-card__btn--pdf {
+  background: var(--primary, #cc785c);
+  color: #ffffff !important;
+}
+
+.chat-resume-card__btn--pdf:hover {
+  background: #b36349;
+}
+
+.chat-resume-card__btn--word {
+  background: var(--secondary, #f7f6f1);
+  color: var(--foreground, #141413) !important;
+  border: 1px solid var(--border, #e6e2d8);
+}
+
+.chat-resume-card__btn--word:hover {
+  background: var(--border, #e6e2d8);
+}
+
+.chat-resume-card__btn--drive {
+  background: var(--secondary, #f7f6f1);
+  color: var(--foreground, #141413) !important;
+  border: 1px solid var(--border, #e6e2d8);
+}
+
+.chat-resume-card__btn--drive:hover {
+  background: var(--border, #e6e2d8);
+}
+
+/* Skills Card */
+.chat-skills-card {
+  padding: 1rem;
+  border-radius: 12px;
+  background: var(--card, #faf9f5);
+  border: 1px solid var(--border, #e6e2d8);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.chat-skills-card__header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.chat-skills-card__icon {
+  color: var(--primary, #cc785c);
+}
+
+.chat-skills-card__title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--foreground, #141413);
+}
+
+.chat-skills-card__subtitle {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--muted-foreground, #5e5d59);
+}
+
+.chat-skills-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.chat-skills-card__group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.chat-skills-card__group-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--primary, #cc785c);
+}
+
+.chat-skills-card__group-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.chat-skills-card__tag {
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  background: var(--muted, #f7f6f1);
+  color: var(--foreground, #141413);
+  border-radius: 6px;
+  border: 1px solid var(--border, #e6e2d8);
 }

@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { ResumeRecruiterChat } from '@/components/ui/ResumeRecruiterChat'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import {
   resumePdfUrl,
   resumeDocxUrl,
@@ -37,7 +38,39 @@ function ExternalLinkIcon({ size = 16 }: { size?: number }) {
 }
 
 export function Resume() {
-  const [showPreview, setShowPreview] = useState(false)
+  const [showPreview, setShowPreview] = useState(true)
+  const resumeImageRef = useRef<HTMLImageElement>(null)
+  const pageFrameRef = useRef<HTMLElement>(null)
+  const [previewHeight, setPreviewHeight] = useState<number | null>(null)
+
+  const syncPreviewHeight = useCallback(() => {
+    const frame = pageFrameRef.current
+    if (!frame) return
+
+    const nextHeight = Math.ceil(frame.getBoundingClientRect().height)
+    if (nextHeight > 0) {
+      setPreviewHeight((prev) => (prev === nextHeight ? prev : nextHeight))
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!showPreview) return
+
+    syncPreviewHeight()
+
+    const frame = pageFrameRef.current
+    const observer = frame ? new ResizeObserver(syncPreviewHeight) : null
+    if (frame && observer) observer.observe(frame)
+
+    window.addEventListener('resize', syncPreviewHeight)
+    return () => {
+      observer?.disconnect()
+      window.removeEventListener('resize', syncPreviewHeight)
+    }
+  }, [showPreview, syncPreviewHeight])
+
+  const pairedHeightStyle =
+    previewHeight != null ? { height: previewHeight, minHeight: previewHeight } : undefined
 
   return (
     <section id="resume" className="resume" aria-labelledby="resume-title">
@@ -114,101 +147,42 @@ export function Resume() {
                   strokeLinejoin="round"
                 />
               </svg>
-              {showPreview ? 'Hide Preview' : 'Preview Resume'}
+              {showPreview ? 'Hide Preview' : 'Show Preview'}
             </button>
           </div>
 
-          {showPreview && (
-            <div className="resume__preview-split">
-              {/* Left side: Resume Preview */}
-              <div className="resume__preview-left">
-                <figure className="resume__page">
-                  <a
-                    href={resumePdfUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="resume__page-link"
-                    aria-label="Open resume PDF in a new tab"
-                  >
-                    <img
-                      src={resumePageImages[0]}
-                      alt="Aditya Deore Resume"
-                      className="resume__page-image"
-                      loading="eager"
-                      decoding="async"
-                    />
-                  </a>
-                </figure>
-              </div>
-
-              {/* Right side: AI Insights */}
-              <div className="resume__preview-right">
-                <div className="resume__insights claude-chat-bubble">
-                  <div className="claude-chat-header">
-                    <div className="claude-avatar">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="claude-avatar-svg">
-                        <circle cx="12" cy="12" r="10" fill="var(--color-primary)" fillOpacity="0.12" />
-                        <path d="M12 8v8M8 12h8" stroke="var(--color-primary)" strokeWidth="1.75" strokeLinecap="round" />
-                      </svg>
-                      <span className="claude-avatar-text">Claude</span>
-                      <span className="claude-avatar-tag">Recruiter Bot</span>
-                    </div>
-                    <div className="claude-score-badge">
-                      <span className="score-num">94%</span>
-                      <span className="score-label">ATS Score</span>
-                    </div>
-                  </div>
-
-                  <div className="claude-chat-body">
-                    <p className="claude-para">
-                      I have analyzed your resume structure against industry screening filters and senior recruiter benchmarks for Machine Learning (CV/ML) and Full-Stack Engineering roles.
-                    </p>
-
-                    <div className="claude-section">
-                      <h4 className="claude-subheading">Key Strengths & Role Fit</h4>
-                      <ul className="claude-list">
-                        <li>
-                          <strong>Computer Vision Core:</strong> Strong indexing on convolutional architectures, transfer learning, precision-recall optimization, and automated training pipelines.
-                        </li>
-                        <li>
-                          <strong>Production Ownership:</strong> ITSA Event platform demonstrates robust database architecture, transaction flows, and full-stack security integrations.
-                        </li>
-                        <li>
-                          <strong>Quantifiable Achievements:</strong> High business clarity via impact metrics (96.3% accuracy, 40% workflow speedups, 3.5k+ active platform users).
-                        </li>
-                      </ul>
-                    </div>
-
-                    <div className="claude-section">
-                      <h4 className="claude-subheading">Primary Keyword Matches</h4>
-                      <div className="resume__tags">
-                        <span className="resume__tag-pill resume__tag-pill--match">TensorFlow</span>
-                        <span className="resume__tag-pill resume__tag-pill--match">Computer Vision</span>
-                        <span className="resume__tag-pill resume__tag-pill--match">CNN Optimization</span>
-                        <span className="resume__tag-pill resume__tag-pill--match">Transfer Learning</span>
-                        <span className="resume__tag-pill resume__tag-pill--match">React.js</span>
-                        <span className="resume__tag-pill resume__tag-pill--match">Node.js</span>
-                        <span className="resume__tag-pill resume__tag-pill--match">Data Preprocessing</span>
-                        <span className="resume__tag-pill resume__tag-pill--match">Inference Efficiency</span>
-                      </div>
-                    </div>
-
-                    <div className="claude-section">
-                      <h4 className="claude-subheading">Suggested Enhancements</h4>
-                      <ul className="claude-list claude-list--suggestions">
-                        <li>
-                          Highlight cloud hosting services and containerization tools (AWS, GCP, Docker) in active project bullets to optimize for DevOps criteria.
-                        </li>
-                        <li>
-                          Incorporate metrics for API unit testing coverage (Jest, PyTest) and robustness in backend descriptions.
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <div
+            className={`resume__preview-split${showPreview ? ' resume__preview-split--visible' : ''}`}
+            aria-hidden={!showPreview}
+          >
+            <div className="resume__preview-left" style={pairedHeightStyle}>
+              <figure className="resume__page" ref={pageFrameRef}>
+                <a
+                  href={resumePdfUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="resume__page-link"
+                  aria-label="Open resume PDF in a new tab"
+                >
+                  <img
+                    ref={resumeImageRef}
+                    src={resumePageImages[0]}
+                    alt="Aditya Deore Resume"
+                    className="resume__page-image"
+                    width={816}
+                    height={1056}
+                    loading="eager"
+                    decoding="async"
+                    onLoad={syncPreviewHeight}
+                  />
+                </a>
+              </figure>
             </div>
-          )}
+
+            <div className="resume__preview-right" style={pairedHeightStyle}>
+              <ResumeRecruiterChat />
+            </div>
+          </div>
         </div>
       </div>
     </section>

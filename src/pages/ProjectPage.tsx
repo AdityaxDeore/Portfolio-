@@ -1,237 +1,178 @@
-import { useState, useRef, useEffect } from 'react'
+import type { CSSProperties } from 'react'
+import { useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { getProjectById, projects } from '@/data/projects'
+import { getProjectDocumentation } from '@/data/projectDocs'
+import { getBentoSpan } from '@/lib/bentoLayout'
+import { getProjectApproachTiles, getProjectDepthFeatures } from '@/lib/projectApproach'
+import { useIsTouchDevice } from '@/hooks/useMediaQuery'
+import { ProjectDepthScroll } from '@/components/ui/ProjectDepthScroll'
 import { CurvedLoop } from '@/components/ui/CurvedLoop'
 import { CharReveal } from '@/components/ui/CharReveal'
 import './ProjectPage.css'
 
+type ArchLayer = {
+  id: string
+  badge: string
+  title: string
+  description: string
+  detail: string
+  tech: string[]
+  isSecure?: boolean
+}
+
 interface ProjectLayoutConfig {
-  outline: { label: string; href: string }[];
-  lifecycle?: {
-    title: string;
-    description: string;
-    stages: {
-      number: string;
-      title: string;
-      description: string;
-      image: string;
-    }[];
-  };
   architecture?: {
-    title: string;
-    description: string;
-    cards: {
-      badge: string;
-      title: string;
-      description: string;
-      isSecure?: boolean;
-    }[];
-  };
-  highlightsTitle: string;
-  outcomeTitle: string;
+    title: string
+    description: string
+    layers: ArchLayer[]
+  }
+  highlightsTitle: string
+  outcomeTitle: string
 }
 
 const DEFAULT_CONFIG: ProjectLayoutConfig = {
-  outline: [
-    { label: '1. Introduction', href: '#introduction' },
-    { label: '2. Key Highlights', href: '#deliverables' },
-    { label: '3. Impact & Outcomes', href: '#outcome' },
-  ],
-  highlightsTitle: '2. Key Highlights & Deliverables',
-  outcomeTitle: '3. Impact & Outcomes',
+  highlightsTitle: 'Engineering highlights',
+  outcomeTitle: 'Impact & outcomes',
 }
 
 const CODE_CAMPUS_CONFIG: ProjectLayoutConfig = {
-  outline: [
-    { label: '1. Introduction', href: '#introduction' },
-    { label: '2. Detailed Lifecycle', href: '#lifecycle' },
-    { label: '3. Core Architecture', href: '#architecture' },
-    { label: '4. Engineering Highlights', href: '#deliverables' },
-    { label: '5. Business Outcome', href: '#outcome' },
-  ],
-  lifecycle: {
-    title: '2. Detailed Lifecycle Flowchart',
-    description: 'A walkthrough of the end-to-end development and runtime stages designed to verify sandboxing safety and keystroke integrity.',
-    stages: [
-      {
-        number: '01',
-        title: 'Prototyping & Visual Design',
-        description: 'Creating high-fidelity layouts and interactive editor interfaces for the code execution environment.',
-        image: '/images/whatcreate/interface/prototype.webp'
-      },
-      {
-        number: '02',
-        title: 'Keystroke Analytics Logging',
-        description: 'Integrating high-resolution keystroke tracking systems to detect anomalous writing cadences.',
-        image: '/images/whatcreate/interface/tasks.webp'
-      },
-      {
-        number: '03',
-        title: 'Restricted AST Scanning',
-        description: 'Implementing static code checks via abstract syntax trees before running user-submitted containers.',
-        image: '/images/whatcreate/interface/sidebar.webp'
-      },
-      {
-        number: '04',
-        title: 'Sandboxed Container Execution',
-        description: 'Deploying isolated, resource-constrained container pods to compile and run scripts securely.',
-        image: '/images/whatcreate/interface/mobile_ops.webp'
-      }
-    ]
-  },
   architecture: {
-    title: '3. Core Architecture & Workflow',
-    description: 'The system architecture separates client code editing, API routing, and the sandboxed micro-container compilation pipelines. This isolation guarantees safety while keeping live feedback fast.',
-    cards: [
-      { badge: 'Client View', title: 'VS Code IDE', description: 'Monaco editor compiles keystrokes and runs triggers.' },
-      { badge: 'Router Hub', title: 'Express API', description: 'Validates JWT credentials, stores telemetry, and manages runs.' },
-      { badge: 'Sandbox VM', title: 'Docker Isolation', description: 'Executes code strings under restricted CPU/RAM containers.', isSecure: true }
-    ]
+    title: 'Core architecture',
+    description:
+      'Client IDE, API routing, and sandboxed execution — isolated pipelines that keep live feedback fast and assessments secure.',
+    layers: [
+      {
+        id: 'client',
+        badge: 'Client layer',
+        title: 'VS Code-style IDE',
+        description: 'Monaco editor compiles keystrokes and triggers sandboxed runs.',
+        detail:
+          'File tree, tabbed editor, terminal panel, and run controls modeled after VS Code. Students get real-time stdout over WebSockets with keyboard-first navigation.',
+        tech: ['React', 'TypeScript', 'Monaco'],
+      },
+      {
+        id: 'api',
+        badge: 'API hub',
+        title: 'Express API router',
+        description: 'Validates JWT credentials, stores telemetry, and manages run queues.',
+        detail:
+          'REST endpoints authenticate sessions, log keystroke analytics to MongoDB, and enqueue container jobs with rate limits during peak exam windows.',
+        tech: ['Node.js', 'Express', 'MongoDB'],
+      },
+      {
+        id: 'sandbox',
+        badge: 'Sandbox VM',
+        title: 'Docker isolation',
+        description: 'Executes code under restricted CPU/RAM with no network egress.',
+        detail:
+          'Per-submission containers spin up with read-only filesystems and hard timeouts. AST scanning blocks dangerous imports before execution.',
+        tech: ['Docker', 'WebSockets', 'AST'],
+        isSecure: true,
+      },
+    ],
   },
-  highlightsTitle: '4. Engineering Highlights',
-  outcomeTitle: '5. Business Outcome'
+  highlightsTitle: 'Engineering highlights',
+  outcomeTitle: 'Business outcome',
 }
 
 const TUMOR_AI_CONFIG: ProjectLayoutConfig = {
-  outline: [
-    { label: '1. Introduction', href: '#introduction' },
-    { label: '2. Detailed Lifecycle', href: '#lifecycle' },
-    { label: '3. CV & SVM Architecture', href: '#architecture' },
-    { label: '4. Engineering Highlights', href: '#deliverables' },
-    { label: '5. Diagnostic Outcome', href: '#outcome' },
-  ],
-  lifecycle: {
-    title: '2. Detailed Lifecycle Flowchart',
-    description: 'A step-by-step diagnostic journey processing sagittal brain MRI scans, stripping noise, and projecting boundaries.',
-    stages: [
-      {
-        number: '01',
-        title: 'Grayscale Scan Input',
-        description: 'Ingesting raw axial or sagittal brain scans in normalized grayscale format.',
-        image: '/images/whatcreate/1.webp'
-      },
-      {
-        number: '02',
-        title: 'Bilateral Noise Filtering',
-        description: 'Applying bilateral filtering algorithms to preserve sharp structural margins while eliminating scan noise.',
-        image: '/images/whatcreate/2.webp'
-      },
-      {
-        number: '03',
-        title: 'Otsu Skull Masking',
-        description: 'Executing adaptive thresholding algorithms to separate cerebral structures from non-relevant regions.',
-        image: '/images/whatcreate/3.webp'
-      },
-      {
-        number: '04',
-        title: 'SVM Kernel Projection',
-        description: 'Mapping extracted texture features into high-dimensional space using RBF kernels for tumor classification.',
-        image: '/images/whatcreate/4.webp'
-      }
-    ]
-  },
   architecture: {
-    title: '3. CV & SVM Diagnostic Pipeline',
-    description: 'The diagnostic system pipes raw DICOM/PNG brain scans through automated skull-stripping operations, bilateral noise filtering, contour segmentation, and RBF kernel SVM projection.',
-    cards: [
-      { badge: 'Scan Input', title: 'MRI Imagery', description: 'Raw sagittal/axial brain scans loaded in grayscale.' },
-      { badge: 'CV Pipeline', title: 'OpenCV Segmenter', description: 'Applies bilateral filters and Otsu masking to isolate regions.' },
-      { badge: 'Decision Boundary', title: 'RBF Kernel SVM', description: 'Projects extracted texture descriptors to classify tumors.', isSecure: true }
-    ]
+    title: 'CV & SVM pipeline',
+    description:
+      'MRI scans flow through preprocessing, skull stripping, feature extraction, and RBF-kernel SVM classification.',
+    layers: [
+      {
+        id: 'input',
+        badge: 'Scan input',
+        title: 'MRI imagery loader',
+        description: 'Raw sagittal/axial brain scans normalized to grayscale tensors.',
+        detail:
+          'DICOM and PNG exports are clipped, resized to 256×256, and tagged with anonymous metadata for batch inference pipelines.',
+        tech: ['Python', 'NumPy', 'OpenCV'],
+      },
+      {
+        id: 'cv',
+        badge: 'CV pipeline',
+        title: 'OpenCV segmenter',
+        description: 'Bilateral filters and Otsu masking isolate diagnostically relevant regions.',
+        detail:
+          'Noise reduction preserves tumor boundaries. Morphological closing fills mask holes before Haralick texture descriptors are extracted.',
+        tech: ['OpenCV', 'Scikit-image'],
+      },
+      {
+        id: 'svm',
+        badge: 'Classifier',
+        title: 'RBF kernel SVM',
+        description: 'Projects texture features into a decision boundary for tumor classification.',
+        detail:
+          'Grid search optimized C and gamma across cross-validated folds — 96.3% accuracy with only 9 misclassifications on held-out scans.',
+        tech: ['Scikit-learn', 'SVM', 'RBF'],
+        isSecure: true,
+      },
+    ],
   },
-  highlightsTitle: '4. Engineering Highlights',
-  outcomeTitle: '5. Diagnostic Outcome'
+  highlightsTitle: 'Engineering highlights',
+  outcomeTitle: 'Diagnostic outcome',
 }
 
 const CLARITY_CONFIG: ProjectLayoutConfig = {
-  outline: [
-    { label: '1. Introduction', href: '#introduction' },
-    { label: '2. Detailed Lifecycle', href: '#lifecycle' },
-    { label: '3. Real-Time & AI Architecture', href: '#architecture' },
-    { label: '4. Engineering Highlights', href: '#deliverables' },
-    { label: '5. Wellness Impact', href: '#outcome' },
-  ],
-  lifecycle: {
-    title: '2. Detailed Lifecycle Flowchart',
-    description: 'A timeline mapping real-time journal analysis, WebSocket packet broadcasting, and adaptive recommendations.',
-    stages: [
-      {
-        number: '01',
-        title: 'NLP Journal Tokenization',
-        description: 'Parsing journal text streams into normalized vector structures for classification models.',
-        image: '/images/whatcreate/5.webp'
-      },
-      {
-        number: '02',
-        title: 'Bi-LSTM Sentiment Scoring',
-        description: 'Feeding text vector layers into specialized sentiment classification networks.',
-        image: '/images/whatcreate/6.webp'
-      },
-      {
-        number: '03',
-        title: 'WebSocket Packet Relay',
-        description: 'Broadcasting anonymized message payloads securely using AES-GCM-256 protocols.',
-        image: '/images/whatcreate/grid.webp'
-      },
-      {
-        number: '04',
-        title: 'Knowledge Graph Recommendations',
-        description: 'Retrieving context-aware suggestions from structured wellness data nodes based on state vectors.',
-        image: '/images/whatcreate/interface/row.webp'
-      }
-    ]
-  },
   architecture: {
-    title: '3. Distributed & NLP Architecture',
-    description: 'Clarity orchestrates microservice message brokers, real-time WebSocket state synchronizers, and localized sentiment evaluation networks to ensure highly secure user interactions.',
-    cards: [
-      { badge: 'Client State', title: 'Wellness Web UI', description: 'React-driven dashboard mapping mood fluctuations.' },
-      { badge: 'Message Broker', title: 'Socket Gateways', description: 'Broadcasts instant support messages with low overhead.' },
-      { badge: 'Sentiment NLP', title: 'TensorFlow Engine', description: 'Bi-LSTM attention neural layer classifying journal text vectors.', isSecure: true }
-    ]
+    title: 'Real-time & AI architecture',
+    description:
+      'Wellness UI, WebSocket gateways, and TensorFlow sentiment scoring orchestrated for secure, low-latency interactions.',
+    layers: [
+      {
+        id: 'ui',
+        badge: 'Client state',
+        title: 'Wellness web UI',
+        description: 'React dashboard mapping mood fluctuations and journal entries.',
+        detail:
+          'Mood charts, journaling flows, and recommendation panels update in real time as sentiment scores shift across multi-day windows.',
+        tech: ['React', 'TypeScript', 'PostgreSQL'],
+      },
+      {
+        id: 'socket',
+        badge: 'Message broker',
+        title: 'Socket gateways',
+        description: 'Broadcasts peer support messages with JWT-authenticated handshakes.',
+        detail:
+          'Socket.io rooms encrypt messages at rest with AES-GCM-256. Rate limiting and moderation hooks protect high-traffic support sessions.',
+        tech: ['Socket.io', 'Node.js', 'JWT'],
+      },
+      {
+        id: 'nlp',
+        badge: 'Sentiment NLP',
+        title: 'TensorFlow engine',
+        description: 'Bi-LSTM attention layer classifying journal text vectors.',
+        detail:
+          'spaCy tokenization feeds a bidirectional LSTM returning mood polarity in under 200ms via TensorFlow Serving endpoints.',
+        tech: ['TensorFlow', 'Bi-LSTM', 'spaCy'],
+        isSecure: true,
+      },
+    ],
   },
-  highlightsTitle: '4. Engineering Highlights',
-  outcomeTitle: '5. Wellness Impact'
+  highlightsTitle: 'Engineering highlights',
+  outcomeTitle: 'Wellness impact',
+}
+
+function tileStyle(index: number): CSSProperties {
+  return { '--tile-i': index } as CSSProperties
+}
+
+function getConfig(projectId: string): ProjectLayoutConfig {
+  if (projectId === 'codecampus') return CODE_CAMPUS_CONFIG
+  if (projectId === 'braintumor') return TUMOR_AI_CONFIG
+  if (projectId === 'projectclarity') return CLARITY_CONFIG
+  return DEFAULT_CONFIG
 }
 
 export function ProjectPage() {
   const { id } = useParams<{ id: string }>()
   const project = id ? getProjectById(id) : undefined
-  const pageRef = useRef<HTMLElement>(null)
-
-  let config = DEFAULT_CONFIG
-  if (project?.id === 'codecampus') config = CODE_CAMPUS_CONFIG
-  else if (project?.id === 'tumorai') config = TUMOR_AI_CONFIG
-  else if (project?.id === 'clarity') config = CLARITY_CONFIG
-
-  const [activeSection, setActiveSection] = useState<string>('')
-
-  useEffect(() => {
-    const sections = config.outline.map((item) => document.querySelector(item.href))
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.find((entry) => entry.isIntersecting)
-        if (visible) {
-          setActiveSection(visible.target.id)
-        }
-      },
-      {
-        rootMargin: '-10% 0px -70% 0px',
-        threshold: 0.1
-      }
-    )
-
-    sections.forEach((sec) => {
-      if (sec) observer.observe(sec)
-    })
-
-    return () => {
-      sections.forEach((sec) => {
-        if (sec) observer.unobserve(sec)
-      })
-    }
-  }, [config.outline, id])
+  const [expandedArchId, setExpandedArchId] = useState<string | null>(null)
+  const [hoveredArchId, setHoveredArchId] = useState<string | null>(null)
+  const isTouch = useIsTouchDevice()
 
   const currentIndex = project ? projects.findIndex((p) => p.id === project.id) : -1
   const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null
@@ -242,8 +183,17 @@ export function ProjectPage() {
     return <Navigate to="/#projects" replace />
   }
 
+  const config = getConfig(project.id)
+  const approachTiles = getProjectApproachTiles(project)
+  const depthFeatures = getProjectDepthFeatures(project)
+  const documentation = getProjectDocumentation(project)
+
+  const toggleArch = (layerId: string) => {
+    setExpandedArchId((prev) => (prev === layerId ? null : layerId))
+  }
+
   return (
-    <main id="main-content" className="canvas project-page" ref={pageRef} tabIndex={-1}>
+    <main id="main-content" className="canvas project-page">
       <div className="container project-page__inner">
         <header className="project-page__top">
           <Link to="/#projects" className="project-page__back">
@@ -263,190 +213,281 @@ export function ProjectPage() {
           </p>
         </header>
 
-        {/* Top Banner */}
-        <div className="project-page__banner">
-          <img src={project.image} alt={project.title} className="project-page__banner-image" />
-          <div className="project-page__banner-overlay" />
-        </div>
-
-        {/* Horizontal Navigation and Metadata Panel */}
-        <div className="project-page__header-panel">
-          <div className="project-page__title-block">
-            <p className="project-page__eyebrow">Case Study · {project.caseStudy.year}</p>
-            <CharReveal text={project.title} className="project-page__heading" as="h1" />
-            <p className="project-page__role-tag">{project.caseStudy.role}</p>
+        <section className="project-hero" aria-label="Project overview">
+          <div className="project-hero__media">
+            <img src={project.image} alt="" className="project-hero__image" />
+            <span className="project-hero__index">{String(currentIndex + 1).padStart(2, '0')}</span>
           </div>
+          <div className="project-hero__content">
+            <p className="project-page__eyebrow">Case Study · {project.caseStudy.year}</p>
+            <CharReveal text={project.title} className="project-hero__title" as="h1" />
+            <p className="project-hero__role">{project.caseStudy.role}</p>
+            <p className="project-hero__desc">{project.outcome}</p>
+            <ul className="project-hero__tags" aria-label="Technologies">
+              {project.tags.map((tag) => (
+                <li key={tag} className="tech-pill tech-pill--hero">
+                  {tag}
+                </li>
+              ))}
+            </ul>
+            <div className="project-hero__actions">
+              {project.links.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-btn project-btn--primary"
+                >
+                  Open {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
 
-          <div className="project-page__meta-grid">
-            <div className="project-page__meta-col">
-              <h3 className="project-page__meta-title">Outline</h3>
-              <nav className="project-page__top-nav" aria-label="Page Outline">
-                <ul>
-                  {config.outline.map((item) => {
-                    const isActive = activeSection === item.href.slice(1)
-                    return (
-                      <li key={item.href}>
-                        <a
-                          href={item.href}
-                          className={isActive ? 'outline-link--active' : ''}
-                        >
-                          {item.label}
-                        </a>
-                      </li>
-                    )
-                  })}
-                </ul>
-              </nav>
+        <section id="approach" className="project-approach doc-section" aria-labelledby="project-approach-title">
+          <header className="project-approach__header">
+            <p className="project-approach__label">Build philosophy</p>
+            <h2 id="project-approach-title" className="project-approach__title">
+              How I think &amp; build
+            </h2>
+            <p className="project-approach__subtitle">
+              Problem framing, production discipline, and curiosity — applied to{' '}
+              <strong>{project.title}</strong>.
+            </p>
+          </header>
+
+          <div className="project-approach__bento">
+            {approachTiles.map((tile) => (
+              <article
+                key={tile.id}
+                className={`project-approach__tile project-approach__tile--${tile.layout} project-approach__tile--${tile.variant}`}
+              >
+                <span className="project-approach__index">{tile.index}</span>
+                <p className="project-approach__tag">{tile.subtitle}</p>
+                <h3 className="project-approach__card-title">{tile.title}</h3>
+                <p className="project-approach__desc">{tile.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <ProjectDepthScroll features={depthFeatures} projectTitle={project.title} />
+
+        <div className="project-page__body">
+          <section id="introduction" className="project-section doc-section">
+            <header className="project-section__header">
+              <h2 className="project-section__title">Introduction</h2>
+            </header>
+
+            <div className="project-doc">
+              {documentation.overview.map((paragraph) => (
+                <p key={paragraph.slice(0, 40)} className="project-doc__paragraph">
+                  {paragraph}
+                </p>
+              ))}
             </div>
 
-            <div className="project-page__meta-col">
-              <h3 className="project-page__meta-title">Technologies</h3>
-              <ul className="project-page__tech-pills">
-                {project.tags.map((tag) => (
-                  <li key={tag} className="tech-pill">{tag}</li>
+            <div className="project-metrics" aria-label="Project metrics">
+              {documentation.metrics.map((metric) => (
+                <article key={metric.label} className="project-metrics__card">
+                  <span className="project-metrics__label">{metric.label}</span>
+                  <p className="project-metrics__value">{metric.value}</p>
+                </article>
+              ))}
+            </div>
+
+            <div className="project-panels">
+              <article className="project-panel project-panel--light">
+                <span className="project-panel__eyebrow">Problem statement</span>
+                <p className="project-panel__text">{project.caseStudy.summary}</p>
+              </article>
+              <article className="project-panel project-panel--accent">
+                <span className="project-panel__eyebrow">Solution &amp; impact</span>
+                <p className="project-panel__text project-panel__text--lead">{project.outcome}</p>
+              </article>
+            </div>
+          </section>
+
+          <section id="documentation" className="project-section doc-section">
+            <header className="project-section__header">
+              <h2 className="project-section__title">Technical documentation</h2>
+              <p className="project-section__lead">
+                Engineering notes, constraints, and implementation detail for{' '}
+                <strong>{project.title}</strong>.
+              </p>
+            </header>
+
+            <div className="project-doc-blocks">
+              {documentation.blocks.map((block) => (
+                <article key={block.id} className="project-doc-block">
+                  <span className="project-doc-block__eyebrow">{block.eyebrow}</span>
+                  <h3 className="project-doc-block__title">{block.title}</h3>
+                  {block.paragraphs.map((paragraph) => (
+                    <p key={paragraph.slice(0, 36)} className="project-doc-block__text">
+                      {paragraph}
+                    </p>
+                  ))}
+                </article>
+              ))}
+            </div>
+
+            <aside className="project-constraints">
+              <h3 className="project-constraints__title">Design constraints</h3>
+              <ul className="project-constraints__list">
+                {documentation.constraints.map((item) => (
+                  <li key={item}>{item}</li>
                 ))}
               </ul>
-            </div>
+            </aside>
+          </section>
 
-            <div className="project-page__meta-col project-page__meta-col--actions">
-              <h3 className="project-page__meta-title">Links</h3>
-              <div className="project-page__top-actions">
-                {project.links.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="sidebar-action-btn"
-                  >
-                    {link.label === 'GitHub' ? (
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '0.35rem', display: 'inline-block', verticalAlign: 'middle' }}>
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-                      </svg>
-                    ) : (
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '0.35rem', display: 'inline-block', verticalAlign: 'middle' }}>
-                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                        <polyline points="15 3 21 3 21 9" />
-                        <line x1="10" y1="14" x2="21" y2="3" />
-                      </svg>
-                    )}
-                    <span style={{ verticalAlign: 'middle' }}>Open {link.label}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+          {config.architecture && (
+            <section id="architecture" className="project-section doc-section">
+              <header className="project-section__header">
+                <h2 className="project-section__title">{config.architecture.title}</h2>
+                <p className="project-section__lead">{config.architecture.description}</p>
+              </header>
 
-        <div className="project-page__layout">
-          <article className="project-page__content">
-            <section id="introduction" className="doc-section">
-              <h2 className="doc-section-title">1. Introduction</h2>
-              <p className="doc-text">{project.caseStudy.summary}</p>
-            </section>
+              <div className="project-arch-stack">
+                {config.architecture.layers.map((layer, index) => {
+                  const isOpen =
+                    expandedArchId === layer.id || (!isTouch && hoveredArchId === layer.id)
+                  let tileIndex = 0
 
-            {/* 2. Detailed Lifecycle */}
-            {config.lifecycle && (
-              <section id="lifecycle" className="doc-section">
-                <h2 className="doc-section-title">{config.lifecycle.title}</h2>
-                <p className="doc-text">{config.lifecycle.description}</p>
-                
-                <div className="lifecycle-grid">
-                  {config.lifecycle.stages.map((stage) => (
-                    <div key={stage.number} className="lifecycle-stage-card">
-                      <div className="lifecycle-stage-image-wrap">
-                        <img src={stage.image} alt={stage.title} className="lifecycle-stage-image" loading="lazy" />
-                      </div>
-                      <div className="lifecycle-stage-content">
-                        <span className="lifecycle-stage-number">{stage.number}</span>
-                        <h3 className="lifecycle-stage-title">{stage.title}</h3>
-                        <p className="lifecycle-stage-text">{stage.description}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
-
-            {/* 3. Core Architecture */}
-            {config.architecture && (
-              <section id="architecture" className="doc-section">
-                <h2 className="doc-section-title">{config.architecture.title}</h2>
-                <p className="doc-text">{config.architecture.description}</p>
-
-                <div className="arch-flow">
-                  {config.architecture.cards.map((card, idx) => (
-                    <div key={card.title} style={{ display: 'contents' }}>
-                      <div className={`arch-card ${card.isSecure ? 'arch-card--secure' : ''}`}>
-                        <span className={`arch-badge ${card.isSecure ? 'arch-badge--secure' : ''}`}>{card.badge}</span>
-                        <h4>{card.title}</h4>
-                        <p>{card.description}</p>
-                      </div>
-                      {idx < (config.architecture?.cards.length ?? 0) - 1 && (
-                        <div className="arch-arrow">
-                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12"></line>
-                            <polyline points="12 5 19 12 12 19"></polyline>
-                          </svg>
+                  return (
+                    <article
+                      key={layer.id}
+                      className={`project-arch-card${isOpen ? ' project-arch-card--open' : ''}`}
+                      onMouseEnter={() => !isTouch && setHoveredArchId(layer.id)}
+                      onMouseLeave={() => !isTouch && setHoveredArchId(null)}
+                    >
+                      <button
+                        type="button"
+                        className="project-arch-card__trigger"
+                        onClick={() => toggleArch(layer.id)}
+                        aria-expanded={isOpen}
+                        aria-controls={`arch-panel-${layer.id}`}
+                      >
+                        <span className="project-arch-card__index">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <div className="project-arch-card__headline">
+                          <p className="project-arch-card__tag">{layer.badge}</p>
+                          <h3 className="project-arch-card__title">{layer.title}</h3>
+                          <p className="project-arch-card__summary">{layer.description}</p>
                         </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </section>
+                        <span className="project-arch-card__hint">
+                          {isTouch ? 'Tap to expand' : 'Hover to explore'}
+                        </span>
+                        <span className="project-arch-card__chevron" aria-hidden="true" />
+                      </button>
+
+                      <div
+                        id={`arch-panel-${layer.id}`}
+                        className="project-arch-card__panel"
+                        aria-hidden={!isOpen}
+                      >
+                        <div className="project-arch-card__panel-inner">
+                          <div className="project-arch-card__bento">
+                            <div
+                              className="project-arch-card__tile project-arch-card__tile--detail"
+                              style={tileStyle(tileIndex++)}
+                            >
+                              <p className="project-arch-card__tile-label">Overview</p>
+                              <p>{layer.detail}</p>
+                            </div>
+                            <div
+                              className={`project-arch-card__tile project-arch-card__tile--tech${layer.isSecure ? ' project-arch-card__tile--secure' : ''}`}
+                              style={tileStyle(tileIndex++)}
+                            >
+                              <p className="project-arch-card__tile-label">Technologies</p>
+                              <ul>
+                                {layer.tech.map((tech) => (
+                                  <li key={tech}>{tech}</li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </article>
+                  )
+                })}
+              </div>
+            </section>
+          )}
+
+          <section id="deliverables" className="project-section doc-section">
+            <header className="project-section__header">
+              <h2 className="project-section__title">{config.highlightsTitle}</h2>
+            </header>
+            <div className="bento-grid">
+              {project.caseStudy.highlights.map((highlight, index) => {
+                const span = getBentoSpan(project.id, index)
+                return (
+                  <article
+                    key={highlight}
+                    className={`bento-tile bento-tile--col-${span.col} bento-tile--row-${span.row}${index === 0 ? ' bento-tile--featured' : ''}`}
+                  >
+                    <span className="bento-tile__index">0{index + 1}</span>
+                    <p className="bento-tile__text">{highlight}</p>
+                  </article>
+                )
+              })}
+            </div>
+          </section>
+
+          <section id="outcome" className="project-section doc-section">
+            <header className="project-section__header">
+              <h2 className="project-section__title">{config.outcomeTitle}</h2>
+            </header>
+            <div className="project-outcome">
+              <div className="project-outcome__icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+              </div>
+              <div>
+                <p className="project-outcome__label">Measured outcome</p>
+                <p className="project-outcome__text">{project.outcome}</p>
+              </div>
+            </div>
+            <div className="project-panels project-panels--triple project-panels--desktop-only">
+              {project.caseStudy.highlights.slice(0, 3).map((highlight, index) => (
+                <article
+                  key={highlight}
+                  className={`project-panel${index === 1 ? ' project-panel--accent' : ' project-panel--light'}`}
+                >
+                  <span className="project-panel__eyebrow">Key result 0{index + 1}</span>
+                  <p className="project-panel__text">{highlight}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <nav className="project-page__nav" aria-label="Adjacent case studies">
+            {prevProject ? (
+              <Link to={`/projects/${prevProject.id}`} className="project-page__nav-link">
+                <span className="project-page__nav-label">Previous</span>
+                <span className="project-page__nav-title">{prevProject.title}</span>
+              </Link>
+            ) : (
+              <span />
             )}
-
-
-
-            {/* 4. Deliverables */}
-            <section id="deliverables" className="doc-section">
-              <h2 className="doc-section-title">{config.highlightsTitle}</h2>
-              <div className="deliverables-grid">
-                {project.caseStudy.highlights.map((highlight, index) => (
-                  <div key={index} className="deliverable-card">
-                    <div className="deliverable-badge">0{index + 1}</div>
-                    <p className="deliverable-text">{highlight}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
-
-            {/* 5. Outcome */}
-            <section id="outcome" className="doc-section">
-              <h2 className="doc-section-title">{config.outcomeTitle}</h2>
-              <div className="outcome-block">
-                <div className="outcome-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </div>
-                <div className="outcome-copy">
-                  <h4>Measured Outcome</h4>
-                  <p>{project.outcome}</p>
-                </div>
-              </div>
-            </section>
-
-            {/* Adjacent project nav footer */}
-            <nav className="project-page__nav" aria-label="Adjacent case studies">
-              {prevProject ? (
-                <Link to={`/projects/${prevProject.id}`} className="project-page__nav-link project-page__nav-link--prev">
-                  <span className="project-page__nav-label">Previous Case Study</span>
-                  <span className="project-page__nav-title">{prevProject.title}</span>
-                </Link>
-              ) : (
-                <span />
-              )}
-              {nextProject ? (
-                <Link to={`/projects/${nextProject.id}`} className="project-page__nav-link project-page__nav-link--next">
-                  <span className="project-page__nav-label">Next Case Study</span>
-                  <span className="project-page__nav-title">{nextProject.title}</span>
-                </Link>
-              ) : (
-                <span />
-              )}
-            </nav>
-          </article>
+            {nextProject ? (
+              <Link
+                to={`/projects/${nextProject.id}`}
+                className="project-page__nav-link project-page__nav-link--next"
+              >
+                <span className="project-page__nav-label">Next</span>
+                <span className="project-page__nav-title">{nextProject.title}</span>
+              </Link>
+            ) : (
+              <span />
+            )}
+          </nav>
         </div>
       </div>
 

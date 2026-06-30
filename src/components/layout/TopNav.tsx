@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { navItems } from '@/data/navigation'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
 import { MegaMenuContent } from '@/components/layout/MegaMenuContent'
+import { Link } from 'react-router-dom'
 import './TopNav.css'
 
 const MEGA_MENU_SECTIONS = new Set(['projects', 'experience', 'skills', 'expertise'])
@@ -90,12 +91,12 @@ export function TopNav() {
                 className="top-nav__link-wrapper"
                 onMouseEnter={() => handleMouseEnter(sectionId)}
               >
-                <a
-                  href={link.href}
+                <Link
+                  to={link.href}
                   className="top-nav__link"
                 >
                   {link.label}
-                </a>
+                </Link>
               </div>
             )
           })}
@@ -146,9 +147,9 @@ export function TopNav() {
             transition={{ duration: 0.2 }}
           >
             {filteredNavItems.map((link) => (
-              <a key={link.href} href={link.href} className="top-nav__mobile-link" onClick={closeMenu}>
+              <Link key={link.href} to={link.href} className="top-nav__mobile-link" onClick={closeMenu}>
                 {link.label}
-              </a>
+              </Link>
             ))}
           </motion.nav>
         )}

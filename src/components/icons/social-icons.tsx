@@ -73,3 +73,12 @@ export function ArrowUpRightIcon({ size = 18 }: IconProps) {
     </svg>
   )
 }
+
+export function WhatsappIcon({ size = 20 }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M17.49 15.3a1.09 1.09 0 0 1-.72-.31 19 19 0 0 1-2.52-2.52 1.09 1.09 0 0 1-.1-.83 6 6 0 0 0 .61-1.67 1.09 1.09 0 0 0-.25-.94l-2.09-2.09a1.09 1.09 0 0 0-1.54 0l-.82.82a2.38 2.38 0 0 0-.58 2.35 15.11 15.11 0 0 0 6.11 6.11 2.38 2.38 0 0 0 2.35-.58l.82-.82a1.09 1.09 0 0 0 0-1.54l-2.09-2.09a1.09 1.09 0 0 0-.94-.25 6 6 0 0 0-1.67.61.94.94 0 0 1-.31.06Z" />
+      <path d="M22 11.5a10 10 0 0 1-17.56 6.55L2 22l4-1.95A10 10 0 1 1 22 11.5Z" />
+    </svg>
+  )
+}

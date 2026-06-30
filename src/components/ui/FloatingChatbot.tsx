@@ -1,7 +1,31 @@
-import { ADITYA_INFO } from '@/data/adityaInfo'
+import { ChatMessageText } from '@/components/ui/ChatMessageText'
+import { ChatSuggestions } from '@/components/ui/ChatSuggestions'
+import {
+  PORTFOLIO_SYSTEM_PROMPT,
+  sendPortfolioChatMessage,
+  type ChatHistoryMessage,
+} from '@/lib/portfolioChat'
+import { resumePdfUrl } from '@/data/resume'
 import { AnimatePresence, motion } from 'motion/react'
+import {
+  Maximize2,
+  MessageSquare,
+  Minimize2,
+  Send,
+  Sparkles,
+  X,
+  Trash2,
+  FileText,
+  User,
+  Cpu,
+  Trophy,
+  Mail,
+  Download,
+  Brain
+} from 'lucide-react'
+import { GithubIcon, LinkedinIcon } from '@/components/icons/social-icons'
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { MessageSquare, X, Send, Bot, Sparkles, Settings, Maximize2, Minimize2 } from 'lucide-react'
+import { useLocation } from 'react-router-dom'
 import './FloatingChatbot.css'
 
 interface Message {
@@ -11,231 +35,65 @@ interface Message {
   timestamp: Date
 }
 
-const SYSTEM_PROMPT = `You are Aditya Deore's friendly AI portfolio assistant. Here is all the professional info about Aditya:
-
-${ADITYA_INFO}
-
-Strict Guidelines:
-1. You must ONLY answer questions about Aditya Deore based on the professional info provided above.
-2. If the user asks about ANY other topic (including writing code, writing essays, math, general queries, definitions, or general chat that is not about Aditya Deore), you must politely decline and state that you are only configured to assist with questions regarding Aditya Deore's portfolio, background, experience, skills, and projects.
-   Example refusal: "I'm sorry, I am configured as Aditya Deore's portfolio assistant and can only answer questions related to Aditya's skills, experience, projects, or background."
-3. Keep responses concise, clear, and helpful.
-4. Format your responses with bullet points and bold text where appropriate to make them easy to read.
-5. Provide clickable markdown links ([label](url)) for GitHub, LinkedIn, and resume links so the user can click them directly in the chat.
-`
-
-const SUGGESTIONS = [
-  'Tell me about Aditya',
-  'What are his core skills?',
-  'Show me his projects',
-  'Where has he worked?',
-  'How do I view his resume?',
-  'How can I contact him?',
-]
-
-function generateLocalResponse(query: string): string {
-  const q = query.toLowerCase()
-  
-  if (q.includes('hi') || q.includes('hello') || q.includes('hey') || q.includes('welcome') || q.includes('greet')) {
-    return "Hi! I am Aditya's conversational AI assistant. How can I help you today? You can ask me about:\n\n• **Aditya's background**\n• **His skills**\n• **His projects**\n• **His experience**\n• **His resume**\n• **How to contact him**"
-  }
-  if (q.includes('codecampus') || q.includes('code campus')) {
-    return "**Code Campus** (Sept 2025 – Feb 2026) is a proctored coding and learning platform.\n\n• **Tech Stack**: React, Node.js, MongoDB, TypeScript\n• **Features**: VS Code-style IDE for real-time code execution, secure proctoring algorithms to maintain integrity, and student analytics dashboard.\n• **Repository**: [GitHub Repo](https://github.com/AdityaxDeore/codecampus)"
-  }
-  if (q.includes('clarity')) {
-    return "**Clarity** (Jan – Apr 2025) is an AI-powered mental wellness platform.\n\n• **Tech Stack**: React, Node.js, PostgreSQL, TensorFlow\n• **Features**: Real-time sentiment analysis, mood tracking dashboard, personalized self-care recommendations, and WebSocket peer chat.\n• **Repository**: [GitHub Repo](https://github.com/AdityaxDeore/Clarity)"
-  }
-  if (q.includes('tumor') || q.includes('brain') || q.includes('mri')) {
-    return "**Brain Tumor Detection System** (Aug – Oct 2025) is a medical image classification application.\n\n• **Tech Stack**: Python, OpenCV, Scikit-learn, NumPy\n• **Features**: MRI scan image preprocessing, tumor classification model with confidence scoring, and 3D bounding box visualizer.\n• **Repository**: [GitHub Repo](https://github.com/AdityaxDeore/brain-tumor-detection)"
-  }
-  if (q.includes('project') || q.includes('portfolio') || q.includes('built') || q.includes('developed')) {
-    return "Aditya has built several interesting projects:\n\n1. **Code Campus**: A proctored coding platform with a VS Code-style IDE. Built with React, Node.js, MongoDB, and TypeScript.\n2. **Clarity**: An AI mental wellness platform utilizing sentiment analysis. Built with React, Node.js, PostgreSQL, and TensorFlow.\n3. **Brain Tumor Detection**: A computer vision model to identify brain tumors from MRI scans. Built using Python, OpenCV, and Scikit-learn.\n\nWhich of these would you like to hear more about?"
-  }
-  if (q.includes('skill') || q.includes('technolog') || q.includes('languages') || q.includes('frameworks') || q.includes('python') || q.includes('react') || q.includes('database') || q.includes('frontend') || q.includes('backend') || q.includes('java') || q.includes('c++')) {
-    return "Here is a summary of Aditya's technical skills:\n\n• **Languages**: Python, C++, JavaScript, TypeScript, Java\n• **AI/ML**: TensorFlow, PyTorch, Scikit-learn, OpenCV, Pandas, NumPy, ML Pipelines\n• **Frontend**: React, Next.js, HTML5, CSS3, Tailwind CSS\n• **Backend & DB**: Node.js, Express, MongoDB, PostgreSQL, MySQL\n• **Tools**: Git, GitHub, Linux, Docker, Cursor AI, VS Code\n\nWould you like details on any specific project where he used these?"
-  }
-  if (q.includes('experience') || q.includes('wipro') || q.includes('itsa') || q.includes('intern') || q.includes('job') || q.includes('work') || q.includes('history')) {
-    return "Aditya's experience includes:\n\n• **Web Development Associate @ ITSA - PCCOE** (2025 – Present): Developing and maintaining event websites and student initiative platforms. Contributed to frontend/backend logic and AI projects using React, JS, and Node.js.\n• **Intern Team Leader @ Wipro DICE** (Mar – Apr 2025): Led a team of 4 interns in building TensorFlow machine learning models for real-time object detection."
-  }
-  if (q.includes('resume') || q.includes('cv') || q.includes('download') || q.includes('pdf') || q.includes('docx')) {
-    return "You can view or download Aditya's resume:\n\n• **Download PDF**: [Aditya_Deore_Resume.pdf](file:///assets/files/Aditya_Deore_Resume.pdf)\n• **Download Word Document**: [Aditya_Deore_Resume.docx](file:///assets/files/Aditya_Deore_Resume.docx)\n• **View on Google Drive**: [Google Drive Link](https://drive.google.com/drive/folders/1RB-_rTcFMZ1rljaqO_W91Gng4fIYWAq8?usp=sharing)"
-  }
-  if (q.includes('contact') || q.includes('email') || q.includes('phone') || q.includes('linkedin') || q.includes('github') || q.includes('hire') || q.includes('reach') || q.includes('mail')) {
-    return "Here is how you can contact Aditya Deore:\n\n• **Email**: adityadeorework@gmail.com\n• **Phone**: +91 8010767685\n• **LinkedIn**: [linkedin.com/in/aditya-deore](https://linkedin.com/in/aditya-deore-3a725a263)\n• **GitHub**: [github.com/AdityaxDeore](https://github.com/AdityaxDeore)\n\nYou can also send a direct message through the **Contact Form** on the homepage!"
-  }
-  if (q.includes('about') || q.includes('who are you') || q.includes('who is') || q.includes('profile') || q.includes('aditya') || q.includes('background') || q.includes('intro')) {
-    return "Aditya Chandrajit Deore is an **AI/ML Engineer & Full-Stack Developer** currently pursuing his B.Tech in IT at PCCOE, Pune (2024-2028).\n\nHe is passionate about combining intelligent machine learning systems with modern, scalable full-stack web applications to solve real-world problems. Feel free to ask me about his skills, projects, or experience!"
-  }
-  
-  return "I'm sorry, I am configured as Aditya Deore's portfolio assistant and can only answer questions related to Aditya's skills, experience, projects, or background."
-}
-
-async function fetchNvidiaResponse(messages: { role: 'system' | 'user' | 'assistant', content: string }[]): Promise<string> {
-  let apiKey = localStorage.getItem('nvidia_nim_api_key')
-  if (!apiKey) {
-    apiKey = import.meta.env.VITE_NVIDIA_API_KEY
-  }
-
-  if (!apiKey) {
-    throw new Error('NVIDIA API Key not configured')
-  }
-
-  const response = await fetch('https://integrate.api.nvidia.com/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify({
-      model: 'meta/llama-3.1-8b-instruct',
-      messages,
-      temperature: 0.2,
-      max_tokens: 1024,
-      top_p: 0.7,
-    }),
-  })
-
-  if (!response.ok) {
-    const errorText = await response.text()
-    throw new Error(`NVIDIA API response error: ${response.status} ${errorText}`)
-  }
-
-  const data = await response.json()
-  const content = data.choices?.[0]?.message?.content
-  if (!content) {
-    throw new Error('Empty response from NVIDIA NIM API')
-  }
-
-  return content
-}
-
-function ChatMessageText({ text }: { text: string }) {
-  const lines = text.split('\n')
-
-  return (
-    <div className="chat-message-content">
-      {lines.map((line, idx) => {
-        let trimmed = line.trim()
-        const isBullet = trimmed.startsWith('•') || trimmed.startsWith('-') || trimmed.startsWith('*')
-        
-        if (isBullet) {
-          trimmed = trimmed.replace(/^[•\-\*]\s*/, '')
-        }
-
-        const parts = []
-        let currentText = trimmed
-        const regex = /(\*\*.*?\*\*|\[.*?\]\(.*?\))/g
-        let match
-        let lastIndex = 0
-
-        while ((match = regex.exec(currentText)) !== null) {
-          const matchIndex = match.index
-          const matchStr = match[0]
-
-          if (matchIndex > lastIndex) {
-            parts.push({
-              type: 'text',
-              val: currentText.substring(lastIndex, matchIndex),
-            })
-          }
-
-          if (matchStr.startsWith('**') && matchStr.endsWith('**')) {
-            parts.push({
-              type: 'bold',
-              val: matchStr.slice(2, -2),
-            })
-          } else if (matchStr.startsWith('[') && matchStr.includes('](')) {
-            const labelEnd = matchStr.indexOf(']')
-            const urlStart = matchStr.indexOf('(') + 1
-            const urlEnd = matchStr.indexOf(')')
-            parts.push({
-              type: 'link',
-              label: matchStr.substring(1, labelEnd),
-              url: matchStr.substring(urlStart, urlEnd),
-            })
-          }
-
-          lastIndex = regex.lastIndex
-        }
-
-        if (lastIndex < currentText.length) {
-          parts.push({
-            type: 'text',
-            val: currentText.substring(lastIndex),
-          })
-        }
-
-        const contentNode = parts.map((part, pIdx) => {
-          if (part.type === 'bold') {
-            return <strong key={pIdx}>{part.val}</strong>
-          }
-          if (part.type === 'link') {
-            return (
-              <a
-                key={pIdx}
-                href={part.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="chat-message-link"
-              >
-                {part.label}
-              </a>
-            )
-          }
-          return part.val
-        })
-
-        if (isBullet) {
-          return (
-            <div key={idx} className="chat-message-bullet">
-              <span className="bullet-dot">•</span>
-              <div className="bullet-text">{contentNode}</div>
-            </div>
-          )
-        }
-
-        return (
-          <p key={idx} className={trimmed === '' ? 'chat-message-empty-line' : 'chat-message-line'}>
-            {contentNode}
-          </p>
-        )
-      })}
-    </div>
-  )
-}
-
 export function FloatingChatbot() {
   const [isOpen, setIsOpen] = useState(false)
-  const [isMaximized, setIsMaximized] = useState(false)
+  const [isMaximized, setIsMaximized] = useState(false) // Minimized popout by default
   const [showSettings, setShowSettings] = useState(false)
-  const [apiKeyInput, setApiKeyInput] = useState(() => localStorage.getItem('nvidia_nim_api_key') || '')
-  
+  const [apiKeyInput, setApiKeyInput] = useState(() => localStorage.getItem('gemini_api_key') || '')
+  const avatarClicksRef = useRef(0)
+
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    setIsOpen(false)
+  }, [pathname])
+
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 'welcome',
       sender: 'assistant',
-      text: "Hi! I am Aditya's conversational AI assistant. Ask me anything about his projects, experience, skills, or how to contact him!",
+      text: "Hi! I am Aditya's conversational AI assistant. Ask me anything about his work, background, achievements, or how to reach him!",
       timestamp: new Date(),
     },
   ])
   const [inputText, setInputText] = useState('')
   const [isTyping, setIsTyping] = useState(false)
+  const [typingState, setTypingState] = useState('Thinking...')
+  const [currentSuggestions, setCurrentSuggestions] = useState<string[]>(() => [
+    'Tell me about Aditya',
+    'What are his core skills?',
+    'Show me his projects',
+  ])
 
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const chatPanelRef = useRef<HTMLDivElement>(null)
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }
-
-  // Auto-scroll when messages update or typing state changes
+  // Cycle typing state text for high-fidelity reasoning look
   useEffect(() => {
-    scrollToBottom()
-  }, [messages, isTyping])
+    if (!isTyping) return
+    const states = ['Thinking...', 'Analyzing...', 'Generating response...']
+    let idx = 0
+    setTypingState(states[idx])
+    const interval = setInterval(() => {
+      idx = (idx + 1) % states.length
+      setTypingState(states[idx])
+    }, 1500)
+    return () => clearInterval(interval)
+  }, [isTyping])
 
-  // Prevent background scrolling on mobile/maximized when open
+  // Auto-grow textarea height
   useEffect(() => {
-    if (isOpen && (window.innerWidth <= 768 || isMaximized)) {
+    const textarea = textareaRef.current
+    if (!textarea) return
+    textarea.style.height = 'auto'
+    textarea.style.height = `${Math.min(textarea.scrollHeight, 160)}px`
+  }, [inputText])
+
+
+
+  useEffect(() => {
+    if (isOpen) {
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = ''
@@ -243,88 +101,179 @@ export function FloatingChatbot() {
     return () => {
       document.body.style.overflow = ''
     }
-  }, [isOpen, isMaximized])
+  }, [isOpen])
 
-  const handleSendMessage = useCallback(async (text: string) => {
-    const trimmed = text.trim()
-    if (!trimmed) return
+  useEffect(() => {
+    if (!isOpen) return
 
-    const userMsg: Message = {
-      id: `user-${Date.now()}`,
-      sender: 'user',
-      text: trimmed,
-      timestamp: new Date(),
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (chatPanelRef.current && chatPanelRef.current.contains(event.target as Node)) {
+        return
+      }
+      const trigger = document.querySelector('.floating-chatbot-trigger')
+      if (trigger && trigger.contains(event.target as Node)) {
+        return
+      }
+      setIsOpen(false)
     }
 
-    setMessages((prev) => [...prev, userMsg])
-    setInputText('')
-    setIsTyping(true)
+    document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener('touchstart', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('touchstart', handleClickOutside)
+    }
+  }, [isOpen])
 
-    try {
-      const history = [
-        { role: 'system' as const, content: SYSTEM_PROMPT },
-        ...messages.map((m) => ({
-          role: m.sender === 'user' ? 'user' as const : 'assistant' as const,
+  const handleSendMessage = useCallback(
+    async (text: string) => {
+      const trimmed = text.trim()
+      if (!trimmed) return
+
+      const userMsg: Message = {
+        id: `user-${Date.now()}`,
+        sender: 'user',
+        text: trimmed,
+        timestamp: new Date(),
+      }
+
+      setCurrentSuggestions([])
+      setMessages((prev) => [...prev, userMsg])
+      setInputText('')
+
+      const userMessageCount = messages.filter((m) => m.sender === 'user').length
+      if (userMessageCount >= 1 && !isMaximized) {
+        setIsTyping(true)
+        setTypingState("Interested to know more? Let's expand...")
+        await new Promise((resolve) => setTimeout(resolve, 1200))
+        setIsMaximized(true)
+        setTypingState("Thinking...")
+      }
+
+      setIsTyping(true)
+
+      try {
+        const history: ChatHistoryMessage[] = messages.map((m) => ({
+          role: m.sender === 'user' ? 'user' : 'assistant',
           content: m.text,
-        })),
-        { role: 'user' as const, content: trimmed },
-      ]
+        }))
 
-      let responseText = ''
-      const apiKey = localStorage.getItem('nvidia_nim_api_key') || import.meta.env.VITE_NVIDIA_API_KEY
-      
-      if (apiKey) {
-        responseText = await fetchNvidiaResponse(history)
-      } else {
-        // Fallback with realistic delay
-        await new Promise((resolve) => setTimeout(resolve, 600))
-        responseText = generateLocalResponse(trimmed)
-      }
+        const responseText = await sendPortfolioChatMessage(
+          PORTFOLIO_SYSTEM_PROMPT,
+          history,
+          trimmed
+        )
 
-      const assistantMsg: Message = {
-        id: `assistant-${Date.now()}`,
-        sender: 'assistant',
-        text: responseText,
-        timestamp: new Date(),
-      }
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: `assistant-${Date.now()}`,
+            sender: 'assistant',
+            text: responseText,
+            timestamp: new Date(),
+          },
+        ])
 
-      setMessages((prev) => [...prev, assistantMsg])
-    } catch (error) {
-      console.warn('NVIDIA NIM API failed, falling back to local query router.', error)
-      await new Promise((resolve) => setTimeout(resolve, 400))
-      const responseText = generateLocalResponse(trimmed)
-      
-      const assistantMsg: Message = {
-        id: `assistant-${Date.now()}`,
-        sender: 'assistant',
-        text: responseText,
-        timestamp: new Date(),
+        const ALL_SUGGESTIONS = [
+          'Tell me about Aditya',
+          'What are his core skills?',
+          'Show me his projects',
+          'CodeCampus details',
+          'Dementia Diagnostic AI details',
+          'Brain Tumor Detection details',
+          'Project Clarity details',
+          'Where has he worked?',
+          'How can I contact him?',
+          'Is he open to internships?',
+          'Show me his resume',
+        ]
+        const filtered = ALL_SUGGESTIONS.filter(
+          (s) => s.toLowerCase() !== trimmed.toLowerCase()
+        )
+        const shuffled = [...filtered].sort(() => 0.5 - Math.random())
+        setCurrentSuggestions(shuffled.slice(0, 3))
+      } catch (err) {
+        console.error(err)
+        setCurrentSuggestions([
+          'Show me his projects',
+          'How can I contact him?',
+          'Show me his resume',
+        ])
+      } finally {
+        setIsTyping(false)
       }
-      setMessages((prev) => [...prev, assistantMsg])
-    } finally {
-      setIsTyping(false)
-    }
-  }, [messages])
+    },
+    [messages, isMaximized]
+  )
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     handleSendMessage(inputText)
   }
 
+  const handleClearChat = () => {
+    setMessages([
+      {
+        id: 'welcome',
+        sender: 'assistant',
+        text: "Hi! I am Aditya's conversational AI assistant. Ask me anything about his work, background, achievements, or how to reach him!",
+        timestamp: new Date(),
+      },
+    ])
+    setCurrentSuggestions([
+      'Tell me about Aditya',
+      'What are his core skills?',
+      'Show me his projects',
+    ])
+  }
+
   const handleSaveApiKey = () => {
-    localStorage.setItem('nvidia_nim_api_key', apiKeyInput.trim())
+    localStorage.setItem('gemini_api_key', apiKeyInput.trim())
     setShowSettings(false)
   }
 
   const handleClearApiKey = () => {
-    localStorage.removeItem('nvidia_nim_api_key')
+    localStorage.removeItem('gemini_api_key')
     setApiKeyInput('')
     setShowSettings(false)
   }
 
+  // Sidebar navigation options
+  const sidebarNavItems = [
+    { id: 'about', label: 'About Me', icon: User, prompt: 'Tell me about Aditya Deore' },
+    { id: 'projects', label: 'Projects', icon: Cpu, prompt: 'Show me your projects' },
+    { id: 'skills', label: 'Skills', icon: Sparkles, prompt: 'What are your core technical skills?' },
+    { id: 'achievements', label: 'Achievements', icon: Trophy, prompt: 'What certifications and achievements do you have?' },
+    { id: 'resume', label: 'Resume', icon: FileText, prompt: 'How can I view or download your resume?' },
+    { id: 'contact', label: 'Contact', icon: Mail, prompt: 'How can I get in touch with you?' },
+  ]
+
+  // Suggested cards for welcome screen
+  const welcomeSuggestions = [
+    { id: 'projects', label: 'Explore Projects', icon: Cpu, prompt: 'Show me your projects' },
+    { id: 'skills', label: 'View Skills', icon: Sparkles, prompt: 'What are your core technical skills?' },
+    { id: 'achievements', label: 'Achievements', icon: Trophy, prompt: 'What certifications and achievements do you have?' },
+    { id: 'resume', label: 'Resume', icon: FileText, prompt: 'How can I view or download your resume?' },
+    { id: 'ai', label: 'AI Interests', icon: Brain, prompt: 'What are your interests in AI and ML?' },
+    { id: 'contact', label: 'Contact', icon: Mail, prompt: 'How can I get in touch with you?' },
+  ]
+
+  // Detect active tab in sidebar dynamically from context
+  const getActiveSidebarTab = () => {
+    if (messages.length <= 1) return ''
+    const lastUserMsg = [...messages].reverse().find(m => m.sender === 'user')?.text.toLowerCase() || ''
+    if (lastUserMsg.includes('project') || lastUserMsg.includes('codecampus') || lastUserMsg.includes('clarity') || lastUserMsg.includes('tumor') || lastUserMsg.includes('palantir')) return 'projects'
+    if (lastUserMsg.includes('skill') || lastUserMsg.includes('toolkit') || lastUserMsg.includes('languages') || lastUserMsg.includes('framework')) return 'skills'
+    if (lastUserMsg.includes('achievement') || lastUserMsg.includes('certif') || lastUserMsg.includes('hackathon')) return 'achievements'
+    if (lastUserMsg.includes('resume') || lastUserMsg.includes('cv') || lastUserMsg.includes('pdf')) return 'resume'
+    if (lastUserMsg.includes('contact') || lastUserMsg.includes('email') || lastUserMsg.includes('linkedin')) return 'contact'
+    if (lastUserMsg.includes('about') || lastUserMsg.includes('who is') || lastUserMsg.includes('background') || lastUserMsg.includes('deore')) return 'about'
+    return ''
+  }
+  const activeTab = getActiveSidebarTab()
+
   return (
-    <div className={`floating-chatbot-wrapper ${isMaximized ? 'floating-chatbot-wrapper--maximized' : ''}`}>
-      {/* Blurred Backdrop when Maximized */}
+    <div className={`floating-chatbot-wrapper ${isOpen ? (isMaximized ? 'floating-chatbot-wrapper--open' : 'floating-chatbot-wrapper--minimized') : ''}`}>
       <AnimatePresence>
         {isOpen && isMaximized && (
           <motion.div
@@ -332,222 +281,343 @@ export function FloatingChatbot() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => setIsMaximized(false)}
+            onClick={() => setIsOpen(false)}
           />
         )}
       </AnimatePresence>
 
-      {/* Floating Chat Trigger Button */}
-      {!isMaximized && (
-        <button
-          type="button"
-          className={`floating-chatbot-trigger ${isOpen ? 'floating-chatbot-trigger--active' : ''}`}
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label={isOpen ? 'Hide chatbot' : 'Show chatbot'}
-        >
-          {isOpen ? (
-            <X className="chatbot-icon" size={24} />
-          ) : (
+      {!isOpen && (
+        <div className="floating-chatbot-trigger-container">
+          <div className="floating-chatbot-prompt-stack">
+            {[
+              { label: "Who is Aditya?", prompt: "Who is Aditya Deore?" },
+              { label: "What is his experience?", prompt: "What is his professional experience?" },
+              { label: "Show me his projects", prompt: "Show me your projects" }
+            ].map((item, idx) => (
+              <button
+                key={idx}
+                type="button"
+                className="floating-chatbot-prompt-pill"
+                style={{ animationDelay: `${idx * 0.25}s` }}
+                onClick={() => {
+                  setIsOpen(true)
+                  handleSendMessage(item.prompt)
+                }}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+          <button
+            type="button"
+            className="floating-chatbot-trigger"
+            onClick={() => setIsOpen(true)}
+            aria-label="Show chatbot workspace"
+          >
             <MessageSquare className="chatbot-icon" size={24} />
-          )}
-        </button>
+          </button>
+        </div>
       )}
 
-      {/* Chat Window Panel */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             ref={chatPanelRef}
-            className={`floating-chatbot-panel ${isMaximized ? 'floating-chatbot-panel--maximized' : ''}`}
-            initial={isMaximized ? { opacity: 0, scale: 0.95 } : { opacity: 0, scale: 0.92, y: 16 }}
+            className={`floating-chatbot-panel ${isMaximized ? 'floating-chatbot-panel--maximized' : 'floating-chatbot-panel--minimized'}`}
+            initial={{ opacity: 0, scale: 0.96, y: 12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={isMaximized ? { opacity: 0, scale: 0.95 } : { opacity: 0, scale: 0.92, y: 16 }}
-            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            exit={{ opacity: 0, scale: 0.96, y: 12 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
           >
-            {/* Header */}
+            {/* Header Area */}
             <div className="chat-header">
-              <div className="chat-header-info">
-                <div className="chat-avatar">
-                  <Bot size={20} className="avatar-icon" />
-                  <span className="online-indicator"></span>
+              <div
+                className="chat-header-info"
+                style={{ cursor: 'pointer', userSelect: 'none' }}
+                onClick={() => {
+                  avatarClicksRef.current += 1
+                  if (avatarClicksRef.current >= 5) {
+                    setShowSettings(true)
+                    avatarClicksRef.current = 0
+                  }
+                }}
+              >
+                <div className="chat-avatar" style={{ overflow: 'hidden' }}>
+                  <img
+                    src="/motion/yo programando.jfif"
+                    alt="Aditya Deore"
+                    className="avatar-icon"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'inherit' }}
+                  />
+                  <span className="online-indicator" />
                 </div>
                 <div>
-                  <h3 className="chat-title">Aditya's Assistant</h3>
-                  <p className="chat-status">Online · AI powered</p>
+                  <h3 className="chat-title">Aditya's AI Assistant</h3>
+                  <p className="chat-status">
+                    AI Powered Portfolio
+                  </p>
                 </div>
               </div>
               <div className="chat-header-actions">
                 <button
                   type="button"
                   className="chat-header-action-btn"
-                  onClick={() => setShowSettings(!showSettings)}
-                  title="Settings"
-                  aria-label="Settings"
+                  onClick={handleClearChat}
+                  title="Clear Chat History"
+                  aria-label="Clear Chat History"
                 >
-                  <Settings size={16} />
+                  <Trash2 size={16} />
                 </button>
                 <button
                   type="button"
                   className="chat-header-action-btn"
                   onClick={() => setIsMaximized(!isMaximized)}
-                  title={isMaximized ? "Minimize Window" : "Maximize Window"}
-                  aria-label={isMaximized ? "Minimize Window" : "Maximize Window"}
+                  title={isMaximized ? 'Restore Window Size' : 'Maximize Workspace'}
+                  aria-label={isMaximized ? 'Restore Window Size' : 'Maximize Workspace'}
                 >
                   {isMaximized ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
                 </button>
-                <button 
-                  type="button" 
-                  className="chat-header-action-btn close-action-btn" 
-                  onClick={() => {
-                    setIsOpen(false)
-                    setIsMaximized(false)
-                  }}
-                  title="Close Chat"
-                  aria-label="Close Chat"
+                <button
+                  type="button"
+                  className="chat-header-action-btn close-action-btn"
+                  onClick={() => setIsOpen(false)}
+                  title="Close Workspace"
+                  aria-label="Close Workspace"
                 >
                   <X size={18} />
                 </button>
               </div>
             </div>
 
-            {/* Main Area (Content + Settings layer) */}
-            <div className="chat-body-wrapper">
-              {/* Settings Screen */}
-              {showSettings && (
-                <div className="chat-settings-overlay">
-                  <div className="settings-card">
-                    <div className="settings-header">
-                      <h4>API Configuration</h4>
-                      <button 
-                        type="button" 
-                        className="settings-close" 
-                        onClick={() => setShowSettings(false)}
-                      >
-                        <X size={16} />
-                      </button>
-                    </div>
-                    <div className="settings-body">
-                      <p className="settings-desc">
-                        Provide your <strong>NVIDIA NIM API Key</strong> to activate live AI reasoning.
-                        The key is securely stored in your browser's local cache (`localStorage`) and never leaves your computer.
-                      </p>
-                      
-                      <div className="settings-field">
-                        <label className="settings-label">NVIDIA API Key</label>
-                        <input
-                          type="password"
-                          className="settings-input"
-                          placeholder="nvapi-xxxxxxxxxxxxxxxxxxxxxxxxxxx"
-                          value={apiKeyInput}
-                          onChange={(e) => setApiKeyInput(e.target.value)}
-                        />
-                      </div>
-
-                      <div className="settings-actions">
+            {/* Main Layout Area */}
+            <div className="chat-main-layout">
+              {/* Left Navigation Sidebar */}
+              <div className="chat-sidebar">
+                <div className="chat-sidebar-section">
+                  <span className="chat-sidebar-label">WORKSPACE</span>
+                  <div className="chat-sidebar-nav">
+                    {sidebarNavItems.map((item) => {
+                      const Icon = item.icon
+                      const isActive = activeTab === item.id
+                      return (
                         <button
+                          key={item.id}
                           type="button"
-                          className="settings-btn settings-btn-save"
-                          onClick={handleSaveApiKey}
+                          className={`chat-sidebar-nav-item ${isActive ? 'chat-sidebar-nav-item--active' : ''}`}
+                          onClick={() => handleSendMessage(item.prompt)}
+                          disabled={isTyping}
                         >
-                          Save Changes
+                          <Icon size={16} className="nav-item-icon" />
+                          <span>{item.label}</span>
                         </button>
-                        <button
-                          type="button"
-                          className="settings-btn settings-btn-clear"
-                          onClick={handleClearApiKey}
-                        >
-                          Delete Key
-                        </button>
-                      </div>
-                      
-                      <div className="settings-info-box">
-                        <p><strong>Configured Model:</strong> meta/llama-3.1-8b-instruct</p>
-                        <p><strong>Base Endpoint:</strong> integrate.api.nvidia.com</p>
-                        <p><strong>Strict Guardrail:</strong> Asserts answer constraints to Aditya's CV profile details exclusively.</p>
-                      </div>
-                    </div>
+                      )
+                    })}
                   </div>
                 </div>
-              )}
 
-              {/* Messages Area */}
-              <div className="chat-messages-container">
-                {messages.map((msg) => (
-                  <div 
-                    key={msg.id} 
-                    className={`chat-message-row ${msg.sender === 'user' ? 'msg-user' : 'msg-assistant'}`}
+                <div className="chat-sidebar-bottom">
+                  <a
+                    href="https://github.com/AdityaxDeore"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="chat-sidebar-nav-link"
                   >
-                    {msg.sender === 'assistant' && (
-                      <div className="msg-avatar">
-                        <Sparkles size={12} />
+                    <GithubIcon size={14} /> GitHub
+                  </a>
+                  <a
+                    href="https://linkedin.com/in/aditya-deore-3a725a263"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="chat-sidebar-nav-link"
+                  >
+                    <LinkedinIcon size={14} /> LinkedIn
+                  </a>
+                  <a
+                    href={resumePdfUrl}
+                    download="Aditya_Deore_Resume.pdf"
+                    className="chat-sidebar-nav-link highlight-link"
+                  >
+                    <Download size={14} /> Download Resume
+                  </a>
+                </div>
+              </div>
+
+              {/* Right Conversation Space */}
+              <div className="chat-conversation-area">
+                <div className="chat-body-wrapper">
+                  {showSettings && (
+                    <div className="chat-settings-overlay">
+                      <div className="settings-card">
+                        <div className="settings-header">
+                          <h4>API Configuration</h4>
+                          <button type="button" className="settings-close" onClick={() => setShowSettings(false)}>
+                            <X size={16} />
+                          </button>
+                        </div>
+                        <div className="settings-body">
+                          <p className="settings-desc">
+                            Provide your <strong>Gemini API Key</strong> to activate live AI reasoning.
+                            The key is stored in your browser only.
+                          </p>
+
+                          <div className="settings-field">
+                            <label className="settings-label">Gemini API Key</label>
+                            <input
+                              type="password"
+                              className="settings-input"
+                              placeholder="AIzaSy..."
+                              value={apiKeyInput}
+                              onChange={(e) => setApiKeyInput(e.target.value)}
+                            />
+                          </div>
+
+                          <div className="settings-actions">
+                            <button type="button" className="settings-btn settings-btn-save" onClick={handleSaveApiKey}>
+                              Save Changes
+                            </button>
+                            <button type="button" className="settings-btn settings-btn-clear" onClick={handleClearApiKey}>
+                              Delete Key
+                            </button>
+                          </div>
+
+                          <div className="settings-info-box">
+                            <p>
+                              <strong>Configured Model:</strong> gemini-1.5-flash
+                            </p>
+                            <p>
+                              <strong>Base Endpoint:</strong> generativelanguage.googleapis.com
+                            </p>
+                            <p>
+                              <strong>Env Key:</strong>{' '}
+                              {import.meta.env.VITE_GEMINI_API_KEY
+                                ? 'Loaded from .env'
+                                : 'Not set — add VITE_GEMINI_API_KEY to .env'}
+                            </p>
+                            <p>
+                              <strong>Guardrail:</strong> Relates off-topic topics back to Aditya Deore's engineering achievements.
+                            </p>
+                          </div>
+                        </div>
                       </div>
-                    )}
-                    <div className="chat-bubble">
-                      <ChatMessageText text={msg.text} />
                     </div>
-                  </div>
-                ))}
-                
-                {/* Typing Indicator */}
-                {isTyping && (
-                  <div className="chat-message-row msg-assistant">
-                    <div className="msg-avatar">
-                      <Sparkles size={12} />
-                    </div>
-                    <div className="chat-bubble typing-bubble">
-                      <div className="typing-indicator">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                  )}
+
+                  {messages.length <= 1 ? (
+                    /* Welcome Screen */
+                    <div className="chat-welcome-container">
+                      <div className="chat-welcome-content">
+                        <h2 className="chat-welcome-title">Hi, I'm Aditya's AI Assistant</h2>
+                        <p className="chat-welcome-subtitle">
+                          I can answer questions about my projects, technical skills, achievements, and professional journey.
+                        </p>
+                        <div className="chat-welcome-suggestions">
+                          {welcomeSuggestions.map((card) => {
+                            const IconComponent = card.icon
+                            return (
+                              <button
+                                key={card.id}
+                                type="button"
+                                className="chat-suggestion-card"
+                                onClick={() => handleSendMessage(card.prompt)}
+                              >
+                                <IconComponent size={18} className="suggestion-card-icon-lucide" />
+                                <span className="suggestion-card-label">{card.label}</span>
+                              </button>
+                            )
+                          })}
+                        </div>
                       </div>
                     </div>
+                  ) : (
+                    /* Messages Scrolling Container */
+                    <div className="chat-messages-container">
+                      {messages.map((msg) => (
+                        <div
+                          key={msg.id}
+                          className={`chat-message-row ${msg.sender === 'user' ? 'msg-user' : 'msg-assistant'}`}
+                        >
+                          {msg.sender === 'assistant' && (
+                            <div className="msg-avatar">
+                              <Sparkles size={12} />
+                            </div>
+                          )}
+                          <div className="chat-bubble-wrapper">
+                            <div className="chat-bubble">
+                              <ChatMessageText text={msg.text} isAssistant={msg.sender === 'assistant'} isMaximized={isMaximized} />
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+
+                      {isTyping && (
+                        <div className="chat-message-row msg-assistant">
+                          <div className="msg-avatar">
+                            <Sparkles size={12} />
+                          </div>
+                          <div className="chat-bubble-wrapper">
+                            <div className="chat-bubble typing-bubble">
+                              <span className="typing-status-text">{typingState}</span>
+                              <span className="typing-cursor">▍</span>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Render follow-up suggestions at the bottom of flow */}
+                      {!isTyping && currentSuggestions.length > 0 && (
+                        <div className="chat-suggestions-in-flow">
+                          <ChatSuggestions
+                            items={currentSuggestions}
+                            onSelect={handleSendMessage}
+                            disabled={isTyping}
+                            label="Follow-up questions"
+                          />
+                        </div>
+                      )}
+
+                      <div ref={messagesEndRef} />
+                    </div>
+                  )}
+                </div>
+
+                {/* Floating Input Area */}
+                <div className="chat-input-area">
+                  <div className="chat-input-wrapper">
+                    <form className="chat-input-form" onSubmit={handleSubmit}>
+                      <textarea
+                        ref={textareaRef}
+                        className="chat-textarea"
+                        rows={1}
+                        placeholder="Ask anything about Aditya's projects, skills, achievements, or experience..."
+                        value={inputText}
+                        onChange={(e) => setInputText(e.target.value)}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' && !e.shiftKey) {
+                            e.preventDefault()
+                            handleSubmit(e)
+                          }
+                        }}
+                        disabled={isTyping}
+                      />
+                      <button
+                        type="submit"
+                        className="chat-send-btn"
+                        disabled={!inputText.trim() || isTyping}
+                        aria-label="Send Message"
+                      >
+                        <Send size={16} />
+                      </button>
+                    </form>
                   </div>
-                )}
-                <div ref={messagesEndRef} />
+                  <p className="chat-input-tip">
+                    Enter to send, Shift + Enter for newline
+                  </p>
+                </div>
               </div>
             </div>
-
-            {/* Suggestions Preset Options - Wrapped Grid (fully visible) */}
-            <div className="chat-suggestions-container">
-              <p className="suggestions-header-label">Suggested Questions</p>
-              <div className="chat-suggestions-grid">
-                {SUGGESTIONS.map((sug, sIdx) => (
-                  <button
-                    key={sIdx}
-                    type="button"
-                    className="suggestion-chip"
-                    onClick={() => handleSendMessage(sug)}
-                  >
-                    {sug}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Input Action Form */}
-            <form className="chat-input-form" onSubmit={handleSubmit}>
-              <input
-                type="text"
-                className="chat-text-input"
-                placeholder="Ask me about Aditya..."
-                value={inputText}
-                onChange={(e) => setInputText(e.target.value)}
-                disabled={isTyping}
-              />
-              <button 
-                type="submit" 
-                className="chat-send-btn" 
-                disabled={!inputText.trim() || isTyping}
-                aria-label="Send Message"
-              >
-                <Send size={16} />
-              </button>
-            </form>
           </motion.div>
         )}
       </AnimatePresence>
     </div>
   )
 }
-
-

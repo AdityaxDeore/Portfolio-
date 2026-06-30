@@ -1,0 +1,152 @@
+.draggable-hero {
+  position: relative;
+  width: 100%;
+  min-height: clamp(28rem, 88vh, 42rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(2rem, 5vw, 3rem) clamp(1rem, 3vw, 2rem);
+  overflow: hidden;
+}
+
+.draggable-hero--about {
+  min-height: calc(100vh - var(--nav-height));
+}
+
+.draggable-hero__cards {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.draggable-hero__card-anchor {
+  position: absolute;
+  pointer-events: none;
+}
+
+.draggable-hero__card-motion {
+  animation: draggable-card-space-float 15s ease-in-out infinite;
+  will-change: transform;
+}
+
+.draggable-hero__card-motion--top-left {
+  animation-duration: 12s;
+  animation-delay: 0s;
+}
+
+.draggable-hero__card-motion--top-right {
+  animation-duration: 16s;
+  animation-delay: -3.5s;
+}
+
+.draggable-hero__card-motion--bottom-left {
+  animation-duration: 14s;
+  animation-delay: -7s;
+}
+
+.draggable-hero__card-motion--bottom-right {
+  animation-duration: 18s;
+  animation-delay: -11s;
+}
+
+.draggable-hero__card-anchor:has(.draggable-hero__card:active) .draggable-hero__card-motion {
+  animation-play-state: paused;
+}
+
+@keyframes draggable-card-space-float {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate3d(8px, -14px, 0) rotate(0.8deg);
+  }
+  50% {
+    transform: translate3d(-10px, 6px, 0) rotate(-1.2deg);
+  }
+  75% {
+    transform: translate3d(5px, -8px, 0) rotate(0.5deg);
+  }
+}
+
+.draggable-hero__card {
+  position: relative;
+  width: clamp(10rem, 16vw, 14rem);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-hairline);
+  background: var(--color-surface-card);
+  box-shadow:
+    0 20px 50px color-mix(in srgb, var(--color-text-primary) 14%, transparent),
+    0 0 0 1px color-mix(in srgb, #D47655 12%, transparent);
+  overflow: hidden;
+  cursor: grab;
+  pointer-events: auto;
+  touch-action: none;
+  user-select: none;
+  transition: box-shadow var(--duration-fast) var(--ease-out);
+}
+
+.draggable-hero__card:active {
+  cursor: grabbing;
+  box-shadow:
+    0 28px 60px color-mix(in srgb, #D47655 28%, transparent),
+    0 0 0 2px color-mix(in srgb, #D47655 45%, transparent);
+}
+
+.draggable-hero__card-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+  transform: none;
+}
+
+.draggable-hero__card-label {
+  display: block;
+  padding: 0.5rem 0.65rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  background: #faf9f5;
+  border-top: 1px solid var(--color-hairline);
+}
+
+.draggable-hero__center {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 44rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .draggable-hero__card {
+    width: clamp(8rem, 22vw, 10rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .draggable-hero--about {
+    min-height: auto;
+  }
+
+  .draggable-hero__cards {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .draggable-hero__card-motion {
+    animation: none !important;
+  }
+
+  .draggable-hero__card {
+    transition: none;
+  }
+}

@@ -2,12 +2,13 @@ import { FooterMarquee } from '@/components/ui/FooterMarquee'
 import { PulseButton } from '@/components/ui/PulseButton'
 import { UnderLink } from '@/components/ui/UnderLink'
 import { aboutProfile } from '@/data/about'
-import { contactEmail, contactLinks, contactSection } from '@/data/contact'
+import { contactLinks, contactSection } from '@/data/contact'
 import {
   ArrowUpRightIcon,
   GithubIcon,
   LinkedinIcon,
   MailIcon,
+  WhatsappIcon,
 } from '@/components/icons/social-icons'
 import { motion, useReducedMotion } from 'motion/react'
 import type { ComponentType } from 'react'
@@ -17,6 +18,7 @@ const contactIcons: Record<string, ComponentType<{ size?: number }>> = {
   email: MailIcon,
   linkedin: LinkedinIcon,
   github: GithubIcon,
+  whatsapp: WhatsappIcon,
 }
 
 const footerMarqueeText = `${aboutProfile.shortName} · ${aboutProfile.role}`
@@ -88,11 +90,13 @@ export function Contact() {
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
         >
           <PulseButton
-            href={`mailto:${contactEmail}`}
+            href="https://wa.me/918010767685"
             className="contact__cta-btn"
+            target="_blank"
+            rel="noopener noreferrer"
             showLoaderOnClick
           >
-            Send an email
+            Text me directly
           </PulseButton>
         </motion.div>
       </div>

@@ -15,7 +15,7 @@ export function Skills() {
       <div className="container">
         <header className="skills__header">
           <div className="skills__label-row skills__reveal">
-            <PlugConnectedIcon size={22} color="var(--color-primary)" strokeWidth={2} />
+            <PlugConnectedIcon size={22} color="var(--color-text-secondary)" strokeWidth={2} />
             <p className="skills__label">05 — Skills</p>
           </div>
           <h2 id="skills-title" className="skills__title skills__reveal">
@@ -30,7 +30,12 @@ export function Skills() {
 
         <div className="skills__grid">
           {skillCategories.map((category, index) => (
-            <article key={category.id} className="skills__card skills__reveal-group">
+            <article
+              key={category.id}
+              className={`skills__card skills__reveal-group skills__card--light${
+                index === skillCategories.length - 1 ? ' skills__card--wide' : ''
+              }`}
+            >
               <div className="skills__card-head">
                 <span className="skills__card-index" aria-hidden="true">
                   {String(index + 1).padStart(2, '0')}
@@ -55,7 +60,7 @@ export function Skills() {
                           decoding="async"
                         />
                       ) : (
-                        <CheckCircle2 className="skills__chip-icon" size={24} color="var(--color-primary)" strokeWidth={2} />
+                        <CheckCircle2 className="skills__chip-icon" size={24} color="#D47655" strokeWidth={2} />
                       )}
                       <span className="skills__chip-label">{skill.name}</span>
                     </li>

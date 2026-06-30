@@ -1,6 +1,9 @@
+import { DraggableFloatingCards } from '@/components/ui/DraggableFloatingCards'
 import { RotatingTagline } from '@/components/ui/RotatingTagline'
 import { aboutRotatingKeywords } from '@/data/about'
+import { aboutStorySection, floatingUiCards } from '@/data/aboutStory'
 import { useRef } from 'react'
+import { Link } from 'react-router-dom'
 import './About.css'
 
 const InfoIcon = ({ type }: { type: 'website' | 'phone' | 'address' }) => {
@@ -38,38 +41,47 @@ export function About() {
       aria-labelledby="about-title"
     >
       <div className="about__sticky">
-        <div className="container about__layout">
-          <div className="about__content">
-            <div className="about__group about__group--identity">
-              <p className="about__label">01 — About</p>
-              <h1 id="about-title" className="about__line about__line--name">Aditya Deore</h1>
-              <p className="about__line about__line--role">Machine Learning Engineer &amp; Full-Stack Developer</p>
-              <p className="about__line about__line--meta">Pune, India · B.Tech IT @ PCCOE</p>
-            </div>
+        <div className="about__layout about__layout--hero">
+          <DraggableFloatingCards cards={floatingUiCards} className="draggable-hero--about">
+            <div className="about__content">
+              <div className="about__group about__group--identity">
+                <p className="about__label">01 — About</p>
+                <h1 id="about-title" className="about__line about__line--name">Aditya Deore</h1>
+                <p className="about__line about__line--role">Machine Learning Engineer &amp; Full-Stack Developer</p>
+                <p className="about__line about__line--meta">Pune, India · B.Tech IT @ PCCOE</p>
+              </div>
 
-            <div className="about__group about__group--bio">
-              <RotatingTagline words={aboutRotatingKeywords} className="about__rotating" />
-              <p className="about__tagline">I build ML systems and full-stack products that ship to production.</p>
-            </div>
+              <div className="about__group about__group--bio">
+                <RotatingTagline words={aboutRotatingKeywords} className="about__rotating" />
+              </div>
 
-            <div className="about__group about__group--actions">
-              <div className="about__contact-grid">
-                <div className="about__contact-item">
-                  <InfoIcon type="website" />
-                  <span>github.com/AdityaxDeore</span>
-                </div>
-                <div className="about__contact-item">
-                  <InfoIcon type="phone" />
-                  <span>8010767685</span>
-                </div>
-                <div className="about__contact-item">
-                  <InfoIcon type="address" />
-                  <span>Pune, India</span>
+              <div className="about__hero-ctas">
+                <Link to={aboutStorySection.ctaPrimary.href} className="about__hero-cta about__hero-cta--primary">
+                  {aboutStorySection.ctaPrimary.label}
+                </Link>
+                <Link to={aboutStorySection.ctaSecondary.href} className="about__hero-cta about__hero-cta--ghost">
+                  {aboutStorySection.ctaSecondary.label}
+                </Link>
+              </div>
+
+              <div className="about__group about__group--actions">
+                <div className="about__contact-grid">
+                  <div className="about__contact-item">
+                    <InfoIcon type="website" />
+                    <span>github.com/AdityaxDeore</span>
+                  </div>
+                  <div className="about__contact-item">
+                    <InfoIcon type="phone" />
+                    <span>8010767685</span>
+                  </div>
+                  <div className="about__contact-item">
+                    <InfoIcon type="address" />
+                    <span>Pune, India</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-
+          </DraggableFloatingCards>
         </div>
       </div>
     </section>

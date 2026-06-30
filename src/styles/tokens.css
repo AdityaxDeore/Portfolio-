@@ -48,21 +48,21 @@
 }
 
 [data-theme='dark'] {
-  --color-canvas: #141413;       /* Deep Dark background */
-  --color-surface: #141413;      /* Deep Dark */
-  --color-surface-soft: #1d1d1c; /* Slightly lighter warm gray background */
-  --color-surface-card: #222220; /* Dark elevated surface */
-  --color-surface-dark: #30302e; /* Dark Surface */
-  --color-hairline: #30302e;     /* Border Dark */
+  --color-canvas: #222220;       /* Decent warm charcoal background */
+  --color-surface: #222220;      /* Decent surface */
+  --color-surface-soft: #2b2b29; /* Claude's card shade */
+  --color-surface-card: #333330; /* Elevated card surface */
+  --color-surface-dark: #3e3e3b; /* Accent dark surface */
+  --color-hairline: #3e3e3b;     /* Border Dark */
 
   --color-text-primary: #faf9f5;   /* Ivory text */
   --color-text-secondary: #b0aea5; /* Warm Silver text */
   --color-text-muted: #87867f;     /* Stone Gray text */
-  --color-text-on-primary: #141413;
+  --color-text-on-primary: #222220;
 
-  --color-primary: #cc785c;        /* Terracotta brand accent */
-  --color-primary-hover: #e08365;
-  --color-primary-muted: rgba(204, 120, 92, 0.18);
+  --color-primary: #c96442;        /* Terracotta brand accent */
+  --color-primary-hover: #d97757;
+  --color-primary-muted: rgba(201, 100, 66, 0.18);
 }
 
 /* Narrow phones */

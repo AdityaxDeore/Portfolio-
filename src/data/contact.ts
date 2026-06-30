@@ -17,6 +17,13 @@ export const contactSection = {
 
 export const contactLinks: ContactLink[] = [
   {
+    id: 'whatsapp',
+    label: 'WhatsApp',
+    href: 'https://wa.me/918010767685',
+    description: 'Text me on WhatsApp (+91 8010767685)',
+    external: true,
+  },
+  {
     id: 'email',
     label: 'Email',
     href: `mailto:${contactEmail}`,
@@ -38,4 +45,4 @@ export const contactLinks: ContactLink[] = [
   },
 ]
 
-export const socialLinks = contactLinks.filter((link) => link.id !== 'email')
+export const socialLinks = contactLinks.filter((link) => link.id !== 'email' && link.id !== 'whatsapp')

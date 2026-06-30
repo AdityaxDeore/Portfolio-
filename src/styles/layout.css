@@ -121,7 +121,7 @@ html {
   scroll-padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px) + 0.5rem);
 }
 
-/* Defer layout/paint for below-fold sections */
+/* Defer layout/paint for below-fold sections - Commented out to fix scroll alignment issues
 .showcase,
 .code-terminal,
 .experience,
@@ -132,3 +132,4 @@ html {
   content-visibility: auto;
   contain-intrinsic-size: auto 720px;
 }
+*/

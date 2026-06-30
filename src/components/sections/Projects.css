@@ -1,15 +1,40 @@
 .projects {
-  padding-block: var(--space-section);
+  position: relative;
+  padding-block: clamp(5rem, 12vw, 9rem);
   border-top: 1px solid var(--color-hairline);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--color-primary-muted) 25%, var(--color-canvas)) 0%,
+    var(--color-canvas) 18%,
+    var(--color-canvas) 100%
+  );
+}
+
+.projects::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 50% at 50% 0%,
+    color-mix(in srgb, var(--color-primary) 8%, transparent),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.projects .container {
+  position: relative;
+  z-index: 1;
+  max-width: 88rem;
 }
 
 .projects__header {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: clamp(0.5rem, 2vw, 0.75rem);
-  margin-bottom: clamp(2rem, 5vw, 3rem);
-  max-width: 42rem;
+  gap: clamp(0.75rem, 2vw, 1rem);
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+  max-width: 52rem;
 }
 
 .projects__label {
@@ -28,19 +53,24 @@
   color: var(--color-text-secondary);
 }
 
-.projects__grid {
+/* Pinterest / masonry column layout — full width */
+.projects__masonry {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(1.5rem, 4vw, 2.5rem);
+  columns: 3;
+  column-gap: clamp(1.5rem, 3.5vw, 2.25rem);
+}
+
+.projects__card {
+  break-inside: avoid;
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+  page-break-inside: avoid;
 }
 
 .projects__card-inner {
   display: flex;
   flex-direction: column;
-  height: 100%;
   border: 1px solid var(--color-hairline);
   border-radius: var(--radius-lg);
   background: var(--color-surface-card);
@@ -53,28 +83,60 @@
 
 .projects__card-inner:hover {
   border-color: color-mix(in srgb, var(--color-primary) 35%, var(--color-hairline));
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px color-mix(in srgb, var(--color-text-primary) 8%, transparent);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px color-mix(in srgb, var(--color-text-primary) 9%, transparent);
 }
 
-.projects__media-btn {
+/* Varied card heights via image aspect ratios */
+.projects__card--tall .projects__image-wrap {
+  aspect-ratio: 3 / 4;
+}
+
+.projects__card--medium .projects__image-wrap {
+  aspect-ratio: 4 / 3;
+}
+
+.projects__card--short .projects__image-wrap {
+  aspect-ratio: 16 / 9;
+}
+
+.projects__card--wide .projects__image-wrap {
+  aspect-ratio: 5 / 3;
+}
+
+.projects__card--compact .projects__image-wrap {
+  aspect-ratio: 1 / 1;
+}
+
+.projects__media-link {
   position: relative;
   display: block;
-  width: 100%;
-  padding: 0;
-  border: none;
-  background: none;
-  cursor: pointer;
   text-decoration: none;
   color: inherit;
-  aspect-ratio: 16 / 10;
-  overflow: hidden;
-  text-align: left;
 }
 
-.projects__media-btn:focus-visible {
+.projects__media-link:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: -2px;
+}
+
+.projects__image-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--color-surface-soft);
+}
+
+.projects__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.65s var(--ease-out);
+}
+
+.projects__card-inner:hover .projects__image {
+  transform: scale(1.05);
 }
 
 .projects__media-overlay {
@@ -103,43 +165,22 @@
     transform 0.35s var(--ease-out);
 }
 
-.projects__media-btn:hover .projects__media-overlay,
-.projects__media-btn:focus-visible .projects__media-overlay {
+.projects__media-link:hover .projects__media-overlay,
+.projects__media-link:focus-visible .projects__media-overlay {
   background: color-mix(in srgb, var(--color-text-primary) 38%, transparent);
 }
 
-.projects__media-btn:hover .projects__media-cta,
-.projects__media-btn:focus-visible .projects__media-cta {
+.projects__media-link:hover .projects__media-cta,
+.projects__media-link:focus-visible .projects__media-cta {
   opacity: 1;
   transform: translateY(0);
 }
-
-.projects__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s var(--ease-out);
-}
-
-.projects__card-inner:hover .projects__image,
-.projects__media-btn:hover .projects__image,
-.projects__media-btn:focus-visible .projects__image {
-  transform: scale(1.04);
-}
-
-.projects__image-mask {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  transition: clip-path 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: clip-path;
-}
-
 
 .projects__index {
   position: absolute;
   top: 0.75rem;
   left: 0.75rem;
+  z-index: 1;
   padding: 0.25rem 0.5rem;
   font-size: var(--text-small);
   font-weight: 600;
@@ -153,33 +194,38 @@
 .projects__body {
   display: flex;
   flex-direction: column;
-  gap: 0.625rem;
-  padding: clamp(1rem, 2vw, 1.25rem);
-  flex: 1;
+  gap: 0.85rem;
+  padding: clamp(1.1rem, 2.5vw, 1.5rem);
 }
 
-.projects__tags {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.projects__card-header {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.375rem;
-}
-
-.projects__tag {
-  padding: 0.2rem 0.5rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  color: var(--color-primary);
-  background: var(--color-primary-muted);
-  border-radius: 999px;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
 .projects__card-title {
   margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.6vw, 1.65rem);
+  font-weight: 500;
+  line-height: 1.15;
   color: var(--color-text-primary);
+}
+
+.projects__card-desc {
+  margin: 0;
+  font-size: clamp(0.92rem, 1.6vw, 1.02rem);
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+
+.projects__role {
+  margin: 0;
+  font-size: var(--text-small);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--color-text-muted);
 }
 
 .projects__title-link {
@@ -197,6 +243,38 @@
   outline: 2px solid var(--color-primary);
   outline-offset: 3px;
   border-radius: 2px;
+}
+
+.projects__tags {
+  list-style: none;
+  margin: 0;
+  padding: 0.65rem 0 0;
+  border-top: 1px solid var(--color-hairline);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+.projects__tag {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--color-primary);
+  background: var(--color-primary-muted);
+  border-radius: 999px;
+}
+
+.projects__tag--more {
+  color: var(--color-text-secondary);
+  background: var(--color-surface-soft);
+}
+
+.projects__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  margin-top: 0.15rem;
 }
 
 .projects__case-btn {
@@ -231,21 +309,6 @@
   outline-offset: 2px;
 }
 
-.projects__outcome {
-  margin: 0;
-  font-size: var(--text-small);
-  line-height: 1.55;
-  color: var(--color-text-secondary);
-  flex: 1;
-}
-
-.projects__links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 0.25rem;
-}
-
 .projects__link {
   font-size: var(--text-small);
   font-weight: 600;
@@ -253,14 +316,50 @@
 }
 
 @media (max-width: 1024px) {
-  .projects__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .projects__masonry {
+    columns: 2;
   }
 }
 
 @media (max-width: 640px) {
-  .projects__grid {
-    grid-template-columns: 1fr;
+  .projects__masonry {
+    columns: 2;
+    column-gap: 0.75rem;
+  }
+  .projects__card {
+    margin-bottom: 0.75rem;
+  }
+  .projects__body {
+    padding: 0.75rem;
+  }
+  .projects__card-title {
+    font-size: 0.95rem;
+  }
+  .projects__role {
+    font-size: 0.75rem;
+  }
+  .projects__card-desc {
+    font-size: 0.78rem;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .projects__tags {
+    gap: 0.25rem;
+  }
+  .projects__tag {
+    font-size: 0.65rem;
+    padding: 0.1rem 0.35rem;
+  }
+  .projects__links {
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .projects__case-btn {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem;
   }
 }
 
@@ -274,8 +373,7 @@
     transform: none;
   }
 
-  .projects__card-inner:hover .projects__image,
-  .projects__media-btn:hover .projects__image {
+  .projects__card-inner:hover .projects__image {
     transform: none;
   }
 

@@ -10,32 +10,29 @@ export type ShowcaseItem = {
 export const showcaseSections: ShowcaseItem[] = [
   {
     id: 1,
-    title: 'Where Nature Meets Code',
-    subtitle: 'Finding clarity in simplicity',
+    title: 'ML Meets Full-Stack',
+    subtitle: 'Intelligence with interface craft',
     description:
-      'The best solutions emerge when creativity meets structure — drawing inspiration from the natural world to write code that flows.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80&auto=format&fit=crop',
+      'I pair TensorFlow and PyTorch models with React and Node backends — so AI features feel native inside real products, not bolted on as demos.',
+    imageUrl: '/motion/1.jfif',
     reverse: false,
   },
   {
     id: 2,
-    title: 'Crafting Every Pixel',
-    subtitle: 'Precision in every detail',
+    title: 'Precision in Every Layer',
+    subtitle: 'Models, APIs, and UI detail',
     description:
-      'From machine learning models to pixel-perfect interfaces — obsessing over the details is what separates good from exceptional.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1920&q=80&auto=format&fit=crop',
+      'From SVM diagnostic pipelines to Monaco editor integrations — I obsess over preprocessing, API contracts, and interaction polish.',
+    imageUrl: '/motion/2.jfif',
     reverse: true,
   },
   {
     id: 3,
-    title: 'Built for the Real World',
-    subtitle: 'Engineering at scale',
+    title: 'Built for Real Users',
+    subtitle: 'Shipped, measured, iterated',
     description:
-      'Production systems that handle millions of requests, self-heal, and evolve — built with the discipline of shipping to real users.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1484417894907-623942c8ee29?w=1920&q=80&auto=format&fit=crop',
+      'Code Campus serves 90+ students. Clarity runs live WebSockets. Brain tumor detection hit 96.3% accuracy — all built with production discipline.',
+    imageUrl: '/motion/3.jfif',
     reverse: false,
   },
   {
@@ -43,9 +40,8 @@ export const showcaseSections: ShowcaseItem[] = [
     title: 'Relentless Curiosity',
     subtitle: 'Always learning, always building',
     description:
-      'Technology moves fast. Staying curious, experimenting with new tools, and pushing boundaries — that is the craft.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1920&q=80&auto=format&fit=crop',
+      'IBM Data Analyst certified. MLSC hackathon qualifier. I experiment with RAG search, multi-agent flows, and edge vision between semesters.',
+    imageUrl: '/motion/4.jfif',
     reverse: true,
   },
 ]
