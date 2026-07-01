@@ -1,3 +1,4 @@
+import { GoogleGenerativeAI } from '@google/generative-ai'
 import { ADITYA_INFO } from '@/data/adityaInfo'
 
 export type ChatRole = 'system' | 'user' | 'assistant'
@@ -59,7 +60,7 @@ export const RECRUITER_PRESET_RESPONSES: Record<RecruiterSuggestion, string> = {
   'Who is Aditya?':
     '**Aditya Deore** is a Software Developer at ITSA and former AI/ML Intern at Personify. He is pursuing his B.Tech in Information Technology at PCCOE, Pune (2024-2028), and builds intelligent full-stack products.',
   'Featured Projects':
-    '• **CodeCampus**: Educational platform serving 90+ students.\n• **Project Clarity**: Event platform for ITSA supporting 3,500+ participants.\n• **Brain Tumor detection**: Custom CNN classifier reaching 96.3% accuracy.',
+    '• **CodeCampus**: Educational platform serving 90+ students.\n• **Clarity**: Event platform for ITSA supporting 3,500+ participants.\n• **Brain Tumor detection**: Custom CNN classifier reaching 96.3% accuracy.',
   'Technical Expertise':
     '• **Frontend**: React, TypeScript, Tailwind CSS, HTML/CSS.\n• **Backend**: Node.js, Express, REST APIs, WebSockets.\n• **Databases**: MongoDB, PostgreSQL, SQL.',
   'AI & Machine Learning':
@@ -85,8 +86,7 @@ export function getRecruiterPresetResponse(query: string): string | null {
 }
 
 export function getGeminiApiKey(): string | undefined {
-  return localStorage.getItem('gemini_api_key') || 
-         import.meta.env.VITE_GEMINI_API_KEY
+  return import.meta.env.VITE_GEMINI_API_KEY
 }
 
 export function getNvidiaApiKey(): string | undefined {
@@ -104,47 +104,54 @@ export async function fetchGeminiResponse(
     throw new Error('Gemini API Key not configured')
   }
 
-  // Format messages for Gemini api contents format: role 'user' or 'model'
-  const contents = history.map((msg) => {
-    const role = msg.role === 'user' ? 'user' : 'model'
-    return {
-      role,
-      parts: [{ text: msg.content }]
-    }
+  const genAI = new GoogleGenerativeAI(apiKey)
+  const model = genAI.getGenerativeModel({
+    model: 'gemini-1.5-flash',
+    systemInstruction: systemPrompt,
   })
 
-  // Use the standard Gemini 1.5 Flash endpoint
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`
+  // Format messages for @google/generative-ai
+  const formattedHistory = history.map((msg) => ({
+    role: msg.role === 'user' ? 'user' : 'model',
+    parts: [{ text: msg.content }],
+  }))
 
-  const response = await fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
+  // Since we pass history, we shouldn't send an empty message to sendMessage.
+  // Actually, standard usage is to pass the LAST user message to sendMessage, and the rest to history.
+  // But history is already complete including the user's latest text.
+  // Wait, the history parameter here contains ALL messages including the latest one.
+  // So we pop the last user message to use as the prompt.
+  const lastMsg = formattedHistory.pop()
+  if (!lastMsg || lastMsg.role !== 'user') {
+    throw new Error('Last message must be from user')
+  }
+
+  // Re-instantiate chat with history minus the last message
+  const actualChat = model.startChat({
+    history: formattedHistory,
+    generationConfig: {
+      temperature: 0.3,
+      maxOutputTokens: 1024,
     },
-    body: JSON.stringify({
-      contents,
-      systemInstruction: {
-        parts: [{ text: systemPrompt }]
-      },
-      generationConfig: {
-        temperature: 0.3,
-        maxOutputTokens: 1024,
-      }
-    }),
   })
 
-  if (!response.ok) {
-    const errorText = await response.text()
-    throw new Error(`Gemini API response error: ${response.status} ${errorText}`)
-  }
+  try {
+    const result = await actualChat.sendMessage(lastMsg.parts[0].text)
+    const response = await result.response
+    const text = response.text()
 
-  const data = await response.json()
-  const content = data.candidates?.[0]?.content?.parts?.[0]?.text
-  if (!content) {
-    throw new Error('Empty response from Gemini API')
-  }
+    if (!text) {
+      throw new Error('Empty response from Gemini API')
+    }
 
-  return content
+    return text
+  } catch (error: any) {
+    // Surface invalid API key errors more clearly
+    if (error.message?.includes('API_KEY_INVALID') || error.message?.includes('400')) {
+      throw new Error(`Invalid Gemini API Key: ${error.message}`)
+    }
+    throw error
+  }
 }
 
 export async function fetchNvidiaResponse(
@@ -211,7 +218,7 @@ export function generateLocalResponse(query: string): string {
     return "**CodeCampus** — Distributed ed-tech platform featuring real-time proctored coding execution, video streaming, subscription monetization, and multiple subsystems.\n\n[GitHub](https://github.com/AdityaxDeore/codecampus)"
   }
   if (q.includes('clarity') || q.includes('prayaas')) {
-    return "**Project Clarity (Prayaas Education)** — Multi-module educational platform organizing curriculum planning, evaluation metrics, learning analytics, and administration.\n\n[GitHub](https://github.com/AdityaxDeore/Clarity)"
+    return "**Clarity** — Multi-module educational platform organizing curriculum planning, evaluation metrics, learning analytics, and administration.\n\n[GitHub](https://github.com/AdityaxDeore/Clarity)"
   }
   if (q.includes('tumor') || q.includes('brain') || q.includes('mri')) {
     return "**Brain Tumor Detection** — End-to-end ML classification pipeline parsing brain scans to locate and segment tumor areas with 96.3% accuracy.\n\n[GitHub](https://github.com/AdityaxDeore/brain-tumor-detection)"
@@ -232,7 +239,7 @@ export function generateLocalResponse(query: string): string {
     return "**Obamify** — Specialized graphics application focused on image transformations and packaging."
   }
   if (q.includes('project') || q.includes('portfolio') || q.includes('built')) {
-    return "Key projects: **CodeCampus**, **Dementia Diagnostic AI**, **Project Clarity (Prayaas Education)**, **Palantir Integration**, **Brain Tumor Detection**, **Explainable Audio CNNs**, **PORTFOLIO**, **shihiko-E-Commerce-Website**, **Obamify**."
+    return "Key projects: **CodeCampus**, **Dementia Diagnostic AI**, **Clarity**, **Palantir Integration**, **Brain Tumor Detection**, **Explainable Audio CNNs**, **PORTFOLIO**, **shihiko-E-Commerce-Website**, **Obamify**."
   }
   if (q.includes('skills') || q.includes('toolkit') || q.includes('languages') || q.includes('frameworks')) {
     return "**Technical Toolkit**\n\n• **Frontend**: React, TypeScript, Tailwind CSS\n• **Backend**: Node.js, Express, REST APIs\n• **AI/ML**: TensorFlow, Python, NumPy, Pandas, Scikit-learn"
@@ -241,7 +248,7 @@ export function generateLocalResponse(query: string): string {
     return "Experience: **Software Development Associate @ ITSA** and **AI/ML Intern @ Personify**."
   }
   if (q.includes('resume') || q.includes('cv') || q.includes('pdf')) {
-    return "Resume:\n\n• [PDF](/assets/files/Aditya_Deore_Resume.pdf)\n• [Word](/assets/files/Aditya_Deore_Resume.docx)"
+    return "Resume:\n\n• [PDF](/assets/files/adi%20resume.pdf)"
   }
   if (q.includes('contact') || q.includes('email') || q.includes('linkedin') || q.includes('hire')) {
     return "**Contact**\n\n• adityadeorework@gmail.com\n• [LinkedIn](https://linkedin.com/in/aditya-deore-3a725a263)\n• [GitHub](https://github.com/AdityaxDeore)"
@@ -270,8 +277,11 @@ export async function sendPortfolioChatMessage(
   if (getGeminiApiKey()) {
     try {
       return await fetchGeminiResponse(systemPrompt, fullHistory)
-    } catch (error) {
+    } catch (error: any) {
       console.warn('Gemini API failed, attempting NVIDIA NIM fallback.', error)
+      if (error.message?.includes('Invalid Gemini API Key') || error.message?.includes('404')) {
+         return `⚠️ **API Key Error**: The Gemini API key from environment configuration is invalid or unavailable.\n\n*Falling back to limited offline mode...*\n\n---\n\n${getRecruiterPresetResponse(userText) ?? generateLocalResponse(userText)}`
+      }
     }
   }
 

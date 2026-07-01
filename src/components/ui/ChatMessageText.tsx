@@ -1,6 +1,6 @@
 import { projects, type Project } from '@/data/projects'
-import { resumePdfUrl, resumeDocxUrl, resumeExternalLinks } from '@/data/resume'
-import { Link } from 'react-router-dom'
+import { resumePdfUrl, resumeExternalLinks } from '@/data/resume'
+import { Link, useLocation } from 'react-router-dom'
 import { GithubIcon, LinkedinIcon, MailIcon, WhatsappIcon } from '@/components/icons/social-icons'
 import { ExternalLink, FileText, Download, ArrowRight, Sparkles } from 'lucide-react'
 
@@ -13,7 +13,16 @@ export function ChatMessageText({
   isAssistant?: boolean;
   isMaximized?: boolean;
 }) {
+  const location = useLocation()
   const lines = text.split('\n')
+  const projectNavState = {
+    from: {
+      pathname: location.pathname,
+      search: location.search,
+      hash: location.hash,
+    },
+    fromScrollY: window.scrollY,
+  }
 
   // Detect matching entities for rich card rendering
   const textLower = text.toLowerCase()
@@ -183,7 +192,7 @@ export function ChatMessageText({
                     {project.outcome}
                   </p>
                   <div className="chat-project-card__actions" style={{ marginTop: '0.5rem', gap: '0.4rem' }}>
-                    <Link to={`/projects/${project.id}`} className="chat-project-card__btn chat-project-card__btn--primary" style={{ padding: '0.35rem 0.65rem', fontSize: '0.74rem' }}>
+                    <Link to={`/projects/${project.id}`} state={projectNavState} className="chat-project-card__btn chat-project-card__btn--primary" style={{ padding: '0.35rem 0.65rem', fontSize: '0.74rem' }}>
                       Case Study
                     </Link>
                     {project.links.map(link => (
@@ -211,7 +220,7 @@ export function ChatMessageText({
                       ))}
                     </div>
                     <div className="chat-project-card__actions">
-                      <Link to={`/projects/${project.id}`} className="chat-project-card__btn chat-project-card__btn--primary">
+                      <Link to={`/projects/${project.id}`} state={projectNavState} className="chat-project-card__btn chat-project-card__btn--primary">
                         View Case Study <ArrowRight size={12} className="ml-1" style={{ display: 'inline' }} />
                       </Link>
                       {project.links.map(link => (
@@ -268,11 +277,8 @@ export function ChatMessageText({
                 </div>
               </div>
               <div className="chat-resume-card__actions">
-                <a href={resumePdfUrl} download="Aditya_Deore_Resume.pdf" className="chat-resume-card__btn chat-resume-card__btn--pdf">
+                <a href={resumePdfUrl} download="adi resume.pdf" className="chat-resume-card__btn chat-resume-card__btn--pdf">
                   <Download size={14} /> Download PDF
-                </a>
-                <a href={resumeDocxUrl} download="Aditya_Deore_Resume.docx" className="chat-resume-card__btn chat-resume-card__btn--word">
-                  <Download size={14} /> Download Word
                 </a>
                 <a href={resumeExternalLinks.driveFolder} target="_blank" rel="noopener noreferrer" className="chat-resume-card__btn chat-resume-card__btn--drive">
                   <ExternalLink size={14} /> Google Drive

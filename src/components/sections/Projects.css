@@ -37,6 +37,10 @@
   max-width: 52rem;
 }
 
+.projects__header--secondary {
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+}
+
 .projects__label {
   margin: 0;
   font-size: var(--text-small);
@@ -137,6 +141,23 @@
 
 .projects__card-inner:hover .projects__image {
   transform: scale(1.05);
+}
+
+.projects__highlighted-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 5;
+  background: var(--color-primary);
+  color: var(--color-surface);
+  padding: 0.35rem 0.85rem;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--color-text-primary) 15%, transparent);
+  pointer-events: none;
 }
 
 .projects__media-overlay {

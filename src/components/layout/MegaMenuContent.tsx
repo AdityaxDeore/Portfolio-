@@ -2,16 +2,38 @@ import { projects } from '@/data/projects'
 import { experienceItems } from '@/data/experience'
 import { skillCategories } from '@/data/skills'
 import { valuePillars } from '@/data/value'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import './MegaMenuContent.css'
 
-export function MegaMenuContent({ section }: { section: string }) {
+export function MegaMenuContent({
+  section,
+  onNavigate,
+}: {
+  section: string
+  onNavigate?: () => void
+}) {
+  const location = useLocation()
+  const projectNavState = {
+    from: {
+      pathname: location.pathname,
+      search: location.search,
+      hash: location.hash,
+    },
+    fromScrollY: window.scrollY,
+  }
+
   if (section === 'projects') {
     const featured = projects.slice(0, 3)
     return (
       <div className="mega-content__grid mega-content__grid--projects">
         {featured.map((project) => (
-          <Link key={project.id} to={`/projects/${project.id}`} className="mega-content__project">
+          <Link
+            key={project.id}
+            to={`/projects/${project.id}`}
+            state={projectNavState}
+            className="mega-content__project"
+            onClick={onNavigate}
+          >
             <img src={project.image} alt={project.title} className="mega-content__project-thumb" />
             <div>
               <p className="mega-content__project-title">{project.title}</p>

@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { navItems } from '@/data/navigation'
 import { ThemeToggle } from '@/components/ui/ThemeToggle'
 import { MegaMenuContent } from '@/components/layout/MegaMenuContent'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import './TopNav.css'
 
 const MEGA_MENU_SECTIONS = new Set(['projects', 'experience', 'skills', 'expertise'])
@@ -29,6 +29,7 @@ function CloseIcon() {
 }
 
 export function TopNav() {
+  const { pathname, hash } = useLocation()
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [scrolled, setScrolled] = useState(false)
@@ -57,6 +58,11 @@ export function TopNav() {
     window.addEventListener('resize', closeOnResize)
     return () => window.removeEventListener('resize', closeOnResize)
   }, [])
+
+  useEffect(() => {
+    setActiveDropdown(null)
+    setMenuOpen(false)
+  }, [pathname, hash])
 
   const closeMenu = () => setMenuOpen(false)
 
@@ -130,7 +136,13 @@ export function TopNav() {
             onMouseLeave={handleMouseLeave}
           >
             <div className="container">
-              <MegaMenuContent section={activeDropdown} />
+              <MegaMenuContent
+                section={activeDropdown}
+                onNavigate={() => {
+                  setActiveDropdown(null)
+                  setMenuOpen(false)
+                }}
+              />
             </div>
           </motion.div>
         )}

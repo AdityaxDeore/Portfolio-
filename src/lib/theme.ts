@@ -14,7 +14,7 @@ export function getStoredTheme(): Theme | null {
 }
 
 export function getInitialTheme(): Theme {
-  return getStoredTheme() ?? getSystemTheme()
+  return getStoredTheme() ?? 'light'
 }
 
 export function applyTheme(theme: Theme): void {

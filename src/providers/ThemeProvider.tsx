@@ -2,7 +2,6 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from '
 import {
   applyTheme,
   getInitialTheme,
-  getSystemTheme,
   storeTheme,
   type Theme,
 } from '@/lib/theme'
@@ -35,21 +34,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     storeTheme(theme)
   }, [theme])
 
-  useEffect(() => {
-    const media = window.matchMedia('(prefers-color-scheme: dark)')
 
-    const onChange = () => {
-      const stored = localStorage.getItem('portfolio-theme')
-      if (!stored) {
-        const next = getSystemTheme()
-        setThemeState(next)
-        applyTheme(next)
-      }
-    }
-
-    media.addEventListener('change', onChange)
-    return () => media.removeEventListener('change', onChange)
-  }, [])
 
   const setTheme = (next: Theme) => setThemeState(next)
   const toggleTheme = () => setThemeState((current) => (current === 'light' ? 'dark' : 'light'))

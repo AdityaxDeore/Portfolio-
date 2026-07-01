@@ -159,12 +159,11 @@
   height: 72px;
   min-height: 72px;
   padding: 0 2rem;
-  border-bottom: 1px solid var(--color-hairline, rgba(230, 226, 216, 0.5));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: color-mix(in srgb, var(--color-surface, #ffffff) 50%, transparent);
-  backdrop-filter: blur(10px);
+  background: var(--primary, #D47655);
 }
 
 .chat-header-info {
@@ -177,13 +176,13 @@
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 12px;
-  background: color-mix(in srgb, var(--primary, #D47655) 10%, var(--color-surface, #ffffff));
+  background: rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--primary, #D47655);
+  color: #ffffff;
   position: relative;
-  border: 1px solid color-mix(in srgb, var(--primary, #D47655) 20%, transparent);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .online-indicator {
@@ -194,7 +193,7 @@
   height: 10px;
   border-radius: 50%;
   background: #10b981;
-  border: 2px solid var(--color-surface, #ffffff);
+  border: 2px solid var(--primary, #D47655);
 }
 
 .chat-title {
@@ -202,7 +201,7 @@
   font-family: var(--font-sans);
   font-size: 0.95rem;
   font-weight: 700;
-  color: var(--color-text-primary, #141413);
+  color: #ffffff;
   letter-spacing: -0.01em;
 }
 
@@ -210,7 +209,7 @@
   margin: 0;
   font-family: var(--font-sans);
   font-size: 0.72rem;
-  color: var(--color-text-secondary, #5e5d59);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .chat-header-actions {
@@ -225,7 +224,7 @@
   border-radius: 10px;
   border: none;
   background: transparent;
-  color: var(--color-text-secondary, #5e5d59);
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -234,13 +233,13 @@
 }
 
 .chat-header-action-btn:hover {
-  background: rgba(128, 128, 128, 0.08);
-  color: var(--color-text-primary, #141413);
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
 }
 
 .close-action-btn:hover {
-  background: rgba(239, 68, 68, 0.1);
-  color: #ef4444;
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
 }
 
 /* Layout Structure */

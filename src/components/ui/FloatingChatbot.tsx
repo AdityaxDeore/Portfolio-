@@ -21,7 +21,8 @@ import {
   Trophy,
   Mail,
   Download,
-  Brain
+  Brain,
+  Settings
 } from 'lucide-react'
 import { GithubIcon, LinkedinIcon } from '@/components/icons/social-icons'
 import { useCallback, useEffect, useRef, useState } from 'react'
@@ -39,7 +40,6 @@ export function FloatingChatbot() {
   const [isOpen, setIsOpen] = useState(false)
   const [isMaximized, setIsMaximized] = useState(false) // Minimized popout by default
   const [showSettings, setShowSettings] = useState(false)
-  const [apiKeyInput, setApiKeyInput] = useState(() => localStorage.getItem('gemini_api_key') || '')
   const avatarClicksRef = useRef(0)
 
   const { pathname } = useLocation()
@@ -181,7 +181,7 @@ export function FloatingChatbot() {
           'CodeCampus details',
           'Dementia Diagnostic AI details',
           'Brain Tumor Detection details',
-          'Project Clarity details',
+          'Clarity details',
           'Where has he worked?',
           'How can I contact him?',
           'Is he open to internships?',
@@ -225,17 +225,6 @@ export function FloatingChatbot() {
       'What are his core skills?',
       'Show me his projects',
     ])
-  }
-
-  const handleSaveApiKey = () => {
-    localStorage.setItem('gemini_api_key', apiKeyInput.trim())
-    setShowSettings(false)
-  }
-
-  const handleClearApiKey = () => {
-    localStorage.removeItem('gemini_api_key')
-    setApiKeyInput('')
-    setShowSettings(false)
   }
 
   // Sidebar navigation options
@@ -362,6 +351,15 @@ export function FloatingChatbot() {
                 <button
                   type="button"
                   className="chat-header-action-btn"
+                  onClick={() => setShowSettings(true)}
+                  title="API Settings"
+                  aria-label="API Settings"
+                >
+                  <Settings size={16} />
+                </button>
+                <button
+                  type="button"
+                  className="chat-header-action-btn"
                   onClick={handleClearChat}
                   title="Clear Chat History"
                   aria-label="Clear Chat History"
@@ -434,7 +432,7 @@ export function FloatingChatbot() {
                   </a>
                   <a
                     href={resumePdfUrl}
-                    download="Aditya_Deore_Resume.pdf"
+                    download="adi resume.pdf"
                     className="chat-sidebar-nav-link highlight-link"
                   >
                     <Download size={14} /> Download Resume
@@ -456,29 +454,9 @@ export function FloatingChatbot() {
                         </div>
                         <div className="settings-body">
                           <p className="settings-desc">
-                            Provide your <strong>Gemini API Key</strong> to activate live AI reasoning.
-                            The key is stored in your browser only.
+                            Gemini API access is configured from <strong>.env</strong> at build time.
+                            Manual key entry is disabled in the UI.
                           </p>
-
-                          <div className="settings-field">
-                            <label className="settings-label">Gemini API Key</label>
-                            <input
-                              type="password"
-                              className="settings-input"
-                              placeholder="AIzaSy..."
-                              value={apiKeyInput}
-                              onChange={(e) => setApiKeyInput(e.target.value)}
-                            />
-                          </div>
-
-                          <div className="settings-actions">
-                            <button type="button" className="settings-btn settings-btn-save" onClick={handleSaveApiKey}>
-                              Save Changes
-                            </button>
-                            <button type="button" className="settings-btn settings-btn-clear" onClick={handleClearApiKey}>
-                              Delete Key
-                            </button>
-                          </div>
 
                           <div className="settings-info-box">
                             <p>

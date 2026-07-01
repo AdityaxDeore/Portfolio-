@@ -1,5 +1,5 @@
-import { useEffect, useLayoutEffect } from 'react'
-import { Route, Routes, useLocation } from 'react-router-dom'
+import { useEffect, useLayoutEffect, useRef } from 'react'
+import { Route, Routes, useLocation, useNavigationType } from 'react-router-dom'
 import { TopNav } from '@/components/layout/TopNav'
 import { HomePage } from '@/pages/HomePage'
 import { ProjectPage } from '@/pages/ProjectPage'
@@ -8,9 +8,36 @@ import { DevAgentation } from '@/agentation'
 import { FloatingChatbot } from '@/components/ui/FloatingChatbot'
 
 function ScrollManager() {
-  const { pathname, hash } = useLocation()
+  const location = useLocation()
+  const navigationType = useNavigationType()
+  const { pathname, hash, state } = location
+  const scrollStorageKey = `scroll-position:${pathname}`
+  const lastLocationKeyRef = useRef<string | null>(null)
 
   useLayoutEffect(() => {
+    const previousKey = lastLocationKeyRef.current
+    lastLocationKeyRef.current = location.key
+
+    return () => {
+      if (previousKey) {
+        sessionStorage.setItem(scrollStorageKey, String(window.scrollY))
+      }
+    }
+  }, [location.key, scrollStorageKey])
+
+  useLayoutEffect(() => {
+    const restoreScrollY = typeof (state as { restoreScrollY?: unknown } | null)?.restoreScrollY === 'number'
+      ? (state as { restoreScrollY: number }).restoreScrollY
+      : null
+
+    if (restoreScrollY !== null) {
+      window.scrollTo({
+        top: restoreScrollY,
+        behavior: 'auto',
+      })
+      return
+    }
+
     if (hash) {
       const id = hash.replace('#', '')
       const element = document.getElementById(id)
@@ -30,13 +57,24 @@ function ScrollManager() {
       }
     }
 
+    if (navigationType === 'POP') {
+      const storedScrollY = Number(sessionStorage.getItem(scrollStorageKey))
+      if (!Number.isNaN(storedScrollY) && storedScrollY > 0) {
+        window.scrollTo({
+          top: storedScrollY,
+          behavior: 'auto',
+        })
+        return
+      }
+    }
+
     if (isPageReload()) {
       scrollToTop()
       return
     }
 
     scrollToTop()
-  }, [pathname, hash])
+  }, [pathname, hash, state])
 
   return null
 }

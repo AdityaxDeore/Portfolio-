@@ -2,7 +2,6 @@ import { ResumeRecruiterChat } from '@/components/ui/ResumeRecruiterChat'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import {
   resumePdfUrl,
-  resumeDocxUrl,
   resumePageImages,
   resumeSection,
   resumeExternalLinks,
@@ -87,19 +86,11 @@ export function Resume() {
           <div className="resume__toolbar">
             <a
               href={resumePdfUrl}
-              download="Aditya_Deore_Resume.pdf"
+              download="adi resume.pdf"
               className="resume__action-link-btn resume__action-link-btn--primary"
             >
               <DownloadIcon size={16} />
               Download PDF
-            </a>
-            <a
-              href={resumeDocxUrl}
-              download="Aditya_Deore_Resume.docx"
-              className="resume__action-link-btn"
-            >
-              <DownloadIcon size={16} />
-              Download Word
             </a>
             <a
               href={resumeExternalLinks.driveFolder}

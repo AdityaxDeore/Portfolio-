@@ -1,8 +1,7 @@
 import { aboutProfile } from '@/data/about'
 import { contactEmail } from '@/data/contact'
 
-export const resumePdfUrl = '/assets/files/Aditya_Deore_Resume.pdf'
-export const resumeDocxUrl = '/assets/files/Aditya_Deore_Resume.docx'
+export const resumePdfUrl = '/assets/files/adi resume.pdf'
 
 export const resumePageImages = [
   '/resume-page-1.png',
@@ -24,7 +23,7 @@ export const resumeExternalLinks = {
   driveFilePreview: `https://drive.google.com/file/d/${resumeGoogleDocId}/preview`,
 } as const
 
-export type ResumeFormatId = 'pdf' | 'word' | 'drive' | 'google-docs'
+export type ResumeFormatId = 'pdf' | 'drive' | 'google-docs'
 
 export type ResumeFormat = {
   id: ResumeFormatId
@@ -43,19 +42,8 @@ export const resumeFormats: ResumeFormat[] = [
     label: 'PDF',
     behavior: 'preview',
     downloadHref: resumePdfUrl,
-    downloadName: 'Aditya_Deore_Resume.pdf',
+    downloadName: 'adi resume.pdf',
     openHref: resumePdfUrl,
-  },
-  {
-    id: 'word',
-    label: 'Word',
-    behavior: 'external',
-    downloadHref: resumeDocxUrl,
-    downloadName: 'Aditya_Deore_Resume.docx',
-    openHref: resumeExternalLinks.googleDocsEdit,
-    externalTitle: 'Word resume on Google Docs',
-    externalDescription:
-      'View and edit the Word resume online in Google Docs, or download the DOCX copy below.',
   },
   {
     id: 'drive',
@@ -64,7 +52,7 @@ export const resumeFormats: ResumeFormat[] = [
     openHref: resumeExternalLinks.driveFolder,
     externalTitle: 'Resume folder on Google Drive',
     externalDescription:
-      'Browse resume files in Google Drive — PDF, Word, and related documents.',
+      'Browse resume files in Google Drive and related documents.',
   },
   {
     id: 'google-docs',
