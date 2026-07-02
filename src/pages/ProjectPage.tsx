@@ -440,69 +440,6 @@ function EditorialFeatureBlock({ eyebrow, title, description, image, reversed, i
 }
 
 // ============================================================================
-// WIDGET: INTERACTIVE MRI SCAN SLICER (For Dementia ML / Brain Tumor projects)
-// ============================================================================
-
-function MriScannerSlicer() {
-  const [sliceVal, setSliceVal] = useState(30)
-  
-  // Custom metadata updates based on slider slices
-  const getSliceMeta = (val: number) => {
-    if (val < 20) return { region: 'Cerebellum / Brainstem', state: 'Normal tissue structure observed.', color: '#27c93f' }
-    if (val < 50) return { region: 'Temporal Lobe / Hippocampus', state: 'Slight volumetric decrease detected in local voxels.', color: '#D47655' }
-    if (val < 80) return { region: 'Parietal Lobe Cortex', state: 'Normal functional density profile.', color: '#27c93f' }
-    return { region: 'Frontal Lobe Cortex', state: 'Clear boundaries, no noticeable anomaly indicators.', color: '#27c93f' }
-  }
-
-  const meta = getSliceMeta(sliceVal)
-
-  return (
-    <div className="mri-scanner-widget">
-      <div className="scanner-header">
-        <div className="pulse-indicator"></div>
-        <span>Interactive Volumetric MRI Slice Viewer</span>
-      </div>
-      
-      <div className="scanner-display-area">
-        {/* Dynamic scan slice projection */}
-        <div className="scanner-view-box">
-          <div className="scanner-lens" style={{ transform: `scale(${1 + (sliceVal - 30) / 100}) rotate(${sliceVal}deg)` }}>
-            <img src="/motion/2.jfif" alt="MRI volumetric slice preview" className="scanner-slice-image" />
-          </div>
-          <div className="scanner-crosshair horizontal"></div>
-          <div className="scanner-crosshair vertical"></div>
-          <span className="scanner-coords">Z-AXIS INDEX: {sliceVal * 4}mm</span>
-        </div>
-
-        {/* Live telemetry analysis display */}
-        <div className="scanner-telemetry">
-          <div className="tel-cell">
-            <span className="tel-lbl">Target Region</span>
-            <strong className="tel-val">{meta.region}</strong>
-          </div>
-          <div className="tel-cell">
-            <span className="tel-lbl">Diagnostic Status</span>
-            <strong className="tel-val" style={{ color: meta.color }}>{meta.state}</strong>
-          </div>
-        </div>
-      </div>
-
-      <div className="scanner-controls-panel">
-        <label htmlFor="mri-slice-slider">Adjust Voxel Scan Plane Layer:</label>
-        <input 
-          type="range" 
-          id="mri-slice-slider"
-          min="1" 
-          max="100" 
-          value={sliceVal} 
-          onChange={(e) => setSliceVal(Number(e.target.value))} 
-        />
-      </div>
-    </div>
-  )
-}
-
-// ============================================================================
 // WIDGET: LIVE MOOD JOURNAL SENTIMENT SIMULATOR (For Project Clarity)
 // ============================================================================
 
