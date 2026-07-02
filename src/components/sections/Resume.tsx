@@ -38,38 +38,35 @@ function ExternalLinkIcon({ size = 16 }: { size?: number }) {
 
 export function Resume() {
   const [showPreview, setShowPreview] = useState(true)
-  const resumeImageRef = useRef<HTMLImageElement>(null)
-  const pageFrameRef = useRef<HTMLElement>(null)
-  const [previewHeight, setPreviewHeight] = useState<number | null>(null)
+  const [mobilePreviewOpen, setMobilePreviewOpen] = useState(false)
+  const [isMobileViewport, setIsMobileViewport] = useState(false)
 
-  const syncPreviewHeight = useCallback(() => {
-    const frame = pageFrameRef.current
-    if (!frame) return
+  useEffect(() => {
+    const media = window.matchMedia('(max-width: 768px)')
+    const updateViewport = () => setIsMobileViewport(media.matches)
 
-    const nextHeight = Math.ceil(frame.getBoundingClientRect().height)
-    if (nextHeight > 0) {
-      setPreviewHeight((prev) => (prev === nextHeight ? prev : nextHeight))
-    }
+    updateViewport()
+    media.addEventListener('change', updateViewport)
+    return () => media.removeEventListener('change', updateViewport)
   }, [])
 
   useEffect(() => {
-    if (!showPreview) return
+    if (!mobilePreviewOpen) return
 
-    syncPreviewHeight()
-
-    const frame = pageFrameRef.current
-    const observer = frame ? new ResizeObserver(syncPreviewHeight) : null
-    if (frame && observer) observer.observe(frame)
-
-    window.addEventListener('resize', syncPreviewHeight)
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
     return () => {
-      observer?.disconnect()
-      window.removeEventListener('resize', syncPreviewHeight)
+      document.body.style.overflow = previousOverflow
     }
-  }, [showPreview, syncPreviewHeight])
+  }, [mobilePreviewOpen])
 
-  const pairedHeightStyle =
-    previewHeight != null ? { height: previewHeight, minHeight: previewHeight } : undefined
+  const openMobilePreview = () => {
+    if (isMobileViewport) {
+      setMobilePreviewOpen(true)
+    }
+  }
+
+  const closeMobilePreview = () => setMobilePreviewOpen(false)
 
   return (
     <section id="resume" className="resume" aria-labelledby="resume-title">
@@ -123,11 +120,6 @@ export function Resume() {
                 viewBox="0 0 24 24"
                 fill="none"
                 className={`resume__chevron${showPreview ? ' resume__chevron--open' : ''}`}
-                style={{
-                  transition: 'transform 0.3s ease',
-                  transform: showPreview ? 'rotate(180deg)' : 'rotate(0deg)',
-                  marginRight: '0.375rem',
-                }}
                 aria-hidden="true"
               >
                 <path
@@ -144,19 +136,23 @@ export function Resume() {
 
           <div
             className={`resume__preview-split${showPreview ? ' resume__preview-split--visible' : ''}`}
-            aria-hidden={!showPreview}
+            hidden={!showPreview}
           >
-            <div className="resume__preview-left" style={pairedHeightStyle}>
-              <figure className="resume__page" ref={pageFrameRef}>
+            <div className="resume__preview-left">
+              <figure className="resume__page">
                 <a
                   href={resumePdfUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="resume__page-link"
                   aria-label="Open resume PDF in a new tab"
+                  onClick={(event) => {
+                    if (!isMobileViewport) return
+                    event.preventDefault()
+                    openMobilePreview()
+                  }}
                 >
                   <img
-                    ref={resumeImageRef}
                     src={resumePageImages[0]}
                     alt="Aditya Deore Resume"
                     className="resume__page-image"
@@ -164,18 +160,47 @@ export function Resume() {
                     height={1056}
                     loading="eager"
                     decoding="async"
-                    onLoad={syncPreviewHeight}
                   />
                 </a>
               </figure>
             </div>
 
-            <div className="resume__preview-right" style={pairedHeightStyle}>
+            <div className="resume__preview-right">
               <ResumeRecruiterChat />
             </div>
           </div>
         </div>
       </div>
+
+      {mobilePreviewOpen && (
+        <div
+          className="resume__mobile-preview"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Resume preview"
+          onClick={closeMobilePreview}
+        >
+          <div className="resume__mobile-preview-shell" onClick={(event) => event.stopPropagation()}>
+            <button
+              type="button"
+              className="resume__mobile-preview-close"
+              onClick={closeMobilePreview}
+              aria-label="Close resume preview"
+            >
+              Close
+            </button>
+            <div className="resume__mobile-preview-frame">
+              <img
+                src={resumePageImages[0]}
+                alt="Aditya Deore Resume"
+                className="resume__mobile-preview-image"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
